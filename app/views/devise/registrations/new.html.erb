@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Site favicon -->
+<link rel='shortcut icon' type='image/x-icon' href='/assets/favicon.ico' />
+<!-- /site favicon -->
+
+<!-- Entypo font stylesheet -->
+<link href="/assets/entypo.css" rel="stylesheet">
+<!-- /entypo font stylesheet -->
+
+<!-- Font awesome stylesheet -->
+<link href="/assets/font-awesome.min.css" rel="stylesheet">
+<!-- /font awesome stylesheet -->
+
+<!-- Bootstrap stylesheet min version -->
+<link href="/assets/bootstrap.min.css" rel="stylesheet">
+<!-- /bootstrap stylesheet min version -->
+
+<!-- Mouldifi core stylesheet -->
+<link href="/assets/mouldifi-core.css" rel="stylesheet">
+<!-- /mouldifi core stylesheet -->
+
+<link href="/assets/mouldifi-forms.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body class="login-page">
+<div class="login-container">
+  <div class="login-branding">
+   <% unless GeneralSetting.first.blank? %>
+                <%= image_tag GeneralSetting.last.logo.url %>
+   <% else %>
+                <%= image_tag "logo.png" %>
+  <% end %>
+  </div>
+  <div class="login-content">
+    <h2>Create an account</h2>
+   
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, placeholder: 'Email', class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Password', class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up",  class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+
+
+  </div>
+</div>
+<!--Load JQuery-->
+<script src="/assets/jquery.min.js"></script>
+<script src="/assets/bootstrap.min.js"></script>
+</body>
+</html>

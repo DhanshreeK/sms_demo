@@ -1,0 +1,44 @@
+<div class="col-md-12"> 
+ <br>
+                 <br>
+                
+          <div class="panel panel-info">
+            <div class="panel-heading clearfix"> 
+              <div class="panel-title">Users Detail</div> 
+              <ul class="panel-tool-options"> 
+                <li class="dropdown">
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><%=link_to "Edit", edit_user_path(@user)%></i></a></li>
+                     <li><%=link_to "Change Password", change_password_user_path(@user)%></i></a></li>
+                  </ul>
+                 </li>
+                <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+<!--                 <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+ -->                <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+              </ul>  
+            </div> 
+            
+            <!-- panel body --> 
+            <div class="panel-body"> 
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-1">
+        <div class="form-group">
+  
+      
+          <div class="form-group">
+          <div class="col-sm-4"><b> Role:</b></div>
+          <div class="col-sm-8"><%= @user.role %></div>
+          </div>
+          <br>
+              <div class="form-group">
+          <div class="col-sm-4"><b> Email:</b></div>
+          <div class="col-sm-8"><%= @user.email %></div>
+          </div>
+      </div>
+ </div>
+
+ </div>
+ </div>
+
+
