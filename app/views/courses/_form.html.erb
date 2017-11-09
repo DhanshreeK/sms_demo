@@ -4,7 +4,7 @@
                  <br>
                     <div class="panel panel-primary">
                         <div class="panel-heading clearfix"> 
-                            <div class="panel-title">Employees</div> 
+                            <div class="panel-title">Courses</div> 
                             <ul class="panel-tool-options"> 
                                 <!-- <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
@@ -24,68 +24,59 @@
                         <br>
                         <!-- panel body --> 
                         <div class="panel-body"> 
-<%= form_with(model: university, local: true,html: { multipart: true }) do |form| %>
-  <% if university.errors.any? %>
+<%= form_with(model: course, local: true) do |form| %>
+  <% if course.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(university.errors.count, "error") %> prohibited this university from being saved:</h2>
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
 
       <ul>
-      <% university.errors.full_messages.each do |message| %>
+      <% course.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-   <div class="col-md-4">
-        <label for="text_input" class="label_height">University Name</label>
+  <div class="col-md-6">
+        <label for="text_input" class="label_height">Course Type Name</label>
            <span style="color:red">*</span>
-    <%= form.text_field :university_name, id: :university_university_name , placeholder: 'University Name',class: 'form-control'%>
+    <%= form.select :course_type_id,CourseType.all.collect{|a| [a.course_type_name,a.id]}, {prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
 
-  <div class="col-md-4">
-        <label for="text_input" class="label_height">Country</label>
+  <div class="col-md-6">
+        <label for="text_input" class="label_height">University</label>
            <span style="color:red">*</span>
-<%=country_select("center", "country", { placeholder: 'Select a country' }, { class: 'country-select-box', class: 'form-control' })%>
+    <%= form.select :university_id,University.all.collect{|a| [a.university_name,a.id]},{prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
-  
-    <%= form.fields_for :unversity_attachments do |p| %>
-     <div class="col-md-4">
-        <label for="text_input" class="label_height">Add Attachment</label>
+
+  <div class="col-md-6">
+        <label for="text_input" class="label_height">No of Seats</label>
            <span style="color:red">*</span>
-       <%= p.file_field :attachment, as: :file,:multiple => true,name: "university_attachments[attachment][]" ,class: 'form-control'%>
-        <br>  <br>
-     </div>
-       <div class="col-md-4">
-        <label for="text_input" class="label_height">Add Attachment Name</label>
-           <span style="color:red">*</span>
-      <%= p.text_field :attachment_name , placeholder: 'Add Attachment Name',class: 'form-control' %>
-     
-      </div>
-   <% end %>
-  <div class="col-md-4">
-        <label for="text_input" class="label_height">University Details</label>
-           <span style="color:red">*</span>
-    <%= form.text_area :description, id: :university_description , placeholder: 'University Details',class: 'form-control',style: "width:300px;height: 250px;"%>
-  <br><br>
+    <%= form.text_field :no_of_seats, id: :course_no_of_seats, placeholder: 'No of Seats', class: 'form-control' %>
   </div>
+
+  <div class="col-md-6">
+        <label for="text_input" class="label_height">Fees</label>
+           <span style="color:red">*</span>
+    <%= form.text_field :fees, id: :course_fees, placeholder: 'Fees', class: 'form-control' %>
+    <br><br>
+  </div>
+
 
 <div class="col-md-4">
         <label for="text_input" class="label_height">Status</label>
            <span style="color:red">*</span><br>
   <%= form.radio_button "status", "true", checked: "checked" %> <b>Active</b>
               <%= form.radio_button "status", "false"%> <b>Inactive</b>
-                 </div>
-
-
+              <br><br><br>
+ </div>
   <div class="col-sm-4 col-sm-offset-4 input_success">
-   <div class="bs-example"> 
-     <%= form.submit "Submit", class: 'btn btn-success' %>
-     <%= link_to 'Back', centers_path, class: 'btn btn-red' %>
+    <%= form.submit "Submit", class: 'btn btn-success' %>
+    <%= link_to 'Back', courses_path , class: 'btn btn-red '%>
   </div>
-  </div>
-<% end %>
+ 
 </div>
+<% end %>
 </div>
 </div>
 </div>

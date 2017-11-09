@@ -8,7 +8,6 @@ class GeneralSettingsController < ApplicationController
     @user = User.first
     @general_setting = GeneralSetting.shod(params[:id])
     if @general_setting.update(general_setting_params)
-      flash[:notice] = t('setting_update')
       redirect_to dashboard_home_index_path
     else
       render 'new'

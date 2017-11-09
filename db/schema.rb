@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109045247) do
+ActiveRecord::Schema.define(version: 20171109083320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,27 @@ ActiveRecord::Schema.define(version: 20171109045247) do
     t.string "residential_address"
     t.string "center_code"
     t.string "country"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "course_types", force: :cascade do |t|
+    t.string "course_type_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.bigint "course_type_id"
+    t.bigint "university_id"
+    t.string "no_of_seats"
+    t.string "fees"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_type_id"], name: "index_courses_on_course_type_id"
+    t.index ["university_id"], name: "index_courses_on_university_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -44,6 +63,7 @@ ActiveRecord::Schema.define(version: 20171109045247) do
     t.string "address"
     t.string "employee_no"
     t.bigint "center_id"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["center_id"], name: "index_employees_on_center_id"
@@ -70,8 +90,7 @@ ActiveRecord::Schema.define(version: 20171109045247) do
     t.string "university_name"
     t.string "description"
     t.string "country"
-    t.string "attachment_name"
-    t.string "attachment"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -111,5 +130,7 @@ ActiveRecord::Schema.define(version: 20171109045247) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "courses", "course_types"
+  add_foreign_key "courses", "universities"
   add_foreign_key "employees", "centers"
 end

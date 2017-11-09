@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  course_type: one
+  university: one
+  no_of_seats: MyString
+  fees: MyString
+
+two:
+  course_type: two
+  university: two
+  no_of_seats: MyString
+  fees: MyString
