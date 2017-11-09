@@ -100,7 +100,8 @@
     <div class="col-md-4">
         <label for="text_input" class="label_height">Center Select</label>
            <span style="color:red">*</span>
-    <%= form.select :center_id, Center.all.collect{|c| [c.center_name,c.id]}, {prompt:true}, class: 'form-control' %>
+    <%= form.select :center_id, Center.all.collect{|c| [c.center_name,c.id]}, {prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true" 
+ %>
     <br><br>
   </div>
 

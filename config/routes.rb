@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :unversity_attachments
+  resources :universities
   resources :employees
   resources :centers
   devise_for :users, controllers: { registrations: 'registrations' }

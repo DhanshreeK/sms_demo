@@ -24,90 +24,24 @@
             <!-- panel body --> 
             <div class="panel-body"> 
 
-<p id="notice"><%= notice %></p>
 <div class="col-md-4">
 <p class="text-info">
-  <strong>Center name:</strong>
-  <%= @center.center_name %>
+  <strong>University name:</strong>
+  <%= @university.university_name %>
 </p>
 </div>
 
 <div class="col-md-4">
 <p class="text-info">
-  <strong>Address:</strong>
-  <%= @center.address %>
+  <strong>Description:</strong>
+  <%= @university.description %>
 </p>
 </div>
 
-<div class="col-md-4">
-<p class="text-info">
-  <strong>City:</strong>
-  <%= @center.city %>
-</p>
 </div>
+<%= link_to 'Edit', edit_university_path(@university) %> |
+<%= link_to 'Back', universities_path %>
 
-<div class="col-md-4">
-<p class="text-info">
-  <strong>State:</strong>
-  <%= @center.state %>
-</p>
-</div>
-
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Pan card no:</strong>
-  <%= @center.pan_card_no %>
-</p>
-</div>
-
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Contact:</strong>
-  <%= @center.contact %>
-</p>
-</div>
-
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Alternate contact:</strong>
-  <%= @center.alternate_contact %>
-</p>
-</div>
-
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Center starting date:</strong>
-  <%= @center.center_starting_date %>
-</p>
-</div>
-
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Contact person name:</strong>
-  <%= @center.contact_person_name %>
-</p>
-</div>
-
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Residential address:</strong>
-  <%= @center.residential_address %>
-</p>
-</div>
-
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Country:</strong>
-  <%= @center.country %>
-</p>
-</div>
-
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Center code:</strong>
-  <%= @center.center_code %>
-</p>
-</div>
 </div></div>
-</div></div><%= link_to 'Edit', edit_center_path(@center) %> |
-<%= link_to 'Back', centers_path %>
+</div></div>
+

@@ -103,6 +103,15 @@
     <%= form.text_field :center_code, id: :center_center_code, placeholder: 'Center Code', class: 'form-control' %>
       <br><br><br>
   </div>
+
+  <div class="col-md-4">
+        <label for="text_input" class="label_height">Country</label>
+           <span style="color:red">*</span>
+<%=country_select("center", "country", { placeholder: 'Select a country' }, { class: 'country-select-box', class: 'form-control' })%>
+     <br><br><br>
+  </div>
+
+
   <div class="col-sm-4 col-sm-offset-4 input_success">
     <%= form.submit "Submit", class: 'btn btn-red btn-md form-control' %>
   </div>

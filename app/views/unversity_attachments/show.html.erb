@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>University:</strong>
+  <%= @unversity_attachment.university_id %>
+</p>
+
+<p>
+  <strong>Attachment:</strong>
+  <%= @unversity_attachment.attachment %>
+</p>
+
+<%= link_to 'Edit', edit_unversity_attachment_path(@unversity_attachment) %> |
+<%= link_to 'Back', unversity_attachments_path %>

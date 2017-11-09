@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Unversity Attachments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>University</th>
+      <th>Attachment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @unversity_attachments.each do |unversity_attachment| %>
+      <tr>
+        <td><%= unversity_attachment.university_id %></td>
+        <td><%= unversity_attachment.attachment %></td>
+        <td><%= link_to 'Show', unversity_attachment %></td>
+        <td><%= link_to 'Edit', edit_unversity_attachment_path(unversity_attachment) %></td>
+        <td><%= link_to 'Destroy', unversity_attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Unversity Attachment', new_unversity_attachment_path %>
