@@ -1,0 +1,2 @@
+module UnversityAttachmentsHelper
+end

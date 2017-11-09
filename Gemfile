@@ -10,7 +10,11 @@ end
 gem 'rails', '~> 5.1.4'
 gem 'cancan'
 gem "paperclip", "~> 5.0.0"
+gem 'country_select', require: 'country_select_without_sort_alphabetical'
+gem 'city-state'
 gem 'imagemagick-binaries'
+gem 'bootstrap-select-rails'
+gem 'carrierwave'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server

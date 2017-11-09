@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107125903) do
+ActiveRecord::Schema.define(version: 20171109045247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20171107125903) do
     t.string "contact_person_name"
     t.string "residential_address"
     t.string "center_code"
+    t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,6 +64,25 @@ ActiveRecord::Schema.define(version: 20171107125903) do
     t.string "logo_content_type"
     t.integer "logo_file_size"
     t.datetime "logo_updated_at"
+  end
+
+  create_table "universities", force: :cascade do |t|
+    t.string "university_name"
+    t.string "description"
+    t.string "country"
+    t.string "attachment_name"
+    t.string "attachment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "unversity_attachments", force: :cascade do |t|
+    t.bigint "university_id"
+    t.string "attachment"
+    t.string "attachment_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["university_id"], name: "index_unversity_attachments_on_university_id"
   end
 
   create_table "users", force: :cascade do |t|
