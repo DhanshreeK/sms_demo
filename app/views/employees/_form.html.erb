@@ -89,6 +89,7 @@
         <label for="text_input" class="label_height">Address</label>
            <span style="color:red">*</span>
     <%= form.text_field :address, id: :employee_address, placeholder: 'Address',class: 'form-control' %>
+    <br>
   </div>
 
    <div class="col-md-4">
@@ -102,11 +103,22 @@
            <span style="color:red">*</span>
     <%= form.select :center_id, Center.all.collect{|c| [c.center_name,c.id]}, {prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true" 
  %>
-    <br><br>
+    <br><br><br><br>
   </div>
 
+   <div class="col-md-4">
+        <label for="text_input" class="label_height">Status</label>
+           <span style="color:red">*</span><br>
+  <%= form.radio_button "status", "true", checked: "checked" %> <b>Active</b>
+              <%= form.radio_button "status", "false"%> <b>Inactive</b>
+                 </div>
+
+
   <div class="col-sm-4 col-sm-offset-4 input_success">
-    <%= form.submit "Submit", class: 'btn btn-red btn-md form-control' %>
+  <div class="bs-example">
+    <%= form.submit "Submit", class: 'btn btn-success' %>
+    <%= link_to 'Back', employees_path, class: 'btn btn-red' %>
+    </div>
   </div>
 <% end %>
 </div>

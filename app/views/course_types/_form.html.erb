@@ -1,0 +1,53 @@
+<div class="row"> 
+                <div class="col-md-12">
+                 <br>
+                 <br>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading clearfix"> 
+                            <div class="panel-title">Course Type</div> 
+                            <ul class="panel-tool-options"> 
+                                <!-- <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
+                                        <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
+                                        <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+                                    </ul>
+                                 </li> -->
+                                <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+                                <!-- <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li> -->
+                                <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+                            </ul> 
+                        </div> 
+                        <br>
+                        <!-- panel body --> 
+                        <div class="panel-body"> 
+<%= form_with(model: course_type, local: true) do |form| %>
+  <% if course_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course_type.errors.count, "error") %> prohibited this course_type from being saved:</h2>
+
+      <ul>
+      <% course_type.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-6">
+        <label for="text_input" class="label_height">Course Type Name</label>
+           <span style="color:red">*</span>
+    <%= form.text_field :course_type_name, id: :course_type_course_type_name, placeholder: 'Course Type', class: 'form-control' %>
+<br>
+</div>
+
+  <div class="col-sm-4 col-sm-offset-4 input_success">
+    <%= form.submit "Submit", class: 'btn btn-success' %>
+       <%=link_to "Back", course_types_path,class: 'btn btn-red' %>
+  </div>
+    </div>
+<br>
+<% end %>

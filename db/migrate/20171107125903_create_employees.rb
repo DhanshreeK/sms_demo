@@ -12,6 +12,7 @@ class CreateEmployees < ActiveRecord::Migration[5.1]
       t.string :address
       t.string :employee_no
       t.references :center, foreign_key: true
+      t.string :status
 
       t.timestamps
     end

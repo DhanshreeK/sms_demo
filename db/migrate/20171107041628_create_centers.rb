@@ -13,6 +13,7 @@ class CreateCenters < ActiveRecord::Migration[5.1]
       t.string :residential_address
       t.string :center_code
       t.string :country
+      t.string :status
 
       t.timestamps
     end

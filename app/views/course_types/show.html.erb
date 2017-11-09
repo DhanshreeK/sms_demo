@@ -23,32 +23,14 @@
             </div> 
             <!-- panel body --> 
             <div class="panel-body"> 
+<p id="notice"><%= notice %></p>
 
 <div class="col-md-4">
 <p class="text-info">
-  <strong>University name:</strong>
-  <%= @university.university_name %>
+  <strong>Course type name:</strong>
+  <%= @course_type.course_type_name %>
 </p>
 </div>
 
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Description:</strong>
-  <%= @university.description %>
-</p>
-</div>
-
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Status:</strong>
-  <%= @university.status %>
-</p>
-</div>
-
-</div>
-<%= link_to 'Edit', edit_university_path(@university) %> |
-<%= link_to 'Back', universities_path %>
-
-</div></div>
-</div></div>
-
+<%= link_to 'Edit', edit_course_type_path(@course_type) %> |
+<%= link_to 'Back', course_types_path %>
