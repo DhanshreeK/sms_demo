@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 20171109083320) do
     t.string "birth_place"
     t.string "address"
     t.string "employee_no"
-    t.bigint "center_id"
     t.string "status"
+    t.bigint "center_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["center_id"], name: "index_employees_on_center_id"
