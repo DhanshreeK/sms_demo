@@ -37,89 +37,103 @@
     </div>
   <% end %>
 
-   <div class="col-md-4">
-        <label for="text_input" class="label_height">Name</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :name, id: :employee_name, placeholder: 'Employee Name' , class: 'form-control'%>
+    <form class="form-horizontal">
+
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Name</label>
+          <%= form.text_field :name, id: :employee_name, placeholder: 'Employee Name' , class: 'form-control'%>
+        </div>
+    </div>
+
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Designation</label>
+         <%= form.text_field :designation, id: :employee_designation, placeholder: 'Employee Designation',  class: 'form-control' %>
+      </div>
+    </div>
+
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Employee Adhar No</label>
+        <%= form.text_field :adhar_card_no, id: :employee_adhar_card_no, placeholder: 'Employee Adhar No', class: 'form-control'%>
+      </div>
+    </div>
+
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Contact No</label>
+          <%= form.text_field :contact_no, id: :employee_contact_no,placeholder: 'Contact', class: 'form-control' %>
+       </div>
+     </div>
+
+   <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Alternate Contact</label>
+           <%= form.text_field :alternate_contact_no, id: :employee_alternate_contact_no, placeholder: 'Alternate Contact' , class: 'form-control'%>
+       </div>
+    </div>
+
+   <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Email</label>
+        <%= form.text_field :email, id: :employee_email, placeholder: 'Email',  class: 'form-control'%>
+      </div>
+   </div>
+
+  <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Joining Date</label>
+         <%= form.date_field :joining_date, id: :employee_joining_date, placeholder: 'Joining Date',  class: 'form-control'%>
+       </div>
+    </div>
+
+   <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Birth Date</label>
+       <%= form.text_field :birth_place, id: :employee_birth_place, placeholder: 'Birth Date',class: 'form-control' %>
+      </div>
   </div>
 
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Designation</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :designation, id: :employee_designation, placeholder: 'Employee Designation',  class: 'form-control' %>
-  </div>
-
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Adhar Card No</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :adhar_card_no, id: :employee_adhar_card_no, placeholder: 'Employee Adhar No', class: 'form-control'%>
-  </div>
-
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Contact</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :contact_no, id: :employee_contact_no,placeholder: 'Contact', class: 'form-control' %>
-  </div>
-
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Alternate Contact</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :alternate_contact_no, id: :employee_alternate_contact_no, placeholder: 'Alternate Contact' , class: 'form-control'%>
-  </div>
-
-   <div class="col-md-4">
-        <label for="text_input" class="label_height">Email</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :email, id: :employee_email, placeholder: 'Email',  class: 'form-control'%>
-  </div>
-
-  <div class="col-md-4">
-        <label for="text_input" class="label_height">Joining Date</label>
-           <span style="color:red">*</span>
-    <%= form.date_field :joining_date, id: :employee_joining_date, placeholder: 'Joining Date',  class: 'form-control'%>
-  </div>
-
-   <div class="col-md-4">
-        <label for="text_input" class="label_height">Birth Place</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :birth_place, id: :employee_birth_place, placeholder: 'Birth Date',class: 'form-control' %>
-  </div>
-
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Address</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :address, id: :employee_address, placeholder: 'Address',class: 'form-control' %>
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Address</label>
+        <%= form.text_field :address, id: :employee_address, placeholder: 'Address',class: 'form-control' %>
     <br>
   </div>
+  </div>
 
-   <div class="col-md-4">
-        <label for="text_input" class="label_height">Employee No</label>
-           <span style="color:red">*</span>
+    <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Employee  No</label>
     <%= form.text_field :employee_no, id: :employee_employee_no, placeholder: 'Employee No',class: 'form-control' %>
   </div>
+</div>
 
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Center Select</label>
-           <span style="color:red">*</span>
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Center Select</label>
     <%= form.select :center_id, Center.all.collect{|c| [c.center_name,c.id]}, {prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true" 
  %>
-    <br><br><br><br>
+    </div>
   </div>
 
-   <div class="col-md-4">
-        <label for="text_input" class="label_height">Status</label>
-           <span style="color:red">*</span><br>
+  <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Status</label>
   <%= form.radio_button "status", "true", checked: "checked" %> <b>Active</b>
               <%= form.radio_button "status", "false"%> <b>Inactive</b>
                  </div>
-
-
-  <div class="col-sm-4 col-sm-offset-4 input_success">
-  <div class="bs-example">
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div class="form-group"> 
+                                <div class="col-sm-offset-1 col-sm-10">  
     <%= form.submit "Submit", class: 'btn btn-success' %>
     <%= link_to 'Back', employees_path, class: 'btn btn-red' %>
-    </div>
+     
   </div>
+  </div>
+
 <% end %>
 </div>
 </div>

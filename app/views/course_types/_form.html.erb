@@ -37,17 +37,22 @@
     </div>
   <% end %>
 
-  <div class="col-md-6">
-        <label for="text_input" class="label_height">Course Type Name</label>
-           <span style="color:red">*</span>
+  <form class="form-horizontal">
+
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Course Type</label>
     <%= form.text_field :course_type_name, id: :course_type_course_type_name, placeholder: 'Course Type', class: 'form-control' %>
 <br>
 </div>
 
-  <div class="col-sm-4 col-sm-offset-4 input_success">
-    <%= form.submit "Submit", class: 'btn btn-success' %>
-       <%=link_to "Back", course_types_path,class: 'btn btn-red' %>
+            <div class="form-group"> 
+                                <div class="col-sm-offset-1 col-sm-10">  
+     <%= form.submit "Submit", class: 'btn btn-success' %>
+     <%=link_to "Back", course_types_path,class: 'btn btn-red' %>
+     
   </div>
-    </div>
+  </div>
+  
 <br>
 <% end %>

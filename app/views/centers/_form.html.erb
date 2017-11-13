@@ -37,88 +37,104 @@
     </div>
   <% end %>
 
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Center Name</label>
-           <span style="color:red">*</span>
+ <form class="form-horizontal">
+
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Center Name</label>
     <%= form.text_field :center_name, id: :center_center_name, placeholder: 'Center Name', class: 'form-control' %>
+    </div>
   </div>
 
-   <div class="col-md-4">
-        <label for="text_input" class="label_height">Center Address</label>
-           <span style="color:red">*</span>
+      <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Center Address</label>
     <%= form.text_field :address, id: :center_address, placeholder: 'Center Address', class: 'form-control' %>
+      </div>
+    </div>
+
+   <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">City</label>
+          <%= form.text_field :city, id: :center_city , placeholder: 'City', class: 'form-control'%>
+      </div>
   </div>
 
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">City</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :city, id: :center_city , placeholder: 'City', class: 'form-control'%>
-  </div>
+    <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Center State</label>
+       <%= form.text_field :state, id: :center_state, placeholder: 'State', class: 'form-control' %>
+    </div>
 
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Center State</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :state, id: :center_state, placeholder: 'State', class: 'form-control' %>
-  </div>
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Pan Card No</label>
+      <%= form.text_field :pan_card_no, id: :center_pan_card_no , placeholder: 'Pan Card No', class: 'form-control'%>
+      </div>
+    </div>
 
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Pan Card No</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :pan_card_no, id: :center_pan_card_no , placeholder: 'Pan Card No', class: 'form-control'%>
-  </div>
+      <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Contact</label>
+          <%= form.text_field :contact, id: :center_contact, placeholder: 'Contact', class: 'form-control' %>
+      </div>
+    </div>
 
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Contact</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :contact, id: :center_contact, placeholder: 'Contact', class: 'form-control' %>
-  </div>
+      <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Alternate Contact</label>
+        <%= form.text_field :alternate_contact, id: :center_alternate_contact, placeholder: 'Alternate Contact', class: 'form-control' %>
+      </div>
+      </div>
 
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Alternate Contact</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :alternate_contact, id: :center_alternate_contact, placeholder: 'Alternate Contact', class: 'form-control' %>
-  </div>
+      <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Center Starting Date</label>
+         <%= form.date_field :center_starting_date, id: :center_center_starting_date, placeholder: 'Center Starting Date', class: 'form-control' %>
+       </div>
+      </div>
 
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Center Starting Date</label>
-           <span style="color:red">*</span>
-    <%= form.date_field :center_starting_date, id: :center_center_starting_date, placeholder: 'Center Starting Date', class: 'form-control' %>
-  </div>
 
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Contact Person Name</label>
-           <span style="color:red">*</span>
+      <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Contact Person Name</label>
     <%= form.text_field :contact_person_name, id: :center_contact_person_name, placeholder: 'Contact Person Name', class: 'form-control' %>
   </div>
 
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Residential Address</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :residential_address, id: :center_residential_address , placeholder: 'Residential Address', class: 'form-control'%>
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Residential Address</label>
+      <%= form.text_field :residential_address, id: :center_residential_address , placeholder: 'Residential Address', class: 'form-control'%>
+     </div>
+    </div>
+
+   <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Center Code</label>
+        <%= form.text_field :center_code, id: :center_center_code, placeholder: 'Center Code', class: 'form-control' %>
+        </div>
   </div>
 
-    <div class="col-md-4">
-        <label for="text_input" class="label_height">Center Code</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :center_code, id: :center_center_code, placeholder: 'Center Code', class: 'form-control' %>
-      <br><br><br>
-  </div>
+ 
 
-  <div class="col-md-4">
-        <label for="text_input" class="label_height">Country</label>
-           <span style="color:red">*</span>
-<%=country_select("center", "country", { placeholder: 'Select a country' }, { class: 'country-select-box', class: 'form-control' })%>
-  </div>
-
-  <div class="col-md-4">
-        <label for="text_input" class="label_height">Status</label>
-           <span style="color:red">*</span><br>
+   <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Country</label>
+          <%=country_select("center", "country", { placeholder: 'Select a country' }, { class: 'country-select-box', class: 'form-control' })%>
+        </div>
+   </div>
+   
+  <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Status</label>
   <%= form.radio_button "status", "true", checked: "checked" %> <b>Active</b>
               <%= form.radio_button "status", "false"%> <b>Inactive</b>
-               <br><br><br>  </div>
+  </div>
+  </div>
 
-<div class="col-sm-4 col-sm-offset-4 input_success">
-  <div class="bs-example"> 
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        <div class="form-group"> 
+                                <div class="col-sm-offset-1 col-sm-10">  
      <%= form.submit "Submit", class: 'btn btn-success' %>
      <%= link_to 'Back', centers_path, class: 'btn btn-red' %>
      

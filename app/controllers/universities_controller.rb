@@ -36,7 +36,7 @@ class UniversitiesController < ApplicationController
          params[:university_attachments]['attachment'].each do |a|
           @university_attachment = @university.unversity_attachments.create!(:attachment => a)
        end
-        format.html { redirect_to @university, notice: 'University was successfully created.' }
+        format.html { redirect_to universities_path, notice: 'University was successfully created.' }
         format.json { render :show, status: :created, location: @university }
       else
         format.html { render :new }
