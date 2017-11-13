@@ -36,43 +36,55 @@
       </ul>
     </div>
   <% end %>
+ <form class="form-horizontal">
 
-  <div class="col-md-6">
-        <label for="text_input" class="label_height">Course Type Name</label>
-           <span style="color:red">*</span>
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Course Type</label>
     <%= form.select :course_type_id,CourseType.all.collect{|a| [a.course_type_name,a.id]}, {prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
+  </div>
 
-  <div class="col-md-6">
-        <label for="text_input" class="label_height">University</label>
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">University</label>
            <span style="color:red">*</span>
     <%= form.select :university_id,University.all.collect{|a| [a.university_name,a.id]},{prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
+  </div>
 
-  <div class="col-md-6">
-        <label for="text_input" class="label_height">No of Seats</label>
-           <span style="color:red">*</span>
+  <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">No of Seats</label>
     <%= form.text_field :no_of_seats, id: :course_no_of_seats, placeholder: 'No of Seats', class: 'form-control' %>
   </div>
-
-  <div class="col-md-6">
-        <label for="text_input" class="label_height">Fees</label>
-           <span style="color:red">*</span>
-    <%= form.text_field :fees, id: :course_fees, placeholder: 'Fees', class: 'form-control' %>
-    <br><br>
   </div>
 
 
-<div class="col-md-4">
-        <label for="text_input" class="label_height">Status</label>
-           <span style="color:red">*</span><br>
+  <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Fees</label>
+           <span style="color:red">*</span>
+    <%= form.text_field :fees, id: :course_fees, placeholder: 'Fees', class: 'form-control' %>
+  </div>
+</div>
+
+
+  <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Status</label>
   <%= form.radio_button "status", "true", checked: "checked" %> <b>Active</b>
               <%= form.radio_button "status", "false"%> <b>Inactive</b>
               <br><br><br>
  </div>
-  <div class="col-sm-4 col-sm-offset-4 input_success">
-    <%= form.submit "Submit", class: 'btn btn-success' %>
+ </div>
+ <br><br><br><br><br><br><br><br><br>
+            <div class="form-group"> 
+                                <div class="col-sm-offset-1 col-sm-10">  
+      <%= form.submit "Submit", class: 'btn btn-success' %>
     <%= link_to 'Back', courses_path , class: 'btn btn-red '%>
+     
+  </div>
   </div>
  
 </div>

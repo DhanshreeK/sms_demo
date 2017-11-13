@@ -37,51 +37,61 @@
     </div>
   <% end %>
 
-   <div class="col-md-4">
-        <label for="text_input" class="label_height">University Name</label>
-           <span style="color:red">*</span>
+    <form class="form-horizontal">
+
+     <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">University Name</label>
     <%= form.text_field :university_name, id: :university_university_name , placeholder: 'University Name',class: 'form-control'%>
   </div>
+</div>
 
-  <div class="col-md-4">
-        <label for="text_input" class="label_height">Country</label>
-           <span style="color:red">*</span>
+
+    <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Country</label>
 <%=country_select("center", "country", { placeholder: 'Select a country' }, { class: 'country-select-box', class: 'form-control' })%>
-  </div>
+  </div></div>
+
   
     <%= form.fields_for :unversity_attachments do |p| %>
-     <div class="col-md-4">
-        <label for="text_input" class="label_height">Add Attachment</label>
-           <span style="color:red">*</span>
+      <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Add Attachment</label>
        <%= p.file_field :attachment, as: :file,:multiple => true,name: "university_attachments[attachment][]" ,class: 'form-control'%>
         <br>  <br>
      </div>
-       <div class="col-md-4">
-        <label for="text_input" class="label_height">Add Attachment Name</label>
-           <span style="color:red">*</span>
+     </div>
+
+        <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Add Attachment Name </label>
       <%= p.text_field :attachment_name , placeholder: 'Add Attachment Name',class: 'form-control' %>
-     
+        </div>
       </div>
    <% end %>
-  <div class="col-md-4">
-        <label for="text_input" class="label_height">University Details</label>
-           <span style="color:red">*</span>
+
+   <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">University Details</label>
     <%= form.text_area :description, id: :university_description , placeholder: 'University Details',class: 'form-control',style: "width:300px;height: 250px;"%>
   <br><br>
   </div>
+  </div>
 
-<div class="col-md-4">
-        <label for="text_input" class="label_height">Status</label>
-           <span style="color:red">*</span><br>
+  <div class="form-group">
+        <div class="col-md-4">
+          <label class="col-sm-6 control-label">Status</label>
   <%= form.radio_button "status", "true", checked: "checked" %> <b>Active</b>
               <%= form.radio_button "status", "false"%> <b>Inactive</b>
-                 </div>
+                 </div></div>
 
-
-  <div class="col-sm-4 col-sm-offset-4 input_success">
-   <div class="bs-example"> 
-     <%= form.submit "Submit", class: 'btn btn-success' %>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div class="form-group"> 
+                                <div class="col-sm-offset-1 col-sm-10">  
+    <%= form.submit "Submit", class: 'btn btn-success' %>
      <%= link_to 'Back', centers_path, class: 'btn btn-red' %>
+     
   </div>
   </div>
 <% end %>

@@ -32,7 +32,7 @@ class CentersController < ApplicationController
 
     respond_to do |format|
       if @center.save
-        format.html { redirect_to @center, notice: 'Center was successfully created.' }
+        format.html { redirect_to centers_path, notice: 'Center was successfully created.' }
         format.json { render :show, status: :created, location: @center }
       else
         format.html { render :new }
