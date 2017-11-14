@@ -89,7 +89,7 @@
 
       <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Center Starting Date</label>
+          <label class="col-sm-8 control-label">Center Starting Date</label>
          <%= form.date_field :center_starting_date, id: :center_center_starting_date, placeholder: 'Center Starting Date', class: 'form-control' %>
        </div>
       </div>
@@ -97,13 +97,13 @@
 
       <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Contact Person Name</label>
+          <label class="col-sm-8 control-label">Contact Person Name</label>
     <%= form.text_field :contact_person_name, id: :center_contact_person_name, placeholder: 'Contact Person Name', class: 'form-control' %>
   </div>
 
      <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Residential Address</label>
+          <label class="col-sm-8 control-label">Residential Address</label>
       <%= form.text_field :residential_address, id: :center_residential_address , placeholder: 'Residential Address', class: 'form-control'%>
      </div>
     </div>
@@ -116,21 +116,20 @@
   </div>
 
  
-
- <!--   <div class="form-group">
+ <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Country</label>
-          <%=country_select("center", "country", { placeholder: 'Select a country' }, { class: 'country-select-box', class: 'form-control' })%>
+          <%=country_select("center", "countries", { priority_countries: ["IN", "FR"], selected: "IN" }, { class: 'form-control', data: { attribute: "value" } })%>
         </div>
-   </div> -->
-  <!--  
+   </div>
+
   <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Status</label>
-  <%= form.radio_button "status", "true", checked: "checked" %> <b>Active</b>
-              <%= form.radio_button "status", "false"%> <b>Inactive</b>
+  <%= form.radio_button "center_status", "true", checked: "checked" %> <b>Active</b>
+              <%= form.radio_button "center_status", "false"%> <b>Inactive</b>
   </div>
-  </div> -->
+ </div>
 
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                         <div class="form-group"> 

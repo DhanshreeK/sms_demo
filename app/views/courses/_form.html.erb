@@ -45,10 +45,9 @@
   </div>
   </div>
 
-     <div class="form-group">
+    <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">University</label>
-           <span style="color:red">*</span>
     <%= form.select :university_id,University.all.collect{|a| [a.university_name,a.id]},{prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
   </div>
@@ -61,10 +60,9 @@
   </div>
 
 
-  <div class="form-group">
+ <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Fees</label>
-           <span style="color:red">*</span>
     <%= form.text_field :fees, id: :course_fees, placeholder: 'Fees', class: 'form-control' %>
   </div>
 </div>
