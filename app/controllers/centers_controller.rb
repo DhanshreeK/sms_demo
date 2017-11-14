@@ -5,7 +5,7 @@ class CentersController < ApplicationController
   # GET /centers.json
   def index
     @centers = Center.all
-    @general_setting = GeneralSetting.last
+    @general_setting = GeneralSetting.first
     @user = User.first
   end
 
@@ -18,7 +18,7 @@ class CentersController < ApplicationController
   def new
     @center = Center.new
     @user = User.first
-    @general_setting = GeneralSetting.last
+    @general_setting = GeneralSetting.first
   end
 
   # GET /centers/1/edit
@@ -69,12 +69,12 @@ class CentersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_center
       @center = Center.find(params[:id])
-      @general_setting = GeneralSetting.last
+      @general_setting = GeneralSetting.first
       @user = User.first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def center_params
-      params.require(:center).permit(:center_name,:status, :address,:country, :city, :state, :pan_card_no, :contact, :alternate_contact, :center_starting_date, :contact_person_name, :residential_address, :center_code)
+      params.require(:center).permit(:center_name,:status,:center_status, :countries, :address,:country, :city, :state, :pan_card_no, :contact, :alternate_contact, :center_starting_date, :contact_person_name, :residential_address, :center_code)
     end
 end

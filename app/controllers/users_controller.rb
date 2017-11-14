@@ -84,7 +84,7 @@ class UsersController < ApplicationController
   private
 
   def set_general_setting
-  	    @general_setting = GeneralSetting.last
+  	    @general_setting = GeneralSetting.first
   end
 
   # this private methods tell us exactly which parameters are allowed

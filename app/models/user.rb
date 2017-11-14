@@ -20,6 +20,17 @@ class User < ApplicationRecord
     update(general_setting_id: gs.id, role: role)
   end
 
+  def employee
+    return unless role == 'Employee'
+    Employee.shod(employee_id)
+  end
+  
+   def create_user_employee(employee_number, email)
+    employee_number.each do |emp_no|
+      UserEmployees.create(email: email, employee_number: emp_no)
+    end
+  end
+
    # getter for current user
   def self.current
     Thread.current[:user]

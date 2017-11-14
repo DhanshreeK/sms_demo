@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     @employees = Employee.all
-    @general_setting = GeneralSetting.last
+    @general_setting = GeneralSetting.first
     @user = User.first
   end
 
@@ -17,8 +17,9 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
-    @general_setting = GeneralSetting.last
+    @general_setting = GeneralSetting.first
     @user = User.first
+    @employee.emp_no
   end
 
   # GET /employees/1/edit
@@ -69,12 +70,12 @@ class EmployeesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params[:id])
-      @general_setting = GeneralSetting.last
+      @general_setting = GeneralSetting.first
       @user = User.first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:name,:status, :designation, :adhar_card_no, :contact_no, :alternate_contact_no, :email, :joining_date, :birth_place, :address, :employee_no, :center_id)
+      params.require(:employee).permit(:name,:status,:employee_status, :designation, :adhar_card_no, :contact_no, :alternate_contact_no, :email, :joining_date, :birth_place, :address, :employee_no, :center_id)
     end
 end

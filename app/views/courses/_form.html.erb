@@ -4,9 +4,9 @@
                  <br>
                     <div class="panel panel-primary">
                         <div class="panel-heading clearfix"> 
-                            <div class="panel-title">Courses</div> 
+                            <div class="panel-title">Centers</div> 
                             <ul class="panel-tool-options"> 
-                                <!-- <li class="dropdown">
+                               <!--  <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
@@ -22,7 +22,7 @@
                             </ul> 
                         </div> 
                         <br>
-                        <!-- panel body --> 
+                       
                         <div class="panel-body"> 
 <%= form_with(model: course, local: true) do |form| %>
   <% if course.errors.any? %>
@@ -45,10 +45,9 @@
   </div>
   </div>
 
-     <div class="form-group">
+    <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">University</label>
-           <span style="color:red">*</span>
     <%= form.select :university_id,University.all.collect{|a| [a.university_name,a.id]},{prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
   </div>
@@ -61,10 +60,9 @@
   </div>
 
 
-  <div class="form-group">
+ <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Fees</label>
-           <span style="color:red">*</span>
     <%= form.text_field :fees, id: :course_fees, placeholder: 'Fees', class: 'form-control' %>
   </div>
 </div>
