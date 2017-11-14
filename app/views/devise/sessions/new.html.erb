@@ -36,7 +36,7 @@
 <div class="login-container">
   <div class="login-branding">
   <% unless GeneralSetting.first.blank? %>
-                <%= image_tag GeneralSetting.last.logo.url %>
+                <%= image_tag GeneralSetting.first.logo.url %>
    <% else %>
                 <%= image_tag "logo.png" %>
   <% end %>

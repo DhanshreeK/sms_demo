@@ -5,7 +5,7 @@ class UnversityAttachmentsController < ApplicationController
   # GET /unversity_attachments.json
   def index
     @unversity_attachments = UnversityAttachment.all
-      @general_setting = GeneralSetting.last
+      @general_setting = GeneralSetting.first
     @user = User.first
   end
 
@@ -17,7 +17,7 @@ class UnversityAttachmentsController < ApplicationController
   # GET /unversity_attachments/new
   def new
     @unversity_attachment = UnversityAttachment.new
-      @general_setting = GeneralSetting.last
+      @general_setting = GeneralSetting.first
     @user = User.first
   end
 
@@ -69,7 +69,7 @@ class UnversityAttachmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_unversity_attachment
       @unversity_attachment = UnversityAttachment.find(params[:id])
-      @general_setting = GeneralSetting.last
+      @general_setting = GeneralSetting.first
       @user = User.first
     end
 

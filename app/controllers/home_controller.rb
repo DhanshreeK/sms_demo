@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-  	@general_setting = GeneralSetting.last
+  	@general_setting = GeneralSetting.first
   	@user = User.first
   end
 end

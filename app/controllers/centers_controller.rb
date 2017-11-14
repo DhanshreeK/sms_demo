@@ -5,7 +5,7 @@ class CentersController < ApplicationController
   # GET /centers.json
   def index
     @centers = Center.all
-    @general_setting = GeneralSetting.last
+    @general_setting = GeneralSetting.first
     @user = User.first
   end
 
@@ -18,7 +18,7 @@ class CentersController < ApplicationController
   def new
     @center = Center.new
     @user = User.first
-    @general_setting = GeneralSetting.last
+    @general_setting = GeneralSetting.first
   end
 
   # GET /centers/1/edit
@@ -69,7 +69,7 @@ class CentersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_center
       @center = Center.find(params[:id])
-      @general_setting = GeneralSetting.last
+      @general_setting = GeneralSetting.first
       @user = User.first
     end
 

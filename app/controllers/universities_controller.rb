@@ -5,7 +5,7 @@ class UniversitiesController < ApplicationController
   # GET /universities.json
   def index
     @universities = University.all
-    @general_setting = GeneralSetting.last
+    @general_setting = GeneralSetting.first
     @user = User.first
   end
 
@@ -19,7 +19,7 @@ class UniversitiesController < ApplicationController
   def new
     @university = University.new
     @unversity_attachments = @university.unversity_attachments.build
-    @general_setting = GeneralSetting.last
+    @general_setting = GeneralSetting.first
   end
 
   # GET /universities/1/edit
@@ -73,7 +73,7 @@ class UniversitiesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_university
       @university = University.find(params[:id])
-      @general_setting = GeneralSetting.last
+      @general_setting = GeneralSetting.first
       @user = User.first
     end
 

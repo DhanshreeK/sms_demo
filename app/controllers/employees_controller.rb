@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     @employees = Employee.all
-    @general_setting = GeneralSetting.last
+    @general_setting = GeneralSetting.first
     @user = User.first
   end
 
@@ -17,8 +17,9 @@ class EmployeesController < ApplicationController
   # GET /employees/new
   def new
     @employee = Employee.new
-    @general_setting = GeneralSetting.last
+    @general_setting = GeneralSetting.first
     @user = User.first
+    @employee.emp_no
   end
 
   # GET /employees/1/edit
@@ -69,7 +70,7 @@ class EmployeesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params[:id])
-      @general_setting = GeneralSetting.last
+      @general_setting = GeneralSetting.first
       @user = User.first
     end
 

@@ -106,7 +106,7 @@
     <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Employee  No</label>
-    <%= form.text_field :employee_no, id: :employee_employee_no, placeholder: 'Employee No',class: 'form-control' %>
+    <%= form.text_field :employee_no, id: :employee_employee_no,readonly: true,:value=> @employee.employee_no, class: "form-control" %>
   </div>
 </div>
 

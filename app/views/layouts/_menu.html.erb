@@ -51,7 +51,11 @@
 		<!-- Site header  -->
 		<header class="site-header">
 		  <div class="site-logo">
+		  <% unless @general_setting.blank? %>
 		     <%= image_tag @general_setting.logo.url %>
+		     <%else%>
+		     <%=GeneralSetting.first.logo.url%>
+		  <%end%>
 		</div>
 		  <div class="sidebar-collapse hidden-xs"><a class="sidebar-collapse-icon" href="#"><i class="icon-menu"></i></a></div>
 		  <div class="sidebar-mobile-menu visible-xs"><a data-target="#side-nav" data-toggle="collapse" class="mobile-menu-icon" href="#"><i class="icon-menu"></i></a></div>
@@ -62,7 +66,9 @@
 		<ul id="side-nav" class="main-menu navbar-collapse collapse">
 			<li class="has-sub active "><a href="index.html"><i class="icon-gauge"></i><span class="title">Misc.</span></a>
 				<ul class="nav">
+				<%if current_user.role == 'SuperAdmin'%>
 					<li><a href="/general_settings/new"><span class="title">General Setting</span></a></li>
+				<%end%>
 					<li><a href="/centers"><span class="title">Centers</span></a></li>
 					<li><a href="/employees"><span class="title">Employees</span></a></li>
 					<li><a href="/universities"><span class="title">University</span></a></li>
@@ -70,14 +76,14 @@
 					<li><a href="/courses"><span class="title">Course</span></a></li>
 
 				</ul>
-			</li><!-- 
-			<li class="has-sub"><a href="collapsed-sidebar.html"><i class="icon-layout"></i><span class="title">Layouts</span></a>
+			</li>
+						<!-- <li class="has-sub"><a href="collapsed-sidebar.html"><i class="icon-layout"></i><span class="title">Students</span></a>
 				<ul class="nav collapse">
 					<li><a href="collapsed-sidebar.html"><span class="title">Collapsed Sidebar</span></a></li>
 					<li><a href="fixed-sidebar.html"><span class="title">Fixed Sidebar</span></a></li>
 				</ul>
-			</li>
-			<li class="has-sub"><a href="panels.html"><i class="icon-newspaper"></i><span class="title">UI Elements</span></a>
+			</li> -->
+			<!-- <li class="has-sub"><a href="panels.html"><i class="icon-newspaper"></i><span class="title">UI Elements</span></a>
 				<ul class="nav collapse">
 					<li><a href="panels.html"><span class="title">Panels</span></a></li>
 					<li><a href="buttons.html"><span class="title">Buttons</span></a></li>
@@ -187,7 +193,7 @@
 					</li> 
 				</ul> 
 			</li>
-		</ul>
+		</ul> -->
 		<!-- /main navigation -->		
   </div>
   <!-- /page sidebar -->
@@ -210,7 +216,9 @@
 				<!-- User action menu -->
 				<ul class="dropdown-menu">
 				  
+				<%if current_user.role == 'SuperAdmin'%>
 				  <li><a href="/users/1"><i class="icon-user"></i>My profile</a></li>
+				  <%end%>
 				  <li><a href="#/"><i class="icon-mail"></i>Messages</a></li>
 				  <li><a href="#"><i class="icon-clipboard"></i>Tasks</a></li>
 				  <li class="divider"></li>

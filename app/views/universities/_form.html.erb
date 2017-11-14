@@ -50,7 +50,7 @@
     <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Country</label>
-<%=country_select("center", "country", { placeholder: 'Select a country' }, { class: 'country-select-box', class: 'form-control' })%>
+<%=country_select("center", "country", { priority_countries: ["IN", "FR"], selected: "IN" }, { class: 'form-control', data: { attribute: "value" } })%>
   </div></div>
 
   

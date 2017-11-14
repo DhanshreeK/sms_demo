@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
-    @general_setting = GeneralSetting.last
+    @general_setting = GeneralSetting.first
     @user = User.first
   end
 
@@ -17,7 +17,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
-    @general_setting = GeneralSetting.last
+    @general_setting = GeneralSetting.first
   end
 
   # GET /courses/1/edit
@@ -68,7 +68,7 @@ class CoursesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find(params[:id])
-      @general_setting = GeneralSetting.last
+      @general_setting = GeneralSetting.first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
