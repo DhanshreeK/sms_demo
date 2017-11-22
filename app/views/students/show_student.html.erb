@@ -1,0 +1,286 @@
+<%= render 'layouts/messages'%>
+<div class="col-md-12"> 
+ <br>
+                 <br>
+          <div class="panel panel-info">
+            <div class="panel-heading clearfix"> 
+              <div class="panel-title">Student Detail</div> 
+              <ul class="panel-tool-options"> 
+               <!--  <li class="dropdown">
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
+                    <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
+                    <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+                  </ul>
+                 </li> -->
+                  <%= link_to 'Download Enrollment Receipt', show_student_student_path(format: 'pdf'),target: '_blank',class: "btn btn-default btn-md"%>
+                  <%= link_to 'Download Admission Receipt', admission_receipt_student_path(format: 'pdf'),target: '_blank',class: "btn btn-default btn-md"%>
+
+                <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+<!--                 <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+ -->                <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+              </ul>  
+            </div> 
+            <!-- panel body --> 
+            <div class="panel-body"> 
+
+<p id="notice"><%= notice %></p>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Photo:</strong>
+<img width="90" class="img-square avatar" alt="" <%= image_tag @student.photo.url %>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Enrollment No:</strong>
+  <%= @student.enrollment_number%>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Email:</strong>
+  <%= @student.email%>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>First name:</strong>
+  <%= @student.first_name %>
+</p>
+</div>
+
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Last name:</strong>
+  <%= @student.last_name %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Middle name:</strong>
+  <%= @student.middle_name %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Contact no:</strong>
+  <%= @student.contact_no %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Alternate contact no:</strong>
+  <%= @student.alternate_contact_no %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Gender:</strong>
+  <%= @student.gender %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Date of birth:</strong>
+  <%= @student.date_of_birth %>
+</p></div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Father name:</strong>
+  <%= @student.father_name %>
+</p></div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Mother name:</strong>
+  <%= @student.mother_name %>
+</p></div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Father contact no:</strong>
+  <%= @student.father_contact_no %>
+</p></div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Mother contact no:</strong>
+  <%= @student.mother_contact_no %>
+</p></div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Permanent address:</strong>
+  <%= @student.permanent_address %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>State:</strong>
+  <%= @student.state %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Country:</strong>
+  <%= @student.country %>
+</p></div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Tenth:</strong>
+  <%= @student.tenth %>
+</p></div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Twelth:</strong>
+  <%= @student.twelth %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Pcm:</strong>
+  <%= @student.pcm %>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Pcmb:</strong>
+  <%= @student.pcmb %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Graduation:</strong>
+  <%= @student.graduation %>
+</p></div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Post graduation:</strong>
+  <%= @student.post_graduation %>
+</p>
+</div>
+
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Passport:</strong>
+  <%= @student.passport_available %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Course:</strong>
+  <%= @student.course.course_name %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Course Type:</strong>
+  <%= @student.course_type.course_type_name %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Center:</strong>
+  <%= @student.center.center_name %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>University:</strong>
+  <%= @student.university.university_name %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Tenth Marksheet:</strong>
+  <%= link_to "Download 10th", @student.attachment_url, class: 'btn btn-link' %>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Twelth Marksheet:</strong>
+ <%= link_to "Download 12th", @student.twelth_attachment_url, class: 'btn btn-link' %>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong> Graduation:</strong>
+  <td><%= link_to "Download UG", @student.ug_attachment_url, class: 'btn btn-link' %></td>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Post Graduation:</strong>
+  <%= link_to "Download Pg", @student.pg_attachment_url , class: 'btn btn-link' %>
+</p>
+</div>
+</div>
+
+
+
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<% if current_user.role == 'SuperAdmin' %>
+<%= link_to 'View aLL', view_all_students_path %>
+<%end%>
+<% if current_user.role == 'Student'%>
+<%= link_to 'Back', students_path %>
+<%end%>

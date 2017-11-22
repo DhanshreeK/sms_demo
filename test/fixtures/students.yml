@@ -1,0 +1,57 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  middle_name: MyString
+  contact_no: MyString
+  alternate_contact_no: MyString
+  gender: MyString
+  date_of_birth: 2017-11-14
+  father_name: MyString
+  mother_name: MyString
+  father_contact_no: MyString
+  mother_contact_no: MyString
+  permanent_address: MyString
+  state: MyString
+  country: MyString
+  tenth: MyString
+  twelth: MyString
+  pcm: MyString
+  pcmb: MyString
+  graduation: MyString
+  post_graduation: MyString
+  passport_available: MyString
+  passport_applied: MyString
+  passport_not_applied: MyString
+  course: one
+  center: one
+  university: one
+
+two:
+  first_name: MyString
+  last_name: MyString
+  middle_name: MyString
+  contact_no: MyString
+  alternate_contact_no: MyString
+  gender: MyString
+  date_of_birth: 2017-11-14
+  father_name: MyString
+  mother_name: MyString
+  father_contact_no: MyString
+  mother_contact_no: MyString
+  permanent_address: MyString
+  state: MyString
+  country: MyString
+  tenth: MyString
+  twelth: MyString
+  pcm: MyString
+  pcmb: MyString
+  graduation: MyString
+  post_graduation: MyString
+  passport_available: MyString
+  passport_applied: MyString
+  passport_not_applied: MyString
+  course: two
+  center: two
+  university: two

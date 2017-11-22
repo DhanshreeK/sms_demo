@@ -18,6 +18,7 @@
 <p id="notice"><%= notice %></p>
   <thead>
     <tr>
+      <th>Course Name</th>
       <th>Course type</th>
       <th>University</th>
       <th>No of seats</th>
@@ -30,6 +31,7 @@
   <tbody>
     <% @courses.each do |course| %>
       <tr>
+      <td><%= course.course_name %></td>
         <td><%= course.course_type.course_type_name %></td>
         <td><%= course.university.university_name %></td>
         <td><%= course.no_of_seats %></td>

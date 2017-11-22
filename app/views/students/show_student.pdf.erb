@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a {
+  color: #5D6975;
+  text-decoration: underline;
+}
+
+
+body {
+  position: relative;
+  width: 21cm;  
+  height: 29.7cm; 
+  margin: 0 auto; 
+  color: #001028;
+  background: #FFFFFF; 
+  font-family: Arial, sans-serif; 
+  font-size: 14px; 
+  font-family: Arial;
+}
+
+header {
+  padding: 10px 0;
+  margin-bottom: 30px;
+}
+
+#logo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#logo img {
+  width: 90px;
+}
+
+h1 {
+  border-top: 1px solid  #5D6975;
+  border-bottom: 1px solid  #5D6975;
+  color: #5D6975;
+  font-size: 2.4em;
+  line-height: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 0 20px 0;
+  background: url(/assets/dimension.png);
+}
+
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+table tr:nth-child(2n-1) td {
+  background: #F5F5F5;
+}
+
+table th,
+table td {
+  text-align: center;
+}
+
+table th {
+  padding: 5px 20px;
+  color: #5D6975;
+  border-bottom: 1px solid #C1CED9;
+  white-space: nowrap;        
+  font-weight: normal;
+}
+
+footer {
+  color: #5D6975;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #C1CED9;
+  padding: 8px 0;
+  text-align: center;
+}
+</style>
+
+</head>
+  <body>
+<header class="clearfix">
+      <div id="logo">
+         <%= wicked_pdf_image_tag('logo1.png') %>
+      </div>
+      
+      <h1>Enrollment Receipt</h1>
+
+      <div id="company" class="clearfix">
+        <div><%= GeneralSetting.first.registered_name%></div>
+        <div><%= GeneralSetting.first.phone_no%></div>
+        <div><%= GeneralSetting.first.address%></div>
+      </div>
+<br><br><br><br>
+
+
+    <table>
+
+   <thead>
+   
+     <tr> <th><b>Enrollment Number:-</b></th>  <th><%= @student.enrollment_number %></th> </tr>
+      <tr><th><b>First name:-</b></th> <th><%= @student.first_name %></th></tr>
+     <tr> <th><b>Middle name:-</b></th> <th><%= @student.middle_name %></th></tr>
+      <tr> <th><b>Last name:-</b></th> <th><%= @student.last_name %></th></tr>
+      <tr><th><b>Course:-</b></th><th><%= @student.course.course_name %></th></tr>
+      <tr><th><b>Course Type:-</b></th><th><%= @student.course_type.course_type_name %></th></tr>
+      <tr><th><b>Center:-</b></th><th><%= @student.center.center_name %></th></tr>
+      <tr><th><b>University:-</b></th><th><%= @student.university.university_name %></th></tr>
+      <tr><th><b>Father name:-</b></th><th><%= @student.father_name  %></th></tr>
+
+
+<h3> Your Admission has been Confirmed </h3>
+
+</thead>
+  </main>
+    <footer>
+      Enrollment Completed.
+    </footer>
+  </body>
+</html>
+
+
+
+
+
+

@@ -27,6 +27,13 @@
 
 <div class="col-md-4">
 <p class="text-info">
+  <strong>Course Name:</strong>
+  <%= @course.course_name %>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
   <strong>Course type:</strong>
   <%= @course.course_type.course_type_name %>
 </p>
@@ -57,5 +64,5 @@
 </p></div>
 </div>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Edit', edit_course_path(@course), class: 'btn btn-red btn-outline'  %> |
+<%= link_to 'Back', courses_path, class: 'btn btn-blue btn-outline'  %>

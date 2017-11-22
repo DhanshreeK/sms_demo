@@ -9,12 +9,21 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 gem 'cancan'
+gem 'jquery-datatables'
 gem "paperclip", "~> 5.0.0"
 gem 'country_select', require: 'country_select_without_sort_alphabetical'
 gem 'city-state'
 gem 'imagemagick-binaries'
 gem 'bootstrap-select-rails'
 gem 'carrierwave'
+gem 'twitter_bootstrap_wizard_rails'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'jquery-validation-rails'
+gem 'will_paginate'
+gem 'jquery-datatables-rails'
+gem 'roo-xls'
+gem 'ajax-datatables-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -37,6 +46,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

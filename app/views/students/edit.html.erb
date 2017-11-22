@@ -1,0 +1,137 @@
+                      <br><br><br><br>
+<div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-primary">
+            <div class="panel-heading clearfix">
+              <h3 class="panel-title">Student</h3>
+              <ul class="panel-tool-options"> 
+                <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+                <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+                <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+              </ul>
+            </div>
+            <div class="panel-body">
+
+                      <%= form_for @student, url: {action: 'update', controller: 'students'},method: :patch do |form| %>
+
+
+
+
+
+  <div class="col-md-3"> 
+                        <div class="form-group"> 
+                          <label for="username" class="control-label">MCI Eligibiity Certificte:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                           <%= form.file_field :mci_eligibility_criteria_certificate_attachment, id: :student_mci_eligibility_criteria_certificate_attachment, class: 'form-control' %>                       
+                          </div>
+                        </div> 
+
+
+  <div class="col-md-3"> 
+                        <div class="form-group"> 
+                          <label for="username" class="control-label">Admission Letter:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                           <%= form.file_field :admission_letter_attachment, id: :student_admission_letter_attachment, class: 'form-control' %>                       
+                          </div>
+                        </div> 
+
+
+
+
+                        
+                        
+                       <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="username" class="control-label">Status:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      <%= form.radio_button  "student_status","Active", :checked => "checked" %>&nbsp;&nbsp;<b>Active</b>&nbsp;&nbsp;
+                         &nbsp;
+                      <%= form.radio_button  "student_status","Deactive"%>&nbsp;&nbsp;<b>Deactive</b>
+                              
+                       <br><br>
+                     </div>
+
+
+
+
+<div class="line-dashed"></div>
+              <div class="form-group"> 
+                <div class="col-sm-offset-2 col-sm-10"> 
+                
+                  <div class="checkbox"> <label><b> <%= form.check_box :fees_paid, {:class => "check_box"}, "true", "false" %>Fees Paid</b></label> </div>
+
+             
+                  <label><b> <%= form.check_box :original_document_submission, {:class => "check_box"}, "true", "false" %>&nbsp;&nbsp;Original Document Submission</b></label> </div>
+
+               <br><br><br><br>
+                 </div>
+
+
+                 <div class="line-dashed"></div>
+              <div class="form-group"> 
+                <div class="col-sm-offset-2 col-sm-10"> 
+                
+                  <div class="checkbox"> <label><b> <%= form.check_box :processing_fees_paid, {:class => "check_box"}, "true", "false" %>Processing Fees Paid</b></label> </div>
+
+                  <label><b> <%= form.check_box :all_document_sent_to_ho, {:class => "check_box"}, "true", "false" %>&nbsp;&nbsp;All Document Sent to HO</b></label> </div>
+
+            <br><br><br><br>
+                 </div>
+
+
+                                  <div class="line-dashed"></div>
+              <div class="form-group"> 
+                <div class="col-sm-offset-2 col-sm-10"> 
+                
+                  <div class="checkbox"> <label><b> <%= form.check_box :sent_for_visa, {:class => "check_box"}, "true", "false" %>Sent For Visa</b></label> </div>
+
+                  <label><b> <%= form.check_box :sent_for_mci, {:class => "check_box"}, "true", "false" %>&nbsp;&nbsp;Sent For MCI</b></label> </div>
+
+            <br><br><br><br>
+                 </div>
+
+
+                      <div class="line-dashed"></div>
+              <div class="form-group"> 
+                <div class="col-sm-offset-2 col-sm-10"> 
+                
+                  <div class="checkbox"> <label><b> <%= form.check_box :visa_appointment, {:class => "check_box"}, "true", "false" %>Visa Appointment</b></label> </div>
+
+                  <label><b> <%= form.check_box :mci_acknowledgement, {:class => "check_box"}, "true", "false" %>&nbsp;&nbsp;MCI Acknowledgement</b></label> </div>
+
+           <br><br><br><br>
+                 </div>
+
+
+
+
+                      <div class="line-dashed"></div>
+              <div class="form-group"> 
+                <div class="col-sm-offset-2 col-sm-10"> 
+                
+                  <div class="checkbox"> <label><b> <%= form.check_box :visa_stamping, {:class => "check_box"}, "true", "false" %>Visa Stamping</b></label> </div>
+
+                  <label><b> <%= form.check_box :mci_eligibility_certificate, {:class => "check_box"}, "true", "false" %>&nbsp;&nbsp;MCI Eligibility Certificate</b></label> </div>
+
+          <br><br><br><br>
+                 </div>
+
+
+
+
+                      <div class="line-dashed"></div>
+              <div class="form-group"> 
+                <div class="col-sm-offset-2 col-sm-10"> 
+                
+                  <div class="checkbox"> <label><b> <%= form.check_box :airticket, {:class => "check_box"}, "true", "false" %>Airticket</b></label> </div>
+
+                  <label><b> <%= form.check_box :fly, {:class => "check_box"}, "true", "false" %>&nbsp;&nbsp;Fly</b></label> </div>
+
+        <br><br><br><br>
+                 </div>
+
+    <div class="form-group"> 
+        <div class="col-sm-offset-1 col-sm-10">  
+              <%= form.submit "Submit", class: 'btn btn-success' %>
+                  <%=link_to "Back", students_path,class: 'btn btn-red' %>
+
+           <%end%>
+      </div>
+    </div>

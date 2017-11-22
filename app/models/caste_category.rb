@@ -1,0 +1,2 @@
+class CasteCategory < ApplicationRecord
+end

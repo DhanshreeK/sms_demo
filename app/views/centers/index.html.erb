@@ -19,12 +19,9 @@
   <thead>
     <tr>
       <th>Center name</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Pan card no</th>
+  
+      
       <th>Contact</th>
-      <th>Alternate contact</th>
       <th>Center starting date</th>
       <th>Contact person name</th>
       <th>Residential address</th>
@@ -39,12 +36,7 @@
     <% @centers.each do |center| %>
       <tr>
         <td><%= center.center_name %></td>
-        <td><%= center.address %></td>
-        <td><%= center.city %></td>
-        <td><%= center.state %></td>
-        <td><%= center.pan_card_no %></td>
         <td><%= center.contact %></td>
-        <td><%= center.alternate_contact %></td>
         <td><%= center.center_starting_date %></td>
         <td><%= center.contact_person_name %></td>
         <td><%= center.residential_address %></td>

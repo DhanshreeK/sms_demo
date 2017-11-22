@@ -1,0 +1,493 @@
+<br><br><br><br>
+<div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-primary">
+            <div class="panel-heading clearfix">
+              <h3 class="panel-title">Student Admission</h3>
+              <ul class="panel-tool-options"> 
+                <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+                <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+                <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+              </ul>
+            </div>
+            <div class="panel-body">
+              <div id="rootwizard-2" class="form-wizard validate-form-wizard validate">
+                <div class="wizard-navbar">
+                  <ul>
+                    <li class="active"><a href="#tab2-1" data-toggle="tab"><span>1</span> Personal Information</a></li>
+                    <li><a href="#tab2-2" data-toggle="tab"><span>2</span> Parent/Guardian Information  </a></li>
+                    <li><a href="#tab2-3" data-toggle="tab"><span>3</span> Address</a></li>
+                    <li><a href="#tab2-4" data-toggle="tab"><span>4</span> Educational Details</a></li>
+                    <li><a href="#tab2-5" data-toggle="tab"><span>5</span> University </a></li>
+
+                  </ul>
+                </div>
+
+
+          <div class="tab-content">
+                  <div class="tab-pane  active" id="tab2-1">
+                    <div class="row"> 
+                    
+                      <%= form_for @student, url: {action: 'create', controller: 'students'},  html: { multipart: true } do |form| %>
+                            <% if @student.errors.any? %>
+                                  <div id="error_explanation">
+                                    <h2><%= pluralize(@student.errors.count, "error") %> prohibited this @student from being saved:</h2>
+
+                                    <ul>
+                                    <% @student.errors.full_messages.each do |message| %>
+                                      <li><%= message %></li>
+                                    <% end %>
+                                    </ul>
+                                  </div>
+                            <% end %>
+
+                    <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="username" class="control-label">First Name</label>
+                           <%= form.text_field :first_name, id: :student_first_name, placeholder: 'First Name', class: 'form-control'%>
+                        </div>
+                      </div> 
+
+                      <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="password" class="control-label">Middle Name</label> 
+                           <%= form.text_field :middle_name, id: :student_middle_name, placeholder: 'Middle Name', class: 'form-control' %>
+                        </div> 
+                      </div> 
+                    
+
+                    <div class="row">
+                      <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="confirmpassword" class="control-label">Last Name</label>
+                        <%= form.text_field :last_name, id: :student_last_name, placeholder: 'Last Name' , class: 'form-control'%>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="email" class="control-label">Contact</label>
+                              <%= form.text_field :contact_no, id: :student_contact_no, placeholder: 'Contact', class: 'form-control' %>
+                        </div>
+                      </div>
+                   
+
+                  <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="email" class="control-label">Alternate Contact</label>
+                              <%= form.text_field :alternate_contact_no, id: :student_alternate_contact_no, placeholder: 'Contact', class: 'form-control' %>
+                        </div>
+                      </div>
+                   
+
+                    <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="email" class="control-label">Date of Birth</label>
+                              <%= form.date_field :date_of_birth, id: :student_date_of_birth,placeholder: 'Contact', class: 'form-control' %>
+                        </div>
+                      </div>
+
+                       <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="email" class="control-label">Select Category</label>
+                              <%= form.select :caste_category_id,CasteCategory.all.collect{|a| [a.name, a.id]}, {prompt:true},id: 'student_caste_category_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
+                        </div>
+                      </div>
+
+                           <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="username" class="control-label">Upload Photo</label>
+                                    
+                             <%= form.file_field :photo, placeholder: "Upload Photo", class: "form-control"%>
+                            </div> 
+                        </div>
+
+                       <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="email" class="control-label">Gender</label>
+                    <%= form.radio_button  "gender","Male", :checked => "checked" %>&nbsp;&nbsp;<b>Male</b>&nbsp;&nbsp;
+                         &nbsp;
+                      <%= form.radio_button  "gender","Female"%>&nbsp;&nbsp;<b>Female</b>
+                      </div>
+                      </div>
+
+
+                      <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="email" class="control-label">Passport Details</label><br>
+                    <%= form.radio_button  "passport_available","Passport Available", :checked => "checked" %>&nbsp;&nbsp;<b>Passport Available</b>&nbsp;&nbsp;
+                         &nbsp;
+                      <%= form.radio_button  "passport_available","Passport Applied"%>&nbsp;&nbsp;<b>Passport Applied</b><br>
+                       <%= form.radio_button  "passport_available","Passport Not Applied"%>&nbsp;&nbsp;<b>Passport Not Applied</b>
+                      </div>
+                      </div>
+
+                      <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="username" class="control-label">Enrollment Number</label>
+                           <%= form.text_field :enrollment_number, id: :student_enrollment_number, :value=> @student.enrollment_number , readonly: true, class: "form-control"%>
+                        </div>
+                      </div> 
+
+                      <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="username" class="control-label">Email<font color="red">*</font></label>
+                           <%= form.text_field :email, id: :student_email, :value=> @student.email , class: "form-control"%>
+                        </div>
+                      </div> 
+                    </div>
+                  </div>
+
+
+
+                  <div class="tab-pane" id="tab2-2">
+                         <div class="row"> 
+                             <div class="col-md-4"> 
+                                 <div class="form-group"> 
+                          <label for="name" class="control-label">Father Name</label>
+                              <%= form.text_field :father_name, id: :student_father_name,placeholder: 'Father Name', class: 'form-control' %>       
+                        </div>
+                    </div> 
+
+                     <div class="col-md-4"> 
+                        <div class="form-group"> 
+                            <label for="emailfield" class="control-label">Mother Name</label> 
+                                <%= form.text_field :mother_name, id: :student_mother_name, placeholder: 'Mother Name', class: 'form-control' %>
+                        </div> 
+                      </div> 
+
+                    <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="email" class="control-label">Father Contact</label>
+                             <%= form.text_field :father_contact_no, id: :student_father_contact_no, placeholder: 'Father Contact',class: 'form-control' %>
+                        </div>
+                      </div>   
+                   
+
+                    <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="email" class="control-label">Mother Contact</label>
+                               <%= form.text_field :mother_contact_no, id: :student_mother_contact_no, placeholder: 'Mother Contact' ,class: 'form-control'%>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div class="tab-pane" id="tab2-3">
+                    <div class="row"> 
+                      <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="cardholdername" class="control-label">Permanent Address</label>
+    <%= form.text_field :permanent_address, id: :student_permanent_address, placeholder: 'Permanent Address', class: 'form-control' %>                        </div>
+                      </div> 
+                      <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="cardnumber" class="control-label">State</label> 
+                         
+                      <%= form.text_field :state, id: :student_state, placeholder: 'State', class: 'form-control' %>
+                                          </div> 
+                      </div> 
+                  
+                    <div class="row">
+                      <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="cvc" class="control-label">Country</label>
+                         <%= form.text_field :country, id: :student_country, placeholder: 'Country', class: 'form-control' %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    </div>
+
+
+
+                    <div class="tab-pane" id="tab2-4">
+                      <div class="row"> 
+                        <div class="col-md-3"> 
+                          <div class="form-group"> 
+                           <label for="cardholdername" class="control-label">10th Marks</label>
+                           <%= form.text_field :tenth, id: :student_tenth, placeholder: 'Tenth',class: 'form-control' %>                       
+                          </div>
+                        </div> 
+
+                        <div class="col-md-3"> 
+                          <div class="form-group"> 
+                           <label for="cardholdername" class="control-label">10th Marksheet upload</label>
+                           <%= form.file_field :attachment, id: :student_attachment, class: 'form-control' %>                       
+                          </div>
+                        </div> 
+                      
+                        <div class="col-md-3"> 
+                           <div class="form-group"> 
+                            <label for="cardnumber" class="control-label">12th Marks</label> 
+                         <%= form.text_field :twelth, id: :student_twelth, placeholder: 'Twelth', class: 'form-control' %> 
+                        </div>
+                      </div>
+
+                       <div class="col-md-3"> 
+                          <div class="form-group"> 
+                           <label for="cardholdername" class="control-label">12th Marksheet upload</label>
+                           <%= form.file_field :twelth_attachment, id: :student_twelth_attachment, class: 'form-control' %>                       
+                          </div>
+                        </div> 
+                  
+                   
+                            <div class="col-md-3"> 
+                        <div class="form-group"> 
+                        
+                          <label for="cvc" class="control-label">PCM</label>
+                          
+                          <%= form.text_field :pcm, id: :student_pcm,placeholder: 'PCM', class: 'form-control'%>
+                            <p id="message" style="display:none;" ><font color='red'>Your are not eligible</font></p>
+                            <p id="message1" style="display:none;" ><font color='blue'>Please give correct detail of marks</font></p>
+                        </div>
+                      </div>
+
+
+                       <div class="col-md-3"> 
+                        <div class="form-group"> 
+                          <label for="cvc" class="control-label">PCMB</label>
+                           <%= form.text_field :pcmb, id: :student_pcmb, placeholder: 'PCMB', class: 'form-control' %> 
+                           <p id="pete" style="display:none;" ><font color='red'>Your are not eligible</font></p>
+                        </div>
+                      </div>
+                   
+                    <div class="col-md-3"> 
+                        <div class="form-group"> 
+                          <label for="cvc" class="control-label">Graduation</label>
+                          <%= form.text_field :graduation, id: :student_graduation,placeholder: 'Graduation', class: 'form-control' %>                
+                                  </div>
+                      </div>
+
+                       <div class="col-md-3"> 
+                          <div class="form-group"> 
+                           <label for="cardholdername" class="control-label">UG MArksheet</label>
+                           <%= form.file_field :ug_attachment, id: :student_ug_attachment, class: 'form-control' %>                       
+                          </div>
+                        </div> 
+                  
+                   
+                    <div class="col-md-3"> 
+                        <div class="form-group"> 
+                          <label for="cvc" class="control-label">Post Graduation</label>
+                      <%= form.text_field :post_graduation, id: :student_post_graduation, placeholder: 'Post Graduation',class: 'form-control' %>                  
+                            </div>
+                      </div>
+
+                       <div class="col-md-3"> 
+                          <div class="form-group"> 
+                           <label for="cardholdername" class="control-label">PG Marksheet</label>
+                           <%= form.file_field :pg_attachment, id: :student_pg_attachment, class: 'form-control' %>                       
+                          </div>
+                        </div> 
+                  
+
+                  </div>
+                 </div>
+
+
+ <div class="tab-pane" id="tab2-5">
+                      <div class="row"> 
+                  <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="cvc" class="control-label">Select University</label>
+                          <%= form.select :university_id,University.all.collect{|a| [a.university_name,a.id]},{prompt:true},id: 'university_id',class: "form-control"  %>
+                        </div>
+                      </div>
+
+                       <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="cvc" class="control-label">Center</label>
+                   <%= form.select :center_id,Center.all.collect{|a| [a.center_name,a.id]},{prompt:true},id: 'center_id',class: "form-control"  %>
+                                          </div>
+                                        </div>
+
+
+                      <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="cvc" class="control-label">Course</label>
+                   <%= form.select :course_type_id,CourseType.all.collect{|a| [a.course_type_name,a.id]},{prompt:true},id: 'course_type_id',class: "form-control" %>
+                                          </div>
+                                        </div>
+
+
+                      <div class="col-md-4"> 
+                        <div class="form-group"> 
+                          <label for="cvc" class="control-label">Course</label>
+                   <%= form.select :course_id,Course.all.collect{|a| [a.course_name,a.id]},{prompt:true},id: 'course_id',class: "form-control " %>
+                                          </div>
+                                        </div>
+
+                                         <div class="form-group"> 
+                                <div class="col-sm-offset-1 col-sm-10">  
+                                   <%= form.submit "Submit", class: 'btn btn-success' %>
+                                   <%=link_to "Back", students_path,class: 'btn btn-red' %>
+     
+                    </div>
+                    </div>
+
+                  </div>
+                 </div>
+
+                 <%end%>
+                
+                  <ul class="pager wizard"> 
+                    <li class="previous"><a href="javascript:void(0)"><i class="icon-left-open"></i>Previous</a></li> 
+                    <li class="next"><a href="javascript:void(0)">Next<i class="icon-right-open"></i></a> </li> 
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+        $("#student_pcmb").keyup(function() {
+            if (this.value <= 150) {
+                $("#pete").css("display", "block");
+            }
+            else {
+                $("#pete").css("display", "none");
+            }
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+        $("#student_pcm").keyup(function() {
+            if (this.value <= 150) {
+                $("#message").css("display", "block");
+            }
+            else if (this.value >= 300) {
+                $("#message1").css("display", "block");
+              }
+            else{
+                $("#message").css("display", "none");
+              }
+            
+        });
+    });
+</script>
+
+
+<!-- <script type="text/javascript">
+function f_color(){
+if (document.getElementById('#student_pcm').value = '150') {
+document.getElementById('#student_pcm').style.color = "red";
+document.getElementById('#student_pcm').style.background="yellow";
+}
+}
+f_color();
+</script>
+ -->
+<!-- <script type="text/javascript">
+$(document).on("keyup", "#student_pcmb", function() {
+function f_color(){
+if ($("#student_pcmb").val(); <= '150') {
+document.getElementById('#student_pcmb').style.color = "red";
+}
+}
+});
+f_color();
+</script>  -->  
+
+
+<!-- <script>
+function f_color(){
+if (document.getElementById('EditRecordnote').value = '10') {
+document.getElementById('EditRecordnote').style.color = "red";
+document.getElementById('EditRecordnote').style.background="yellow";
+}
+}
+f_color();
+</script>   --> 
+
+
+<script src="/assets/plugins/blockui-master/jquery.blockUI.js"></script>
+<!--Ajax Validattion-->
+<script src="/assets/jquery.validate.min.js"></script>
+<!--Bootstrap Wizard-->
+<script src="/assets/plugins/wizard/jquery.bootstrap.wizard.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // Form Wizard
+
+    if ($.isFunction($.fn.bootstrapWizard))
+    {
+      $('#rootwizard-2').bootstrapWizard({
+        tabClass: 'wizard-steps',
+        onTabShow: function ($tab, $navigation, index)
+        {
+          $tab.prevAll().addClass('completed');
+          $tab.nextAll().removeClass('completed');
+          $tab.removeClass('completed');
+        }
+
+      });
+
+
+
+      $(".validate-form-wizard").each(function (i, formwizard)
+      {
+        var $this = $(formwizard);
+        var $progress = $this.find(".steps-progress div");
+
+        var $validator = $this.validate({
+          rules: {
+            student_first_name: {
+              required: true,
+              minlength: 3
+            },
+            student_last_name: {
+              required: true,
+              minlength: 3
+            },
+            student_middle_name: {
+              required: true,
+              minlength: 3
+            },
+            student_email: {
+              required: true,
+              email: true,
+              minlength: 3,
+            }
+          }
+        });
+
+        // Validation
+        var checkValidaion = function (tab, navigation, index)
+        {
+          if ($this.hasClass('validate'))
+          {
+            var $valid = $this.valid();
+            if (!$valid) {
+              $validator.focusInvalid();
+              return false;
+            }
+          }
+
+          return true;
+        };
+
+        $this.bootstrapWizard({
+          tabClass: 'wizard-steps',
+          onNext: checkValidaion,
+          onTabClick: checkValidaion,
+          onTabShow: function ($tab, $navigation, index)
+          {
+            $tab.removeClass('completed');
+            $tab.prevAll().addClass('completed');
+            $tab.nextAll().removeClass('completed');
+          }
+        });
+      });
+    }
+  });
+</script>
+<script src="/assets/functions.js"></script>

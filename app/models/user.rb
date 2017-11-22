@@ -11,6 +11,8 @@ class User < ApplicationRecord
   scope :role_wise_users, ->(role) { where(role: role) }
   validates_attachment_content_type :photo, content_type: \
   ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
+  scope :shod, ->(id) { where(id: id).take }
+  belongs_to :student, optional:true
 
 
   def create_general_setting
@@ -25,7 +27,7 @@ class User < ApplicationRecord
     Employee.shod(employee_id)
   end
   
-   def create_user_employee(employee_number, email)
+  def create_user_employee(employee_number, email)
     employee_number.each do |emp_no|
       UserEmployees.create(email: email, employee_number: emp_no)
     end
