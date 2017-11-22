@@ -34,11 +34,7 @@
       <tr>
         <td><%= university.university_name %></td>
         <td><%= university.description %></td>
-        <td><%= university.status %></td>
-        <% university.unversity_attachments.each do |p|%>
-        <td><%=p.attachment_name%></td>
-        <td><%=link_to "Download",p.attachment.url,target: '_blank',class: 'btn btn-link'%></td>
-        <% end %><br>
+        <td><%= university.status %></td> 
         <td><%= link_to 'Show', university,class: "btn btn-blue btn-sm" %></td>
         <td><%= link_to 'Edit', edit_university_path(university),class: "btn btn-success btn-sm" %></td>
         <!-- <td><%= link_to 'Destroy', university, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-red btn-sm" %></td> -->
@@ -53,4 +49,3 @@
 </div>
 </div>
 </div>
-

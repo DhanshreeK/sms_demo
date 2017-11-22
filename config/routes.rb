@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  resources :enquiries do 
+    member do
+      get :remark
+      patch :update_remark
+    end
+  end
+
+  resources :caste_categories
+  resources :students do 
+    collection do 
+      get :view_all
+    end
+    member do
+      get :show_student,:admission_receipt,:student_status
+    end
+  end
   resources :courses
   resources :course_types
   resources :unversity_attachments

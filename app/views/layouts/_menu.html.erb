@@ -1,17 +1,4 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Mouldifi - A fully responsive, HTML5 based admin theme">
-<meta name="keywords" content="Responsive, HTML5, admin theme, business, professional, Mouldifi, web design, CSS3">
-<title>Dashboard</title>
-<!-- Site favicon -->
-<link rel='shortcut icon' type='image/x-icon' href='images/favicon.ico' />
-<!-- /site favicon -->
-
-<!-- Entypo font stylesheet -->
+﻿<!-- Entypo font stylesheet -->
 <link href="/assets/entypo.css" rel="stylesheet">
 <!-- /entypo font stylesheet -->
 
@@ -29,18 +16,6 @@
 
 <link href="/assets/mouldifi-forms.css" rel="stylesheet">
 <link href="/assets/bootstrap-select.css" rel="stylesheet">
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-      <script src="js/respond.min.js"></script>
-<![endif]-->
-
-<!--[if lte IE 8]>
-	<script src="js/plugins/flot/excanvas.min.js"></script>
-<![endif]-->
-</head>
-<body>
 
 <!-- Page container -->
 <div class="page-container">
@@ -51,7 +26,7 @@
 		<!-- Site header  -->
 		<header class="site-header">
 		  <div class="site-logo">
-		  <% unless @general_setting.blank? %>
+		      <% unless @general_setting.blank? %>
 		     <%= image_tag @general_setting.logo.url %>
 		     <%else%>
 		     <%=GeneralSetting.first.logo.url%>
@@ -68,22 +43,38 @@
 				<ul class="nav">
 				<%if current_user.role == 'SuperAdmin'%>
 					<li><a href="/general_settings/new"><span class="title">General Setting</span></a></li>
-				<%end%>
 					<li><a href="/centers"><span class="title">Centers</span></a></li>
 					<li><a href="/employees"><span class="title">Employees</span></a></li>
 					<li><a href="/universities"><span class="title">University</span></a></li>
 					<li><a href="/course_types"><span class="title">Course Type</span></a></li>
 					<li><a href="/courses"><span class="title">Course</span></a></li>
-
+					<li><a href="/caste_categories"><span class="title">Categories</span></a></li>
+					<li><a href="/enquiries"><span class="title">Enquiries</span></a></li>
+					<%end%>
 				</ul>
 			</li>
-						<!-- <li class="has-sub"><a href="collapsed-sidebar.html"><i class="icon-layout"></i><span class="title">Students</span></a>
+			<li class="has-sub"><a href="collapsed-sidebar.html"><i class="icon-layout"></i><span class="title">Students</span></a>
+				<ul class="nav collapse">
+				<%if current_user.role == 'Student'%>
+					<%unless current_user.student.present?%>
+					<li><a href="/students/new"><span class="title">Student Admission</span></a></li>
+					<%end%>
+					<%unless current_user.student.blank?%>
+					<li><a href="/students"><span class="title">Student Detail</span></a></li>
+					<%end%>
+					<%end%>
+					<%if current_user.role == 'SuperAdmin'%>
+					<li><a href="/students/view_all"><span class="title">Students</span></a></li>
+					<%end%>
+				</ul>
+			</li><!-- 
+			<li class="has-sub"><a href="collapsed-sidebar.html"><i class="icon-layout"></i><span class="title">Layouts</span></a>
 				<ul class="nav collapse">
 					<li><a href="collapsed-sidebar.html"><span class="title">Collapsed Sidebar</span></a></li>
 					<li><a href="fixed-sidebar.html"><span class="title">Fixed Sidebar</span></a></li>
 				</ul>
-			</li> -->
-			<!-- <li class="has-sub"><a href="panels.html"><i class="icon-newspaper"></i><span class="title">UI Elements</span></a>
+			</li>
+			<li class="has-sub"><a href="panels.html"><i class="icon-newspaper"></i><span class="title">UI Elements</span></a>
 				<ul class="nav collapse">
 					<li><a href="panels.html"><span class="title">Panels</span></a></li>
 					<li><a href="buttons.html"><span class="title">Buttons</span></a></li>
@@ -193,7 +184,7 @@
 					</li> 
 				</ul> 
 			</li>
-		</ul> -->
+		</ul>
 		<!-- /main navigation -->		
   </div>
   <!-- /page sidebar -->
@@ -207,18 +198,17 @@
 		  
 			<!-- User info -->
 			<ul class="user-info pull-left">          
-			  <li class="profile-info dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"> <img width="44" class="img-circle avatar" alt=""  <% unless @user.blank? %>
-                <%= image_tag @user.photo %>
+			  <li class="profile-info dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"> <img width="44" class="img-circle avatar" alt=""  <% if current_user.role == 'SuperAdmin' %>
+                <%= image_tag current_user.photo %>
                <% else %>
-                <%= image_tag "man-3.jpg" %>
-  <% end %><%= current_user.role%> <span class="caret"></span></a>
+               <%= image_tag('man-3.jpg')%> 
+                <% end %>
+                <%= current_user.role%> <span class="caret"></span></a>
 			  
 				<!-- User action menu -->
 				<ul class="dropdown-menu">
 				  
-				<%if current_user.role == 'SuperAdmin'%>
 				  <li><a href="/users/1"><i class="icon-user"></i>My profile</a></li>
-				  <%end%>
 				  <li><a href="#/"><i class="icon-mail"></i>Messages</a></li>
 				  <li><a href="#"><i class="icon-clipboard"></i>Tasks</a></li>
 				  <li class="divider"></li>

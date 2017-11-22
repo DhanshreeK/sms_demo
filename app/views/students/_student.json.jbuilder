@@ -1,0 +1,2 @@
+json.extract! student, :id, :first_name, :last_name, :middle_name, :contact_no, :alternate_contact_no, :gender, :date_of_birth, :father_name, :mother_name, :father_contact_no, :mother_contact_no, :permanent_address, :state, :country, :tenth, :twelth, :pcm, :pcmb, :graduation, :post_graduation, :passport_available, :passport_applied, :passport_not_applied, :course_id, :center_id, :university_id, :created_at, :updated_at
+json.url student_url(student, format: :json)
