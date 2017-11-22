@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121093136) do
+ActiveRecord::Schema.define(version: 20171122050729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -164,6 +164,7 @@ ActiveRecord::Schema.define(version: 20171121093136) do
     t.string "fly"
     t.string "mci_eligibility_criteria_certificate_attachment"
     t.string "admission_letter_attachment"
+    t.string "enrollment"
     t.index ["caste_category_id"], name: "index_students_on_caste_category_id"
     t.index ["center_id"], name: "index_students_on_center_id"
     t.index ["course_id"], name: "index_students_on_course_id"
