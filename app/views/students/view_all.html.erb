@@ -25,10 +25,9 @@
       <th>First name</th>
       <th>Last name</th>
       <th>Contact no</th>
-      <th>Course</th>
-      <th>Course Type</th>
       <th>Center</th>
       <th>University</th>
+      <th>Contact Person Name</th>
 
       <th colspan="3"></th>
     </tr>
@@ -41,14 +40,13 @@
       <td><%= student.first_name %></td>
         <td><%= student.last_name %></td>
         <td><%= student.contact_no %></td>
-        <td><%= student.course.course_name %></td>
-        <td><%= student.course_type.course_type_name %></td>
         <td><%= student.center.center_name %></td>
         <td><%= student.university.university_name %></td>
+        <td><%= student.employee.name if student.employee.present? %></td>
 
 
        <td><%= link_to 'Show', show_student_student_path(student.id),class: "btn btn-blue btn-sm" %></td>
-      <td> <%= link_to 'Edit',url_for(action: :edit,id: student.id),method: :get,class: "btn btn-red btn-sm" %></td>
+      <td> <%= link_to 'Update Status',url_for(action: :edit,id: student.id),method: :get,class: "btn btn-red btn-sm" %></td>
 
 
       <%end%>

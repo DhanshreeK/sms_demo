@@ -40,7 +40,7 @@
 <div class="col-md-4">
 <p class="text-info">
   <strong>Enrollment No:</strong>
-  <%= @student.enrollment_number%>
+  <%= @student.enrollment%>
 </p>
 </div>
 
@@ -244,6 +244,20 @@
 </p>
 </div>
 
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Contact Person Name:</strong>
+  <%= @student.employee.name %>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Where Did you find Us:</strong>
+  <%= @student.refarence.name %>
+</p>
+</div>
+
 
 <div class="col-md-4">
 <p class="text-info">
@@ -261,7 +275,9 @@
 <div class="col-md-4">
 <p class="text-info">
   <strong> Graduation:</strong>
+  <%if @student.ug_attachment.present?%>
   <td><%= link_to "Download UG", @student.ug_attachment_url, class: 'btn btn-link' %></td>
+  <%end%>
 </p>
 </div>
 
@@ -269,7 +285,9 @@
 <div class="col-md-4">
 <p class="text-info">
   <strong>Post Graduation:</strong>
+  <%if @student.ug_attachment.present?%>
   <%= link_to "Download Pg", @student.pg_attachment_url , class: 'btn btn-link' %>
+  <%end%>
 </p>
 </div>
 </div>
@@ -277,10 +295,9 @@
 
 
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
 <% if current_user.role == 'SuperAdmin' %>
-<%= link_to 'View aLL', view_all_students_path %>
+<%= link_to 'View aLL', view_all_students_path, class: 'btn btn-red btn-outline' %>
 <%end%>
 <% if current_user.role == 'Student'%>
-<%= link_to 'Back', students_path %>
+<%= link_to 'Back', students_path, class: 'btn btn-blue btn-outline' %>
 <%end%>

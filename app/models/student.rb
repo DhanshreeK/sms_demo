@@ -2,6 +2,8 @@ class Student < ApplicationRecord
   belongs_to :course
   belongs_to :center
   belongs_to :university
+  belongs_to :employee
+  belongs_to :refarence
   belongs_to :course_type
   has_attached_file :photo
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png',"image/gif"]
@@ -10,7 +12,9 @@ class Student < ApplicationRecord
   mount_uploader :pg_attachment, AttachmentUploader
   mount_uploader :ug_attachment, AttachmentUploader
   mount_uploader :mci_eligibility_criteria_certificate_attachment, AttachmentUploader
-   mount_uploader :admission_letter_attachment, AttachmentUploader
+  mount_uploader :admission_letter_attachment, AttachmentUploader
+  validates :twelth_attachment, presence:true
+  validates :attachment, presence:true
 
   def self.set_enrollment_no
     date = Date.today.strftime('%Y%m%d')

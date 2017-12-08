@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :refarences
   resources :enquiries do 
     member do
       get :remark

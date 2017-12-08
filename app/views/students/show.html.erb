@@ -16,8 +16,8 @@
                     <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
                   </ul>
                  </li> -->
-                  <%= link_to 'Download Enrollment Receipt', show_student_student_path(format: 'pdf'),target: '_blank',class: "btn btn-default btn-md"%>
-                  <%= link_to 'Download Admission Receipt', admission_receipt_student_path(format: 'pdf'),target: '_blank',class: "btn btn-default btn-md"%>
+                  <%#= link_to 'Download Enrollment Receipt', show_student_student_path(format: 'pdf'),target: '_blank',class: "btn btn-default btn-md"%>
+                  <%#= link_to 'Download Admission Receipt', admission_receipt_student_path(format: 'pdf'),target: '_blank',class: "btn btn-default btn-md"%>
 
                 <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
 <!--                 <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
@@ -40,7 +40,7 @@
 <div class="col-md-4">
 <p class="text-info">
   <strong>Enrollment No:</strong>
-  <%= @student.enrollment_number%>
+  <%= @student.enrollment%>
 </p>
 </div>
 
@@ -91,6 +91,9 @@
   <%= @student.alternate_contact_no %>
 </p>
 </div>
+
+
+
 
 
 <div class="col-md-4">
@@ -243,15 +246,37 @@
   <%= @student.university.university_name %>
 </p>
 </div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Blood Group:</strong>
+  <%= @student.blood_group %>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Contact Person Name:</strong>
+  <%= @student.employee.name %>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Where Did you find Us:</strong>
+  <%= @student.refarence.name %>
+</p>
+</div>
+
+
 </div>
 
 
 
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
 <% if current_user.role == 'SuperAdmin' %>
-<%= link_to 'View aLL', view_all_students_path %>
+<%= link_to 'View aLL', view_all_students_path, class: 'btn btn-blue btn-outline' %>
 <%end%>
 <% if current_user.role == 'Student'%>
-<%= link_to 'Back', students_path %>
+<%= link_to 'Back', students_path, class: 'btn btn-blue btn-outline' %>
 <%end%>
