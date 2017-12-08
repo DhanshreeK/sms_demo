@@ -1,5 +1,7 @@
 class Enquiry < ApplicationRecord
   belongs_to :center
+  belongs_to :refarence
+  belongs_to :employee
 
   def self.to_csv(fields = column_names, options = {})
    CSV.generate(options) do |csv|

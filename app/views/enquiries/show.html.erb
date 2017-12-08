@@ -58,5 +58,15 @@
 </p>
 <%end%>
 
-<%= link_to 'Edit', edit_enquiry_path(@enquiry) %> |
-<%= link_to 'Back', enquiries_path %>
+<p>
+  <strong>Where did you find Us:</strong>
+  <%= @enquiry.refarence.name %>
+</p>
+
+<p>
+  <strong>Counseling Done By:</strong>
+  <%= @enquiry.employee.name %>
+</p>
+
+<%= link_to 'Edit', edit_enquiry_path(@enquiry), class: 'btn btn-red btn-outline' %> |
+<%= link_to 'Back', enquiries_path, class: 'btn btn-blue btn-outline' %>

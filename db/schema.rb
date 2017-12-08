@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122050729) do
+ActiveRecord::Schema.define(version: 20171208080551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,7 +88,11 @@ ActiveRecord::Schema.define(version: 20171122050729) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remark"
+    t.bigint "refarence_id"
+    t.bigint "employee_id"
     t.index ["center_id"], name: "index_enquiries_on_center_id"
+    t.index ["employee_id"], name: "index_enquiries_on_employee_id"
+    t.index ["refarence_id"], name: "index_enquiries_on_refarence_id"
   end
 
   create_table "general_settings", force: :cascade do |t|
@@ -106,6 +110,12 @@ ActiveRecord::Schema.define(version: 20171122050729) do
     t.string "logo_content_type"
     t.integer "logo_file_size"
     t.datetime "logo_updated_at"
+  end
+
+  create_table "refarences", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "students", force: :cascade do |t|
@@ -165,10 +175,18 @@ ActiveRecord::Schema.define(version: 20171122050729) do
     t.string "mci_eligibility_criteria_certificate_attachment"
     t.string "admission_letter_attachment"
     t.string "enrollment"
+    t.string "blood_group"
+    t.string "correspondiing_address"
+    t.string "alternate_contact"
+    t.string "pin_code"
+    t.bigint "refarence_id"
+    t.bigint "employee_id"
     t.index ["caste_category_id"], name: "index_students_on_caste_category_id"
     t.index ["center_id"], name: "index_students_on_center_id"
     t.index ["course_id"], name: "index_students_on_course_id"
     t.index ["course_type_id"], name: "index_students_on_course_type_id"
+    t.index ["employee_id"], name: "index_students_on_employee_id"
+    t.index ["refarence_id"], name: "index_students_on_refarence_id"
     t.index ["university_id"], name: "index_students_on_university_id"
   end
 
@@ -229,10 +247,14 @@ ActiveRecord::Schema.define(version: 20171122050729) do
   add_foreign_key "courses", "universities"
   add_foreign_key "employees", "centers"
   add_foreign_key "enquiries", "centers"
+  add_foreign_key "enquiries", "employees"
+  add_foreign_key "enquiries", "refarences"
   add_foreign_key "students", "caste_categories"
   add_foreign_key "students", "centers"
   add_foreign_key "students", "course_types"
   add_foreign_key "students", "courses"
+  add_foreign_key "students", "employees"
+  add_foreign_key "students", "refarences"
   add_foreign_key "students", "universities"
   add_foreign_key "user_employees", "employees"
   add_foreign_key "user_employees", "users"

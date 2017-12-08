@@ -80,7 +80,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
-        StudentMailer.welcome_email(@student).deliver_now
+        # StudentMailer.welcome_email(@student).deliver_now
         if current_user.role == 'Student'
           @user = current_user.update(student_id: @student.id)
         end
@@ -127,6 +127,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:admission_letter_attachment,:mci_eligibility_criteria_certificate_attachment,:fly,:airticket,:mci_eligibility_certificate,:visa_stamping,:mci_acknowledgement,:visa_appointment,:sent_for_mci,:sent_for_visa,:all_document_sent_to_ho,:processing_fees_paid,:original_document_submission,:fees_paid,:student_status,:email,:photo,:twelth_attachment, :pg_attachment, :ug_attachment, :attachment,:enrollment,:first_name, :last_name, :middle_name, :contact_no, :alternate_contact_no, :gender, :date_of_birth, :father_name, :mother_name, :father_contact_no, :mother_contact_no, :permanent_address, :state, :country, :tenth, :twelth, :pcm, :pcmb, :graduation, :post_graduation, :passport_available, :passport_applied, :passport_not_applied, :course_id, :center_id, :university_id,:course_type_id)
+      params.require(:student).permit(:employee_id,:refarence_id,:pin_code,:blood_group,:admission_letter_attachment,:mci_eligibility_criteria_certificate_attachment,:fly,:airticket,:mci_eligibility_certificate,:visa_stamping,:mci_acknowledgement,:visa_appointment,:sent_for_mci,:sent_for_visa,:all_document_sent_to_ho,:processing_fees_paid,:original_document_submission,:fees_paid,:student_status,:email,:photo,:twelth_attachment, :pg_attachment, :ug_attachment, :attachment,:enrollment,:first_name, :last_name, :middle_name, :contact_no, :alternate_contact_no, :gender, :date_of_birth, :father_name, :mother_name, :father_contact_no, :mother_contact_no, :permanent_address, :state, :country, :tenth, :twelth, :pcm, :pcmb, :graduation, :post_graduation, :passport_available, :passport_applied, :passport_not_applied, :course_id, :center_id, :university_id,:course_type_id)
     end
 end
