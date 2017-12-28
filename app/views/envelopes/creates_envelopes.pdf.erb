@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+     width:100%;
+   }
+  .gallery-text {
+     float: left;
+    width: 50%;
+    margin: 1%;
+}
+.gallery-text p {
+    word-break: break-all;
+}
+
+.content p{
+  float: left;
+  text-align: center;
+}
+
+.page-break { display:block; clear:both; page-break-after:always; }
+
+</style>
+</head>
+<body>
+
+
+<div class="page-break">
+
+  <div class="gallery-text" align="left"> 
+      <h6>To,</h6>             
+         <p><%=@envelope.student.first_name+"-"+@envelope.student.last_name%></p>
+           <p><%=@envelope.student.permanent_address%></p>
+           <p><%=@envelope.student.contact_no%></p>
+
+</div>
+<div class="page-break">
+  <div class="gallery-text" align="right">
+                      <h6>From,</h6> 
+          <p><%=@envelope.center.center_name%></p>
+          <p><%=@envelope.center.address%></p>
+          <p><%=@envelope.center.contact%></p>
+  
+<div class="content">
+
+  <p><%=@envelope.content%></p> 
+  </div>
+  </div>
+  </div>
+        
+  </div>
+
+ 
+</div></div>
+  </div></body></html>
+
+                  
+
+                

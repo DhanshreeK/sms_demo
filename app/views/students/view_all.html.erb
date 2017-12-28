@@ -1,61 +1,78 @@
-<%= render 'layouts/messages'%>
+<%= render 'layouts/messages'%> 
 <div class="row">
-        <div class="col-lg-12">
-        <br><br>
-          <div class="panel panel-primary">
-            <div class="panel-heading clearfix">
-              <h3 class="panel-title">Student Details</h3>
-              <ul class="panel-tool-options"> 
-                <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
-                <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
-                <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
-              </ul>
-            </div>
-            <div class="panel-body">
-          
-            <%= link_to 'New Student', new_student_path, class: 'btn btn-link' %>
-          
-
-              <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover dataTables-example" >
-<p id="notice"><%= notice %></p>
-
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Contact no</th>
-      <th>Center</th>
-      <th>University</th>
-      <th>Contact Person Name</th>
-
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-
-<% @students.each do |student|%>
-  <tr>
-      <td><%= student.first_name %></td>
-        <td><%= student.last_name %></td>
-        <td><%= student.contact_no %></td>
-        <td><%= student.center.center_name %></td>
-        <td><%= student.university.university_name %></td>
-        <td><%= student.employee.name if student.employee.present? %></td>
-
-
-       <td><%= link_to 'Show', show_student_student_path(student.id),class: "btn btn-blue btn-sm" %></td>
-      <td> <%= link_to 'Update Status',url_for(action: :edit,id: student.id),method: :get,class: "btn btn-red btn-sm" %></td>
-
-
-      <%end%>
-  </tr>
-  
-  </tbody>
-</table>
-<br>
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title">Student Details</h3>
+        <ul class="panel-tool-options"> 
+          <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+          <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+          <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+        </ul>
+      </div>
+      <div class="panel-body">
+                  <%= link_to 'New Student', new_student_path, class: 'btn btn-red btn-outline' %><p>&nbsp;</p>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover dataTables-example" >
+            <thead>
+              <tr>
+               <th>SR No</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Contact no</th>
+                <th>Center</th>
+               <th></th>
+               <th></th>
+             </tr>
+           </thead>
+           <tbody>
+         <% @students.each_with_index do |student,i|%>
+            <tr class="gradeX">
+              <td><%= i+1 %></td>
+              <td><%= student.first_name %></td>
+              <td><%= student.last_name %></td>
+              <td><%= student.contact_no %></td>
+              <td><%= student.center.center_name %></td>
+               <td><%= link_to 'Show', show_student_student_path(student.id),class: "btn btn-blue btn-sm" %></td>
+              <td> <%= link_to 'Update Status',url_for(action: :edit,id: student.id),method: :get,class: "btn btn-red btn-sm" %></td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
-</div>
-</div>
+
+
+
+
+<script>
+  $(document).ready(function () {
+    $('.dataTables-example').DataTable({
+      dom: '<"html5buttons" B>lTfgitp',
+      buttons: [
+      {
+        extend: 'copyHtml5',
+        exportOptions: {
+          columns: [ 0, ':visible' ]
+        }
+      },
+      {
+        extend: 'excelHtml5',
+        exportOptions: {
+          columns: ':visible'
+        }
+      },
+      {
+        extend: 'pdfHtml5',
+        exportOptions: {
+          columns: [ 0, 1, 2, 3, 4 ]
+        }
+      },
+      'colvis'
+      ]
+    });
+  });
+</script>

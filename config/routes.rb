@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'email_settings/new'
+
+  get 'bulk_sms_settings/new'
+
   resources :refarences
   resources :enquiries do 
     member do
@@ -21,7 +25,11 @@ Rails.application.routes.draw do
   resources :unversity_attachments
   resources :universities
   resources :employees
-  resources :centers
+  resources :centers do
+    collection do
+      get :update_center
+    end
+  end
   devise_for :users, controllers: { registrations: 'registrations' }
   as :user do
   get '/users/sign_out' => 'devise/sessions#destroy'
@@ -42,6 +50,30 @@ end
       patch :update_password
     end
   end
+
+  resources :envelopes do
+    collection do
+      get :select
+      post :create_envelopes
+    end
+    member do 
+       get :show_envelope
+     end
+  end
+
+  resources :bulk_sms_settings do
+    collection do
+    get :select
+    end
+  end 
+
+  resources :email_settings do
+    collection do
+    get :select
+    end
+  end 
+
+  resources :sms_settings 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

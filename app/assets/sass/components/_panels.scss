@@ -179,6 +179,8 @@
 }
 .panel-warning {
   @include panel-variant($panel-warning-border, $panel-warning-text, $panel-warning-heading-bg, $panel-warning-border);
+  height: 500px;
+  overflow: auto;
 }
 .panel-danger {
   @include panel-variant($panel-danger-border, $panel-danger-text, $panel-danger-heading-bg, $panel-danger-border);

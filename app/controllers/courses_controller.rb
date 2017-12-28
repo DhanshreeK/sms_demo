@@ -4,9 +4,14 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    @courses = Course.all
-    @general_setting = GeneralSetting.first
-    @user = User.first
+    if current_user.role == 'Center'
+      @courses = current_user.center.courses
+      @general_setting = GeneralSetting.first
+    else
+      @courses = Course.all
+      @general_setting = GeneralSetting.first
+      @user = User.first
+    end
   end
 
   # GET /courses/1
@@ -28,7 +33,9 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-
+     if current_user.role == 'Center'
+      @course.update!(center_id: current_user.center.id)
+    end
     respond_to do |format|
       if @course.save
         format.html { redirect_to courses_path, notice: 'Course was successfully created.' }

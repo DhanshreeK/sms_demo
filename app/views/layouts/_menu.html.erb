@@ -16,6 +16,7 @@
 
 <link href="/assets/mouldifi-forms.css" rel="stylesheet">
 <link href="/assets/bootstrap-select.css" rel="stylesheet">
+<link href="/assets/plugins/datatables/jquery.dataTables.css" rel="stylesheet">
 
 <!-- Page container -->
 <div class="page-container">
@@ -41,15 +42,24 @@
 		<ul id="side-nav" class="main-menu navbar-collapse collapse">
 			<li class="has-sub active "><a href="index.html"><i class="icon-gauge"></i><span class="title">Misc.</span></a>
 				<ul class="nav">
-				<%if current_user.role == 'SuperAdmin'%>
-					<li><a href="/general_settings/new"><span class="title">General Setting</span></a></li>
+				<%if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' || current_user.role == 'Center' %>
+				<%if current_user.center.present?%>
+					<li><a href="/centers/update_center"><span class="title">Centers</span></a></li>
+					<%else%>
 					<li><a href="/centers"><span class="title">Centers</span></a></li>
+					<%end%>
+				
 					<li><a href="/employees"><span class="title">Employees</span></a></li>
 					<li><a href="/universities"><span class="title">University</span></a></li>
 					<li><a href="/course_types"><span class="title">Course Type</span></a></li>
 					<li><a href="/courses"><span class="title">Course</span></a></li>
 					<li><a href="/caste_categories"><span class="title">Categories</span></a></li>
 					<li><a href="/enquiries"><span class="title">Enquiries</span></a></li>
+					<li><a href="/refarences"><span class="title">Add Referenced By</span></a></li>
+					<li><a href="/envelopes"><span class="title">Envelope Creation</span></a></li>
+					<%elsif current_user.role == 'SuperAdmin'%>
+					<li><a href="/general_settings/new"><span class="title">General Setting</span></a></li>
+
 					<%end%>
 				</ul>
 			</li>
@@ -63,11 +73,21 @@
 					<li><a href="/students"><span class="title">Student Detail</span></a></li>
 					<%end%>
 					<%end%>
-					<%if current_user.role == 'SuperAdmin'%>
+					<%if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' || current_user.role == 'Center'%>
 					<li><a href="/students/view_all"><span class="title">Students</span></a></li>
 					<%end%>
 				</ul>
-			</li><!-- 
+			</li>
+		<%if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' || current_user.role == 'Center' %>
+			<li class="has-sub"><a href="form-basic.html"><i class="icon-doc-text"></i><span class="title">Sms/Email Settings</span></a>
+				<ul class="nav collapse">
+					<li><a href="/sms_settings/new"><span class="title">Sms Settings</span></a></li>
+					<li><a href="/email_settings/new"><span class="title">Email Settings</span></a></li>
+					<li><a href="/bulk_sms_settings/new"><span class="title">Bulk Sms Settings</span></a></li>
+				</ul>
+			</li>
+		<%end%>
+			<!-- 
 			<li class="has-sub"><a href="collapsed-sidebar.html"><i class="icon-layout"></i><span class="title">Layouts</span></a>
 				<ul class="nav collapse">
 					<li><a href="collapsed-sidebar.html"><span class="title">Collapsed Sidebar</span></a></li>
@@ -198,21 +218,23 @@
 		  
 			<!-- User info -->
 			<ul class="user-info pull-left">          
-			  <li class="profile-info dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"> <img width="44" class="img-circle avatar" alt=""  <% if current_user.role == 'SuperAdmin' %>
+			  <li class="profile-info dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"> <img width="44" class="img-circle avatar" alt=""  <% if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' || current_user.role == 'Center' %>
                 <%= image_tag current_user.photo %>
-               <% else %>
+               <% elsif  current_user.role == 'Center' %>
                <%= image_tag('man-3.jpg')%> 
                 <% end %>
                 <%= current_user.role%> <span class="caret"></span></a>
 			  
 				<!-- User action menu -->
 				<ul class="dropdown-menu">
-				  
+				   <% if current_user.role == 'SuperAdmin'%>
 				  <li><a href="/users/1"><i class="icon-user"></i>My profile</a></li>
+				  <li><a href="/general_settings/new"><i class="icon-cog"></i>Account settings</a></li>
+				  <%end%>
 				  <li><a href="#/"><i class="icon-mail"></i>Messages</a></li>
 				  <li><a href="#"><i class="icon-clipboard"></i>Tasks</a></li>
 				  <li class="divider"></li>
-				  <li><a href="/general_settings/new"><i class="icon-cog"></i>Account settings</a></li>
+				  
 				  <li><a data-method="delete" href="/users/sign_out"><i class="icon-logout"></i>Logout</a>
 				  	
 				  </li></ul>
@@ -226,6 +248,8 @@
 <script src="/assets/plugins/metismenu/jquery.metisMenu.js"></script>
 <script src="/assets/plugins/blockui-master/jquery-ui.js"></script>
 <script src="/assets/plugins/blockui-master/jquery.blockUI.js"></script>
+<script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <!--Float Charts-->
 <script src="/assets/plugins/flot/jquery.flot.min.js"></script>
 <script src="/assets/plugins/flot/jquery.flot.tooltip.min.js"></script>

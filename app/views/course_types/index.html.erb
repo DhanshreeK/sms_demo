@@ -1,43 +1,72 @@
-<%= render 'layouts/messages'%>
+<%= render 'layouts/messages'%> 
 <div class="row">
-        <div class="col-lg-12">
-        <br><br>
-          <div class="panel panel-primary">
-            <div class="panel-heading clearfix">
-              <h3 class="panel-title">Course Type</h3>
-              <ul class="panel-tool-options"> 
-                <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
-                <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
-                <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
-              </ul>
-            </div>
-            <div class="panel-body">
-           <%= link_to 'New Course Type', new_course_type_path, class: 'btn btn-link' %>
-              <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover dataTables-example" >
-<p id="notice"><%= notice %></p>
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title">Course Type</h3>
+        <ul class="panel-tool-options"> 
+          <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+          <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+          <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+        </ul>
+      </div>
+      <div class="panel-body">
+                  <%= link_to 'New Course Type', new_course_type_path, class: 'btn btn-red btn-outline' %><p>&nbsp;</p>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover dataTables-example" >
+            <thead>
+              <tr>
+                <th>Sr No</th>
+                <th>Course type name</th>
+               <th></th>
+               <th></th>
+             </tr>
+           </thead>
+           <tbody>
+            <% @course_types.each_with_index do |course_type,i| %>
+                <tr>
+                  <td><%= i+1%></td>
+                  <td><%= course_type.course_type_name %></td>
+                  <td><%= link_to 'Show', course_type ,class: "btn btn-blue btn-sm"%></td>
+                  <td><%= link_to 'Edit', edit_course_type_path(course_type),class: "btn btn-success btn-sm" %></td>   
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
-  <thead>
-    <tr>
-      <th>Course type name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @course_types.each do |course_type| %>
-      <tr>
-        <td><%= course_type.course_type_name %></td>
-        <td><%= link_to 'Show', course_type ,class: "btn btn-blue btn-sm"%></td>
-        <td><%= link_to 'Edit', edit_course_type_path(course_type),class: "btn btn-success btn-sm" %></td>
-        <td><%= link_to 'Destroy', course_type, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-red btn-sm" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-</div>
-</div>
-</div>
-</div>
+
+<script>
+  $(document).ready(function () {
+    $('.dataTables-example').DataTable({
+      dom: '<"html5buttons" B>lTfgitp',
+      buttons: [
+      {
+        extend: 'copyHtml5',
+        exportOptions: {
+          columns: [ 0, ':visible' ]
+        }
+      },
+      {
+        extend: 'excelHtml5',
+        exportOptions: {
+          columns: ':visible'
+        }
+      },
+      {
+        extend: 'pdfHtml5',
+        exportOptions: {
+          columns: [ 0, 1, 2, 3, 4 ]
+        }
+      },
+      'colvis'
+      ]
+    });
+  });
+</script>

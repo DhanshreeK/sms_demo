@@ -1,5 +1,5 @@
 class Enquiry < ApplicationRecord
-  belongs_to :center
+  belongs_to :center, optional:true
   belongs_to :refarence
   belongs_to :employee
 

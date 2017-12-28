@@ -15,5 +15,4 @@
 //= require jquery-ui
 //= require rails-ujs
 //= require bootstrap-select
-
-//= require_tree .
+//= require dataTables/jquery.dataTables
