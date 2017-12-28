@@ -78,7 +78,7 @@
 					<%end%>
 				</ul>
 			</li>
-		<%if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' || current_user.role == 'Center' %>
+		<%if current_user.role == 'SuperAdmin' || current_user.role == 'Center' %>
 			<li class="has-sub"><a href="form-basic.html"><i class="icon-doc-text"></i><span class="title">Sms/Email Settings</span></a>
 				<ul class="nav collapse">
 					<li><a href="/sms_settings/new"><span class="title">Sms Settings</span></a></li>
