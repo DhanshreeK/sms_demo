@@ -11,8 +11,12 @@ class User < ApplicationRecord
   scope :role_wise_users, ->(role) { where(role: role) }
   validates_attachment_content_type :photo, content_type: \
   ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
-  scope :shod, ->(id) { where(id: id).take }
   belongs_to :student, optional:true
+  belongs_to :center, optional:true
+  belongs_to :sms_setting, optional:true
+  belongs_to :employee, optional:true
+  belongs_to :sms_setting, optional:true
+  belongs_to :email_setting, optional:true
 
 
   def create_general_setting

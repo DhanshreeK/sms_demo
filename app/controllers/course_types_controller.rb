@@ -4,9 +4,14 @@ class CourseTypesController < ApplicationController
   # GET /course_types
   # GET /course_types.json
   def index
-    @course_types = CourseType.all
-     @general_setting = GeneralSetting.first
-     @user = User.first
+    if current_user.role == 'Center'
+      @course_types = current_user.center.course_types
+      @general_setting = GeneralSetting.first
+    else
+       @course_types = CourseType.all
+       @general_setting = GeneralSetting.first
+       @user = User.first
+    end
   end
 
   # GET /course_types/1
@@ -28,7 +33,9 @@ class CourseTypesController < ApplicationController
   # POST /course_types.json
   def create
     @course_type = CourseType.new(course_type_params)
-
+    if current_user.role == 'Center'
+      @course_type.update!(center_id: current_user.center.id)
+    end
     respond_to do |format|
       if @course_type.save
         format.html { redirect_to course_types_path, notice: 'Course type was successfully created.' }

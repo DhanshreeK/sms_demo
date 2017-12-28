@@ -47,9 +47,8 @@
 
  <% @university.unversity_attachments.each do |p|%>
          <td><%=p.attachment_name%></td>
-        <td><%=link_to "Download",p.attachment.url,target: '_blank',class: 'btn btn-link'%></td>
+        <td><%=link_to "Download",p.attachment.url,target: '_blank',class: 'btn btn-link' if p.attachment.present?%></td>
         <% end %><br>
-
 </div>
 <%= link_to 'Edit', edit_university_path(@university), class: 'btn btn-red btn-outline' %> |
 <%= link_to 'Back', universities_path , class: 'btn btn-blue btn-outline' %>

@@ -1,6 +1,10 @@
 class Employee < ApplicationRecord
-  belongs_to :center
+  belongs_to :center, optional:true
+  belongs_to :sms_setting, optional:true
+  belongs_to :email_setting, optional:true
   after_save :create_user_account
+  scope :shod, ->(id) { where(id: id).take }
+
 
   def emp_no
     date = Date.today.strftime('%Y%m%d')

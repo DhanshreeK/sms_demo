@@ -4,14 +4,15 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to example.com, <%= @student.first_name %></h1>
-    <p>
-      You have successfully signed up to example.com,
-      your username is: <%= @student.email%>.<br>
-    </p>
-    <p>
-      To login to the site, just follow this link: <%= @url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+   Dear Students,
+ 
+  Your admission,
+                     Your admission in  <%=@student.university.university_name%>  University is confirmed and your enrolment number for the same is <%=@student.enrollment%>
+ 
+  You can check you admission on (website)
+ 
+Regards,
+Vishwa Education
+7030306611
   </body>
 </html>

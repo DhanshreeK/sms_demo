@@ -15,3 +15,4 @@
 //= require jquery-ui
 //= require rails-ujs
 //= require bootstrap-select
+//= require dataTables/jquery.dataTables

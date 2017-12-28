@@ -4,9 +4,9 @@ class CentersController < ApplicationController
   # GET /centers
   # GET /centers.json
   def index
-    @centers = Center.all
-    @general_setting = GeneralSetting.first
-    @user = User.first
+      @centers = Center.all
+      @general_setting = GeneralSetting.first
+      @user = User.first
   end
 
   # GET /centers/1
@@ -17,6 +17,7 @@ class CentersController < ApplicationController
   # GET /centers/new
   def new
     @center = Center.new
+    @center.center_code = Center.set_center_code
     @user = User.first
     @general_setting = GeneralSetting.first
   end
@@ -25,13 +26,20 @@ class CentersController < ApplicationController
   def edit
   end
 
+  def update_center
+    @center = current_user.center
+    @general_setting = GeneralSetting.first
+    @user = User.first
+  end
+
   # POST /centers
   # POST /centers.json
   def create
-    @center = Center.new(center_params)
-
     respond_to do |format|
+    @center = Center.new(center_params)
       if @center.save
+        byebug
+        @center.update(sms_setting_id: current_user.sms_setting.id, email_setting_id: current_user.email_setting.id)
         format.html { redirect_to centers_path, notice: 'Center was successfully created.' }
         format.json { render :show, status: :created, location: @center }
       else
@@ -75,6 +83,6 @@ class CentersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def center_params
-      params.require(:center).permit(:center_name,:status,:center_status, :countries, :address,:country, :city, :state, :pan_card_no, :contact, :alternate_contact, :center_starting_date, :contact_person_name, :residential_address, :center_code)
+      params.require(:center).permit(:email,:center_name,:status,:center_status, :countries, :address,:country, :city, :state, :pan_card_no, :contact, :alternate_contact, :center_starting_date, :contact_person_name, :residential_address, :center_code)
     end
 end

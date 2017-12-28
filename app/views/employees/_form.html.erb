@@ -90,7 +90,7 @@
 
    <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Birth Date</label>
+          <label class="col-sm-6 control-label">Birth Place</label>
        <%= form.text_field :birth_place, id: :employee_birth_place, placeholder: 'Birth Date',class: 'form-control' %>
       </div>
   </div>
@@ -110,6 +110,7 @@
   </div>
 </div>
 
+<%if current_user.role == 'SuperAdmin'%>
      <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Center Select</label>
@@ -117,12 +118,13 @@
  %>
     </div>
   </div>
+<%end%>
 
   <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Status</label>
-  <%= form.radio_button "employee_status", "true", checked: "checked" %> <b>Active</b>
-              <%= form.radio_button "employee_status", "false"%> <b>Inactive</b>
+  <%= form.radio_button "employee_status", "Active", checked: "checked" %> <b>Active</b>
+              <%= form.radio_button "employee_status", "Inactive"%> <b>Inactive</b>
                  </div>
 </div> 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

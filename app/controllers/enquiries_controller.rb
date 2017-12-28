@@ -4,15 +4,27 @@ class EnquiriesController < ApplicationController
   # GET /enquiries
   # GET /enquiries.json
   def index
-    @enquiries = Enquiry.all
-    @general_setting = GeneralSetting.first
-    @user = User.first
-    respond_to do |format|
-    format.html
-    format.json
-    format.js 
-    format.csv { send_data @enquiries.to_csv(['full_name','email','contact_no','alternate_contact_no','center_id']) }
-    format.xls { send_data @enquiries.to_csv(col_sep: "\t") }
+    if current_user.role == 'Center'
+      @enquiries = current_user.center.enquiries
+      @general_setting = GeneralSetting.first
+       respond_to do |format|
+        format.html
+        format.json
+        format.js 
+        format.csv { send_data @enquiries.to_csv(['full_name','email','contact_no','alternate_contact_no','center_id']) }
+        format.xls { send_data @enquiries.to_csv(col_sep: "\t") }
+      end
+      else
+        @enquiries = Enquiry.all
+        @general_setting = GeneralSetting.first
+        @user = User.first
+        respond_to do |format|
+        format.html
+        format.json
+        format.js 
+        format.csv { send_data @enquiries.to_csv(['full_name','email','contact_no','alternate_contact_no','center_id']) }
+        format.xls { send_data @enquiries.to_csv(col_sep: "\t") }
+      end
     end
   end
 
@@ -50,7 +62,9 @@ class EnquiriesController < ApplicationController
   # POST /enquiries.json
   def create
     @enquiry = Enquiry.new(enquiry_params)
-
+    if current_user.role == 'Center'
+      @enquiry.update!(center_id: current_user.center.id)
+    end
     respond_to do |format|
       if @enquiry.save
         format.html { redirect_to @enquiry, notice: 'Enquiry was successfully created.' }

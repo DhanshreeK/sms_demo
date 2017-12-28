@@ -247,14 +247,14 @@
 <div class="col-md-4">
 <p class="text-info">
   <strong>Contact Person Name:</strong>
-  <%= @student.employee.name %>
+  <%= @student.employee.name if @student.employee.present?%>
 </p>
 </div>
 
 <div class="col-md-4">
 <p class="text-info">
   <strong>Where Did you find Us:</strong>
-  <%= @student.refarence.name %>
+  <%= @student.refarence.name if @student.refarence.present? %>
 </p>
 </div>
 

@@ -1,1 +1,101 @@
-﻿
+﻿<%if current_user.role == 'SuperAdmin'%>
+<!-- Main content -->
+	<div class="main-content">
+		<h1 class="page-title">DASHBOARD</h1>
+		<div class="row">
+			<div class="col-lg-3 col-md-6">
+				<div class="panel minimal panel-default">
+					<div class="panel-heading clearfix"> 
+						<div class="panel-title">Student Registrations</div> 
+						<ul class="panel-tool-options"> 
+							<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+								</ul>
+							 </li>
+						</ul>
+					</div> 
+					<!-- panel body --> 
+					<div class="panel-body">
+						<div class="stack-order"> 
+							<h1 class="no-margins"><%=Student.count%></h1>
+							<small><%=link_to "Registrations(Students)", view_all_students_path%></small>
+						</div>
+						<div class="bar-chart-icon"></div>
+					</div> 
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel minimal panel-default">
+					<div class="panel-heading clearfix"> 
+						<div class="panel-title">Total Centers</div> 
+						<ul class="panel-tool-options"> 
+							<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li class="divider"></li>
+									<li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+								</ul>
+							 </li>
+						</ul> 
+					</div> 
+					<!-- panel body --> 
+					<div class="panel-body"> 
+						<div class="stack-order">
+							<h1 class="no-margins"><%=Center.count%></h1>
+							<small><%= link_to 'Total Centers', centers_path%></small>
+						</div>
+						<div class="bar-chart-icon"></div>
+					</div> 
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel minimal panel-default">
+					<div class="panel-heading clearfix"> 
+						<div class="panel-title">Employees Working</div> 
+						<ul class="panel-tool-options"> 
+							<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+								</ul>
+							 </li>
+						</ul>
+					</div> 
+					<!-- panel body --> 
+					<div class="panel-body"> 
+						<div class="stack-order">
+							<h1 class="no-margins"><%= Employee.count%></h1>
+							<small><%= link_to 'Total Employees', employees_path %></small>
+						</div>
+						<div class="bar-chart-icon"></div>
+					</div> 
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="panel minimal panel-default">
+					<div class="panel-heading clearfix"> 
+						<div class="panel-title">Enquiries</div> 
+						<ul class="panel-tool-options"> 
+							<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li class="divider"></li>
+									<li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+								</ul>
+							 </li>
+						</ul>
+					</div> 
+					<!-- panel body --> 
+					<div class="panel-body"> 
+						<div class="stack-order">
+							<h1 class="no-margins"><%=Enquiry.count%></h1>
+							<small><%=link_to 'Total Enquiries', enquiries_path%></small>
+						</div>
+						<div class="bar-chart-icon"></div>
+					</div> 
+				</div>
+			</div>
+		</div>
+<% end -%>	

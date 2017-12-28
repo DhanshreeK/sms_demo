@@ -1,0 +1,49 @@
+<%= render 'layouts/messages'%>
+<div class="row">
+  <div class="col-lg-12">
+    <br><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title">Envelopes</h3>
+        <ul class="panel-tool-options"> 
+          <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+          <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+          <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+        </ul>
+      </div>
+       <%= link_to 'Download PDF ',create_envelopes_envelopes_path(format: 'pdf'),target: '_blank', class: "btn btn-link"%> <b> | </b> <%= link_to 'New Envelope', new_envelope_path,class: 'btn btn-link'%>
+                          
+      
+
+      <div class="panel-body">
+     <div class="col-lg-12">
+    <%@students.each do |envelope|%>
+        <div class="col-lg-6"> 
+            <h6>To,</h6>             
+               <p><%=envelope.first_name+"-"+envelope.last_name%></p>
+                 <p><%=envelope.permanent_address%></p>
+                 <p><%=envelope.contact_no%></p>
+        </div>
+      <div class="col-lg-6">
+      <h6>From,</h6> 
+          <p><%=envelope.center.center_name%></p>
+          <p><%=envelope.center.address%></p>
+          <p><%=envelope.center.contact%></p>
+      </div>
+
+
+   <div class="col-lg-12"> 
+ <b> <%= @envelope.content%></b>
+   </div>
+
+    <%end%>
+  </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+       </div>

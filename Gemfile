@@ -24,6 +24,7 @@ gem 'will_paginate'
 gem 'jquery-datatables-rails'
 gem 'roo-xls'
 gem 'ajax-datatables-rails'
+gem 'figaro'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server

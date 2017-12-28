@@ -4,9 +4,14 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
-    @employees = Employee.all
-    @general_setting = GeneralSetting.first
-    @user = User.first
+    if current_user.role == 'Center'
+      @employees = current_user.center.employees
+      @general_setting = GeneralSetting.first
+    else
+      @employees = Employee.all
+      @general_setting = GeneralSetting.first
+      @user = User.first
+    end
   end
 
   # GET /employees/1
@@ -30,9 +35,11 @@ class EmployeesController < ApplicationController
   # POST /employees.json
   def create
     @employee = Employee.new(employee_params)
-
     respond_to do |format|
       if @employee.save
+            if current_user.role == 'Center'
+         @employee.update!(center_id: current_user.center.id)
+         end
         format.html { redirect_to employees_path, notice: 'Employee was successfully created.' }
         format.json { render :show, status: :created, location: @employee }
       else

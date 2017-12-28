@@ -4,9 +4,14 @@ class UniversitiesController < ApplicationController
   # GET /universities
   # GET /universities.json
   def index
+  if current_user.role == 'Center'
+     @universities = current_user.center.universities
+    @general_setting = GeneralSetting.first
+    else
     @universities = University.all
     @general_setting = GeneralSetting.first
     @user = User.first
+  end
   end
 
   # GET /universities/1
@@ -30,7 +35,9 @@ class UniversitiesController < ApplicationController
   # POST /universities.json
   def create
     @university = University.new(university_params)
-
+    if current_user.role == 'Center'
+      @university.update!(center_id: current_user.center.id)
+    end
     respond_to do |format|
       if @university.save
          params[:university_attachments]['attachment'].each do |a|

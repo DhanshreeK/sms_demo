@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208080551) do
+ActiveRecord::Schema.define(version: 20171227165019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bulk_sms_settings", force: :cascade do |t|
+    t.string "send_sms"
+    t.string "body"
+    t.integer "center_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "student_id"
+  end
 
   create_table "caste_categories", force: :cascade do |t|
     t.string "name"
@@ -39,12 +48,17 @@ ActiveRecord::Schema.define(version: 20171208080551) do
     t.datetime "updated_at", null: false
     t.string "center_status"
     t.string "countries"
+    t.string "email"
+    t.integer "sms_setting_id"
+    t.bigint "email_setting_id"
+    t.index ["email_setting_id"], name: "index_centers_on_email_setting_id"
   end
 
   create_table "course_types", force: :cascade do |t|
     t.string "course_type_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "center_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -56,8 +70,20 @@ ActiveRecord::Schema.define(version: 20171208080551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "course_name"
+    t.integer "center_id"
     t.index ["course_type_id"], name: "index_courses_on_course_type_id"
     t.index ["university_id"], name: "index_courses_on_university_id"
+  end
+
+  create_table "email_settings", force: :cascade do |t|
+    t.string "body"
+    t.bigint "center_id"
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "send_email"
+    t.index ["center_id"], name: "index_email_settings_on_center_id"
+    t.index ["student_id"], name: "index_email_settings_on_student_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -76,7 +102,10 @@ ActiveRecord::Schema.define(version: 20171208080551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "employee_status"
+    t.integer "sms_setting_id"
+    t.bigint "email_setting_id"
     t.index ["center_id"], name: "index_employees_on_center_id"
+    t.index ["email_setting_id"], name: "index_employees_on_email_setting_id"
   end
 
   create_table "enquiries", force: :cascade do |t|
@@ -93,6 +122,17 @@ ActiveRecord::Schema.define(version: 20171208080551) do
     t.index ["center_id"], name: "index_enquiries_on_center_id"
     t.index ["employee_id"], name: "index_enquiries_on_employee_id"
     t.index ["refarence_id"], name: "index_enquiries_on_refarence_id"
+  end
+
+  create_table "envelopes", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "center_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date"
+    t.index ["center_id"], name: "index_envelopes_on_center_id"
+    t.index ["student_id"], name: "index_envelopes_on_student_id"
   end
 
   create_table "general_settings", force: :cascade do |t|
@@ -114,6 +154,14 @@ ActiveRecord::Schema.define(version: 20171208080551) do
 
   create_table "refarences", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sms_settings", force: :cascade do |t|
+    t.string "send_sms"
+    t.string "body"
+    t.string "contact"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -148,7 +196,6 @@ ActiveRecord::Schema.define(version: 20171208080551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "course_type_id"
-    t.string "enrollment_number"
     t.string "attachment"
     t.string "twelth_attachment"
     t.string "pg_attachment"
@@ -197,6 +244,7 @@ ActiveRecord::Schema.define(version: 20171208080551) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "center_id"
   end
 
   create_table "unversity_attachments", force: :cascade do |t|
@@ -238,17 +286,27 @@ ActiveRecord::Schema.define(version: 20171208080551) do
     t.string "photo_content_type"
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer "center_id"
+    t.integer "sms_setting_id"
+    t.bigint "email_setting_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email_setting_id"], name: "index_users_on_email_setting_id"
     t.index ["general_setting_id"], name: "index_users_on_general_setting_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "centers", "email_settings"
   add_foreign_key "courses", "course_types"
   add_foreign_key "courses", "universities"
+  add_foreign_key "email_settings", "centers"
+  add_foreign_key "email_settings", "students"
   add_foreign_key "employees", "centers"
+  add_foreign_key "employees", "email_settings"
   add_foreign_key "enquiries", "centers"
   add_foreign_key "enquiries", "employees"
   add_foreign_key "enquiries", "refarences"
+  add_foreign_key "envelopes", "centers"
+  add_foreign_key "envelopes", "students"
   add_foreign_key "students", "caste_categories"
   add_foreign_key "students", "centers"
   add_foreign_key "students", "course_types"
@@ -258,4 +316,5 @@ ActiveRecord::Schema.define(version: 20171208080551) do
   add_foreign_key "students", "universities"
   add_foreign_key "user_employees", "employees"
   add_foreign_key "user_employees", "users"
+  add_foreign_key "users", "email_settings"
 end
