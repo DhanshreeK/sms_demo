@@ -24,13 +24,17 @@ class EnvelopesController < ApplicationController
 			@envelope.date = params[:envelope][:date]
 			@envelope.save
 			flash[:notice] = 'Envelope created successfully'
-			respond_to do |format|
+		end
+	end
+
+	def show
+		@envelope = Envelope.load(params[:id])
+		respond_to do |format|
 		    format.html
 		    format.pdf do
-		        render pdf: "create_envelopes.pdf.erb"   # Excluding ".pdf" extension.
+		        render pdf: "show.pdf.erb"   # Excluding ".pdf" extension.
 		      end
 		    end
-		end
 	end
 
 

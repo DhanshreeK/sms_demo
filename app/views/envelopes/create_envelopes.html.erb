@@ -11,7 +11,7 @@
           <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
         </ul>
       </div>
-       <%= link_to 'Download PDF ',create_envelopes_envelopes_path(format: 'pdf'),target: '_blank', class: "btn btn-link"%> <b> | </b> <%= link_to 'New Envelope', new_envelope_path,class: 'btn btn-link'%>
+       <%= link_to 'Download PDF ', envelope_path(id: @envelope,format: 'pdf'),target: '_blank', class: "btn btn-link"%> <b> | </b> <%= link_to 'New Envelope', new_envelope_path,class: 'btn btn-link'%>
                           
       
 

@@ -38,7 +38,6 @@ class CentersController < ApplicationController
     respond_to do |format|
     @center = Center.new(center_params)
       if @center.save
-        byebug
         @center.update(sms_setting_id: current_user.sms_setting.id, email_setting_id: current_user.email_setting.id)
         format.html { redirect_to centers_path, notice: 'Center was successfully created.' }
         format.json { render :show, status: :created, location: @center }
