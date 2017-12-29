@@ -73,7 +73,12 @@ end
     end
   end 
 
-  resources :sms_settings 
+  resources :sms_settings
+  resources :reports do 
+    collection do 
+    get :general_report, :select_center, :reference_report, :select_employee, :university_report, :select_university, :course_report, :select_course
+    end
+  end 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -40,7 +40,7 @@
 		
 		<!-- Main navigation -->
 		<ul id="side-nav" class="main-menu navbar-collapse collapse">
-			<li class="has-sub active "><a href="index.html"><i class="icon-gauge"></i><span class="title">Misc.</span></a>
+			<li class="has-sub"><a href="/home/dashboard"><i class="icon-gauge"></i><span class="title">Misc.</span></a>
 				<ul class="nav">
 				<%if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' || current_user.role == 'Center' %>
 				<%if current_user.center.present?%>
@@ -87,7 +87,20 @@
 				</ul>
 			</li>
 		<%end%>
-			<!-- 
+
+
+		<%if current_user.role == 'SuperAdmin' || current_user.role == 'Center' %>
+			<li class="has-sub"><a href="form-basic.html"><i class="icon-list"></i><span class="title">Reports</span></a>
+				<ul class="nav collapse">
+					<li><a href="/reports/general_report"><span class="title">Center Report</span></a></li>
+					<li><a href="/reports/new"><span class="title">Daily Report/Monthly Report</span></a></li>
+					<li><a href="/reports/reference_report"><span class="title">Reference Report</span></a></li>
+					<li><a href="/reports/university_report"><span class="title">University Report</span></a></li>
+					<li><a href="/reports/course_report"><span class="title">Course Report</span></a></li>
+				</ul>
+			</li>
+		<%end%>
+			<!--
 			<li class="has-sub"><a href="collapsed-sidebar.html"><i class="icon-layout"></i><span class="title">Layouts</span></a>
 				<ul class="nav collapse">
 					<li><a href="collapsed-sidebar.html"><span class="title">Collapsed Sidebar</span></a></li>
