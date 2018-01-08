@@ -40,8 +40,9 @@ class UniversitiesController < ApplicationController
     end
     respond_to do |format|
       if @university.save
-         params[:university_attachments]['attachment'].each do |a|
-          @university_attachment = @university.unversity_attachments.create!(:attachment => a)
+        unversity_attachment = params[:unversity_attachments]['attachment']
+        unversity_attachment.each do |a|
+          @university_attachment = @university.unversity_attachments.create!(:attachment => a) 
        end
         format.html { redirect_to universities_path, notice: 'University was successfully created.' }
         format.json { render :show, status: :created, location: @university }
