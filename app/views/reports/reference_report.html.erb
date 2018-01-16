@@ -25,13 +25,13 @@
                         <!-- panel body --> 
                         <div class="panel-body"> 
                          <%= link_to 'Back',dashboard_home_index_path, class: 'btn btn-red' %>
-<%= form_for :employee do |form| %>
+<%= form_for :student do |form| %>
  
 <div class = "center">
      <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Select Employee</label>
-    <%= form.select :employee_id, Employee.all.collect{|c| [c.name,c.id]}, {prompt:true},id: 'employee_id',class: "form-control selectpicker", "data-live-search" => "true" %>
+          <label class="col-sm-12 control-label">Select Contact Person Name</label>
+    <%= form.select :reference_student, Student.all.collect{|c| [c.reference_student,c.id]}, {prompt:true},id: 'student_id',class: "form-control selectpicker", "data-live-search" => "true" %>
     </div>
   </div>
 </div>
@@ -55,14 +55,14 @@
 </div>
 
 <script type='text/javascript'>
-$('#employee_id').on('change', function() {
- var employee_id;
+$('#student_id').on('change', function() {
+ var student_id;
  Item = $(this).val();
  $.ajax({
    url: '/reports/select_employee',
    type: 'GET',
    dataType: 'script',
-   data: {employee_id: Item},
+   data: {student_id: Item},
    }).success(function(data) {
    
  });

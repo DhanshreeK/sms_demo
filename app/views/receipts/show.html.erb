@@ -1,10 +1,10 @@
 <%= render 'layouts/messages'%>
 <div class="col-md-12"> 
  <br>
-                 <br>
+   <br>
           <div class="panel panel-info">
             <div class="panel-heading clearfix"> 
-              <div class="panel-title">Center Detail</div> 
+              <div class="panel-title">Receipt Detail</div> 
               <ul class="panel-tool-options"> 
                <!--  <li class="dropdown">
                   <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
@@ -20,97 +20,111 @@
 <!--                 <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
  -->                <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
               </ul>  
-            </div> 
+            </div>
+
+            <%= link_to 'Download PDF ',print_receipt_receipt_path(@receipt, format: 'pdf'),target: '_blank', class: "btn btn-primary"%> <b>
+
             <!-- panel body --> 
             <div class="panel-body"> 
-
 <p id="notice"><%= notice %></p>
 
+
 <div class="col-md-4">
 <p class="text-info">
-  <strong>Name:</strong>
-  <%= @employee.name %>
+  <strong>GST Number:</strong>
+   <%= @receipt.gst_no %>
 </p>
 </div>
 
 <div class="col-md-4">
 <p class="text-info">
-  <strong>Designation:</strong>
-  <%= @employee.designation %>
+  <strong>Date:</strong>
+   <%= @receipt.date %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Received From:</strong>
+   <%= @receipt.received_from %>
 </p>
 </div>
 
 <div class="col-md-4">
 <p class="text-info">
-  <strong>Adhar card no:</strong>
-  <%= @employee.adhar_card_no %>
+  <strong>Amount:</strong>
+   <%= @receipt.amount %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Towards:</strong>
+   <%= @receipt.towards %>
 </p>
 </div>
 
 <div class="col-md-4">
 <p class="text-info">
-  <strong>Contact no:</strong>
-  <%= @employee.contact_no %>
+  <strong>Payment Mode:</strong>
+   <%= @receipt.payment_mode %>
 </p>
 </div>
 
 <div class="col-md-4">
 <p class="text-info">
-  <strong>Alternate contact no:</strong>
-  <%= @employee.alternate_contact_no %>
+  <strong>Check Number:</strong>
+   <%= @receipt.check_no %>
 </p>
 </div>
 
 <div class="col-md-4">
 <p class="text-info">
-  <strong>Email:</strong>
-  <%= @employee.email %>
+  <strong>Check Date:</strong>
+   <%= @receipt.check_date %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Bank Name:</strong>
+   <%= @receipt.bank_name %>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Transaction Id:</strong>
+   <%= @receipt.transaction_id%>
 </p>
 </div>
 
 <div class="col-md-4">
 <p class="text-info">
-  <strong>Joining date:</strong>
-  <%= @employee.joining_date %>
+  <strong>Payment:</strong>
+   <%= @receipt.payment%>
 </p>
 </div>
 
 <div class="col-md-4">
 <p class="text-info">
-  <strong>Date of Birth:</strong>
-  <%= @employee.birth_place %>
+  <strong>Payment Date:</strong>
+   <%= @receipt.date%>
 </p>
 </div>
+
 
 <div class="col-md-4">
 <p class="text-info">
-  <strong>Address:</strong>
-  <%= @employee.address %>
+  <strong>Pending fees:</strong>
+   <%= @receipt.pending_payment%>
 </p>
 </div>
 
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Employee no:</strong>
-  <%= @employee.employee_no %>
-</p>
-</div>
 
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Center:</strong>
-  <%= @employee.center.center_name %>
-</p>
-</div>
 
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Status:</strong>
-  <%= @employee.employee_status %>
-</p>
-</div> 
-
-</div>
-</div>
-<%= link_to 'Edit', edit_employee_path(@employee), class: 'btn btn-red btn-outline'  %> |
-<%= link_to 'Back', employees_path, class: 'btn btn-blue btn-outline'  %>
+<%= link_to 'Back', new_receipt_path, class: 'btn btn-blue btn-outline' %>

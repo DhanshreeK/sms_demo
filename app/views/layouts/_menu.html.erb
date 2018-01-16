@@ -45,20 +45,28 @@
 				<%if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' || current_user.role == 'Center' %>
 				<%if current_user.center.present?%>
 					<li><a href="/centers/update_center"><span class="title">Centers</span></a></li>
-					<%else%>
+					<%elsif current_user.role == 'SuperAdmin' %>
 					<li><a href="/centers"><span class="title">Centers</span></a></li>
-					<%end%>
-				
+				<%end%>
+				<%if current_user.role == 'SuperAdmin' || current_user.role == 'Center' %>
 					<li><a href="/employees"><span class="title">Employees</span></a></li>
+					<li><a href="/refarences"><span class="title">Add Referenced By</span></a></li>
+				<%end%>
+				<%if current_user.role == 'SuperAdmin' %>
+
 					<li><a href="/universities"><span class="title">University</span></a></li>
 					<li><a href="/course_types"><span class="title">Course Type</span></a></li>
 					<li><a href="/courses"><span class="title">Course</span></a></li>
+			    <%end%>
 					<li><a href="/caste_categories"><span class="title">Categories</span></a></li>
 					<li><a href="/enquiries"><span class="title">Enquiries</span></a></li>
-					<li><a href="/refarences"><span class="title">Add Referenced By</span></a></li>
+					
 					<li><a href="/envelopes"><span class="title">Envelope Creation</span></a></li>
+					<li><a href="/receipts/receipt_creation"><span class="title">Generate Receipt</span></a></li>
+
 					<%elsif current_user.role == 'SuperAdmin'%>
 					<li><a href="/general_settings/new"><span class="title">General Setting</span></a></li>
+
 
 					<%end%>
 				</ul>
@@ -94,7 +102,7 @@
 				<ul class="nav collapse">
 					<li><a href="/reports/general_report"><span class="title">Center Report</span></a></li>
 					<li><a href="/reports/new"><span class="title">Daily Report/Monthly Report</span></a></li>
-					<li><a href="/reports/reference_report"><span class="title">Reference Report</span></a></li>
+					<!-- <li><a href="/reports/reference_report"><span class="title">Reference Report</span></a></li> -->
 					<li><a href="/reports/university_report"><span class="title">University Report</span></a></li>
 					<li><a href="/reports/course_report"><span class="title">Course Report</span></a></li>
 				</ul>

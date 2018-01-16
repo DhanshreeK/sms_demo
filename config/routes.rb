@@ -4,6 +4,15 @@ Rails.application.routes.draw do
   get 'bulk_sms_settings/new'
 
   resources :refarences
+  resources :receipts do 
+    member do
+    get :generate_receipt
+    get :print_receipt
+  end
+  collection do
+    get :receipt_creation
+  end
+  end
   resources :enquiries do 
     member do
       get :remark

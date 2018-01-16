@@ -1,0 +1,299 @@
+<div class="row"> 
+  <div class="col-md-12">
+   <br>
+   <br>
+   <div class="panel panel-primary">
+    <div class="panel-heading clearfix"> 
+      <div class="panel-title">Generate Receipt</div> 
+      <ul class="panel-tool-options"> 
+  <!--  <li class="dropdown">
+      <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+      <ul class="dropdown-menu dropdown-menu-right">
+          <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
+          <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
+          <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+      </ul>
+    </li> -->
+    <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+    <!-- <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li> -->
+    <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+  </ul> 
+  </div> 
+  <br>
+
+  <div class="panel-body">
+<h3>Payment History</h3>
+         <table class="table">
+            <thead>
+              <tr>
+               <th>Sr .No</th>
+                <th>Fees Pending</th>
+                <th>Fees Discount</th>
+              <th>Paid At</th>
+              
+             </tr>
+           </thead>
+           <tbody>
+          <% @student.pending_payments.each_with_index do |fees, i| %>
+              <tr>
+              <td><%= i+1 %></td>
+               <td><%=@fees = fees.fees_pending%></td>
+               <td><%=@discount = fees.discount%></td>
+              <td><%= fees.created_at.to_date%></td>
+                <%#= link_to 'Destroy', refarence, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+  <%= form_for @receipt, url: {action: 'create', controller: 'receipts'} do |form| %>
+ <%= form.hidden_field :student_id, :value => @student.id %>
+
+  <form class="form-horizontal">
+
+
+   <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">GST Number</label>
+      <%= form.text_field :gst_no, id: :receipt_gst_no, placeholder: 'GST Number', class: 'form-control' %>
+    </div>
+   </div>
+
+    <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Date</label>
+      <%= form.date_field :date, id: :receipt_date, value: Date.today, class: 'form-control' %>
+    </div>
+   </div>
+
+
+   <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Received From</label>
+      <%= form.text_field :received_from,value: @student.first_name + " " + @student.last_name, class: 'form-control' %>
+    </div>
+   </div>
+
+
+    <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Towards</label>
+      <%= form.text_field :towards,placeholder: 'Towards', class: 'form-control' %>
+    </div>
+   </div>
+
+    <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Payment Mode</label>
+      <%= form.select :payment_mode, options_for_select(["Cash","Cheque","Transaction"]),{prompt:true},id: :'select_val', class: 'form-control', onchange: 'jsfunction()' %>
+    </div>
+   </div>
+
+     <div class="form-group" id="transaction">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Transaction ID</label>
+      <%= form.text_field :transaction_id,placeholder: 'Transaction Id',id: :transaction_id, class: 'form-control' %>
+    </div>
+   </div>
+
+
+  <div class="form-group" id="check_no">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Cheque Number</label>
+      <%= form.text_field :check_no,placeholder: 'Cheque Number', class: 'form-control' %>
+    </div>
+   </div>
+
+
+   <div class="form-group" id="check">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Cheque Date</label>
+      <%= form.date_field :check_date,id: :check_date, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group" id="bank">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Bank Name</label>
+      <%= form.text_field :bank_name,placeholder: 'Bank Name',id: :bank_name, class: 'form-control' %>
+    </div>
+   </div>
+
+   <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Course Fees</label>
+      <%= form.text_field :amount,value: @student.course.fees.to_i,id: :amount, class: 'form-control' %>
+    </div>
+   </div>
+
+<%if @discount.present?%>
+  <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Discount(%)</label>
+      <%= form.text_field :discount,value: @discount,id: :discount, class: 'form-control' %>
+    </div>
+   </div>
+   <%else%>
+ 
+  <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Discount(%)</label>
+      <%= form.text_field :discount,value: "0",id: :discount, class: 'form-control' %>
+    </div>
+   </div>
+  <%end%>
+
+
+<%if @fees.present?%>
+  <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Discounted Course Fees</label>
+      <%= form.text_field :payment_paid,value: @fees,id: :payment_paid, class: 'form-control' %>
+    </div>
+   </div>
+  <%else%>
+   <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Discounted Course Fees</label>
+      <%= form.text_field :payment_paid,value: @student.course.fees,id: :payment_paid, class: 'form-control' %>
+    </div>
+   </div>
+<%end%>
+
+   <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Payment</label>
+      <%= form.text_field :payment,id: :payment, class: 'form-control',readonly: false %>
+    </div>
+   </div>
+
+    <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Payment Date</label>
+      <%= form.date_field :payment_date, id: :payment_date, value: Date.today, class: 'form-control' %>
+    </div>
+   </div>
+
+<%if @fees.present?%>
+    <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Pending Payment</label>
+      <%= form.text_field :pending_payment,id: :pending_payment, value: @fees,class: 'form-control',readonly: true %>
+    </div>
+   </div>
+   <%else%>
+    <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Pending Payment</label>
+      <%= form.text_field :pending_payment,id: :pending_payment, value: @student.course.fees,class: 'form-control',readonly: true %>
+    </div>
+   </div>
+  <%end%>
+
+
+  <div class="form-group"> 
+    <div class="col-sm-offset-1 col-sm-10">  
+     <%= form.submit "Submit", class: 'btn btn-success' %>
+     <%= link_to 'Back', new_receipt_path,class: 'btn btn-red' %>
+   </div>
+  </div>
+
+  <br>
+  <% end %>
+
+
+
+<script type="text/javascript">
+ $(document).on("keyup", "#discount", function() {
+ var value1 = $(this).val();
+ var value2 = $('#pending_payment').val();
+ var discount = $('#discount').val();
+ var div1 = (value2 * discount/100);
+ var ans = (value2 - div1)
+ $('#payment_paid').val(ans);
+});
+
+ $(document).on("keyup", "#payment", function() {
+ var value1 = $(this).val();
+ var value2 = $('#payment_paid').val();
+ var value3 = value2-value1 ;
+
+ $('#pending_payment').val(value3);
+});
+
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+$("#check_no").css("visibility", "hidden");
+
+$("#bank").css("visibility", "hidden");
+$("#check").css("visibility", "hidden");
+document.getElementById('transaction').style.visibility='hidden';
+
+
+
+  $(document).ready(function() {
+    $("#receipt_payment_mode").keyup(function() {
+      var a = $("#receipt_payment_mode").val();
+      if (this.value == 'Cheque') {
+        $("#check_no").css("display", "block");
+                $("#check_date").css("display", "block");
+                $("#bank_name").css("display", "block");
+      }
+       else{
+       $("#receipt_payment_mode").css("display", "none");
+     }
+    //   else if (this.value <= 119 && a >= 1) {
+    //    $("#pete").css("display", "block");
+    //  }
+    //  else if (this.value >= 300) {
+    //   $("#pete1").css("display", "block");
+    // }
+    // else{
+    //   $("#pete").css("display", "none");
+    // }
+
+  });
+  });
+</script>
+
+
+<script type="text/javascript">
+function jsfunction(){
+
+  var a = document.getElementById('select_val').value;
+
+ 
+  if (a=="Cheque"){
+  
+    document.getElementById('check_no').style.visibility='visible';
+    document.getElementById('check').style.visibility='visible';
+    document.getElementById('transaction').style.visibility='hidden';
+    document.getElementById('bank').style.visibility='visible';
+  }
+  if (a=="Cash") {
+    document.getElementById('check_no').style.visibility='hidden';
+    document.getElementById('transaction').style.visibility='hidden';
+    document.getElementById('check').style.visibility='hidden';
+    document.getElementById('bank').style.visibility='hidden';
+  }
+
+  if (a=="Transaction")
+  {
+    document.getElementById('transaction').style.visibility='visible';
+    document.getElementById('check_no').style.visibility='hidden';
+    document.getElementById('check').style.visibility='hidden';
+    document.getElementById('bank').style.visibility='hidden';
+  }
+                 
+                 
+            }
+  
+</script>

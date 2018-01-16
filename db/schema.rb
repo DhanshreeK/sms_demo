@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228132914) do
+ActiveRecord::Schema.define(version: 20180111044803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,6 +152,42 @@ ActiveRecord::Schema.define(version: 20171228132914) do
     t.datetime "logo_updated_at"
   end
 
+  create_table "pending_payments", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "receipt_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "fees_pending"
+    t.string "discount"
+    t.string "fees_paid"
+    t.index ["receipt_id"], name: "index_pending_payments_on_receipt_id"
+    t.index ["student_id"], name: "index_pending_payments_on_student_id"
+  end
+
+  create_table "receipts", force: :cascade do |t|
+    t.string "gst_no"
+    t.string "date"
+    t.string "received_from"
+    t.string "amount"
+    t.string "towards"
+    t.string "payment_mode"
+    t.string "check_no"
+    t.string "check_date"
+    t.string "bank_name"
+    t.string "transaction_id"
+    t.bigint "student_id"
+    t.bigint "center_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "pending_payment"
+    t.string "payment_paid"
+    t.string "payment"
+    t.date "payment_date"
+    t.string "discount"
+    t.index ["center_id"], name: "index_receipts_on_center_id"
+    t.index ["student_id"], name: "index_receipts_on_student_id"
+  end
+
   create_table "refarences", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -235,6 +271,7 @@ ActiveRecord::Schema.define(version: 20171228132914) do
     t.string "pin_code"
     t.bigint "refarence_id"
     t.bigint "employee_id"
+    t.string "reference_student"
     t.index ["caste_category_id"], name: "index_students_on_caste_category_id"
     t.index ["center_id"], name: "index_students_on_center_id"
     t.index ["course_id"], name: "index_students_on_course_id"
@@ -314,6 +351,10 @@ ActiveRecord::Schema.define(version: 20171228132914) do
   add_foreign_key "enquiries", "refarences"
   add_foreign_key "envelopes", "centers"
   add_foreign_key "envelopes", "students"
+  add_foreign_key "pending_payments", "receipts"
+  add_foreign_key "pending_payments", "students"
+  add_foreign_key "receipts", "centers"
+  add_foreign_key "receipts", "students"
   add_foreign_key "students", "caste_categories"
   add_foreign_key "students", "centers"
   add_foreign_key "students", "course_types"

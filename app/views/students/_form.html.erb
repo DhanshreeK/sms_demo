@@ -127,8 +127,8 @@
 
                   <div class="col-md-4"> 
                   <div class="form-group"> 
-                    <label for="email" class="control-label">Select Contact Person Name</label>
-                    <%= form.select :employee_id,Employee.all.collect{|a| [a.name, a.id]}, {prompt:true},id: 'student_employee_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
+                    <label for="email" class="control-label">Contact Person Name</label>
+                    <%= form.text_field :reference_student,placeholder: 'Contact Person Name', id: :reference_student, class: 'form-control' %>
                   </div>
                 </div>
 
