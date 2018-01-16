@@ -1,0 +1,31 @@
+<%= render 'layouts/messages'%> 
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title">Receipt Creation</h3>
+        <ul class="panel-tool-options"> 
+          <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+          <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+          <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+        </ul>
+      </div>
+      <div class="panel-body">
+      <p>&nbsp;</p>
+         <p>&nbsp;</p>
+          <p>&nbsp;</p>
+         
+        <%= link_to 'Generate Receipt', new_receipt_path, class: 'btn btn-success'%>
+        <%= link_to 'View All Receipts', receipts_path, class: 'btn btn-blue'%>
+        <p>&nbsp;</p>
+         <p>&nbsp;</p>
+          <p>&nbsp;</p>
+         
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+

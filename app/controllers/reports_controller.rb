@@ -30,9 +30,8 @@ class ReportsController < ApplicationController
 	end
 
 	def select_employee
-		@employee = Employee.shod(params[:employee_id])
-		@employee_students = @employee.students
-		@student_count = @employee.students.count
+		@student = Student.load(params[:student_id])
+		@students = @student.reference_student
 	end
 
 	def university_report

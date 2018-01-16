@@ -1,0 +1,118 @@
+<style type="text/css">
+  div {
+    background-color: white;
+    border: 2px solid black;
+    padding: 25px;
+    margin: 25px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+</style>
+
+<div>
+<h3 align="center", style= "font-family: Arial, Helvetica, sans-serif;"><%=@receipt.student.center.center_name%></h3>
+<p align="center">Career Guidance Center</p>
+<p align="center"><%=@receipt.student.center.address%></p>
+<p align="center">Mob:<%=@receipt.student.center.contact%></p>
+<p align="center">Mail ID:<%=@receipt.student.center.email%></p>
+<strong>GST Number:</strong>
+   <%= @receipt.gst_no %><br>
+
+<strong>Date:</strong>
+   <%= @receipt.date %><br>
+
+<strong>Received From:</strong>
+   <%= @receipt.received_from %><br>
+
+<strong>Amount:</strong>
+   <%= @receipt.amount %><br>
+
+<strong>Towards:</strong>
+   <%= @receipt.towards %><br>
+
+<strong>Payment Mode:</strong>
+   <%= @receipt.payment_mode %><br>
+
+<strong>Cheque Number:</strong>
+   <%= @receipt.check_no %><br>
+
+<strong>Cheque Date:</strong>
+   <%= @receipt.check_date %><br>
+
+<strong>Bank Name:</strong>
+   <%= @receipt.bank_name %><br>
+
+<strong>Transaction Id:</strong>
+   <%= @receipt.transaction_id%><br>
+
+<strong>Paid Payment:</strong>
+   <%= @receipt.payment%><br>
+
+<strong>Payment Date:</strong>
+   <%= @receipt.date%><br>
+
+
+  <table class="table">
+   <thead>
+                <tr>
+                  <th style="font-size: 16px; width: 75px;" colspan="11"><center>Receipt Details</center></th>
+                </tr>
+           
+              <tr>
+               <th>Sr .No</th>
+                <th>Fees Pending</th>
+                <th>Fees Discount</th>
+                <th>Fees Paid</th>
+              <th>Paid At</th>
+              
+             </tr>
+           </thead>
+           <tbody>
+          <% @receipt.student.pending_payments.each_with_index do |fees, i| %>
+              <tr>
+              <td><%= i+1 %></td>
+               <td><%=@fees = fees.fees_pending%></td>
+               <td><%=@discount = fees.discount%>&#37;</td>
+               <td><%= fees.fees_paid%></td>
+              <td><%= fees.created_at.to_date%></td>
+                <%#= link_to 'Destroy', refarence, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+          <table class="table">
+    <thead>
+
+      <tr>
+        <th></th>
+      </tr>
+
+      <tr>
+        <th> 
+
+          
+          <h4 align="right">&nbsp;</h4>
+
+          <h4 align="right">Student/Parents Sign</h4> 
+
+
+        </th>
+      </tr>
+
+    </thead>
+  </table>
+</div>
+
+        

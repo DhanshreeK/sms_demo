@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gst_no: MyString
+  date: MyString
+  received_from: MyString
+  amount: MyString
+  towards: MyString
+  payment_mode: MyString
+  check_no: MyString
+  check_date: MyString
+  bank_name: MyString
+  transaction_id: MyString
+  student: one
+  center: one
+
+two:
+  gst_no: MyString
+  date: MyString
+  received_from: MyString
+  amount: MyString
+  towards: MyString
+  payment_mode: MyString
+  check_no: MyString
+  check_date: MyString
+  bank_name: MyString
+  transaction_id: MyString
+  student: two
+  center: two

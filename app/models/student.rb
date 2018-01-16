@@ -2,12 +2,14 @@ class Student < ApplicationRecord
   belongs_to :course
   belongs_to :center
   belongs_to :university
-  belongs_to :employee
+  belongs_to :employee, optional:true
   belongs_to :refarence
   belongs_to :course_type
+  has_many :receipts
+  has_many :pending_payments
   has_attached_file :photo
   has_many :envelopes
-  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png',"image/gif"]
+  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png',"image/gif","image/jpg"]
   mount_uploader :attachment, AttachmentUploader
   mount_uploader :twelth_attachment, AttachmentUploader
   mount_uploader :pg_attachment, AttachmentUploader
@@ -17,6 +19,9 @@ class Student < ApplicationRecord
   validates :twelth_attachment, presence:true
   validates :attachment, presence:true
   after_save :send_bulk_message
+  after_save :create_user_account
+  scope :load, ->(id) { where(id: id).take }
+
 
   def self.set_enrollment_no
     date = Date.today.strftime('%Y%m%d')
@@ -47,6 +52,21 @@ class Student < ApplicationRecord
     response = JSON.parse(res.body)
     puts (response)
   end
-end
+  
 
+  def create_user_account
+    user = User.new do |u|
+      u.email = email
+      u.student_id = id 
+      u.password = enrollment
+      u.role = 'Student'
+      u.general_setting_id = if User.current
+                               User.current.general_setting_id
+                             else
+                               1
+                             end
+    end
+    user.save
+  end
+end
 end
