@@ -1,5 +1,5 @@
 class ReceiptsController < ApplicationController
-	before_action :set_general_setting , only: [:new, :generate_receipt, :show, :receipt_creation]
+	before_action :set_general_setting , only: [:new, :generate_receipt, :show, :receipt_creation, :index]
 	def index
 		@receipts = Receipt.all
 	end
