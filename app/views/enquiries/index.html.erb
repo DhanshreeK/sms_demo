@@ -19,7 +19,6 @@
                <th>Sr No</th>
               <th>Full name</th>
               <th>Email</th>
-              <th>Center</th>
               <th>Remarks</th>
                <th></th>
                <th></th>
@@ -31,7 +30,6 @@
               <td><%=i + 1%></td>
               <td><%= enquiry.full_name %></td>
               <td><%= enquiry.email %></td>
-              <td><%= enquiry.center.center_name%></td>
               <td><%= link_to 'Remarks', remark_enquiry_path(enquiry),class: "btn btn-red btn-sm" %></td>
               <td><%= link_to 'Show', enquiry,class: "btn btn-blue btn-sm" %></td>
               <td><%= link_to 'Edit', edit_enquiry_path(enquiry),class: "btn btn-success btn-sm" %></td>
