@@ -48,7 +48,7 @@
 
 <p>
   <strong>Center:</strong>
-  <%= @enquiry.center.center_name %>
+  <%= @enquiry.center.center_name if @enquiry.center.present?%>
 </p>
 
 <%if @enquiry.remark.present?%>
