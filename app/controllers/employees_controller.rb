@@ -11,6 +11,14 @@ class EmployeesController < ApplicationController
       @employees = Employee.all
       @general_setting = GeneralSetting.first
       @user = User.first
+      if params[:param1].present? && params[:param1] == 'false'
+      employee = Employee.shod(params[:id])
+      employee.update!(employee_status: 'Active')
+    elsif params[:param1].present? && params[:param1] == 'true'
+       employee = Employee.shod(params[:id])
+      employee.update!(employee_status: 'Inactive')  
+    end
+
     end
   end
 

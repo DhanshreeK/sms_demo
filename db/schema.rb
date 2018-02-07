@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111044803) do
+ActiveRecord::Schema.define(version: 20180202122029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,6 +184,16 @@ ActiveRecord::Schema.define(version: 20180111044803) do
     t.string "payment"
     t.date "payment_date"
     t.string "discount"
+    t.string "place_of_supply"
+    t.string "invoice_number"
+    t.string "gstin_no_of_customer"
+    t.string "description_of_services"
+    t.string "taxable_value"
+    t.string "cgst"
+    t.string "sgst"
+    t.string "igst"
+    t.string "total_rate"
+    t.string "total_amt"
     t.index ["center_id"], name: "index_receipts_on_center_id"
     t.index ["student_id"], name: "index_receipts_on_student_id"
   end
@@ -272,6 +282,7 @@ ActiveRecord::Schema.define(version: 20180111044803) do
     t.bigint "refarence_id"
     t.bigint "employee_id"
     t.string "reference_student"
+    t.string "permanent_pin"
     t.index ["caste_category_id"], name: "index_students_on_caste_category_id"
     t.index ["center_id"], name: "index_students_on_center_id"
     t.index ["course_id"], name: "index_students_on_course_id"

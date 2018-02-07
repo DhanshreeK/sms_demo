@@ -23,7 +23,6 @@
 
 	<!-- Page Sidebar -->
 	<div class="page-sidebar">
-	
 		<!-- Site header  -->
 		<header class="site-header">
 		  <div class="site-logo">
@@ -42,15 +41,18 @@
 		<ul id="side-nav" class="main-menu navbar-collapse collapse">
 			<li class="has-sub"><a href="/home/dashboard"><i class="icon-gauge"></i><span class="title">Misc.</span></a>
 				<ul class="nav">
-				<%if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' || current_user.role == 'Center' %>
+					<%if current_user.role == 'SuperAdmin' || (current_user.role == 'Employee' && current_user.employee.employee_status == 'Active') || (current_user.role == 'Center' && current_user.center.center_status == 'Active')%>
+
 				<%if current_user.center.present?%>
 					<li><a href="/centers/update_center"><span class="title">Centers</span></a></li>
 					<%elsif current_user.role == 'SuperAdmin' %>
 					<li><a href="/centers"><span class="title">Centers</span></a></li>
 				<%end%>
-				<%if current_user.role == 'SuperAdmin' || current_user.role == 'Center' %>
+				<%if current_user.role == 'SuperAdmin' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
 					<li><a href="/employees"><span class="title">Employees</span></a></li>
 					<li><a href="/refarences"><span class="title">Add Referenced By</span></a></li>
+					<li><a href="/caste_categories"><span class="title">Categories</span></a></li>
+
 				<%end%>
 				<%if current_user.role == 'SuperAdmin' %>
 
@@ -58,7 +60,6 @@
 					<li><a href="/course_types"><span class="title">Course Type</span></a></li>
 					<li><a href="/courses"><span class="title">Course</span></a></li>
 			    <%end%>
-					<li><a href="/caste_categories"><span class="title">Categories</span></a></li>
 					<li><a href="/enquiries"><span class="title">Enquiries</span></a></li>
 					
 					<li><a href="/envelopes"><span class="title">Envelope Creation</span></a></li>
@@ -66,29 +67,30 @@
 
 					<%elsif current_user.role == 'SuperAdmin'%>
 					<li><a href="/general_settings/new"><span class="title">General Setting</span></a></li>
-
-
 					<%end%>
 				</ul>
 			</li>
-			<li class="has-sub"><a href="collapsed-sidebar.html"><i class="icon-layout"></i><span class="title">Students</span></a>
+
+		
+			<li class="has-sub"><a href="#"><i class="icon-layout"></i><span class="title">Students</span></a>
 				<ul class="nav collapse">
-				<%if current_user.role == 'Student'%>
-					<%unless current_user.student.present?%>
+					<%if current_user.role == 'SuperAdmin' || (current_user.role == 'Employee' && current_user.employee.employee_status == 'Active') || (current_user.role == 'Center' && current_user.center.center_status == 'Active')%>
+					<%if current_user.student.present?%>
 					<li><a href="/students/new"><span class="title">Student Admission</span></a></li>
 					<%end%>
 					<%unless current_user.student.blank?%>
 					<li><a href="/students"><span class="title">Student Detail</span></a></li>
 					<%end%>
 					<%end%>
-					<%if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' || current_user.role == 'Center'%>
+					<%if current_user.role == 'SuperAdmin' || (current_user.role == 'Employee' && current_user.employee.employee_status == 'Active') || (current_user.role == 'Center' && current_user.center.center_status == 'Active')%>
 					<li><a href="/students/view_all"><span class="title">Students</span></a></li>
 					<%end%>
 				</ul>
 			</li>
-		<%if current_user.role == 'SuperAdmin' || current_user.role == 'Center' %>
-			<li class="has-sub"><a href="form-basic.html"><i class="icon-doc-text"></i><span class="title">Sms/Email Settings</span></a>
+		
+			<li class="has-sub"><a href="#"><i class="icon-doc-text"></i><span class="title">Sms/Email Settings</span></a>
 				<ul class="nav collapse">
+				<%if current_user.role == 'SuperAdmin' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
 					<li><a href="/sms_settings/new"><span class="title">Sms Settings</span></a></li>
 					<li><a href="/email_settings/new"><span class="title">Email Settings</span></a></li>
 					<li><a href="/bulk_sms_settings/new"><span class="title">Bulk Sms Settings</span></a></li>
@@ -97,9 +99,10 @@
 		<%end%>
 
 
-		<%if current_user.role == 'SuperAdmin' || current_user.role == 'Center' %>
-			<li class="has-sub"><a href="form-basic.html"><i class="icon-list"></i><span class="title">Reports</span></a>
+			<li class="has-sub"><a href="#"><i class="icon-list"></i><span class="title">Reports</span></a>
 				<ul class="nav collapse">
+
+		<%if current_user.role == 'SuperAdmin' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
 					<li><a href="/reports/general_report"><span class="title">Center Report</span></a></li>
 					<li><a href="/reports/new"><span class="title">Daily Report/Monthly Report</span></a></li>
 					<!-- <li><a href="/reports/reference_report"><span class="title">Reference Report</span></a></li> -->
@@ -107,126 +110,7 @@
 					<li><a href="/reports/course_report"><span class="title">Course Report</span></a></li>
 				</ul>
 			</li>
-		<%end%>
-			<!--
-			<li class="has-sub"><a href="collapsed-sidebar.html"><i class="icon-layout"></i><span class="title">Layouts</span></a>
-				<ul class="nav collapse">
-					<li><a href="collapsed-sidebar.html"><span class="title">Collapsed Sidebar</span></a></li>
-					<li><a href="fixed-sidebar.html"><span class="title">Fixed Sidebar</span></a></li>
-				</ul>
-			</li>
-			<li class="has-sub"><a href="panels.html"><i class="icon-newspaper"></i><span class="title">UI Elements</span></a>
-				<ul class="nav collapse">
-					<li><a href="panels.html"><span class="title">Panels</span></a></li>
-					<li><a href="buttons.html"><span class="title">Buttons</span></a></li>
-					<li><a href="typography.html"><span class="title">Typography</span></a></li>
-					<li><a href="tabs-accordions.html"><span class="title">Tabs &amp; Accordions</span></a></li>
-					<li><a href="tooltips-popovers.html"><span class="title">Tooltips &amp; Popovers</span></a></li>
-					<li><a href="navbars.html"><span class="title">Navbars</span></a></li>
-					<li><a href="breadcrumbs.html"><span class="title">Breadcrumbs</span></a></li>
-					<li><a href="badges-label.html"><span class="title">Badges &amp; Labels</span></a></li>
-					<li><a href="progress-bars.html"><span class="title">Progress Bars</span></a></li>
-					<li><a href="modals.html"><span class="title">Modals</span></a></li>
-					<li><a href="alerts.html"><span class="title">Alerts</span></a></li>
-					<li><a href="pagination.html"><span class="title">Pagination</span></a></li>
-					<li><a href="video.html"><span class="title">Video</span></a></li>
-				</ul>
-			</li>
-			<li class="has-sub"><a href="basic-tables.html"><i class="icon-window"></i><span class="title">Tables</span></a>
-				<ul class="nav collapse">
-					<li><a href="basic-tables.html"><span class="title">Basic Tables</span></a></li>
-					<li><a href="data-tables.html"><span class="title">Data Tables</span></a></li>
-				</ul>
-			</li>
-			<li class="has-sub"><a href="form-basic.html"><i class="icon-doc-text"></i><span class="title">Forms</span></a>
-				<ul class="nav collapse">
-					<li><a href="form-basic.html"><span class="title">Basic Form</span></a></li>
-					<li><a href="form-advanced.html"><span class="title">Advanced Plugins</span></a></li>
-					<li><a href="form-wizard.html"><span class="title">Form Wizard</span></a></li>
-					<li><a href="file-upload.html"><span class="title">File upload</span></a></li>
-					<li><a href="editors.html"><span class="title">Editors</span></a></li>
-				</ul>
-			</li>
-			<li class="has-sub"><a href="graph-flot.html"><i class="icon-chart-bar"></i><span class="title">Graphs</span></a>
-				<ul class="nav collapse">
-					<li><a href="graph-flot.html"><span class="title">Flot Charts</span></a></li>
-					<li><a href="graph-morris.html"><span class="title">Morris Charts</span></a></li>
-					<li><a href="graph-peity.html"><span class="title">Peity Charts</span></a></li>
-					<li><a href="graph-sparkline.html"><span class="title">Sparkline Charts</span></a></li>
-					<li><a href="graph-chartjs.html"><span class="title">ChartsJs</span></a></li>
-					<li><a href="graph-chartist.html"><span class="title">Chartist</span></a></li>
-					<li><a href="graph-c3.html"><span class="title">C3 Charts</span></a></li>
-				</ul>
-			</li>
-			<li class="has-sub"><a href="mail-inbox.html"><i class="icon-mail"></i><span class="title">Mailbox</span></a>
-				<ul class="nav collapse">
-					<li><a href="mail-inbox.html"><span class="title">Inbox</span></a></li>
-					<li><a href="mail-compose.html"><span class="title">Compose Mail</span></a></li>
-					<li><a href="mail-read.html"><span class="title">View Mail</span></a></li>
-				</ul>
-			</li>
-			<li><a href="maps-vector.html"><i class="icon-location"></i><span class="title">Vector Map</span> <span class="label label-secondary pull-right">NEW</span></a></li>
-			<li class="has-sub"><a href="login.html"><i class="icon-google-circles"></i><span class="title">Various Screens</span></a>
-				<ul class="nav collapse">
-					<li><a href="login.html"><span class="title">Login</span></a></li>
-					<li><a href="register.html"><span class="title">Register</span></a></li>
-					<li><a href="forgot-password.html"><span class="title">Forgot password</span></a></li>
-					<li><a href="lockscreen.html"><span class="title">Lockscreen</span></a></li>
-					<li><a href="error-404.html"><span class="title">404 Page</span></a></li>
-					<li><a href="blank-page.html"><span class="title">Blank Page</span></a></li>
-					<li><a href="comments.html"><span class="title">Comments</span></a></li>
-				</ul>
-			</li>
-			<li class="has-sub"><a href="icons-entypo.html"><i class="icon-thumbs-up"></i><span class="title">Icons</span></a>
-				<ul class="nav collapse">
-					<li><a href="icons-entypo.html"><span class="title">Entypo</span></a></li>
-					<li><a href="icons-fontawesome.html"><span class="title">Font Awesome</span></a></li>
-					<li><a href="icons-glyphicons.html"><span class="title">Glyph Icons</span></a></li>
-				</ul>
-			</li>
-			<li class="has-sub"><a href="simple-view.html"><i class="icon-list"></i><span class="title">List Views</span></a>
-				<ul class="nav collapse">
-					<li><a href="simple-view.html"><span class="title">Simple View</span></a></li>
-					<li><a href="cards-view.html"><span class="title">Cards View</span></a></li>
-					<li><a href="strip-view.html"><span class="title">Strip View</span></a></li>
-					<li><a href="table-view.html"><span class="title">Table View</span></a></li>
-				</ul>
-			</li>
-			<li class="has-sub"><a href="short-view.html"><i class="icon-popup"></i><span class="title">Grid Views</span></a>
-				<ul class="nav collapse">
-					<li><a href="short-view.html"><span class="title">Short View</span></a></li>
-					<li><a href="detailed-view.html"><span class="title">Detailed View</span></a></li>
-					<li><a href="detailed-view-2.html"><span class="title">Detailed Action View</span></a></li>
-				</ul>
-			</li>
-			<li class="has-sub"> 
-				<a href="#/"><i class="icon-flow-tree"></i><span class="title">Menu Levels</span></a> 
-				<ul class="nav collapse"> 
-					<li><a href="#/"><span class="title">Menu Level 1.1</span></a></li> 
-					<li><a href="#/"><span class="title">Menu Level 1.2</span></a></li> 
-					<li class="has-sub">
-						<a href="#/"><span class="title">Menu Level 1.3</span></a> 
-						<ul class="nav collapse"> 
-							<li><a href="#/"><span class="title">Menu Level 2.1</span></a></li> 
-							<li class="has-sub">
-								<a href="#/"><span class="title">Menu Level 2.2</span></a>
-								<ul class="nav collapse"> 
-									<li class="has-sub"> 
-										<a href="#/"><span class="title">Menu Level 3.1</span></a> 
-										<ul class="nav collapse"> 
-											<li><a href="#/"><span class="title">Menu Level 4.1</span></a></li> 
-										</ul> 
-									</li> 
-									<li><a href="#/"><span class="title">Menu Level 3.2</span></a></li> 
-								</ul>
-							</li> 
-							<li><a href="#/"><span class="title">Menu Level 2.3</span></a></li> 
-						</ul> 
-					</li> 
-				</ul> 
-			</li>
-		</ul>
-		<!-- /main navigation -->		
+		<%end%>		
   </div>
   <!-- /page sidebar -->
   
@@ -239,7 +123,7 @@
 		  
 			<!-- User info -->
 			<ul class="user-info pull-left">          
-			  <li class="profile-info dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"> <img width="44" class="img-circle avatar" alt=""  <% if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' || current_user.role == 'Center' %>
+			  <li class="profile-info dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"> <img width="44" class="img-circle avatar" alt=""  <% if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
                 <%= image_tag current_user.photo %>
                <% elsif  current_user.role == 'Center' %>
                <%= image_tag('man-3.jpg')%> 

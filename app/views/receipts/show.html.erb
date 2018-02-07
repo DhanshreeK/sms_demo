@@ -38,8 +38,22 @@
 
 <div class="col-md-4">
 <p class="text-info">
-  <strong>Date:</strong>
+  <strong>Invoice Number:</strong>
+   <%= @receipt.invoice_number%>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Date of Invoice:</strong>
    <%= @receipt.date %>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>GSTIN No of Customer:</strong>
+   <%= @receipt.gstin_no_of_customer%>
 </p>
 </div>
 
@@ -125,6 +139,48 @@
 </p>
 </div>
 
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Description of Services:</strong>
+   <%= @receipt.description_of_services%>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>CGST:</strong>
+   <%= @receipt.cgst%>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>SGST:</strong>
+   <%= @receipt.sgst%>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Taxable Value:</strong>
+   <%= @receipt.taxable_value%>
+</p>
+</div>
+
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Total Rate:</strong>
+   <%= @receipt.total_rate%>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Total Amount:</strong>
+   <%= @receipt.total_amt%>
+</p>
+</div>
 
 
 <%= link_to 'Back', new_receipt_path, class: 'btn btn-blue btn-outline' %>
