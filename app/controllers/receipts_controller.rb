@@ -14,6 +14,7 @@ class ReceiptsController < ApplicationController
 
 	def generate_receipt
 		@receipt = Receipt.new
+		@receipt.invoice_number = Receipt.set_invoice_no
 		@student = Student.find(params[:id])
 		@pending_payments = PendingPayment.all
 	end
@@ -43,7 +44,7 @@ class ReceiptsController < ApplicationController
 	private
 
 	def receipt_params
-		params.require(:receipt).permit(:discount,:center_id, :received_from ,:gst_no, :date,:student_id, :amount, :towards, :payment_mode, :check_no, :bank_name, :transaction_id, :check_date,:pending_payment, :payment_paid, :payment, :payment_date)
+		params.require(:receipt).permit(:place_of_supply,:taxable_value,:total_rate, :total_amt, :description_of_services, :gstin_no_of_customer, :cgst, :sgst, :igst, :invoice_number,:discount,:center_id, :received_from ,:gst_no, :date,:student_id, :amount, :towards, :payment_mode, :check_no, :bank_name, :transaction_id, :check_date,:pending_payment, :payment_paid, :payment, :payment_date)
 	end
 
 	def set_general_setting

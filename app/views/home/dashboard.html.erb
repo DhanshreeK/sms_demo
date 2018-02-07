@@ -99,3 +99,8 @@
 			</div>
 		</div>
 <% end -%>	
+
+<%if (current_user.role == 'Center' && current_user.center.center_status == 'Inactive') || (current_user.role == 'Employee' && current_user.employee.employee_status == 'Inactive')%>
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+	<h4><font color="red">You are not Authorized</font></h4>
+<%end%>

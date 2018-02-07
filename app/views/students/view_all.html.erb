@@ -21,8 +21,9 @@
                 <th>Last name</th>
                 <th>Contact no</th>
                 <th>Center</th>
-               <th></th>
-               <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
              </tr>
            </thead>
            <tbody>
@@ -33,8 +34,14 @@
               <td><%= student.last_name %></td>
               <td><%= student.contact_no %></td>
               <td><%= student.center.center_name %></td>
+               <%if student.student_status == "Inactive" %>
+                 <td><%=link_to 'Deactivate', view_all_students_path(:param1 => false, :id => student.id),style: 'color: red'%></td>
+                   <%elsif student.student_status == "Active" %>
+                  <td><%=link_to 'Activate',  view_all_students_path(:param1 => true, :id => student.id),style: 'color: green'%></td>
+              <%end%>
                <td><%= link_to 'Show', show_student_student_path(student.id),class: "btn btn-blue btn-sm" %></td>
-              <td> <%= link_to 'Update Status',url_for(action: :edit,id: student.id),method: :get,class: "btn btn-red btn-sm" %></td>
+              <td> <%= link_to 'Update Status',url_for(action: :edit,id: student.id),method: :get,class: "btn btn-red btn-sm" if current_user.role == 'SuperAdmin'%></td>
+              <td></td>
             </tr>
             <%end%>
           </tbody>

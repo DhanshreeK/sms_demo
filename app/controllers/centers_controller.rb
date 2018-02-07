@@ -7,6 +7,13 @@ class CentersController < ApplicationController
       @centers = Center.all
       @general_setting = GeneralSetting.first
       @user = User.first
+       if params[:param1].present? && params[:param1] == 'false'
+        center = Center.load(params[:id])
+        center.update!(center_status: 'Active')
+      elsif params[:param1].present? && params[:param1] == 'true'
+         center = Center.load(params[:id])
+        center.update!(center_status: 'Inactive')  
+    end
   end
 
   # GET /centers/1

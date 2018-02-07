@@ -112,14 +112,22 @@ footer {
    <thead>
    
      <tr> <th><b>Enrollment Number:-</b></th>  <th><%= @student.enrollment %></th> </tr>
-      <tr><th><b>First name:-</b></th> <th><%= @student.first_name %></th></tr>
-     <tr> <th><b>Middle name:-</b></th> <th><%= @student.middle_name %></th></tr>
-      <tr> <th><b>Last name:-</b></th> <th><%= @student.last_name %></th></tr>
+     <tr><th><b>Name of the Candidate:-</b></th> <th><%= @student.first_name + " " + @student.middle_name + " " +  @student.last_name %></th></tr>
+     <tr><th><b>Date of birth:</b></th><th><%=@student.date_of_birth%></th></tr>
+     <tr><th><b>Father name:-</b></th><th><%= @student.father_name  %></th></tr>
+     <tr><th><b>Mother name:-</b></th><th><%= @student.mother_name  %></th></tr>
+     <tr><th><b>Postal / Permanent Address:</b></th><th><%= @student.permanent_address%></th></tr>
+     <tr><th><b>Contact Number: Mob :</b></th><th><%= @student.contact_no%></th></tr>
+     <tr><th><b>Email Id:</b></th><th><%= @student.email%></th></tr>
+     <tr><th><b>Sex :</b></th><th><%= @student.gender%></th></tr>
+
       <tr><th><b>Course:-</b></th><th><%= @student.course.course_name %></th></tr>
       <tr><th><b>Course Type:-</b></th><th><%= @student.course_type.course_type_name %></th></tr>
       <tr><th><b>Center:-</b></th><th><%= @student.center.center_name %></th></tr>
       <tr><th><b>University:-</b></th><th><%= @student.university.university_name %></th></tr>
-      <tr><th><b>Father name:-</b></th><th><%= @student.father_name  %></th></tr>
+     
+ 
+
 
 
 <h3> Your Admission has been Confirmed </h3>

@@ -10,6 +10,13 @@
    display:inline;
  }
 
+address{
+    display: block;
+    width: 300px;
+    margin:0px;
+    
+   }
+
 .gallery-text {
   float: left;
   width: 48%;
@@ -30,7 +37,7 @@
   <div class="gallery-text" align="left"> 
       <h6>To,</h6>             
          <p><%=@envelope.student.first_name+"-"+@envelope.student.last_name%></p>
-           <p><%=@envelope.student.permanent_address%></p>
+           <address><%=@envelope.student.permanent_address%></address>
            <p><%=@envelope.student.contact_no%></p>
 
 </div>
@@ -38,7 +45,7 @@
   <div class="gallery-text" align="right">
                       <h6>From,</h6> 
           <p><%=@envelope.center.center_name%></p>
-          <p><%=@envelope.center.address%></p>
+          <address><%=@envelope.center.address%></address>
           <p><%=@envelope.center.contact%></p>
   
 <div class="content">

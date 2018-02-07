@@ -1,8 +1,8 @@
 <div class="row"> 
   <div class="col-md-12">
-   <br>
-   <br>
-   <div class="panel panel-primary">
+  <br>
+  <br>
+  <div class="panel panel-primary">
     <div class="panel-heading clearfix"> 
       <div class="panel-title">Generate Receipt</div> 
       <ul class="panel-tool-options"> 
@@ -25,56 +25,78 @@
 
   <div class="panel-body">
 <h3>Payment History</h3>
-         <table class="table">
+        <table class="table">
             <thead>
               <tr>
-               <th>Sr .No</th>
+              <th>Sr .No</th>
                 <th>Fees Pending</th>
                 <th>Fees Discount</th>
               <th>Paid At</th>
               
-             </tr>
-           </thead>
-           <tbody>
+            </tr>
+          </thead>
+          <tbody>
           <% @student.pending_payments.each_with_index do |fees, i| %>
               <tr>
               <td><%= i+1 %></td>
-               <td><%=@fees = fees.fees_pending%></td>
-               <td><%=@discount = fees.discount%></td>
+              <td><%=@fees = fees.fees_pending%></td>
+              <td><%=@discount = fees.discount%></td>
               <td><%= fees.created_at.to_date%></td>
-                <%#= link_to 'Destroy', refarence, method: :delete, data: { confirm: 'Are you sure?' } %>
               </tr>
           <% end %>
           </tbody>
         </table>
 
   <%= form_for @receipt, url: {action: 'create', controller: 'receipts'} do |form| %>
- <%= form.hidden_field :student_id, :value => @student.id %>
+<%= form.hidden_field :student_id, :value => @student.id %>
 
   <form class="form-horizontal">
 
 
-   <div class="form-group">
+  <div class="form-group">
     <div class="col-md-4">
       <label class="col-sm-8 control-label">GST Number</label>
       <%= form.text_field :gst_no, id: :receipt_gst_no, placeholder: 'GST Number', class: 'form-control' %>
     </div>
-   </div>
+  </div> 
+
+
+  <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Place of Supply</label>
+  <%= form.select :place_of_supply, options_for_select(["01-Jammu & Kashmir", "02-Himachal Pradesh","03-Punjab","04-Chandigarh","05-Uttarakhand","06-Haryana","07-Delhi","08-Rajasthan","09-Uttar Pradesh","10-Bihar","11-Sikkim","12-Arunachal Pradesh","13-Nagaland","14-Manipur","15-Mizoram","16-Tripura","17-Meghalaya","18-Assam","19-West Bengal","20-Jharkhand","21-Odisha", "22-Chhattisgarh","23-Madhya Pradesh","24-Gujarat","25-Daman & Diu","26-Dadra & Nagar Haveli","27-Maharashtra","29-Karnataka","30-Goa","31-Lakshdweep","32-Kerala","33-Tamil Nadu","34-Pondicherry","35-Andaman & Nicobar Islands","36-Telangana","37-Andhra Pradesh","97-Other Territory"]),{prompt:true},class: 'form-control', id: :customer_cust_place_of_supply %>
+  </div>
+  </div> 
+
+  <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Description of Services</label>
+      <%= form.text_field :gst_no, id: :description_of_services, placeholder: 'Description', class: 'form-control' %>
+    </div>
+  </div> 
+
+  
+  <div class="form-group">
+  <div class="col-md-4">
+    <label class="col-sm-8 control-label">Invoice Number</label>
+    <%= form.text_field :invoice_number, id: :receipt_invoice_number, class: 'form-control' %>
+  </div>
+  </div>
 
     <div class="form-group">
     <div class="col-md-4">
-      <label class="col-sm-8 control-label">Date</label>
+      <label class="col-sm-8 control-label">Date of Invoice</label>
       <%= form.date_field :date, id: :receipt_date, value: Date.today, class: 'form-control' %>
     </div>
-   </div>
+  </div>
 
 
-   <div class="form-group">
+  <div class="form-group">
     <div class="col-md-4">
       <label class="col-sm-8 control-label">Received From</label>
       <%= form.text_field :received_from,value: @student.first_name + " " + @student.last_name, class: 'form-control' %>
     </div>
-   </div>
+  </div>
 
 
     <div class="form-group">
@@ -82,21 +104,21 @@
       <label class="col-sm-8 control-label">Towards</label>
       <%= form.text_field :towards,placeholder: 'Towards', class: 'form-control' %>
     </div>
-   </div>
+  </div>
 
     <div class="form-group">
     <div class="col-md-4">
       <label class="col-sm-8 control-label">Payment Mode</label>
       <%= form.select :payment_mode, options_for_select(["Cash","Cheque","Transaction"]),{prompt:true},id: :'select_val', class: 'form-control', onchange: 'jsfunction()' %>
     </div>
-   </div>
+  </div>
 
-     <div class="form-group" id="transaction">
+    <div class="form-group" id="transaction">
     <div class="col-md-4">
       <label class="col-sm-8 control-label">Transaction ID</label>
       <%= form.text_field :transaction_id,placeholder: 'Transaction Id',id: :transaction_id, class: 'form-control' %>
     </div>
-   </div>
+  </div>
 
 
   <div class="form-group" id="check_no">
@@ -104,10 +126,10 @@
       <label class="col-sm-8 control-label">Cheque Number</label>
       <%= form.text_field :check_no,placeholder: 'Cheque Number', class: 'form-control' %>
     </div>
-   </div>
+  </div>
 
 
-   <div class="form-group" id="check">
+  <div class="form-group" id="check">
     <div class="col-md-4">
       <label class="col-sm-8 control-label">Cheque Date</label>
       <%= form.date_field :check_date,id: :check_date, class: 'form-control' %>
@@ -119,14 +141,14 @@
       <label class="col-sm-8 control-label">Bank Name</label>
       <%= form.text_field :bank_name,placeholder: 'Bank Name',id: :bank_name, class: 'form-control' %>
     </div>
-   </div>
+  </div>
 
-   <div class="form-group">
+  <div class="form-group">
     <div class="col-md-4">
       <label class="col-sm-8 control-label">Course Fees</label>
       <%= form.text_field :amount,value: @student.course.fees.to_i,id: :amount, class: 'form-control' %>
     </div>
-   </div>
+  </div>
 
 <%if @discount.present?%>
   <div class="form-group">
@@ -134,15 +156,15 @@
       <label class="col-sm-8 control-label">Discount(%)</label>
       <%= form.text_field :discount,value: @discount,id: :discount, class: 'form-control' %>
     </div>
-   </div>
-   <%else%>
- 
+  </div>
+  <%else%>
+
   <div class="form-group">
     <div class="col-md-4">
       <label class="col-sm-8 control-label">Discount(%)</label>
       <%= form.text_field :discount,value: "0",id: :discount, class: 'form-control' %>
     </div>
-   </div>
+  </div>
   <%end%>
 
 
@@ -152,29 +174,37 @@
       <label class="col-sm-8 control-label">Discounted Course Fees</label>
       <%= form.text_field :payment_paid,value: @fees,id: :payment_paid, class: 'form-control' %>
     </div>
-   </div>
+  </div>
   <%else%>
-   <div class="form-group">
+  <div class="form-group">
     <div class="col-md-4">
       <label class="col-sm-8 control-label">Discounted Course Fees</label>
       <%= form.text_field :payment_paid,value: @student.course.fees,id: :payment_paid, class: 'form-control' %>
     </div>
-   </div>
+  </div>
 <%end%>
 
-   <div class="form-group">
+  <div class="form-group">
     <div class="col-md-4">
-      <label class="col-sm-8 control-label">Payment</label>
+      <label class="col-sm-8 control-label">Taxable Value</label>
       <%= form.text_field :payment,id: :payment, class: 'form-control',readonly: false %>
     </div>
-   </div>
+  </div>
 
     <div class="form-group">
     <div class="col-md-4">
       <label class="col-sm-8 control-label">Payment Date</label>
       <%= form.date_field :payment_date, id: :payment_date, value: Date.today, class: 'form-control' %>
     </div>
-   </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="col-md-4">
+      <label class="col-sm-8 control-label">Current Amount Paid </label>
+      <%= form.text_field :payment,id: :current_payment, class: 'form-control',readonly: false %>
+    </div>
+  </div>
 
 <%if @fees.present?%>
     <div class="form-group">
@@ -182,45 +212,110 @@
       <label class="col-sm-8 control-label">Pending Payment</label>
       <%= form.text_field :pending_payment,id: :pending_payment, value: @fees,class: 'form-control',readonly: true %>
     </div>
-   </div>
-   <%else%>
+  </div>
+  <%else%>
     <div class="form-group">
     <div class="col-md-4">
       <label class="col-sm-8 control-label">Pending Payment</label>
       <%= form.text_field :pending_payment,id: :pending_payment, value: @student.course.fees,class: 'form-control',readonly: true %>
     </div>
-   </div>
+  </div>
   <%end%>
+
+
+  <div class="form-group">
+  <div class="col-md-4">
+    <label class="col-sm-8 control-label">CGST</label>
+    <%= form.text_field :cgst,id: :cgst, value: '9',class: 'form-control',readonly: true %>
+  </div>
+</div>
+
+
+<div class="form-group">
+<div class="col-md-4">
+  <label class="col-sm-8 control-label">SGST</label>
+  <%= form.text_field :sgst,id: :sgst, value: '9',class: 'form-control',readonly: true %>
+</div>
+</div>
+
+
+<div class="form-group">
+<div class="col-md-4">
+  <label class="col-sm-8 control-label">Total Tax Rate</label>
+  <%= form.text_field :igst,id: :igst, value: '18',class: 'form-control',readonly: true %>
+</div>
+</div>
+
+
 
 
   <div class="form-group"> 
     <div class="col-sm-offset-1 col-sm-10">  
-     <%= form.submit "Submit", class: 'btn btn-success' %>
-     <%= link_to 'Back', new_receipt_path,class: 'btn btn-red' %>
-   </div>
+    <%= form.submit "Submit", class: 'btn btn-success' %>
+    <%= link_to 'Back', new_receipt_path,class: 'btn btn-red' %>
   </div>
-
+  </div>
   <br>
   <% end %>
 
 
 
 <script type="text/javascript">
- $(document).on("keyup", "#discount", function() {
- var value1 = $(this).val();
- var value2 = $('#pending_payment').val();
- var discount = $('#discount').val();
- var div1 = (value2 * discount/100);
- var ans = (value2 - div1)
- $('#payment_paid').val(ans);
+
+
+var t1;
+var t2;
+t1 = +$('#payment_paid').val();
+t2 = +$('#igst').val();
+if($('#amount').val() == $(payment_paid).val())
+{
+  $('#payment').val((t1*t2/100)+t1);
+
+}
+  
+$(document).on("keyup", "#discount", function() {
+var value1 = $(this).val();
+var value2 = $('#pending_payment').val();
+var discount = $('#discount').val();
+var div1 = (value2 * discount/100);
+var ans = (value2 - div1)
+$('#payment_paid').val(ans);
+var t1;
+var t2;
+t1 = +$('#payment_paid').val();
+t2 = +$('#igst').val();
+var t3 = (t1*t2/100)+t1;
+$('#payment').val(t3);
+
+
+});
+$(document).on("keyup","#current_payment", function() {
+  var test = +$("#payment").val();
+  
+  var tes = +$("#current_payment").val();
+  $("#pending_payment").val(test - tes);
+  $('#pending_payment').val($('#payment_paid').val() - $('#current_payment').val())
+
 });
 
- $(document).on("keyup", "#payment", function() {
- var value1 = $(this).val();
- var value2 = $('#payment_paid').val();
- var value3 = value2-value1 ;
+$(document).on("keyup", "#payment", function() {
+var value1 = $(this).val();
+var pay = +$('#payment').val();
+var value2 = +$('#payment_paid').val();
 
- $('#pending_payment').val(value3);
+
+var value3 = value2-value1 ;
+var value4 = value3*18/100;
+
+
+$('#pending_payment').val(value3);
+$('#taxable_value').val(value3);
+$('#total_rate').val(value4);
+$('#total_amt').val(value3 + value4);
+$('#total_amt').val(total_amt1);
+
+
+
 });
 
 
@@ -229,16 +324,10 @@
 
 
 <script type="text/javascript">
-
-
 $("#check_no").css("visibility", "hidden");
-
 $("#bank").css("visibility", "hidden");
 $("#check").css("visibility", "hidden");
 document.getElementById('transaction').style.visibility='hidden';
-
-
-
   $(document).ready(function() {
     $("#receipt_payment_mode").keyup(function() {
       var a = $("#receipt_payment_mode").val();
@@ -247,9 +336,9 @@ document.getElementById('transaction').style.visibility='hidden';
                 $("#check_date").css("display", "block");
                 $("#bank_name").css("display", "block");
       }
-       else{
-       $("#receipt_payment_mode").css("display", "none");
-     }
+      else{
+      $("#receipt_payment_mode").css("display", "none");
+    }
     //   else if (this.value <= 119 && a >= 1) {
     //    $("#pete").css("display", "block");
     //  }
@@ -270,7 +359,7 @@ function jsfunction(){
 
   var a = document.getElementById('select_val').value;
 
- 
+
   if (a=="Cheque"){
   
     document.getElementById('check_no').style.visibility='visible';
@@ -292,8 +381,8 @@ function jsfunction(){
     document.getElementById('check').style.visibility='hidden';
     document.getElementById('bank').style.visibility='hidden';
   }
-                 
-                 
+                
+                
             }
   
 </script>
