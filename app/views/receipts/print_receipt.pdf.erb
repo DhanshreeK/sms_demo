@@ -43,14 +43,14 @@ tr:nth-child(even) {
    <%= @receipt.date %><br>
 
 <strong>Invoice Number:</strong>
-<%= @receipt.invoice_number %><br>
+<%= @receipt.invoice_number if @receipt.invoice_number.present?%><br>
 
 <strong>Description of Services:</strong>
-<%= @receipt.description_of_services %><br>
+<%= @receipt.description_of_services if @receipt.description_of_services.present?%><br>
 
 
 <strong>Place of Supply:</strong>
-<%= @receipt.place_of_supply %><br>
+<%= @receipt.place_of_supply  if @receipt.place_of_supply.present?%><br>
 
 <strong>Name of Customer:</strong>
    <%= @receipt.received_from %><br>
@@ -76,8 +76,8 @@ tr:nth-child(even) {
           <% @receipt.student.pending_payments.each_with_index do |fees| %>
               <tr>
                <td><%= fees.fees_paid%></td>
-              <td><%= @receipt.cgst%></td>
-              <td><%= @receipt.sgst%></td>
+              <td><%= @receipt.cgst if @receipt.cgst.present?%></td>
+              <td><%= @receipt.sgst if @receipt.sgst.present?%></td>
 
                 <%#= link_to 'Destroy', refarence, method: :delete, data: { confirm: 'Are you sure?' } %>
               </tr>
