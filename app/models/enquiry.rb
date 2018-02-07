@@ -1,7 +1,7 @@
 class Enquiry < ApplicationRecord
   belongs_to :center, optional:true
-  belongs_to :refarence
-  belongs_to :employee
+  belongs_to :refarence, optional:true
+  belongs_to :employee, optional:true
 
   def self.to_csv(fields = column_names, options = {})
    CSV.generate(options) do |csv|
