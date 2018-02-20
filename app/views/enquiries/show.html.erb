@@ -46,6 +46,10 @@
   <%= @enquiry.alternate_contact_no %>
 </p>
 
+<p>
+  <strong>Center:</strong>
+  <%= @enquiry.center.center_name if @enquiry.center.present?%>
+</p>
 
 <%if @enquiry.remark.present?%>
 <p>
