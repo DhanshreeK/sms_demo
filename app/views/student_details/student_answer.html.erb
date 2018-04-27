@@ -22,8 +22,113 @@
             <%end%>
         <div class="table-responsive">
         	<h3><b><%= @student_detail.first_name %> <%= @student_detail.middle_name %> <%= @student_detail.last_name %></b></h3>
-          <table class="table table-striped table-bordered table-hover dataTables-example" >
-            
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Course Applied For:</strong>
+          <%= @student_detail.course_applied_for %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Age:</strong>
+          <%= @student_detail.age %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Birthdate:</strong>
+          <%= @student_detail.birthdate %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Father Name:</strong>
+          <%= @student_detail.father_name %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Father Name:</strong>
+          <%= @student_detail.mother_name %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Father's Education:</strong>
+          <%= @student_detail.father_education %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Father's Occupation:</strong>
+          <%= @student_detail.father_education %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Mother's Education:</strong>
+          <%= @student_detail.mother_education %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>SSC Marks:</strong>
+          <%= @student_detail.ssc_marks %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>HSC Marks:</strong>
+          <%= @student_detail.hsc_marks %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>PCB %:</strong>
+          <%= @student_detail.pcb %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>PCM %:</strong>
+          <%= @student_detail.pcm %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Address:</strong>
+          <%= @student_detail.address %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Contact No:</strong>
+          <%= @student_detail.contact_no %>  
+        </p>
+        </div>
+
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Email:</strong>
+          <%= @student_detail.email %>  
+        </p>
+        </div>
+
+          <table class="table table-striped table-bordered table-hover dataTables-example" >            
 	<tr>
 		
 		<th>Question</th>

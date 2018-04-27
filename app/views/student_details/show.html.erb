@@ -1,11 +1,5 @@
 
-
-
-
-
 <%#= link_to 'Back' , questions_path , class: :"btn btn-warning" %>
-
-
 
 <%= render 'layouts/messages'%>
 <div class="col-md-12"> 
@@ -140,12 +134,6 @@ timer.addEventListener('reset', function (e) {
 
  <%#= link_to "save time", :url => {:controller=>'student_details', :action =>'disp_time'},  :method => :post, :with =>"stoptime" , remote: true %>
 
-
-                
-
-
-
-    
  
         <%= link_to 'Edit', edit_student_detail_path(@student_detail) , class: "btn btn-primary" %> |
 <%= link_to 'Back', student_details_path , class: "btn btn-warning" %>

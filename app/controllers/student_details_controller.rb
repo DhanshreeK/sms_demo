@@ -103,6 +103,7 @@ def student_answer
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_detail_params
-      params.require(:student_detail).permit(:first_name, :middle_name, :last_name, :email, :address , :contact_no)
+      params.require(:student_detail).permit(:first_name, :middle_name, :last_name, :email, :address , :contact_no, :course_applied_for, :age, :birthdate, :father_name, :mother_name, :father_education, :father_occupation, :mother_education, :ssc_marks, :hsc_marks, :pcb, :pcm, :signature
+)
     end
 end
