@@ -1,5 +1,7 @@
 {
   "name": "educational_consultancy",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "easytimer.js": "^2.2.1"
+  }
 }

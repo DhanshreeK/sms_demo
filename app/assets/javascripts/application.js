@@ -10,9 +10,22 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery3
 //= require jquery_ujs
 //= require jquery-ui
 //= require rails-ujs
-//= require bootstrap-select
+
 //= require dataTables/jquery.dataTables
+jQuery ->
+
+$(document).on("click", "#chronoExample .stopButton", function() {
+	alert(ugu);
+   $.ajax({
+   url: "/student_details/disp_time",
+   type: "POST",
+   data: {"#chronoExample .stopButton_id" : $(this).val()},
+   dataType: "json",
+   success: function(data) {
+       alert('successfully');
+     }
+   });
