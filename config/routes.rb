@@ -3,12 +3,13 @@ Rails.application.routes.draw do
     member do
       post :save_test
       get :student_answer
-
+      patch :stoptime
     end
     collection do
       get :search
       post :disp_time
     end
+    resources :comments
   end
   get 'email_settings/new'
 

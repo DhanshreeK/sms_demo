@@ -6,12 +6,22 @@ class StudentDetailsController < ApplicationController
   # GET /student_details.json
   def index
     @student_details = StudentDetail.all
+    @general_setting = GeneralSetting.first
   end
 
   # GET /student_details/1
   # GET /student_details/1.json
   def show
-  
+  respond_to do |format|
+        format.html
+        format.pdf do
+            render pdf: "show.pdf.erb"   # Excluding ".pdf" extension.
+          end
+        end
+  end
+
+  def stoptime
+    byebug
   end
 
   # GET /student_details/new
@@ -37,9 +47,11 @@ class StudentDetailsController < ApplicationController
 end
 def student_answer
   @student_detail= StudentDetail.find(params[:id])
-
-
+ if params[:params1].present?
+      @student_detail.update!(stoptime: params[:params1])
+    end
   end
+
   def disp_time
     byebug
   
@@ -98,6 +110,7 @@ def student_answer
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student_detail
+      @general_setting = GeneralSetting.first
       @student_detail = StudentDetail.find(params[:id])
     end
 

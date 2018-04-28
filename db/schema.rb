@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427060054) do
+ActiveRecord::Schema.define(version: 20180427110138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 20180427060054) do
     t.integer "sms_setting_id"
     t.bigint "email_setting_id"
     t.index ["email_setting_id"], name: "index_centers_on_email_setting_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.bigint "student_detail_id"
+    t.datetime "stoptime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_detail_id"], name: "index_comments_on_student_detail_id"
   end
 
   create_table "course_types", force: :cascade do |t|
@@ -268,6 +277,7 @@ ActiveRecord::Schema.define(version: 20180427060054) do
     t.string "pcb"
     t.string "pcm"
     t.text "signature"
+    t.time "stoptime"
   end
 
   create_table "students", force: :cascade do |t|
@@ -403,6 +413,7 @@ ActiveRecord::Schema.define(version: 20180427060054) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "centers", "email_settings"
+  add_foreign_key "comments", "student_details"
   add_foreign_key "courses", "course_types"
   add_foreign_key "courses", "universities"
   add_foreign_key "email_settings", "centers"
