@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :budgets
+  resources :colleges do
+    collection do
+      get :new1
+      post :find_budget
+    end
+  end
   resources :student_details do
     member do
       post :save_test

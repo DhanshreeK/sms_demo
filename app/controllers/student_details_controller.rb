@@ -41,7 +41,7 @@ def student_answer
 
   end
   def disp_time
-    byebug
+  
   
   end
 
@@ -58,6 +58,7 @@ def student_answer
   # POST /student_details
   # POST /student_details.json
   def create
+    time = params[:time]
     @student_detail = StudentDetail.new(student_detail_params)
 
     respond_to do |format|
@@ -103,6 +104,6 @@ def student_answer
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_detail_params
-      params.require(:student_detail).permit(:first_name, :middle_name, :last_name, :email, :address , :contact_no)
+      params.require(:student_detail).permit(:first_name, :middle_name, :last_name, :email, :address , :contact_no , :time)
     end
 end

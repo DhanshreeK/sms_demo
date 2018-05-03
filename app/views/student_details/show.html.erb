@@ -112,10 +112,13 @@ $('#chronoExample .pauseButton').click(function () {
 $('#chronoExample .stopButton').on("click" ,function () {
     stoptime = timer.getTimeValues(); 
 
-     var a = stoptime;
-    alert(a);
-     timer.stop();
-     });
+     
+  
+        
+/*        window.open("/student_details?time="+stoptime )
+*/     timer.stop();
+
+  });
 
 $('#chronoExample .resetButton').click(function () {
     timer.reset();

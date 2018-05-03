@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329104338) do
+ActiveRecord::Schema.define(version: 20180502070644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20180329104338) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "budgets", force: :cascade do |t|
+    t.string "budget"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "budget_from"
+    t.string "budget_to"
   end
 
   create_table "bulk_sms_settings", force: :cascade do |t|
@@ -60,6 +68,17 @@ ActiveRecord::Schema.define(version: 20180329104338) do
     t.integer "sms_setting_id"
     t.bigint "email_setting_id"
     t.index ["email_setting_id"], name: "index_centers_on_email_setting_id"
+  end
+
+  create_table "colleges", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "country"
+    t.string "fees"
+    t.bigint "budget_id"
+    t.index ["budget_id"], name: "index_colleges_on_budget_id"
   end
 
   create_table "course_types", force: :cascade do |t|
@@ -255,6 +274,20 @@ ActiveRecord::Schema.define(version: 20180329104338) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "contact_no"
+    t.string "course_applied_for"
+    t.string "age"
+    t.date "birthdate"
+    t.string "father_name"
+    t.string "mother_name"
+    t.string "father_education"
+    t.string "father_occupation"
+    t.string "mother_education"
+    t.string "ssc_marks"
+    t.string "hsc_marks"
+    t.string "pcb"
+    t.string "pcm"
+    t.text "signature"
+    t.string "time"
   end
 
   create_table "students", force: :cascade do |t|
@@ -390,6 +423,7 @@ ActiveRecord::Schema.define(version: 20180329104338) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "centers", "email_settings"
+  add_foreign_key "colleges", "budgets"
   add_foreign_key "courses", "course_types"
   add_foreign_key "courses", "universities"
   add_foreign_key "email_settings", "centers"
