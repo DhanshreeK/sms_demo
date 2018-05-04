@@ -53,7 +53,7 @@ def student_answer
   end
 
   def disp_time
-    byebug
+  
   
   end
 
@@ -70,6 +70,7 @@ def student_answer
   # POST /student_details
   # POST /student_details.json
   def create
+    time = params[:time]
     @student_detail = StudentDetail.new(student_detail_params)
 
     respond_to do |format|
