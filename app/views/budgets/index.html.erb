@@ -1,0 +1,77 @@
+<%= render 'layouts/messages'%> 
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title">Budgets</h3>
+        <ul class="panel-tool-options"> 
+          <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+          <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+          <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+        </ul>
+      </div>
+      <div class="panel-body">
+           <%= link_to 'New Budget', new_budget_path, class: 'btn btn-red btn-outline' %><p>&nbsp;</p>
+
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover dataTables-example" >
+  <thead>
+    <tr>
+      <th>Budget from</th>
+      <th>Budget to</th>
+      <th></th>
+  
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @budgets.each do |budget| %>
+      <tr>
+        <td><%= budget.budget_from %></td>
+        <td><%= budget.budget_to %></td>
+        <td><%= link_to 'Show', budget , class: 'btn btn-primary btn-xls'%>
+        <%= link_to 'Edit', edit_budget_path(budget), class: 'btn btn-warning btn-xls' %>
+        <%= link_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xls' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('.dataTables-example').DataTable({
+      dom: '<"html5buttons" B>lTfgitp',
+      buttons: [
+      {
+        extend: 'copyHtml5',
+        exportOptions: {
+          columns: [ 0, ':visible' ]
+        }
+      },
+      {
+        extend: 'excelHtml5',
+        exportOptions: {
+          columns: ':visible'
+        }
+      },
+      {
+        extend: 'pdfHtml5',
+        exportOptions: {
+          columns: [ 0, 1, 2, 3, 4 ]
+        }
+      },
+      'colvis'
+      ]
+    });
+  });
+</script>

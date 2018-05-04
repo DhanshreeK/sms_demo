@@ -1,0 +1,49 @@
+
+<div class="row"> 
+  <div class="col-md-12">
+  <br>
+    <br>
+      <div class="panel panel-primary">
+       <div class="panel-heading clearfix"> 
+         <div class="panel-title">Budget of colleges</div> 
+           <ul class="panel-tool-options"> 
+             <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+              <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+           </ul> 
+          </div> 
+         <br>
+        <!-- panel body --> 
+  <div class="panel-body"> 
+
+<%= form_with(model: budget, local: true) do |form| %>
+  <% if budget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
+
+      <ul>
+      <% budget.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="form-group">
+  <div class="col-md-4">
+    <label class="col-sm-6 control-label">Budget From</label>
+    <%= form.text_field :budget_from, id: :budget_budget_from, placeholder: 'Budget from', class: 'form-control' %>
+  </div>
+  </div>
+
+<div class="form-group">
+  <div class="col-md-6">
+    <label class="col-sm-6 control-label">Budget To</label>
+    <%= form.text_field :budget_to, id: :budget_budget_to, placeholder: 'Budget to', class: 'form-control' %>
+  </div>
+</div>
+<br><br><br><br>
+
+  <div class="actions">
+    <%= form.submit "Create", class: 'btn btn-success' %>
+  </div>
+<% end %>
