@@ -4,13 +4,13 @@ class UniversitiesController < ApplicationController
   # GET /universities
   # GET /universities.json
   def index
-  if current_user.role == 'Center'
-     @universities = current_user.center.universities
-    @general_setting = GeneralSetting.first
+    if current_user.role == 'Center'
+      @universities = current_user.center.universities
+      @general_setting = GeneralSetting.first
     else
-    @universities = University.all
-    @general_setting = GeneralSetting.first
-    @user = User.first
+      @universities = University.all
+      @general_setting = GeneralSetting.first
+      @user = User.first
   end
   end
 

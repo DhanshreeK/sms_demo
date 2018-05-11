@@ -1,16 +1,21 @@
 class User < ApplicationRecord
+   include Activity
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   belongs_to :general_setting, optional:true
   scope :shod, ->(id) { where(id: id).take }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          has_attached_file :photo,
   :url => "/assets/students/:basename.:extension",
   :path => ":rails_root/public/assets/students/:basename.:extension"
   scope :role_wise_users, ->(role) { where(role: role) }
+  
   validates_attachment_content_type :photo, content_type: \
   ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
+
   belongs_to :student, optional:true
   belongs_to :center, optional:true
   belongs_to :sms_setting, optional:true

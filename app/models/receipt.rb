@@ -1,4 +1,6 @@
 class Receipt < ApplicationRecord
+   include Activity
+
   belongs_to :student, optional:true
   belongs_to :center, optional:true
 

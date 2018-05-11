@@ -1,4 +1,7 @@
 class Student < ApplicationRecord
+   
+ include Activity
+
   belongs_to :course
   belongs_to :center
   belongs_to :university
@@ -21,6 +24,13 @@ class Student < ApplicationRecord
   after_save :send_bulk_message
   after_save :create_user_account
   scope :load, ->(id) { where(id: id).take }
+
+validates :first_name, presence: true
+validates :contact_no, presence: true,
+          :numericality => true, format: /\d[0-9]\)*\z/,
+                        :length => { :minimum => 10 }
+validates :email, presence: true, format: \
+ { with: /\A[a-zA-Z0-9._-]+@([a-zA-Z0-9]+\.)+[a-zA-Z]{2,4}+\z/ }
 
 
   def self.set_enrollment_no

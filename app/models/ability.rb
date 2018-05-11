@@ -7,6 +7,12 @@ class Ability
       else
         can [:read, :create, :update], :all
       end
+
+      p = user.collect { |i|[i.name, i.students.name] }
+      p.each do |i|
+      can [i[0].to_sym], (Object.const_get i[1])
+     end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

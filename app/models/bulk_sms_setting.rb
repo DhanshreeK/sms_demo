@@ -1,4 +1,6 @@
 class BulkSmsSetting < ApplicationRecord
+	 include Activity
+
 	belongs_to :center
 	belongs_to :student
 	after_create :send_bulk_message

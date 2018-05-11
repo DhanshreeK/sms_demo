@@ -1,4 +1,6 @@
 class Budget < ApplicationRecord
+	 include Activity
+
 	has_many :colleges
 
 	def budget_range
