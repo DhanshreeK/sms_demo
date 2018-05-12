@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-   include Activity
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

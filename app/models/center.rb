@@ -2,6 +2,7 @@ class Center < ApplicationRecord
  #owner: ->(controller, model) { controller && controller.current_user }
 
  include Activity
+
 	has_many :students
 	has_many :envelopes
 	has_many :employees

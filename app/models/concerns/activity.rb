@@ -1,4 +1,5 @@
 module Activity
+
   extend ActiveSupport::Concern
 
   included do
