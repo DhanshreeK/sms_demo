@@ -35,16 +35,19 @@ class StudentDetailsController < ApplicationController
 
   def save_test
     @student_detail = StudentDetail.find(params[:id])
-  @test = params[:question]
-   @test.each do |key, value|
-      StudentAnswer.create(student_detail_id: @student_detail.id,
-                                question_id: key,
-                                answer_id: value)
+    if params[:question].present?
+      @test = params[:question]
+       @test.each do |key, value|
+        StudentAnswer.create(student_detail_id: @student_detail.id,
+                                    question_id: key,
+                                    answer_id: value)
         ans = Answer.where(question_id: key.to_i, id: value.to_i).take
+      end
+    else
+            redirect_to student_answer_student_detail_path(@student_detail)
+    end
   end
-          redirect_to student_answer_student_detail_path(@student_detail)
 
-end
 def student_answer
   @student_detail= StudentDetail.find(params[:id])
  if params[:params1].present?

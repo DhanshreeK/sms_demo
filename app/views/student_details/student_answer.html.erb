@@ -145,8 +145,8 @@
 
 <% @student_detail.student_answers.each do |sa| %>
 <tr>
-<td><%= sa.question.question %></td>
-<td><%= sa.answer.answer %></td>
+<td><%= sa.question.question if sa.question.present?%></td>
+<td><%= sa.answer.answer if sa.answer.present?%></td>
 </tr>
           <%end%>
         </table>
