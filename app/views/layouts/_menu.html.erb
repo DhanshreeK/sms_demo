@@ -26,11 +26,12 @@
 		<!-- Site header  -->
 		<header class="site-header">
 		  <div class="site-logo">
-		      <% unless @general_setting.blank? %>
-		     <%= image_tag @general_setting.logo.url %>
-		     <%else%>
-		     <%= GeneralSetting.first.logo.url%>
-		  <% end %>
+		     <!--  <#% unless @general_setting.blank? %>
+		     <%#= image_tag @general_setting.logo.url %>
+		     <%#else%>
+		     <%#= GeneralSetting.first.logo.url%>
+		  <%# end %> -->
+		  <%= image_tag '/assets/logo1.png'%>
 		</div>
 		  <div class="sidebar-collapse hidden-xs"><a class="sidebar-collapse-icon" href="#"><i class="icon-menu"></i></a></div>
 		  <div class="sidebar-mobile-menu visible-xs"><a data-target="#side-nav" data-toggle="collapse" class="mobile-menu-icon" href="#"><i class="icon-menu"></i></a></div>

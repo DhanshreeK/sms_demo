@@ -11,7 +11,5 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require rails-ujs
-//= require bootstrap-select
 //= require dataTables/jquery.dataTables
