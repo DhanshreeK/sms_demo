@@ -46,7 +46,7 @@
         <div class="col-md-4">
         <p class="text-info">
           <strong>Birthdate:</strong>
-          <%= @student_detail.birthdate %>  
+          <%= @student_detail.birthdate.strftime("%d/%m/%Y") if @student_detail.birthdate.present?%>  
         </p>
         </div>
 
@@ -155,7 +155,7 @@
 <% @student_detail.comments.each do |comment| %>
   <p>
     <strong>Councelling Time:</strong>
-    <%= comment.stoptime.strftime("%H:%M:%S %m/%d/%Y") %>
+    <%= comment.stoptime.strftime("%H:%M:%S %m/%d/%Y") if comment.stoptime.present?%>
   </p>
  
   <p>

@@ -21,7 +21,7 @@ class StudentDetailsController < ApplicationController
   end
 
   def stoptime
-    byebug
+    # byebug
   end
 
   # GET /student_details/new
