@@ -1,4 +1,6 @@
 class GeneralSetting < ApplicationRecord
+	 include Activity
+
 	scope :shod, ->(id) { where(id: id).take }
 	has_attached_file :logo
 	has_many :users

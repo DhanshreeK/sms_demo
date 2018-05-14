@@ -1,0 +1,71 @@
+<%= render 'layouts/messages'%>
+<div class="col-md-12"> 
+ <br>
+                 <br>
+          <div class="panel panel-info">
+            <div class="panel-heading clearfix"> 
+              <div class="panel-title">User Activity</div> 
+              <ul class="panel-tool-options"> 
+               <!--  <li class="dropdown">
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
+                    <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
+                    <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+                  </ul>
+                 </li> -->
+                <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+<!--                 <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+ -->                <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+              </ul>  
+            </div> 
+            <!-- panel body --> 
+            <div class="panel-body"> 
+
+
+<div>
+	<ul class="breadcrumb">
+		<li><%= link_to 'Home',dashboard_home_index_path %></li>
+	</ul>
+</div>
+<hr>
+<div class="form-group">
+  <h4><b><font color="brown">User Details:</font></b></h4>
+</div>
+<div class="row">
+	<div class="col-md-3"><b>Activity Date:</b> </div>
+	<div class="col-md-3"><%= @activity.created_at %></div>
+	<div class="col-md-3"><b>User Role:</b></div>
+	<div class="col-md-3"><%= @activity.user.role %></div>
+	<div class="col-md-3"><b>User Email:</b></div>
+	<div class="col-md-3"><%= @activity.user.email %></div>
+	<div class="col-md-3"><b>User current sign in at:</b></div>
+	<div class="col-md-3"><%= @activity.user.current_sign_in_at %></div>
+	<div class="col-md-3"><b>User last sign in at:</b></div>
+	<div class="col-md-3"><%= @activity.user.last_sign_in_at %></div>
+	<div class="col-md-3"><b>User current sign in ip:</b></div>
+	<div class="col-md-3"><%= @activity.user.current_sign_in_ip %></div>
+	<div class="col-md-3"><b>User last sign in ip:</b></div>
+	<div class="col-md-3"><%= @activity.user.last_sign_in_ip %></div>
+</div>
+<hr>
+
+<div class="form-group">
+  <h4><b><font color="brown">Activity Details:</font></b></h4>
+</div>
+
+<div class="row">
+	<div class="col-md-3"><b>Action:</b> </div>
+	<div class="col-md-3"><%= @activity.action %></div>
+	<div class="col-md-3"><b>Model Name:</b></div>
+	<div class="col-md-3"><%= @activity.modelname %></div> 
+	 <% @model.each do |k, v|%>
+  	<div class="col-md-3"><b><%= k %></b></div>
+	<div class="col-md-3"><%= v ? v : '-' %></div>
+  <% end %> 
+</div>
+</div>
+</div>
+</div>

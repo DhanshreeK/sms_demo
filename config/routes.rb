@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'activities/index'
+
   resources :budgets
   resources :colleges do
     collection do
@@ -69,6 +71,10 @@ end
   resources :home do
     collection do 
     get :dashboard
+    get :dash
+    end
+    member do
+      get :user_activity
     end
   end
 
