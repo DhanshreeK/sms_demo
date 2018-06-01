@@ -80,7 +80,7 @@
 <div class="col-md-4">
 <p class="text-info">
   <strong>Contact no:</strong>
-  <%= @student.contact_no %>
+  <%= @student.contact_no if current_user.role == 'SuperAdmin' %>
 </p>
 </div>
 
@@ -88,7 +88,7 @@
 <div class="col-md-4">
 <p class="text-info">
   <strong>Alternate contact no:</strong>
-  <%= @student.alternate_contact_no %>
+  <%= @student.alternate_contact_no if current_user.role == 'SuperAdmin'  %>
 </p>
 </div>
 
@@ -128,14 +128,14 @@
 <div class="col-md-4">
 <p class="text-info">
   <strong>Father contact no:</strong>
-  <%= @student.father_contact_no %>
+  <%= @student.father_contact_no if current_user.role == 'SuperAdmin' %>
 </p></div>
 
 
 <div class="col-md-4">
 <p class="text-info">
   <strong>Mother contact no:</strong>
-  <%= @student.mother_contact_no %>
+  <%= @student.mother_contact_no if current_user.role == 'SuperAdmin' %>
 </p></div>
 
 
@@ -231,13 +231,14 @@
 </p>
 </div>
 
-
+<%if current_user.role == 'Employee'%>
 <div class="col-md-4">
 <p class="text-info">
   <strong>Center:</strong>
-  <%= @student.center.center_name %>
+  <%= current_user.employee.center.center_name %>
 </p>
 </div>
+<%end%>
 
 
 <div class="col-md-4">
@@ -268,13 +269,28 @@
 </p>
 </div>
 
-
+<%if current_user == 'Employee'%>
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Admission Done By:</strong>
+  <%= current_user.employee.name%>
+</p>
+</div>
+<%end%>
+<%if current_user == 'Center'%>
+<div class="col-md-4">
+<p class="text-info">
+  <strong>Admission Done By:</strong>
+  <%= current_user.center.center_name%>
+</p>
+</div>
+<%end%>
 </div>
 
 
 
 
-<% if current_user.role == 'SuperAdmin' %>
+<% if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' %>
 <%= link_to 'View aLL', view_all_students_path, class: 'btn btn-blue btn-outline' %>
 <%end%>
 <% if current_user.role == 'Student'%>

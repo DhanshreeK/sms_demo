@@ -76,13 +76,14 @@
 </p>
 </div>
 
-
+<%if current_user.role == 'SuperAdmin'%>
 <div class="col-md-4">
 <p class="text-info">
   <strong>Contact no:</strong>
-  <%= @student.contact_no %>
+  <%= @student.contact_no%>
 </p>
 </div>
+<%end%>
 
 
 <div class="col-md-4">

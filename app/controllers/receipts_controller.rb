@@ -22,9 +22,15 @@ class ReceiptsController < ApplicationController
 	def create
 		@receipt = Receipt.new(receipt_params)
 		@student = Student.load(params[:id])
-	    @receipt.save
+	    if @receipt.save
 	    @pending = PendingPayment.create!(student_id: @receipt.student_id, receipt_id: @receipt.id, fees_pending: @receipt.pending_payment, discount: @receipt.discount, fees_paid: @receipt.payment)
+	    if @receipt.pending_payment == '0'
+	    	@pending.update(payment_status: 'true')
+	    end
 	  	redirect_to @receipt
+	  else
+	  	redirect_to new_receipt_path
+	  end
 	end
 
 	def show

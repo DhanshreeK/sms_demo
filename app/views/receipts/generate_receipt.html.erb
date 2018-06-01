@@ -32,6 +32,7 @@
                 <th>Fees Pending</th>
                 <th>Fees Discount</th>
               <th>Paid At</th>
+                <th>Payment Status</th>
               
             </tr>
           </thead>
@@ -42,10 +43,16 @@
               <td><%=@fees = fees.fees_pending%></td>
               <td><%=@discount = fees.discount%></td>
               <td><%= fees.created_at.to_date%></td>
+              <%if fees.payment_status == true%>
+              <td><font color="green"><%fees.payment_status%>Payment Completed</font></td>
+              <%else%>
+              <td><font color="red">Payment Pending</font></td>
+              <%end%>
               </tr>
           <% end %>
           </tbody>
         </table>
+
 
   <%= form_for @receipt, url: {action: 'create', controller: 'receipts'} do |form| %>
 <%= form.hidden_field :student_id, :value => @student.id %>
@@ -78,14 +85,14 @@
   
   <div class="form-group">
   <div class="col-md-4">
-    <label class="col-sm-8 control-label">Invoice Number</label>
+    <label class="col-sm-8 control-label">Invoice Number<font color="red">*</font></label>
     <%= form.text_field :invoice_number, id: :receipt_invoice_number, class: 'form-control' %>
   </div>
   </div>
 
     <div class="form-group">
     <div class="col-md-4">
-      <label class="col-sm-8 control-label">Date of Invoice</label>
+      <label class="col-sm-8 control-label">Date of Invoice<font color="red">*</font></label>
       <%= form.date_field :date, id: :receipt_date, value: Date.today, class: 'form-control' %>
     </div>
   </div>
@@ -93,7 +100,7 @@
 
   <div class="form-group">
     <div class="col-md-4">
-      <label class="col-sm-8 control-label">Received From</label>
+      <label class="col-sm-8 control-label">Received From<font color="red">*</font></label>
       <%= form.text_field :received_from,value: @student.first_name + " " + @student.last_name, class: 'form-control' %>
     </div>
   </div>
@@ -245,8 +252,6 @@
   <%= form.text_field :igst,id: :igst, value: '18',class: 'form-control',readonly: true %>
 </div>
 </div>
-
-
 
 
   <div class="form-group"> 

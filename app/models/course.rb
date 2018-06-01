@@ -1,10 +1,9 @@
 class Course < ApplicationRecord
-	 include Activity
-  
-	validates :course_name, presence: true
+  include Activity
+  validates :course_name, presence: true
   belongs_to :course_type
   belongs_to :university
   belongs_to :center, optional:true
-  has_many :students
+  has_many :students, dependent: :destroy
   scope :load, ->(id) { where(id: id).take }
 end

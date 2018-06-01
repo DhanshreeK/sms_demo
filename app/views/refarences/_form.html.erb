@@ -24,6 +24,12 @@
                               <br>
 
                               <div class="panel-body">
+                                <div class="panel-body collapse in" id="collapsepanel">
+                                  <ol class="breadcrumb breadcrumb-2"> 
+                                    <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
+                                    <li class="active">Referenced By</li> 
+                                  </ol> 
+                                </div>
                                 <%= form_with(model: refarence, local: true) do |form| %>
                                 <% if refarence.errors.any? %>
                                 <div id="error_explanation">
@@ -40,7 +46,7 @@
 
                                  <div class="form-group">
                                   <div class="col-md-4">
-                                    <label class="col-sm-8 control-label">Referenced By</label>
+                                    <label class="col-sm-8 control-label">Referenced By<font color="red">*</font></label>
                                     <%= form.text_field :name, id: :refarence_name, placeholder: 'Referenced By', class: 'form-control' %>
                                   </div>
 

@@ -1,8 +1,8 @@
 class Receipt < ApplicationRecord
-   include Activity
-
+  include Activity
   belongs_to :student, optional:true
   belongs_to :center, optional:true
+  validates_presence_of :payment, message: 'You must add the amount to pay'
 
   def self.set_invoice_no
     date = Date.today.strftime('%d')

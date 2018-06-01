@@ -24,6 +24,12 @@
                         <br>
                         <!-- panel body --> 
                         <div class="panel-body"> 
+                           <div class="panel-body collapse in" id="collapsepanel">
+                                  <ol class="breadcrumb breadcrumb-2"> 
+                                    <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
+                                    <li class="active">University</li> 
+                                  </ol> 
+                                </div>
 <%= form_with(model: university, local: true,html: { multipart: true }) do |form| %>
   <% if university.errors.any? %>
     <div id="error_explanation">
@@ -41,7 +47,7 @@
 
      <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">University Name</label>
+          <label class="col-sm-6 control-label">University Name<font color="red">*</font></label>
     <%= form.text_field :university_name, id: :university_university_name , placeholder: 'University Name',class: 'form-control'%>
   </div>
 </div>
@@ -49,7 +55,7 @@
 
     <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Country</label>
+          <label class="col-sm-6 control-label">Country<font color="red">*</font></label>
 <%=country_select("center", "country", { priority_countries: ["IN", "FR"], selected: "IN" }, { class: 'form-control', data: { attribute: "value" } })%>
   </div></div>
 
@@ -79,12 +85,14 @@
   </div>
   </div>
 
+<%if current_user.role == 'SuperAdmin'%>
   <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Status</label>
   <%= form.radio_button "status", "true", checked: "checked" %> <b>Active</b>
               <%= form.radio_button "status", "false"%> <b>Inactive</b>
                  </div></div>
+<%end%>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <div class="form-group"> 

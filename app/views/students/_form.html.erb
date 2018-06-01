@@ -11,6 +11,13 @@
         </ul>
       </div>
       <div class="panel-body">
+          <div class="panel-body collapse in" id="collapsepanel">
+              <ol class="breadcrumb breadcrumb-2"> 
+                <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
+                <li class="active">Student Admission Form</li> 
+              </ol> 
+         </div>
+
         <div id="rootwizard-2" class="form-wizard validate-form-wizard validate">
           <div class="wizard-navbar">
             <ul>
@@ -43,7 +50,7 @@
 
                 <div class="col-md-4"> 
                   <div class="form-group"> 
-                    <label for="username" class="control-label">First Name</label>
+                    <label for="username" class="control-label">First Name<font color="red">*</font></label>
                     <%= form.text_field :first_name, id: :student_first_name, placeholder: 'First Name', class: 'form-control'%>
                   </div>
                 </div> 
@@ -66,8 +73,8 @@
                 </div>
                 <div class="col-md-4"> 
                   <div class="form-group"> 
-                    <label for="email" class="control-label">Contact</label>
-                    <%= form.text_field :contact_no, id: :student_contact_no, placeholder: 'Contact', class: 'form-control' %>
+                    <label for="email" class="control-label">Contact<font color="red">*</font></label>
+                    <%= form.text_field :contact_no, id: :student_contact_no, placeholder: 'Contact', class: 'form-control',maxLength: "10" %>
                   </div>
                 </div>
 
@@ -75,7 +82,7 @@
                 <div class="col-md-4"> 
                   <div class="form-group"> 
                     <label for="email" class="control-label">Alternate Contact</label>
-                    <%= form.text_field :alternate_contact_no, id: :student_alternate_contact_no, placeholder: 'Contact', class: 'form-control' %>
+                    <%= form.text_field :alternate_contact_no, id: :student_alternate_contact_no, placeholder: 'Contact', class: 'form-control',maxLength: "10" %>
                   </div>
                 </div>
 
@@ -89,7 +96,7 @@
 
                 <div class="col-md-4"> 
                   <div class="form-group"> 
-                    <label for="email" class="control-label">Select Category</label>
+                    <label for="email" class="control-label">Select Category<font color="red">*</font></label>
                     <%= form.select :caste_category_id,CasteCategory.all.collect{|a| [a.name, a.id]}, {prompt:true},id: 'student_caste_category_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
                   </div>
                 </div>
@@ -121,7 +128,7 @@
                <div class="col-md-4"> 
                 <div class="form-group"> 
                   <label for="username" class="control-label">Email<font color="red">*</font></label>
-                  <%= form.text_field :email, id: :student_email, :value=> @student.email , class: "form-control"%>
+                  <%= form.text_field :email, id: :email, :value=> @student.email , class: "form-control"%>
                 </div>
               </div> 
 
@@ -134,7 +141,7 @@
 
                   <div class="col-md-4"> 
                   <div class="form-group"> 
-                    <label for="email" class="control-label">Where did you find Us</label>
+                    <label for="email" class="control-label">Where did you find Us<font color="red">*</font></label>
                     <%= form.select :refarence_id,Refarence.all.collect{|a| [a.name, a.id]}, {prompt:true},id: 'student_refarence_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
                   </div>
                 </div>
@@ -177,7 +184,7 @@
              <div class="col-md-4"> 
               <div class="form-group"> 
                 <label for="email" class="control-label">Father Contact</label>
-                <%= form.text_field :father_contact_no, id: :student_father_contact_no, placeholder: 'Father Contact',class: 'form-control' %>
+                <%= form.text_field :father_contact_no, id: :student_father_contact_no, placeholder: 'Father Contact',class: 'form-control',maxLength: "10" %>
               </div>
             </div>   
 
@@ -194,14 +201,14 @@
             <div class="col-md-4"> 
               <div class="form-group"> 
                 <label for="email" class="control-label">Mother Contact</label>
-                <%= form.text_field :mother_contact_no, id: :student_mother_contact_no, placeholder: 'Mother Contact' ,class: 'form-control'%>
+                <%= form.text_field :mother_contact_no, id: :student_mother_contact_no, placeholder: 'Mother Contact' ,class: 'form-control',maxLength: "10"%>
               </div>
             </div>
 
             <div class="col-md-4"> 
               <div class="form-group"> 
                 <label for="email" class="control-label">Alternate Guardian Contact</label>
-                <%= form.text_field :alternate_contact, id: :student_alternate_contact, placeholder: 'Alternate Contact',class: 'form-control' %>
+                <%= form.text_field :alternate_contact, id: :student_alternate_contact, placeholder: 'Alternate Contact',class: 'form-control', maxLength: "10" %>
               </div>
             </div>  
             
@@ -214,12 +221,12 @@
           <div class="row"> 
             <div class="col-md-4"> 
               <div class="form-group"> 
-                <label for="cardholdername" class="control-label">Permanent Address</label>
+                <label for="cardholdername" class="control-label">Permanent Address<font color="red">*</font></label>
                 <%= form.text_field :permanent_address, id: :address_1, placeholder: 'Permanent Address', class: 'form-control' %>                        </div>
               </div>
               <div class="col-md-4"> 
               <div class="form-group"> 
-                <label for="cardholdername" class="control-label">Permanent Pin Code</label>
+                <label for="cardholdername" class="control-label">Permanent Pin Code<font color="red">*</font></label>
                 <%= form.text_field :permanent_pin, id: :student_permanent_pin, placeholder: 'Pincode', class: 'form-control' %>                        </div>
               </div>  
               <div class="col-md-4"> 
@@ -278,28 +285,28 @@
             <div class="row"> 
               <div class="col-md-3"> 
                 <div class="form-group"> 
-                 <label for="cardholdername" class="control-label">10th Marks</label>
+                 <label for="cardholdername" class="control-label">10th Marks<font color="red">*</font></label>
                  <%= form.text_field :tenth, id: :student_tenth, placeholder: 'Tenth',class: 'form-control' %>                       
                </div>
              </div> 
 
              <div class="col-md-3"> 
               <div class="form-group"> 
-               <label for="cardholdername" class="control-label">10th Marksheet upload</label>
+               <label for="cardholdername" class="control-label">10th Marksheet upload<font color="red">*</font></label>
                <%= form.file_field :attachment, id: :student_attachment, class: 'form-control' %>                       
              </div>
            </div> 
 
            <div class="col-md-3"> 
              <div class="form-group"> 
-              <label for="cardnumber" class="control-label">12th Marks</label> 
+              <label for="cardnumber" class="control-label">12th Marks<font color="red">*</font></label> 
               <%= form.text_field :twelth, id: :student_twelth, placeholder: 'Twelth', class: 'form-control' %> 
             </div>
           </div>
 
           <div class="col-md-3"> 
             <div class="form-group"> 
-             <label for="cardholdername" class="control-label">12th Marksheet upload</label>
+             <label for="cardholdername" class="control-label">12th Marksheet upload<font color="red">*</font></label>
              <%= form.file_field :twelth_attachment, id: :student_twelth_attachment, class: 'form-control' %>                       
            </div>
          </div> 
@@ -363,22 +370,25 @@
   <div class="row"> 
     <div class="col-md-4"> 
       <div class="form-group"> 
-        <label for="cvc" class="control-label">Select University</label>
+        <label for="cvc" class="control-label">Select University<font color="red">*</font></label>
         <%= form.select :university_id,University.all.collect{|a| [a.university_name,a.id]},{prompt:true},id: 'university_id',class: "form-control"  %>
       </div>
     </div>
 
+<%if current_user.role == 'SuperAdmin'%>
     <div class="col-md-4"> 
       <div class="form-group"> 
-        <label for="cvc" class="control-label">Center</label>
+        <label for="cvc" class="control-label">Center<font color="red">*</font></label>
         <%= form.select :center_id,Center.all.collect{|a| [a.center_name,a.id]},{prompt:true},id: 'center_id',class: "form-control"  %>
       </div>
     </div>
+<%end%>
+
 
 
     <div class="col-md-4"> 
       <div class="form-group"> 
-        <label for="cvc" class="control-label">Course</label>
+        <label for="cvc" class="control-label">Course Type<font color="red">*</font></label>
         <%= form.select :course_type_id,CourseType.all.collect{|a| [a.course_type_name,a.id]},{prompt:true},id: 'course_type_id',class: "form-control" %>
       </div>
     </div>
@@ -386,12 +396,12 @@
 
     <div class="col-md-4"> 
       <div class="form-group"> 
-        <label for="cvc" class="control-label">Course</label>
+        <label for="cvc" class="control-label">Course<font color="red">*</font></label>
         <%= form.select :course_id,Course.all.collect{|a| [a.course_name,a.id]},{prompt:true},id: 'course_id',class: "form-control " %>
       </div>
     </div>
 
-  <%if current_user.role != 'Student' %>
+  <%if current_user.role == 'SuperAdmin' %>
        <div class="form-group">
           <div class="col-md-4">
               <label class="col-sm-6 control-label">Status</label>
@@ -427,7 +437,24 @@
 
 
 
+<script type="text/javascript">
+  var validateEmail = function(elementValue) {
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(elementValue);
+}
 
+
+
+$('#email').keyup(function() {
+    var value = $(this).val();
+    var valid = validateEmail(value);
+    if (!valid) {
+        $(this).css('color', 'red');
+    } else {
+        $(this).css('color', '#000');
+    }
+});
+</script>
 
 <script type="text/javascript">
   $(document).ready(function() {
