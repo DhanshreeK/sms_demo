@@ -1,9 +1,7 @@
 class Student < ApplicationRecord
-   
- include Activity
-
+  include Activity
   belongs_to :course
-  belongs_to :center
+  belongs_to :center, optional:true
   belongs_to :university
   belongs_to :employee, optional:true
   belongs_to :refarence
@@ -24,6 +22,7 @@ class Student < ApplicationRecord
   after_save :send_bulk_message
   after_save :create_user_account
   scope :load, ->(id) { where(id: id).take }
+
 
 validates :first_name, presence: true
 validates :contact_no, presence: true,

@@ -23,7 +23,14 @@
                         </div> 
                         <br>
                        
-                        <div class="panel-body">  
+        <div class="panel-body"> 
+          <div class="panel-body collapse in" id="collapsepanel">
+              <ol class="breadcrumb breadcrumb-2"> 
+                <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
+                <li class="active">Center</li> 
+              </ol> 
+            </div>
+ 
 <%= form_with(model: center, local: true) do |form| %>
   <% if center.errors.any? %>
     <div id="error_explanation">
@@ -41,7 +48,7 @@
 
      <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Center Name</label>
+          <label class="col-sm-6 control-label">Center Name<font color="red">*</font></label>
     <%= form.text_field :center_name, id: :center_center_name, placeholder: 'Center Name', class: 'form-control' %>
     </div>
   </div>
@@ -72,21 +79,21 @@
      <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Pan Card No</label>
-      <%= form.text_field :pan_card_no, id: :center_pan_card_no , placeholder: 'Pan Card No', class: 'form-control'%>
+      <%= form.text_field :pan_card_no, id: :pan_no , placeholder: 'Pan Card No', class: 'form-control', onchange: "myFunction()",maxLength: "10" %>
       </div>
     </div>
 
       <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Contact</label>
-          <%= form.text_field :contact, id: :center_contact, placeholder: 'Contact', class: 'form-control' %>
+          <label class="col-sm-6 control-label">Contact<font color="red">*</font></label>
+          <%= form.text_field :contact, id: :center_contact, placeholder: 'Contact', class: 'form-control',maxLength: "10" %>
       </div>
     </div>
 
       <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Alternate Contact</label>
-        <%= form.text_field :alternate_contact, id: :center_alternate_contact, placeholder: 'Alternate Contact', class: 'form-control' %>
+        <%= form.text_field :alternate_contact, id: :center_alternate_contact, placeholder: 'Alternate Contact', class: 'form-control',maxLength: "10" %>
       </div>
       </div>
 
@@ -114,7 +121,7 @@
      <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Email<font color="red">*</font></label>
-        <%= form.text_field :email, id: :center_email, placeholder: 'Email', class: 'form-control' %>
+        <%= form.text_field :email, id: :email, placeholder: 'Email', class: 'form-control' %>
         </div>
   </div>
 
@@ -133,6 +140,7 @@
         </div>
    </div>
 
+<% if current_user.role == 'SuperAdmin'%>
   <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Status</label>
@@ -140,6 +148,7 @@
               <%= form.radio_button "center_status", "Inactive", checked: "checked"%> <b>Inactive</b>
   </div>
  </div>
+ <%end%>
 
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                         <div class="form-group"> 
@@ -153,3 +162,40 @@
 <% end %>
 </div>
 </div></div></div>
+
+
+<script type="text/javascript">
+  var validateEmail = function(elementValue) {
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(elementValue);
+}
+$('#email').keyup(function() {
+    var value = $(this).val();
+    var valid = validateEmail(value);
+    if (!valid) {
+        $(this).css('color', 'red');
+    } else {
+        $(this).css('color', '#000');
+    }
+});
+</script>
+
+<script type="text/javascript">
+  
+function myFunction(x)
+{ 
+ var x = document.getElementById("pan_no");
+var letters = /^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/;
+if(x.value.match(letters))
+{
+document.form1.text1.focus();
+return true;
+}
+else
+{
+alert('Please input correct characters in PAN No. ');
+return false;
+}
+}
+
+</script>

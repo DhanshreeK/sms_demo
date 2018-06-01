@@ -11,7 +11,7 @@ class StudentDetailsController < ApplicationController
 
   # GET /student_details/1
   # GET /student_details/1.json
-  def show
+  def show   
   respond_to do |format|
         format.html
         format.pdf do
@@ -21,7 +21,7 @@ class StudentDetailsController < ApplicationController
   end
 
   def stoptime
-    byebug
+    # byebug
   end
 
   # GET /student_details/new
@@ -35,18 +35,26 @@ class StudentDetailsController < ApplicationController
 
   def save_test
     @student_detail = StudentDetail.find(params[:id])
-  @test = params[:question]
-   @test.each do |key, value|
-      StudentAnswer.create(student_detail_id: @student_detail.id,
-                                question_id: key,
-                                answer_id: value)
+    if params[:question].present?
+      @test = params[:question]
+       @test.each do |key, value|
+        StudentAnswer.create(student_detail_id: @student_detail.id,
+                                    question_id: key,
+                                    answer_id: value)
         ans = Answer.where(question_id: key.to_i, id: value.to_i).take
-  end
-          redirect_to student_answer_student_detail_path(@student_detail)
+      end
+                  redirect_to student_answer_student_detail_path(@student_detail)
 
-end
+    else
+            redirect_to student_answer_student_detail_path(@student_detail)
+    end
+  end
+
 def student_answer
   @student_detail= StudentDetail.find(params[:id])
+
+   dob = (Date.today.strftime('%Y%m%d').to_i - @student_detail.birthdate.strftime('%Y%m%d').to_i) / 10000
+   @student_detail.update(age: dob)
  if params[:params1].present?
       @student_detail.update!(stoptime: params[:params1])
     end
@@ -117,7 +125,7 @@ def student_answer
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_detail_params
-      params.require(:student_detail).permit(:first_name, :middle_name, :last_name, :email, :address , :contact_no, :course_applied_for, :age, :birthdate, :father_name, :mother_name, :father_education, :father_occupation, :mother_education, :ssc_marks, :hsc_marks, :pcb, :pcm, :signature
+      params.require(:student_detail).permit(:alternate_no, :wp_no ,:category_list,:course_id,:first_name, :middle_name, :last_name, :email, :address , :contact_no, :course_applied_for, :age, :birthdate, :father_name, :mother_name, :father_education, :father_occupation, :mother_education, :ssc_marks, :hsc_marks, :pcb, :pcm, :signature
 )
     end
 end

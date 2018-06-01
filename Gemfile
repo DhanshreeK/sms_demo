@@ -26,7 +26,7 @@ gem 'roo-xls'
 gem 'ajax-datatables-rails'
 gem 'figaro'
 gem "nested_form"
-
+gem "select2-rails"
 gem "jquery-rails"
 # this will convert total amount to words
 gem 'to_words'

@@ -24,6 +24,12 @@
                         <br>
                        
                         <div class="panel-body">
+                          <div class="panel-body collapse in" id="collapsepanel">
+                                  <ol class="breadcrumb breadcrumb-2"> 
+                                    <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
+                                    <li class="active">Course Type</li> 
+                                  </ol> 
+                                </div>
 <%= form_with(model: course_type, local: true) do |form| %>
   <% if course_type.errors.any? %>
     <div id="error_explanation">
@@ -41,7 +47,7 @@
 
      <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Course Type</label>
+          <label class="col-sm-6 control-label">Course Type<font color="red">*</font></label>
     <%= form.text_field :course_type_name, id: :course_type_course_type_name, placeholder: 'Course Type', class: 'form-control' %>
 <br>
 </div>

@@ -25,6 +25,15 @@ class ReportsController < ApplicationController
       end
 	end
 
+	def payment_status
+		@pending_payments = PendingPayment.all
+		respond_to do |format|
+	      format.html
+	      format.csv { send_data @pending_payments.to_csv }
+	      format.xls { send_data @pending_payments.to_csv(col_sep: "\t"), filename: 'pending_payments-#{Date.today}.xls'}
+	    end
+	end
+
 	def reference_report
 		@general_setting = GeneralSetting.first
 	end

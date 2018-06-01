@@ -41,7 +41,7 @@
 
      <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Content(if any)</label>
+          <label class="col-sm-6 control-label">Content(if any)<font color="red">*</font></label>
           <%= form.text_field :content, id: :envelope_content, placeholder: 'Content' , class: 'form-control'%>
         </div>
     </div>
@@ -49,7 +49,7 @@
     
      <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Center Select</label>
+          <label class="col-sm-6 control-label">Center Select<font color="red">*</font></label>
     <%= form.select :center_id, Center.all.collect{|c| [c.center_name,c.id]}, {prompt:true},id: 'envelope_center_id',class: "form-control selectpicker", "data-live-search" => "true" 
  %>
     </div>

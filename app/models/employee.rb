@@ -1,7 +1,5 @@
 class Employee < ApplicationRecord
-   include Activity
-
-  
+  include Activity
   belongs_to :center, optional:true
   belongs_to :sms_setting, optional:true
   belongs_to :email_setting, optional:true

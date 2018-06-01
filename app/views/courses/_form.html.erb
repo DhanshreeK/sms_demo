@@ -23,7 +23,13 @@
                         </div> 
                         <br>
                        
-                        <div class="panel-body"> 
+                        <div class="panel-body">
+                         <div class="panel-body collapse in" id="collapsepanel">
+                                  <ol class="breadcrumb breadcrumb-2"> 
+                                    <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
+                                    <li class="active">Courses</li> 
+                                  </ol> 
+                                </div> 
 <%= form_with(model: course, local: true) do |form| %>
   <% if course.errors.any? %>
     <div id="error_explanation">
@@ -40,7 +46,7 @@
 
   <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Course Name</label>
+          <label class="col-sm-6 control-label">Course Name<font color="red">*</font></label>
    <%= form.text_field :course_name, id: :course_course_name, placeholder: 'Course Name', class: 'form-control' %>
   </div>
   </div>
@@ -48,14 +54,14 @@
   <%if current_user.role == 'Center'%>
   <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Course Type</label>
+          <label class="col-sm-6 control-label">Course Type<font color="red">*</font></label>
     <%= form.select :course_type_id,current_user.center.course_types.collect{|a| [a.course_type_name,a.id]}, {prompt:true},id: 'course_course_type_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
   </div>
   <%else%>
      <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Course Type</label>
+          <label class="col-sm-6 control-label">Course Type<font color="red">*</font></label>
     <%= form.select :course_type_id,CourseType.all.collect{|a| [a.course_type_name,a.id]}, {prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
   </div>
@@ -64,14 +70,14 @@
    <%if current_user.role == 'Center'%>
     <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">University</label>
+          <label class="col-sm-6 control-label">University<font color="red">*</font></label>
     <%= form.select :university_id,current_user.center.universities.collect{|a| [a.university_name,a.id]},{prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
   </div>
   <%else%>
   <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">University</label>
+          <label class="col-sm-6 control-label">University<font color="red">*</font></label>
     <%= form.select :university_id,University.all.collect{|a| [a.university_name,a.id]},{prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
   </div>
@@ -92,7 +98,7 @@
   </div>
 </div>
 
-
+<% if current_user.role == 'SuperAdmin'%>
   <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">Status</label>
@@ -101,6 +107,8 @@
               <br><br><br>
  </div>
  </div>
+ <%end%>
+
  <br><br><br><br><br><br><br><br><br>
             <div class="form-group"> 
                                 <div class="col-sm-offset-1 col-sm-10">  

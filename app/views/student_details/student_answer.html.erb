@@ -46,7 +46,7 @@
         <div class="col-md-4">
         <p class="text-info">
           <strong>Birthdate:</strong>
-          <%= @student_detail.birthdate %>  
+          <%= @student_detail.birthdate.strftime("%d/%m/%Y") if @student_detail.birthdate.present?%>  
         </p>
         </div>
 
@@ -145,8 +145,8 @@
 
 <% @student_detail.student_answers.each do |sa| %>
 <tr>
-<td><%= sa.question.question %></td>
-<td><%= sa.answer.answer %></td>
+<td><%= sa.question.question if sa.question.present?%></td>
+<td><%= sa.answer.answer if sa.answer.present?%></td>
 </tr>
           <%end%>
         </table>
@@ -155,7 +155,7 @@
 <% @student_detail.comments.each do |comment| %>
   <p>
     <strong>Councelling Time:</strong>
-    <%= comment.stoptime.strftime("%H:%M:%S %m/%d/%Y") %>
+    <%= comment.stoptime.strftime("%H:%M:%S %m/%d/%Y") if comment.stoptime.present?%>
   </p>
  
   <p>
