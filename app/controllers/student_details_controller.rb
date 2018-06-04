@@ -72,23 +72,32 @@ def student_answer
     else
       @student_details = StudentDetail.all.order('created_at DESC')
     end
+    
+      end
+    
+      # POST /student_details
+      # POST /student_details.json
+      def create
+        courses = []
+        course_id = Course.find_by(id: params[:courses])
+        time = params[:time]
+        @student_detail = StudentDetail.new(student_detail_params)
+        courses << params[:courses]
 
-  end
-
-  # POST /student_details
-  # POST /student_details.json
-  def create
-    time = params[:time]
-    @student_detail = StudentDetail.new(student_detail_params)
-
-    respond_to do |format|
-      if @student_detail.save
+        
+        respond_to do |format|
+          if @student_detail.save
+            courses.each do |i|
+          byebug
+            @student_detail.update(course_id: i)
         format.html { redirect_to  question_question_path(@student_detail), notice: 'Student detail was successfully created.' }
         #format.json { render :show, status: :created, location: @student_detail }
+         end
       else
         format.html { render :new }
         format.json { render json: @student_detail.errors, status: :unprocessable_entity }
-      end
+     
+    end
     end
   end
 
@@ -125,7 +134,6 @@ def student_answer
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_detail_params
-      params.require(:student_detail).permit(:alternate_no, :wp_no ,:category_list,:course_id,:first_name, :middle_name, :last_name, :email, :address , :contact_no, :course_applied_for, :age, :birthdate, :father_name, :mother_name, :father_education, :father_occupation, :mother_education, :ssc_marks, :hsc_marks, :pcb, :pcm, :signature
-)
+      params.require(:student_detail).permit(:alternate_no, :wp_no ,:category_list,:course_id,:first_name, :middle_name, :last_name, :email, :address , :contact_no, :course_applied_for, :age, :birthdate, :father_name, :mother_name, :father_education, :father_occupation, :mother_education, :ssc_marks, :hsc_marks, :pcb, :pcm, :signature ,:neet , :college_id , :budget_id , :country_id , :medical_college_id)
     end
 end

@@ -53,7 +53,7 @@
    <div class="form-group">
         <div class="col-md-4">
         <label class="col-sm-10 control-label">Course Applied For<font color="red">*</font></label>
-    <%= form.select :course_id,Course.all.collect{|c| [c.course_name,c.id]},{prompt:true} , class: "form-control" %>
+    <%= form.select :course_ids,Course.all.collect{|c| [c.course_name,c.id]},{prompt: true},name: "courses[]" ,class: "form-control" , class: "js-example-basic-multiple" , multiple: "multiple" , size: "3" %>
   </div>
 </div>
   
@@ -214,6 +214,35 @@
     <%= form.select :category_list ,options_for_select(["OPEN","RESERVED"]),{prompt:true} ,class: "form-control" %>
   </div>
 </div>
+<div class="form-group">
+        <div class="col-md-4">
+        <label class="col-sm-6 control-label">NEET Score<font color="red">*</font></label>
+    <%= form.text_field :neet, id: :neet , class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+        <div class="col-md-4">
+        <label class="col-sm-10 control-label">Select Budget<font color="red">*</font></label>
+    <%= form.select :budget_id ,Budget.all.collect{|b| [b.budget,b.id]},{prompt: true} ,class: "form-control selectpicker", "data-live-search" => "true"  %>
+  </div>
+</div>
+<div class="form-group">
+     <div class="col-md-4">
+     
+    <%= form.label :country_id %><br />
+
+    <%= form.select :country_id, Country.order(:country).collect{|c| [c.country , c.id ]} , {prompt: true} ,class: "form-control selectpicker" , "data-live-search" => "true" %>
+  </div>
+  </div>
+
+   <div class="form-group">
+     <div class="col-md-4">
+<!--         <label class="col-sm-10 control-label">Select College<font color="red">*</font></label>
+ -->    <%= form.label :medical_college_id, "Colleges" %><br />
+    <%= form.select :medical_college_id, MedicalCollege.all.collect{|m|[m.college_name , m.id ]} , {prompt: true} , class: "form-control selectpicker", "data-live-search" => "true" %>
+  </div>
+
 
 <!-- 
 <div class="form-group">
@@ -271,3 +300,21 @@ $('#email').keyup(function() {
     }
 });
 </script>
+
+  <head>
+        <link href="/assets/select2.css" rel="stylesheet"/>
+        <script src="/assets/select2-full.js"></script>
+        <script>
+$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
+</script>
+</head>
+<!-- <script>
+$("select").on('click', 'option', function() {
+    if ($("select option:selected").length > 3) {
+        $(this).removeAttr("selected");
+        // alert('You can select upto 3 options only');
+    }
+});
+</script> -->

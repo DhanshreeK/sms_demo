@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>College name:</strong>
+  <%= @medical_college.college_name %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @medical_college.country %>
+</p>
+
+<%= link_to 'Edit', edit_medical_college_path(@medical_college) %> |
+<%= link_to 'Back', medical_colleges_path %>

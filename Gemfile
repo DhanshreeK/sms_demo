@@ -28,6 +28,7 @@ gem 'figaro'
 gem "nested_form"
 gem "select2-rails"
 gem "jquery-rails"
+gem 'country_select'
 # this will convert total amount to words
 gem 'to_words'
 # Use postgresql as the database for Active Record

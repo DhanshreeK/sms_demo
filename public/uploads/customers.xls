@@ -1,0 +1,3 @@
+id	name	address1	address2	state	pincode	contact_number	email	amount	created_at	updated_at	membership_number
+1	komal	karmala	pune	maharashtra	413203	9421684083	komal1234@gmail.com	1500	2018-05-16 11:48:49 UTC	2018-05-16 11:48:49 UTC	12345
+2	Runali	karmala	pune	maharashtra	413203	7387390842	komal1234@gmail.com	1500	2018-05-16 11:50:57 UTC	2018-05-16 11:50:57 UTC	12345
