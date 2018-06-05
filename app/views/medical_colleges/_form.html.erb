@@ -1,0 +1,27 @@
+<%= form_with(model: medical_college, local: true) do |form| %>
+  <% if medical_college.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(medical_college.errors.count, "error") %> prohibited this medical_college from being saved:</h2>
+
+      <ul>
+      <% medical_college.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :college_name %>
+    <%= form.text_field :college_name, id: :medical_college_college_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country_id %>
+    <%= form.text_field :country_id, id: :medical_college_country_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

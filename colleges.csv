@@ -1,0 +1,432 @@
+country_id,college_name
+1,Universidad Del Salvador
+2,ST. Tereza Medical University
+2,The University of Traditional Medicine
+2,Yerevan Haybusak University
+2,Yerevan State Medical University
+3,"Monash University, Australia"
+3,Royal Australasian College of Physicians
+3,"St. Marys school of Medicine, Cook Islands"
+190,University Of Vienna
+4,Azerbaijan N. Narimanov Medical University
+4,Khazar University
+5,Medical University of Bahrain
+6,Bangladesh University of Professionals
+6,"Gono Bishwabiddalay, Bangladesh"
+6,"Shah Jalal Uni. of Science & Technolony, Sylhet"
+6,University of Chittagong
+6,University of Dhaka
+6,University of Rajshahi
+6,"University of Science & Technology, Chittagong"
+7,Belarussian State Medical University
+7,Gomel State Medical University
+7,Grodno State Medical University
+7,Vitebsk State Medical University
+8,Central America Health Sciences University
+8,Columbus Central University School of Medicine
+8,Washington University of Health & Science
+9,Higher Medical Institute - Pleven
+9,Medical University – Pleven
+9,"Medical University, Plovdiv"
+9,"Medical University, Sofia"
+9,"Medical University, Varna"
+9,Thracian University
+9,University of Medicine-Pleven
+10,Jimma University
+10,Royal College of Physicians and Surgeons of Canada
+10,St Matthews University School of Medicine
+11,"Grace University School of Medicine,Belize"
+12,International University
+13,"University of Medical Science, Ciego De Avila, Cuba"
+13,"University of Medical Sciences, Carlos J. Finlay,Camaguey"
+14,John F. Kennedy School Of Medicine
+15,"Charles University, Prague"
+15,Palacky University in Olomouc
+16,Universidad Central Del Este-San Pedro Macoris
+16,"Universidad Eugenio Maria de Hostos,Uniremhos - Dominican Republic"
+16,Universidad Tecnologica DE Santiago Utesa
+17,"Hayat Medical College, Addis Ababa Ethiopia"
+18,"University of Catholique de Lille, France"
+19,"""AIETI"" Medical School"
+19,Ivane Javakhashvili Tbilisi State University
+19,"Kutaisi Medical Institute ""Kutaisi"""
+19,"LLC Caucasus International University, Tbilisi, Georgia"
+19,"New Vision University, Georgia"
+19,Petre Shotadze Tbilisi Medical Academy
+19,"Tbilisi Medical University ""Hippocrates"""
+19,"Tbilisi Open Teaching University, Georgia"
+19,"Tbilisi Public University ""Metekhi"""
+19,Tbilisi State Medical University
+19,"Teaching University Geomedi, Georgia"
+19,University of Georgia
+20,Humboldt University
+20,Philipps University
+20,University Heidelburg
+21,"Alexander American University, School of Medicine, Gerorgetown"
+21,"Greenheart Medical University, Georgetown"
+21,"Lincoln American University, Guyana"
+21,Texila American University
+22,Semmelweis University
+22,"University of Debrecen, Medical and Health Science Center"
+22,"University of Szeged,Faculty of Medicine,Szeged"
+23,"University of Hang Tuah, Surabaya"
+25,"Esfahan University Of Medical Sciences And Health Treatment Services,Iran"
+25,Iran University of Medical Sciences & Health Services
+25,Isfahan University of Medical Sciences
+25,Isfahan University Of Medical Sciences and Health Services
+25,"Mashhad University of Medical Sciences, Mashhad"
+25,"Shahid Beheshti University of Medical Sciences, Tehran"
+25,Shiraz University of Medical Sciences
+25,Tehran University of Medical Sciences
+26,National University of Ireland
+26,Royal College of Surgeons in Ireland (RCSI)
+27,Universita Di Firenze
+27,University of Florence
+27,University of Pisa
+27,"University of Studies,Udine"
+27,"University of Turin, Turin,TO"
+28,"Astana Medical University, Kazakhstan"
+28,Chimkent State Medical Institute
+28,Karaganda State Medical Academy
+28,Karaganda State Medical University
+28,Kazakh National Medical University
+28,Kazakh State Medical University
+28,Kazakh-Russian Medical University
+28,Semei State Medical academy
+28,Semey State Medical University
+28,Semipalatinsk State Medical Academy
+28,West Kazakhstan Marat Ospanov State Medical University
+29,University of Nairobi
+30,Asian Medical Institute
+30,I.K.AKHUNBAEV KYRGYZ STATE MEDICAL ACADEMY
+30,"International University of Kyrgyzstan, International School of Medicine, Bishkek"
+30,"Jalal-Abad State University, Jalal-Abad"
+30,Kyrgyz Russian Slavic University
+30,Kyrgyz State Medical Academy
+30,"Osh State University, Medical Faculty"
+31,Kaunas University of Medicine
+31,"Lithuanian University of Health Sciences, Kaunas"
+32,"Veterans Affairs Research Center,LosAngeles"
+33,University of malawi
+34,"AIMST University, Malaysia"
+34,"International Medical University, Malaysia"
+34,"Lincoln University College, Malaysia"
+34,"Mahsa University, Malaysia"
+34,Newcastle University Medicine Malaysia
+34,"SEGI University, Malaysia"
+34,"University of Malaya, Kuala Lumpur"
+35,University of Mauritius
+35,University of Technology
+36,"B.P. Koirala Institute of Health Sciences, Dharan"
+36,U. Kathmandu
+36,U. Manipal Academy
+36,U. Tribhuvan
+37,"Avalon University School of Medicine, Caracao"
+37,"St. Martinus University, Curacao"
+37,Xavier University
+38,University of Otago
+39,"Ahmadu Bello University, Zaria"
+39,University of Lagos
+39,University of Maiduguri
+39,"Usmanu Danfodio University, Nigeria"
+40,Oman Medical College (SAOC) (In Academic Partenership with West Virginia Univ.)
+41,"Dow University of Health Sciences, Karachi"
+41,"King Edward Medical University, Lahore"
+41,"Liaquat University of Medical and Health Sciences, Sindh"
+41,Peoples University of Medical & Health Sciences for Women Shaheed Benzirabad
+41,"Punjab University,Lahore"
+41,"Shaheed Mohtarma Banazir Bhutto Medical University, Larkana, Sindh"
+41,University of Balochistan
+41,"University of Health Sciences,Lahore"
+41,University of Karachi
+41,University Of Sindh
+42,Latina University of Panama
+43,Ago Medical and Educational Center Bicol Christian College of Medicine
+43,AMA School of Medicine
+43,Angeles University Foundation
+43,Ateneo de Zamboanga University
+43,Baguio Central University
+43,BICOL CHRISTIAN COLLEGE OF MEDICINE
+43,Cagayan State University Tuguegarao (Carig)
+43,Cebu Doctors University College of Medicine
+43,Cebu Institute of Medicine
+43,Central Philippine University
+43,Davao Medical School Foundation
+43,De La Salie University Health Sciences Campus
+43,Dona Remedos Trinidad Medical Foundation
+43,"Emilo Aguinaldo College, Manila"
+43,Far Eastern University Dr. Nicanor Reyes Medical Foundation
+43,FEU Dr. Nicanor Reyes Medical Foundation
+43,Iloilo Doctors College of Medicine
+43,Lyceum Northwestern University
+43,Manila Central University
+43,Our Lady of Fatima University (Fatima Medical Science Foundation) Valenzuela
+43,Pamantasan ng Lungsod ng Maynila
+43,Saint Louis University
+43,San Beda College
+43,Silliman University
+43,Southwestern University Matias H. Aznar Memorial College of Medicine
+43,"Southwestern University, Urgello, Cebu City, Philippines"
+43,St. Lukes College of Medicine William H. Quasha Memorial
+43,"St. Paul University,Philippines"
+43,University of Northern Philippines
+43,University of Perpetual Help (Dr. Jose G. Tamayo Medical University)
+43,University of Perpetual Help Rizal
+43,University of Saint La Salle
+43,University of Santo Tomas
+43,University of the East Ramon Magsaysay Memorial Medical Center
+43,University of the Philippines Manila
+43,UV Gullas College of Medicine
+43,Virgen Milagrosa University Foundation
+43,West Visayas State University
+43,Xavier University
+43,Zamboanga Medical School Foundation
+44,"Collegium Medicum Jagiellonian University, Krakow"
+44,"Karol Marcinkowski Medical University, Poznan"
+44,"Medical University of Gdansk, Republic of Poland"
+44,Medical University of Lublin
+44,"The Medical University of Silesia, Katowice"
+44,The Silesian Piasts Medical University of Wroclaw
+44,Warsaw Medical Academy
+45,Riga Stradins University
+45,University of Lative
+45,University of Latvia
+46,NICOLAE TESTEMITANU STATE UNIVERSITY OF MEDICINE AND PHARMACY
+47,“Ovidius” University of Constanta
+47,University of Medicine and Pharmacy in Timisoara
+47,University of Oradea
+48,Ryazan State Medical University
+48,Altai State Medical University
+48,Amur State Medical Academy
+48,Astrakhan State Medical Academy of Federal Agency of Health Care and Social Development
+48,Astrakhan State Medical University
+48,Bashkir State Medical University
+48,Bashkirian State Medical University
+48,Buryat State University
+48,Chita State Medical Academy
+48,Crimean Federal University
+48,Dagestan State Medical University
+48,Far Eastern Federal University
+48,Far Eastern State Medical University
+48,I. M. Sechenov First Moscow State Medical University
+48,I. M. Sechenov Moscow Medical Academy
+48,Immanuel Kant Baltic Federal University
+48,Ingush State University
+48,Irkutsk State Medical University
+48,Ivanovo State Medical Academy
+48,Izhevsk State Medical Academy
+48,Kabardino-Balkarian State University
+48,Kaluga State University
+48,Kazan Federal (Volga) University
+48,Kazan State Medical University
+48,Kemerovo State Medical Academy
+48,Khakassia State University named after N.F. Katanov
+48,Kirov State Medical Academy
+48,Kislovodsk Medical College
+48,Krasnoyarsk State Medical University
+48,Kuban State Medical University
+48,Kursk State Medical University
+48,Maikop State Technological University
+48,Mari State University
+48,Mordovia N.P.Ogerev State University
+48,Moscow State Medical and Dental University
+48,Moscow State University of Medicine and Dentistry
+48,National Medical University
+48,"National Research Nuclear University ""MIFI"""
+48,Nizhny Novgorod State Medical Academy
+48,North Ossetian State Medical Academy
+48,North Ossetian State University named after Costa Levanovich Khetagurov
+48,North Western State Medical University
+48,North-Caucasian Federal University
+48,"North-Caucasian State Humanitarian and Technological Academy, Cherkessk"
+48,North-Eastern Federal University named after MK Ammosov
+48,Northern State Medical University
+48,Novosibirsk National Research State University
+48,Novosibirsk State Medical University
+48,Omsk State Medical University
+48,Orel State University
+48,Orenburg State Medical University
+48,Pacific State Medical University
+48,Penza Basic Medical College
+48,Penza State University
+48,Peoples’s Friendship University of Russia
+48,Perm State Medical University
+48,Perm State Pharmaceutical Academy
+48,Petrozavodsk State University
+48,Pskov State University
+48,Rostov State Medical University
+48,Russian National Research Medical University
+48,Russian Peoples Friendship University
+48,"Russian State Medical University,Moscow"
+48,Russian State Social University
+48,Ryazan State I P Pavlov Medical University
+48,Saint Petersburg State Medical Academy
+48,Saint Petersburg State Medical University
+48,Saint-Petersburg Pavlov State Medical University
+48,Samara State Medical University
+48,Saratov State Medical University
+48,Saratovskiy State Medical University
+48,Sechenov Moscow Medical Academy
+48,Siberian State Medical University
+48,Smolensk State Medical University
+48,South Ural State Medical University
+48,St. Petersburg State Chemical-pharmaceutical Academy
+48,St. Petersburg State Pediatric Medical Academy
+48,St. Petersburg State Pediatric Medical University
+48,Stavropol State Medical University
+48,Syktyvkar State University named after P Sorokin
+48,Tambov State University
+48,The Belgorod State University
+48,The Chechen State University
+48,The Chuvash State University named after I.N. Ulyanov
+48,The First Moscow State Medical University
+48,The First St. Petersburg State Medical University
+48,Tombosky State University named after G.R. Derzhavin
+48,Tula State University
+48,Tver State Medical University
+48,Tyumen State Medical University
+48,Ulyanovsk College of Pharmacy
+48,Ulyanovsk State University
+48,Ural State Medical University
+48,Volgograd Medical Academy
+48,Volgograd State Medical University
+48,Voronezh State Medical University
+48,Yaroslav-the-Wise Novgorod State University
+48,Yaroslavl State Medical Academy
+48,Yaroslavl State Medical Academy YSMA
+48,Yaroslavl State Medical University
+49,"Alfaisal University, Saudi Arabia"
+49,"King Saud University, Riyadh"
+59,Royal College of Physicians and Surgeons of Glasgow
+60,University of Seychelles
+61,National University of Singapore
+62,Pavol Jozef Safarik University Kosice
+63,"University of Sri Jayewardenepura,Nugegoda"
+64,"Academy of Medical Sciences & Techonolony,Khartoum"
+65,Avicenna Tajik State Medical University
+65,Tajik Abuali Ibn Sino State Medical University
+65,Tajik State Medical University
+191,International Medical & Technological University
+191,"The Hubert Kairuki Memorial University, Dar es Salam"
+192,Second Tashkent State Medical Institute
+192,The Tashkent Medical Academy
+66,"Dubai Medical College For Girls, Dubai"
+66,"Gulf Medical University,Ajman"
+66,"Gulf University, Bahrain,UAE"
+66,"RAK Medical & Health Sciences University, Ras Al Khaimah"
+66,University of Sarjah
+67,"American Board of Cosmetic Surgery,USA"
+67,American Board of Emergency Medicine
+67,American Board of Family Medicine
+67,American Board of Hospic and Palliative Medicine
+67,American Board of Internal Medicine
+67,American Board of Psychiatry and Neurology
+67,American board of Thoracic Surgery
+67,"American University Of Saint Vincent, Kingstown"
+67,"American University of the Caribben, School of Medicine"
+67,Case Western Reserve University
+67,"Emory University, Atlanta"
+67,"Harvard University, Boston"
+67,Jefferson Medical College of Philadelphia of Thomas Jefferson University
+67,Massachusetts Harvard Medical School
+67,"Mayo Medical School, Rochester"
+67,New York Medical College
+67,New York University
+67,"NorthWestern University, East Chicago"
+67,"State University of New York, Brooklyn"
+67,"Temple University, School of Medicine, Philadelphia"
+67,The American Board of Colon and Rectal Surgery
+67,The American Board of Ophthalmolgy
+67,The American Board of Pediatrics
+67,The American Board of Surgery
+67,The Johns hopkins University
+67,"The University of Alabama, Birmingham"
+67,The University of Illinois at Chicago
+67,The University of North Carolina
+67,The University of the State of New York
+67,"Thomas Jefferson University, Philadelphia"
+67,University of California
+67,University of Colorado School of Medicine
+67,University of Florida
+67,University of Massachusetts Medical School
+67,University of Medicine and Denistry of New Jersey
+67,University of Minnesota
+67,University of Southern California
+67,University of Tennessee Health Science Centre
+67,University of Texas South Western Medical Centre
+67,Virginia Commonwealth University
+67,Washington University
+67,"Wayne State University, Detroit, MI"
+193,Makerere University
+68,Bukovinian State Medical University
+68,Crimea State Medical Institute
+68,Crimea State Medical University
+68,Danylo Halytski Lviv State Medical University
+68,Danylo Halytsky Lviv National Medical University
+68,Dnipropetrovsk State Medical Academy
+68,Donetsk State Medical University
+68,Gorky’s Donetsk State Medical University
+68,I.Horbachevsky Ternopil State Medical University
+68,Ivano-Frankivsk National Medical University
+68,Kharkiv National Medical University
+68,Kharkiv National University
+68,Kharkiv State Medical University
+68,"Kyiv Medical University of UAFM, Kyiv"
+68,Lugansk State Medical University
+68,M. Gorky Donetsk National Medical University
+68,M. Gorky Donetsk State Medical University
+68,"National Pirogov Memorial Medical University,Vinnytsya"
+68,O.O. Bogomolets National Medical University
+68,Odessa National Medical University
+68,Odessa State Medical University
+68,"Petro Mohyla Black Sea National University, Ukrain"
+68,"Sumy State University, Sumy"
+68,"Taras Sheychenko National University of Kyiv, Ukraine"
+68,Ternopil State Medical University
+68,"Uzhhorod National University, Ukraine"
+68,V.N. Karazin Kharkiv National University
+68,Vinnitsa State Pirogov Memorial Medical University
+68,Zaporozhye State Medical University
+69,"Queen Mary University of London , UK"
+69,Saint Georges University of London
+69,University of Glasgow
+69,"University of Leeds,"
+69,University of Liverpool
+69,University of NewCastle Upon Tyne
+69,"University of Wales College of Medicaine, Cardiff, Wales"
+70,"All American Institute of Medical Sciences (AAIMS), Jamaica"
+70,"American International Medical University, Saint Lucia"
+70,"American University of Antigua College of Medicine, Antigua & Barbuda"
+70,"Bridgetown International University, Barbados"
+70,"International American University College of Medicine, St.Lucia"
+70,"International University of Health Sciences, Saint Kitts"
+70,"Ross University School of Medicine, Dominica, West Indies"
+70,"Spartan Health Sciences University,St. Lucia,West Indies"
+70,"St. Georges University, Grenada"
+70,"St. James School of Medicine, St. Vincent and the Grenadines"
+70,The American University of Barbados
+70,The University of West Indies
+70,Trinity School of Medicine of saint Vincent and Grenadines (for 2017 batch only)
+70,"Victoria University of Barbados, Barbados"
+70,"Washington University of Barbados School of Medicine, Barbados"
+70,Windsor University of Medical Sciences
+70,Windsor University School of Medicine
+71,Sana'a University Republic of Yemen
+71,University of Aden
+71,University of Applied and Social Sciences
+72,"Lusaka Apex Medical University, Zambia"
+72,University of Zambeia
+19,Akaki Tsereteli State University
+19,Batumi Shota Rustaveli State University
+19,David Agmashenebeli University of Georgia
+19,David Tvildiani Medical University
+19,"East Europeon University, Georgia"
+19,European University
+19,"Georgian American University, georgia"
+19,"Georgian National University, Georgia"
+19,"High Medical School ""Ayeti"""
+47,"""GR. T. POPA"" University Of Medicine and Pharmacy, Lasi"
+47,"""Victor Babes"" University of Medicine and Pharmacy, Timisoara"
+47,"The University of Medicine and Pharmacy ""IULIU HATIEGANU"",CLUJ-NAPOCA"
+47,University of Medicine and Pharmacy
+47,"University of Medicine and Pharmacy ""Carol Davila"""
