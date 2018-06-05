@@ -1,10 +1,8 @@
-
 require 'csv'
 
 puts "Importing countries..."
 CSV.foreach(Rails.root.join("country.csv"), headers: true) do |row|
   Country.create! do |country|
-  	byebug
     country.id = row[3]
     country.country = row[4]
  end
