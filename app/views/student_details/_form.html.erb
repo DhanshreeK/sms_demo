@@ -35,7 +35,7 @@
 </div>
 
 
-  <%= form_with model: @student_detail , local: true do |form| %>
+  <%= form_for @student_detail do |form| %>
   <% if student_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(student_detail.errors.count, "error") %> prohibited this student_detail from being saved:</h2>
@@ -53,7 +53,8 @@
    <div class="form-group">
         <div class="col-md-4">
         <label class="col-sm-10 control-label">Course Applied For<font color="red">*</font></label>
-    <%= form.select :course_ids,Course.all.collect{|c| [c.course_name,c.id]},{prompt: true},name: "courses[]" ,class: "form-control" , class: "js-example-basic-multiple" , multiple: "multiple" , size: "3" %>
+       
+    <%= form.select :course_ids ,Course.all.collect{|c| [c.course_name,c.id]},{prompt: true},class: "form-control" , class: "js-example-basic-multiple" , multiple: "multiple" , size: "3" %>
   </div>
 </div>
   
@@ -232,7 +233,7 @@
      
     <%= form.label :country_id %><br />
 
-    <%= form.select :country_id, Country.order(:country).collect{|c| [c.country , c.id ]} , {prompt: true} ,class: "form-control selectpicker" , "data-live-search" => "true" %>
+    <%= form.collection_select :country_id, Country.order(:country) ,:id , :country , {prompt: true},class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
   </div>
 
@@ -240,8 +241,10 @@
      <div class="col-md-4">
 <!--         <label class="col-sm-10 control-label">Select College<font color="red">*</font></label>
  -->    <%= form.label :medical_college_id, "Colleges" %><br />
-    <%= form.select :medical_college_id, MedicalCollege.all.collect{|m|[m.college_name , m.id ]} , {prompt: true} , class: "form-control selectpicker", "data-live-search" => "true" %>
+
+    <%= form.grouped_collection_select :medical_college_id, Country.order(:country) , :medical_colleges , :country , :id , :college_name ,class: "form-control selectpicker" , "data-live-search" => "true" %>  
   </div>
+</div>
 
 
 <!-- 
@@ -318,3 +321,37 @@ $("select").on('click', 'option', function() {
     }
 });
 </script> -->
+<script type="text/javascript">
+  jQuery(function() {
+
+  var states;
+
+  $('#student_detail_medical_college_id').parent().hide();
+  states = $('#student_detail_medical_college_id').html();
+  console.log(states);
+
+  
+
+  return $('#student_detail_country_id').change(function() {
+    
+
+    var country, escaped_country, options;
+    country = $('#student_detail_country_id :selected').text();
+  
+    escaped_country = country.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
+    options = $(states).filter("optgroup[label=" + escaped_country + "]").html();
+    console.log(options);
+    if (options) {
+     
+      
+      $('#student_detail_medical_college_id').html(options);
+      return $('#student_detail_medical_college_id').parent().show();
+    } else {
+      $('#student_detail_medical_college_id').empty();
+
+      return $('#student_detail_medical_college_id').parent().hide();
+    }
+  });
+});
+</script>
+

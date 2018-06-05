@@ -5,7 +5,9 @@ class StudentDetail < ApplicationRecord
 	has_many :comments, dependent: :destroy
 	belongs_to :country
 	belongs_to :medical_college
-	belongs_to :course, optional:true
+	has_many :selected_courses
+	has_many :courses , through: :selected_courses , dependent: :destroy
+
 
 	validates :first_name, presence: :true
 	validates :email, presence: true, format: \
