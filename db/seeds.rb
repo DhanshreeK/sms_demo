@@ -4,6 +4,7 @@ Dear student, you are requested to submit documents for further process.')
 email = EmailSetting.create!(body: 'Dear Students,
  
 Your admission,
+
                      Your admission in ____________ University is confirmed and your enrollment number for the same is ___________.
  
 You can check you admission on (website)

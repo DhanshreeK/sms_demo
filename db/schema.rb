@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180604102706) do
+ActiveRecord::Schema.define(version: 20180605104123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -289,6 +289,15 @@ ActiveRecord::Schema.define(version: 20180604102706) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "selected_courses", force: :cascade do |t|
+    t.bigint "student_detail_id"
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_selected_courses_on_course_id"
+    t.index ["student_detail_id"], name: "index_selected_courses_on_student_detail_id"
+  end
+
   create_table "sms_settings", force: :cascade do |t|
     t.string "send_sms"
     t.string "body"
@@ -333,7 +342,6 @@ ActiveRecord::Schema.define(version: 20180604102706) do
     t.text "signature"
     t.time "stoptime"
     t.string "mother_occupation"
-    t.bigint "course_id"
     t.string "category_list"
     t.string "alternate_no"
     t.string "wp_no"
@@ -345,7 +353,6 @@ ActiveRecord::Schema.define(version: 20180604102706) do
     t.index ["budget_id"], name: "index_student_details_on_budget_id"
     t.index ["college_id"], name: "index_student_details_on_college_id"
     t.index ["country_id"], name: "index_student_details_on_country_id"
-    t.index ["course_id"], name: "index_student_details_on_course_id"
     t.index ["medical_college_id"], name: "index_student_details_on_medical_college_id"
   end
 
@@ -510,11 +517,12 @@ ActiveRecord::Schema.define(version: 20180604102706) do
   add_foreign_key "questions", "student_details"
   add_foreign_key "receipts", "centers"
   add_foreign_key "receipts", "students"
+  add_foreign_key "selected_courses", "courses"
+  add_foreign_key "selected_courses", "student_details"
   add_foreign_key "student_answers", "student_details"
   add_foreign_key "student_details", "budgets"
   add_foreign_key "student_details", "colleges"
   add_foreign_key "student_details", "countries"
-  add_foreign_key "student_details", "courses"
   add_foreign_key "student_details", "medical_colleges"
   add_foreign_key "students", "caste_categories"
   add_foreign_key "students", "centers"
