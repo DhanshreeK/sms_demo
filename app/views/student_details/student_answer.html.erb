@@ -118,7 +118,7 @@
         <div class="col-md-4">
         <p class="text-info">
           <strong>Budget:</strong>
-          <%= @student_detail.budget.budget_range %>  
+          <%= @student_detail.budget.budget_range if @student_detail.budget.present? %>  
         </p>
         </div>
 
@@ -145,13 +145,13 @@
         <div class="col-md-4">
         <p class="text-info">
            <strong>Country:</strong>
-            <%= @student_detail.country.country %>
+            <%= @student_detail.country.country if @student_detail.country.present?%>
         </p>
         </div>
         <div class="col-md-4">
         <p class="text-info">
            <strong>College:</strong>
-            <%= @student_detail.medical_college.college_name %>
+            <%= @student_detail.medical_college.college_name if @student_detail.medical_college.present?%>
         </p>
         </div>
 

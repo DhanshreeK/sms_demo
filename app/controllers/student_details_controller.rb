@@ -98,20 +98,13 @@ end
     end
     end
   end
-
-
-      
-
-        
-
-        
        
   # PATCH/PUT /student_details/1
   # PATCH/PUT /student_details/1.json
   def update
     respond_to do |format|
       if @student_detail.update(student_detail_params)
-        format.html { redirect_to @student_detail, notice: 'Student detail was successfully updated.' }
+        format.html { redirect_to student_details_path, notice: 'Student detail was successfully updated.' }
         format.json { render :show, status: :ok, location: @student_detail }
       else
         format.html { render :edit }
