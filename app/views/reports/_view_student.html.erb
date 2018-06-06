@@ -26,3 +26,8 @@
           </tbody>
         </table>
       </div>
+      <p>
+          Download Report:
+          <%#= link_to "CSV", student_s_home_url(format: "csv") %> |
+          <%= link_to "Excel File", centers_url(format: "xls")  , class: "btn btn-success" %>
+        </p>

@@ -11,4 +11,5 @@ class PendingPayment < ApplicationRecord
 	      end
 	    end
   end
+  
 end
