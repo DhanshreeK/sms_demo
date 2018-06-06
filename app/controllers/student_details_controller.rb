@@ -118,7 +118,7 @@ end
   def destroy
     @student_detail.destroy
     respond_to do |format|
-      format.html { redirect_to student_details_url, notice: 'Student detail was successfully destroyed.' }
+      format.html { redirect_to student_details_path, notice: 'Student detail was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
