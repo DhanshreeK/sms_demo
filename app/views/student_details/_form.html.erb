@@ -174,7 +174,7 @@
 <div class="form-group">
         <div class="col-md-4">
         <label class="col-sm-6 control-label">Contact No<font color="red">*</font></label>
-    <%= form.text_field :contact_no, id: :student_detail_contact_no , class: "form-control" %>
+    <%= form.text_field :contact_no, id: :student_detail_contact_no , class: "form-control", maxlength: "10" %>
   </div>
 </div>
 <!--  <div class="row">
@@ -190,14 +190,14 @@
 <div class="form-group">
         <div class="col-md-4">
         <label class="col-sm-6 control-label">WhatsApp No</label>
-    <%= form.text_field :wp_no, id: :shipping_address_1 , class: "form-control" %>
+    <%= form.text_field :wp_no, id: :shipping_address_1 , class: "form-control",maxlength: "10"  %>
   </div>
 </div>
 
 <div class="form-group">
         <div class="col-md-4">
         <label class="col-sm-6 control-label">Alternate No</label>
-    <%= form.text_field :alternate_no, id: :student_detail_alternate_no , class: "form-control" %>
+    <%= form.text_field :alternate_no, id: :student_detail_alternate_no , class: "form-control", maxlength: "10" %>
   </div>
 </div>
 
@@ -226,8 +226,7 @@
 <div class="form-group">
         <div class="col-md-4">
         <label class="col-sm-10 control-label">Select Budget<font color="red">*</font></label>
-    <%= form.select :budget_id ,Budget.all.collect{|b| [b.budget,b.id]},{prompt: true} ,class: "form-control selectpicker", "data-live-search" => "true"  %>
-  </div>
+ <%= form.select('budget_id', options_for_select(Budget.all.collect{ |b| [b.budget_range, b.id] }),{prompt:true},class: "form-control selectpicker", "data-live-search" => "true")%>   </div>
 </div>
 <div class="form-group">
      <div class="col-md-4">

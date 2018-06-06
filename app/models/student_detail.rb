@@ -6,6 +6,7 @@ class StudentDetail < ApplicationRecord
 	belongs_to :country
 	belongs_to :medical_college
 	has_many :selected_courses
+	belongs_to :budget
 	has_many :courses , through: :selected_courses , dependent: :destroy
 
 
