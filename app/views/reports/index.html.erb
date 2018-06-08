@@ -24,8 +24,7 @@
           Download Report:
           <%#= link_to "CSV", student_s_home_url(format: "csv") %> |
           <%#= link_to "Excel File", payment_status_reports_url(format: "xls") , class: "btn btn-success" %>
-                    <%=link_to("Export Database to Excel", payment_status_reports_path,class: 'btn btn-success')  %>
-         
+          <%=link_to("Export Database to Excel",reports_url+"/export" , class: "btn btn-success")  %>
 
         </p>
           <table class="table table-striped table-bordered table-hover dataTables-example" >

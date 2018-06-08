@@ -109,6 +109,17 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.index ["student_detail_id"], name: "index_comments_on_student_detail_id"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "fssai_lic_no"
+    t.string "contact_no"
+    t.string "email"
+    t.string "gst_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "countries", force: :cascade do |t|
     t.string "country"
     t.datetime "created_at", null: false
@@ -134,6 +145,36 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.integer "center_id"
     t.index ["course_type_id"], name: "index_courses_on_course_type_id"
     t.index ["university_id"], name: "index_courses_on_university_id"
+  end
+
+  create_table "deliveries", force: :cascade do |t|
+    t.string "invoice_no"
+    t.string "date"
+    t.string "bill_checked_by"
+    t.bigint "vendor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "total"
+    t.string "cal_comission"
+    t.string "add_price"
+    t.string "remaining_price"
+    t.boolean "payment_status", default: false
+    t.index ["vendor_id"], name: "index_deliveries_on_vendor_id"
+  end
+
+  create_table "delivery_items", force: :cascade do |t|
+    t.bigint "delivery_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "inward_module_id"
+    t.string "quantity"
+    t.string "qty"
+    t.string "total_amt"
+    t.string "rem_quantity"
+    t.index ["delivery_id"], name: "index_delivery_items_on_delivery_id"
+    t.index ["inward_module_id"], name: "index_delivery_items_on_inward_module_id"
+    t.index ["product_id"], name: "index_delivery_items_on_product_id"
   end
 
   create_table "email_settings", force: :cascade do |t|
@@ -196,6 +237,14 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.index ["student_id"], name: "index_envelopes_on_student_id"
   end
 
+  create_table "final_reports", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "report_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "general_settings", force: :cascade do |t|
     t.string "registered_name"
     t.string "phone_no"
@@ -213,12 +262,55 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.datetime "logo_updated_at"
   end
 
+  create_table "inward_deliveries", force: :cascade do |t|
+    t.bigint "inward_module_id"
+    t.bigint "delivery_id"
+    t.string "quantity"
+    t.string "rem_quantity"
+    t.string "entered_quantity"
+    t.string "total_amt"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["delivery_id"], name: "index_inward_deliveries_on_delivery_id"
+    t.index ["inward_module_id"], name: "index_inward_deliveries_on_inward_module_id"
+  end
+
+  create_table "inward_module_items", force: :cascade do |t|
+    t.bigint "inward_module_id"
+    t.string "item_quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "product_id"
+    t.index ["inward_module_id"], name: "index_inward_module_items_on_inward_module_id"
+    t.index ["product_id"], name: "index_inward_module_items_on_product_id"
+  end
+
+  create_table "inward_modules", force: :cascade do |t|
+    t.date "date"
+    t.string "inward_number"
+    t.string "quantity"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_inward_modules_on_product_id"
+  end
+
   create_table "medical_colleges", force: :cascade do |t|
     t.string "college_name"
     t.bigint "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["country_id"], name: "index_medical_colleges_on_country_id"
+  end
+
+  create_table "payment_histories", force: :cascade do |t|
+    t.bigint "delivery_id"
+    t.string "add_price"
+    t.string "remaining_price"
+    t.string "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["delivery_id"], name: "index_payment_histories_on_delivery_id"
   end
 
   create_table "pending_payments", force: :cascade do |t|
@@ -232,6 +324,26 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.boolean "payment_status"
     t.index ["receipt_id"], name: "index_pending_payments_on_receipt_id"
     t.index ["student_id"], name: "index_pending_payments_on_student_id"
+  end
+
+  create_table "product_details", force: :cascade do |t|
+    t.bigint "inward_module_id"
+    t.string "date"
+    t.string "inward_number"
+    t.string "quantity"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inward_module_id"], name: "index_product_details_on_inward_module_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "price"
+    t.string "total"
+    t.string "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|
@@ -272,8 +384,26 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.string "igst"
     t.string "total_rate"
     t.string "total_amt"
+    t.boolean "payment_status"
     t.index ["center_id"], name: "index_receipts_on_center_id"
     t.index ["student_id"], name: "index_receipts_on_student_id"
+  end
+
+  create_table "record_payments", force: :cascade do |t|
+    t.string "invoice_no"
+    t.string "date"
+    t.string "bill_checked_by"
+    t.bigint "vendor_id"
+    t.string "total"
+    t.string "cal_comission"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "delivery_id"
+    t.string "add_price"
+    t.string "remaining_price"
+    t.boolean "payment_status", default: false
+    t.index ["delivery_id"], name: "index_record_payments_on_delivery_id"
+    t.index ["vendor_id"], name: "index_record_payments_on_vendor_id"
   end
 
   create_table "refarences", force: :cascade do |t|
@@ -287,6 +417,34 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "return_inwards", force: :cascade do |t|
+    t.bigint "inward_module_id"
+    t.bigint "return_module_id"
+    t.string "quantity"
+    t.string "return_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inward_module_id"], name: "index_return_inwards_on_inward_module_id"
+    t.index ["return_module_id"], name: "index_return_inwards_on_return_module_id"
+  end
+
+  create_table "return_modules", force: :cascade do |t|
+    t.date "date_of_return"
+    t.string "invoice_no"
+    t.bigint "vendor_id"
+    t.bigint "product_id"
+    t.string "quantity"
+    t.text "purpose"
+    t.string "receipt_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "return_type"
+    t.bigint "inward_module_id"
+    t.index ["inward_module_id"], name: "index_return_modules_on_inward_module_id"
+    t.index ["product_id"], name: "index_return_modules_on_product_id"
+    t.index ["vendor_id"], name: "index_return_modules_on_vendor_id"
   end
 
   create_table "selected_courses", force: :cascade do |t|
@@ -326,7 +484,6 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "contact_no"
-    t.string "time"
     t.string "course_applied_for"
     t.string "age"
     t.date "birthdate"
@@ -341,7 +498,9 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.string "pcm"
     t.text "signature"
     t.time "stoptime"
+    t.string "time"
     t.string "mother_occupation"
+    t.bigint "course_id"
     t.string "category_list"
     t.string "alternate_no"
     t.string "wp_no"
@@ -353,6 +512,7 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.index ["budget_id"], name: "index_student_details_on_budget_id"
     t.index ["college_id"], name: "index_student_details_on_college_id"
     t.index ["country_id"], name: "index_student_details_on_country_id"
+    t.index ["course_id"], name: "index_student_details_on_course_id"
     t.index ["medical_college_id"], name: "index_student_details_on_medical_college_id"
   end
 
@@ -420,6 +580,8 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.bigint "employee_id"
     t.string "reference_student"
     t.string "permanent_pin"
+    t.boolean "payment_status"
+    t.string "admission_year"
     t.index ["caste_category_id"], name: "index_students_on_caste_category_id"
     t.index ["center_id"], name: "index_students_on_center_id"
     t.index ["course_id"], name: "index_students_on_course_id"
@@ -437,6 +599,8 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "center_id"
+    t.string "no_of_seats"
+    t.string "fees"
   end
 
   create_table "unversity_attachments", force: :cascade do |t|
@@ -497,12 +661,29 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
   add_foreign_key "answers", "questions"
+  create_table "vendors", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "delivery_area"
+    t.string "gst_no"
+    t.string "pan_no"
+    t.string "phone_no"
+    t.string "comission"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "centers", "email_settings"
   add_foreign_key "colleges", "budgets"
   add_foreign_key "comments", "student_details"
   add_foreign_key "courses", "course_types"
   add_foreign_key "courses", "universities"
+  add_foreign_key "deliveries", "vendors"
+  add_foreign_key "delivery_items", "deliveries"
+  add_foreign_key "delivery_items", "inward_modules"
+  add_foreign_key "delivery_items", "products"
   add_foreign_key "email_settings", "centers"
   add_foreign_key "email_settings", "students"
   add_foreign_key "employees", "centers"
@@ -512,12 +693,25 @@ ActiveRecord::Schema.define(version: 20180605104123) do
   add_foreign_key "enquiries", "refarences"
   add_foreign_key "envelopes", "centers"
   add_foreign_key "envelopes", "students"
+  add_foreign_key "inward_deliveries", "deliveries"
+  add_foreign_key "inward_deliveries", "inward_modules"
+  add_foreign_key "inward_module_items", "inward_modules"
+  add_foreign_key "inward_module_items", "products"
+  add_foreign_key "inward_modules", "products"
   add_foreign_key "medical_colleges", "countries"
+  add_foreign_key "payment_histories", "deliveries"
   add_foreign_key "pending_payments", "receipts"
   add_foreign_key "pending_payments", "students"
-  add_foreign_key "questions", "student_details"
+  add_foreign_key "product_details", "inward_modules"
   add_foreign_key "receipts", "centers"
   add_foreign_key "receipts", "students"
+  add_foreign_key "record_payments", "deliveries"
+  add_foreign_key "record_payments", "vendors"
+  add_foreign_key "return_inwards", "inward_modules"
+  add_foreign_key "return_inwards", "return_modules"
+  add_foreign_key "return_modules", "inward_modules"
+  add_foreign_key "return_modules", "products"
+  add_foreign_key "return_modules", "vendors"
   add_foreign_key "selected_courses", "courses"
   add_foreign_key "selected_courses", "student_details"
   add_foreign_key "student_answers", "answers"
@@ -526,6 +720,7 @@ ActiveRecord::Schema.define(version: 20180605104123) do
   add_foreign_key "student_details", "budgets"
   add_foreign_key "student_details", "colleges"
   add_foreign_key "student_details", "countries"
+  add_foreign_key "student_details", "courses"
   add_foreign_key "student_details", "medical_colleges"
   add_foreign_key "students", "caste_categories"
   add_foreign_key "students", "centers"
