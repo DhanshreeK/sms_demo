@@ -13,7 +13,6 @@ class ReportsController < ApplicationController
 	def select_center
 		@center = Center.load(params[:center_id])
 		@center_students = @center.students
-		
 		@student_count = @center.students.count
 	end
 
@@ -58,10 +57,6 @@ class ReportsController < ApplicationController
       			send_data spreadsheet.string, :filename => "#{file}", :type =>  "application/vnd.ms-excel"
       		end
     end
-		
-	
-	
-
 
 	def reference_report
 		@general_setting = GeneralSetting.first
