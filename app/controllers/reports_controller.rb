@@ -13,7 +13,6 @@ class ReportsController < ApplicationController
 	def select_center
 		@center = Center.load(params[:center_id])
 		@center_students = @center.students
-		
 		@student_count = @center.students.count
 	end
 
@@ -34,34 +33,23 @@ class ReportsController < ApplicationController
 
 	def index
 		@pending_payments = PendingPayment.all
-	
-  	end
+	end
+
 
   	def export
   			@pending_payments = PendingPayment.all
   			book = Spreadsheet::Workbook.new
     		sheet1 = book.create_worksheet :name => 'Sheet1'
-   
-	
     		 sheet1.row(0).push "ENROLLMENT NO","DATE(DD/MM/YY)","STUDENT NAME" , "FEES" ,"PENDING FEES","OFFICE CENTER","STATUS OF FEES" 
-    
     		@pending_payments.each_with_index do |r,i|
      			@i = i += 1
-
      			sheet1.insert_row(sheet1.last_row_index + 1 ,["#{@i}" ,"#{r.student.enrollment}" , "#{r.student.created_at.to_date.strftime("%d/%m/%Y")}","#{r.student.first_name+" "+r.student.last_name}" ,"#{r.fees_pending}" ,"#{r.fees_paid}" , "#{r.student.center.center_name}" , "#{r.payment_status}"])
-
-    
-
      		 	spreadsheet = StringIO.new
      		 	book.write spreadsheet
      		 	file = "Excelsheet"
       			send_data spreadsheet.string, :filename => "#{file}", :type =>  "application/vnd.ms-excel"
       		end
     end
-		
-	
-	
-
 
 	def reference_report
 		@general_setting = GeneralSetting.first

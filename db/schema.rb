@@ -661,6 +661,8 @@ ActiveRecord::Schema.define(version: 20180605104123) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
+  add_foreign_key "answers", "questions"
   create_table "vendors", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -712,6 +714,9 @@ ActiveRecord::Schema.define(version: 20180605104123) do
   add_foreign_key "return_modules", "vendors"
   add_foreign_key "selected_courses", "courses"
   add_foreign_key "selected_courses", "student_details"
+  add_foreign_key "student_answers", "answers"
+  add_foreign_key "student_answers", "questions"
+  add_foreign_key "student_answers", "student_details"
   add_foreign_key "student_details", "budgets"
   add_foreign_key "student_details", "colleges"
   add_foreign_key "student_details", "countries"

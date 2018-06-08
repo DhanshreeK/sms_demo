@@ -218,12 +218,17 @@
     <%= form.select :category_list ,options_for_select(["OPEN","RESERVED"]),{prompt:true} ,class: "form-control" ,class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
 </div>
-<div class="form-group">
-        <div class="col-md-4">
-        <label class="col-sm-6 control-label">NEET Score<font color="red">*</font></label>
-    <%= form.text_field :neet, id: :neet , class: "form-control" %>
-  </div>
-</div>
+
+ <div class="col-md-4"> 
+          <div class="form-group"> 
+
+            <label for="cvc" class="control-label">NEET Score</label>
+
+            <%= form.text_field :neet, id: :neet,placeholder: 'NEET', class: 'form-control'%>
+            <p id="message" style="display:none;" ><font color='red'>Your are not eligible</font></p>
+          </div>
+        </div>
+
 
 <div class="form-group">
         <div class="col-md-4">
@@ -280,6 +285,26 @@
 </div>
 </div>
 
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    $("#neet").keyup(function() {
+      alert(aa);
+      var a = $("#student_detail_category_list").val();
+      alert(a);
+      if (this.value <= 119 && a == '1') {
+        $("#message").css("display", "block");
+      }
+      else if (this.value <= 96 && a >= 1) {
+       $("#message").css("display", "block");
+     }
+    else{
+      $("#message").css("display", "none");
+    }
+
+  });
+  });
+</script>
 <!-- 
 <script type="text/javascript">
   $("#toshipping_checkbox").on("click",function(){
@@ -362,3 +387,24 @@ $("select").on('click', 'option', function() {
 });
 </script>
 
+
+
+
+
+<script type="text/javascript">
+
+$('#neet').keyup(function() {
+    var a = $("#student_detail_category_list").val();
+    if (this.value < 119 || this.value < 96) {
+       $("#message").css("display", "block");
+     }
+     else{
+
+      $("#message").css("display", "none");
+    
+     }
+    
+
+  
+});
+</script>
