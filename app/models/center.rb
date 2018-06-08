@@ -33,6 +33,7 @@ class Center < ApplicationRecord
 			'C' + date.to_s + last_id.to_s
 		end
 	end
+	
 
 	private
 

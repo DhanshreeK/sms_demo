@@ -24,6 +24,11 @@
                         <br>
                         <!-- panel body --> 
                         <div class="panel-body">
+                          <p>
+          Download Report:
+          <%#= link_to "CSV", student_s_home_url(format: "csv") %> |
+          <%= link_to "Excel File",reports_url(format: "xls") , class: "btn btn-success" %>
+        </p>
 <font color="green"> <b>Total registration Count  </b></font> <%=@results.count%> 
  <div class="table-responsive">
           <table class="table table-striped table-bordered table-hover dataTables-example" >
