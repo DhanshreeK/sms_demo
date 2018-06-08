@@ -45,12 +45,6 @@
           </p>
         </div>
 
-
-          
-
-         
-        
-
         <div class="col-md-4">
         <p class="text-info">
           <strong>Age:</strong>
@@ -173,12 +167,12 @@
             <%= @student_detail.medical_college.college_name if @student_detail.medical_college.present?%>
         </p>
         </div>
-        <div class="col-md-4">
+<!--         <div class="col-md-4">
         <p class="text-info">
            <strong>Budget:</strong>
-            <%= @student_detail.budget.budget %>
+            <%#= @student_detail.budget.budget if @student_detail.budget.prese%>
         </p>
-        </div>
+        </div> -->
 
 
 <%if current_user.role == 'SuperAdmin'%>
