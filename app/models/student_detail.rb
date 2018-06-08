@@ -3,10 +3,10 @@ class StudentDetail < ApplicationRecord
 	has_many :questions , dependent: :destroy
 	has_many :student_answers , dependent: :destroy
 	has_many :comments, dependent: :destroy
-	belongs_to :country
-	belongs_to :medical_college
+	belongs_to :country, optional:true
+	belongs_to :medical_college, optional:true
 	has_many :selected_courses, dependent: :destroy
-	belongs_to :budget
+	belongs_to :budget, optional:true
 	has_many :courses , through: :selected_courses , dependent: :destroy
 
 
