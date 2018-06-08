@@ -7,7 +7,7 @@ country_id,college_name
 3,"Monash University, Australia"
 3,Royal Australasian College of Physicians
 3,"St. Marys school of Medicine, Cook Islands"
-190,University Of Vienna
+73,University Of Vienna
 4,Azerbaijan N. Narimanov Medical University
 4,Khazar University
 5,Medical University of Bahrain
@@ -306,10 +306,10 @@ country_id,college_name
 65,Avicenna Tajik State Medical University
 65,Tajik Abuali Ibn Sino State Medical University
 65,Tajik State Medical University
-191,International Medical & Technological University
-191,"The Hubert Kairuki Memorial University, Dar es Salam"
-192,Second Tashkent State Medical Institute
-192,The Tashkent Medical Academy
+74,International Medical & Technological University
+74,"The Hubert Kairuki Memorial University, Dar es Salam"
+75,Second Tashkent State Medical Institute
+75,The Tashkent Medical Academy
 66,"Dubai Medical College For Girls, Dubai"
 66,"Gulf Medical University,Ajman"
 66,"Gulf University, Bahrain,UAE"
@@ -357,7 +357,7 @@ country_id,college_name
 67,Virginia Commonwealth University
 67,Washington University
 67,"Wayne State University, Detroit, MI"
-193,Makerere University
+76,Makerere University
 68,Bukovinian State Medical University
 68,Crimea State Medical Institute
 68,Crimea State Medical University
