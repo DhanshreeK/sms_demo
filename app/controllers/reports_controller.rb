@@ -35,25 +35,17 @@ class ReportsController < ApplicationController
 	def payment_status
 		@pending_payments = PendingPayment.all
 		book = Spreadsheet::Workbook.new
-    sheet1 = book.create_worksheet :name => 'Sheet1'
-   
-	
-     sheet1.row(0).push "ENROLLMENT NO","DATE(DD/MM/YY)","STUDENT NAME" , "FEES" ,"PENDING FEES","OFFICE CENTER","STATUS OF FEES" 
-    
-     @pending_payments.each_with_index do |r,i|
+        sheet1 = book.create_worksheet :name => 'Sheet1'
+        sheet1.row(0).push "ENROLLMENT NO","DATE(DD/MM/YY)","STUDENT NAME" , "FEES" ,"PENDING FEES","OFFICE CENTER","STATUS OF FEES" 
+        @pending_payments.each_with_index do |r,i|
      	@i = i += 1
 
      	sheet1.insert_row(sheet1.last_row_index + 1 ,["#{@i}" ,"#{r.student.enrollment}" , "#{r.student.created_at.to_date.strftime("%d/%m/%Y")}","#{r.student.first_name+" "+r.student.last_name}" ,"#{r.fees_pending}" ,"#{r.fees_paid}" , "#{r.student.center.center_name}" , "#{r.payment_status}"])
-
-    
-
-      spreadsheet = StringIO.new
-      book.write spreadsheet
-      file = "Excelsheet"
-      send_data spreadsheet.string, :filename => "#{file}", :type =>  "application/vnd.ms-excel"
-  end
-
-
+		spreadsheet = StringIO.new
+		      book.write spreadsheet
+		      file = "Excelsheet"
+		      send_data spreadsheet.string, :filename => "#{file}", :type =>  "application/vnd.ms-excel"
+		  end
 		respond_to do |format|
 	      format.html
 	      format.csv { send_data @pending_payments.to_csv }

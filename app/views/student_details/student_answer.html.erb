@@ -128,6 +128,25 @@
         </p>
         </div>
 
+  <%if @student_detail.neet.to_i <= 119 || @student_detail.neet.to_i <= 96 %> 
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Neet Score:</strong>
+          <%= @student_detail.neet %>
+          <font color="red">You are Not Eligible</font>  
+        </p>
+        </div>
+        <%else%>
+        <div class="col-md-4">
+        <p class="text-info">
+          <strong>Neet Score:</strong>
+          <%= @student_detail.neet %>
+          <font color="green">You are Eligible</font>
+         </p>
+        </div>
+  <%end%>
+
+
         <div class="col-md-4">
         <p class="text-info">
           <strong>Address:</strong>
