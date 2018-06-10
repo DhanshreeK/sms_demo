@@ -384,8 +384,6 @@
     </div>
 <%end%>
 
-
-
     <div class="col-md-4"> 
       <div class="form-group"> 
         <label for="cvc" class="control-label">Course Type<font color="red">*</font></label>
@@ -398,6 +396,13 @@
       <div class="form-group"> 
         <label for="cvc" class="control-label">Course<font color="red">*</font></label>
         <%= form.select :course_id,Course.all.collect{|a| [a.course_name,a.id]},{prompt:true},id: 'course_id',class: "form-control " %>
+      </div>
+    </div>
+
+ <div class="col-md-4"> 
+      <div class="form-group"> 
+        <label for="cvc" class="control-label">Select Admission Year<font color="red">*</font></label>
+        <%= form.date_field :admission_year,class: "form-control"  %>
       </div>
     </div>
 
