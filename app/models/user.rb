@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   belongs_to :general_setting, optional:true
+  belongs_to :subadmin, optional:true
   scope :shod, ->(id) { where(id: id).take }
 
   devise :database_authenticatable, :registerable,
