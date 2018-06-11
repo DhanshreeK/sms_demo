@@ -1,13 +1,16 @@
 class StudentDetail < ApplicationRecord
 	include Activity
+	belongs_to :status_update, optional:true
 	has_many :questions , dependent: :destroy
 	has_many :student_answers , dependent: :destroy
 	has_many :comments, dependent: :destroy
-	belongs_to :country, optional:true
-	belongs_to :medical_college, optional:true
+	# belongs_to :country, optional:true
+	# belongs_to :medical_college, optional:true
 	has_many :selected_courses, dependent: :destroy
 	belongs_to :budget, optional:true
-	has_many :courses , through: :selected_courses , dependent: :destroy
+	has_many :courses, through: :selected_courses , dependent: :destroy
+	has_many :medical_colleges , through: :selected_courses , dependent: :destroy
+	has_many :countries , through: :selected_courses , dependent: :destroy
 
 
 	validates :first_name, presence: :true

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :status_updates
   resources :subadmins
   resources :selected_courses
   resources :medical_colleges

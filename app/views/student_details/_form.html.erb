@@ -57,9 +57,6 @@
     <%= form.select :course_ids ,Course.all.collect{|c| [c.course_name,c.id]},{prompt: true},class: "form-control" , class: "js-example-basic-multiple" , multiple: "multiple",class: "form-control selectpicker", "data-live-search" => "true"%>
   </div>
 </div>
-
-
-
   
     <div class="form-group">
         <div class="col-md-4">
@@ -140,7 +137,7 @@
 
 <div class="form-group">
         <div class="col-md-4">
-        <label class="col-sm-6 control-label">SSC Marks</label>
+        <label class="col-sm-6 control-label">SSC Marks<font color="red">*</font></label>
     <%= form.text_field :ssc_marks, id: :student_detail_ssc_marks , class: "form-control" %>
   </div>
 </div>
@@ -235,24 +232,27 @@
         <label class="col-sm-10 control-label">Select Budget<font color="red">*</font></label>
  <%= form.select('budget_id', options_for_select(Budget.all.collect{ |b| [b.budget_range, b.id] }),{prompt:true},class: "form-control selectpicker", "data-live-search" => "true")%>   </div>
 </div>
-<div class="form-group">
-     <div class="col-md-4">
-    
-    <label class="col-sm-6 control-label">Select Country</label>
 
-    <%= form.collection_select :country_id, Country.order(:country) ,:id , :country , {prompt: true},class: "form-control selectpicker", "data-live-search" => "true"  %>
-  </div>
+<div class="form-group">
+     <div class="col-md-4"> 
+    <label class="col-sm-6 control-label">Select Country</label>
+      <%= form.select :country_ids ,Country.all.collect{|c| [c.country,c.id]},{prompt: true},class: "form-control" , class: "js-example-basic-multiple" , multiple: "multiple",class: "form-control selectpicker", "data-live-search" => "true"%>
+      </div>
   </div>
 
    <div class="form-group">
      <div class="col-md-4">
         <label class="col-sm-10 control-label">Select College</label>
- 
+    <%= form.select :medical_college_ids ,MedicalCollege.all.collect{|m| [m.college_name, m.id]},{prompt: true},class: "form-control" , class: "js-example-basic-multiple" , multiple: "multiple",class: "form-control selectpicker", "data-live-search" => "true"%>
+      </div>
+    </div>
 
-      <%= form.grouped_collection_select :medical_college_id, Country.order(:country) , :medical_colleges , :country , :id , :college_name ,class: "form-control selectpicker" , "data-live-search" => "true" %> 
-   
-  </div>
-</div>
+ <div class="form-group">
+     <div class="col-md-4">
+        <label class="col-sm-10 control-label">Select Status</label>
+    <%= form.select :status_update_id ,StatusUpdate.all.collect{|m| [m.add_status, m.id]},{prompt: true},class: "form-control selectpicker", "data-live-search" => "true"%>
+      </div>
+    </div>
 
 <br><br><br><br><br><br><br>
 
@@ -353,7 +353,7 @@ $("select").on('click', 'option', function() {
     }
 });
 </script> -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   jQuery(function() {
 
   var states;
@@ -389,7 +389,7 @@ $("select").on('click', 'option', function() {
 
 
 
-
+ -->
 
 <script type="text/javascript">
 

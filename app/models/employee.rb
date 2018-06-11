@@ -18,8 +18,11 @@ class Employee < ApplicationRecord
 
   validates :adhar_card_no, :presence => true,
                             :numericality => true, format: /\d[0-9]\)*\z/,
-                            :length => { :minimum => 12 }
+                             :length => { :minimum => 12 }
+  has_attached_file :photo
+  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png',"image/gif"]
 
+  
 
 
   def emp_no

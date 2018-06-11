@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180610180919) do
+ActiveRecord::Schema.define(version: 20180611080118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,11 @@ ActiveRecord::Schema.define(version: 20180610180919) do
     t.string "email"
     t.integer "sms_setting_id"
     t.bigint "email_setting_id"
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string "photo"
     t.index ["email_setting_id"], name: "index_centers_on_email_setting_id"
   end
 
@@ -165,6 +170,10 @@ ActiveRecord::Schema.define(version: 20180610180919) do
     t.string "employee_status"
     t.integer "sms_setting_id"
     t.bigint "email_setting_id"
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
     t.index ["center_id"], name: "index_employees_on_center_id"
     t.index ["email_setting_id"], name: "index_employees_on_email_setting_id"
   end
@@ -294,7 +303,11 @@ ActiveRecord::Schema.define(version: 20180610180919) do
     t.bigint "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "medical_college_id"
+    t.bigint "country_id"
+    t.index ["country_id"], name: "index_selected_courses_on_country_id"
     t.index ["course_id"], name: "index_selected_courses_on_course_id"
+    t.index ["medical_college_id"], name: "index_selected_courses_on_medical_college_id"
     t.index ["student_detail_id"], name: "index_selected_courses_on_student_detail_id"
   end
 
@@ -302,6 +315,13 @@ ActiveRecord::Schema.define(version: 20180610180919) do
     t.string "send_sms"
     t.string "body"
     t.string "contact"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "status_updates", force: :cascade do |t|
+    t.string "add_status"
+    t.string "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -350,10 +370,12 @@ ActiveRecord::Schema.define(version: 20180610180919) do
     t.bigint "budget_id"
     t.bigint "country_id"
     t.bigint "medical_college_id"
+    t.bigint "status_update_id"
     t.index ["budget_id"], name: "index_student_details_on_budget_id"
     t.index ["college_id"], name: "index_student_details_on_college_id"
     t.index ["country_id"], name: "index_student_details_on_country_id"
     t.index ["medical_college_id"], name: "index_student_details_on_medical_college_id"
+    t.index ["status_update_id"], name: "index_student_details_on_status_update_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -531,7 +553,9 @@ ActiveRecord::Schema.define(version: 20180610180919) do
   add_foreign_key "questions", "student_details"
   add_foreign_key "receipts", "centers"
   add_foreign_key "receipts", "students"
+  add_foreign_key "selected_courses", "countries"
   add_foreign_key "selected_courses", "courses"
+  add_foreign_key "selected_courses", "medical_colleges"
   add_foreign_key "selected_courses", "student_details"
   add_foreign_key "student_answers", "answers"
   add_foreign_key "student_answers", "questions"
@@ -540,6 +564,7 @@ ActiveRecord::Schema.define(version: 20180610180919) do
   add_foreign_key "student_details", "colleges"
   add_foreign_key "student_details", "countries"
   add_foreign_key "student_details", "medical_colleges"
+  add_foreign_key "student_details", "status_updates"
   add_foreign_key "students", "caste_categories"
   add_foreign_key "students", "centers"
   add_foreign_key "students", "course_types"
