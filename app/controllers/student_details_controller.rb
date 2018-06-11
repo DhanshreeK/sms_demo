@@ -54,6 +54,8 @@ def student_answer
   @student_detail= StudentDetail.find(params[:id])
   #@cor is the array of course names selected by the student
   @cor = @student_detail.courses.all.map{|i| [i.course_name]}
+   @med = @student_detail.medical_colleges.all.map{|i| [i.college_name]}
+    @country = @student_detail.countries.all.map{|i| [i.country]}
   #@length is the length of the array named @cor
   @length = @cor.length
   dob = (Date.today.strftime('%Y%m%d').to_i - @student_detail.birthdate.strftime('%Y%m%d').to_i) / 10000
@@ -132,6 +134,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_detail_params
-      params.require(:student_detail).permit(:alternate_no, :wp_no ,:category_list  ,:first_name, :middle_name, :last_name, :email, :address , :contact_no, :course_applied_for, :age, :birthdate, :father_name, :mother_name, :father_education, :father_occupation, :mother_education, :ssc_marks, :hsc_marks, :pcb, :pcm, :signature ,:neet , :college_id , :budget_id , :country_id , :medical_college_id ,course_ids: [])
+      params.require(:student_detail).permit(:status_update_id ,:alternate_no, :wp_no ,:category_list  ,:first_name, :middle_name, :last_name, :email, :address , :contact_no, :course_applied_for, :age, :birthdate, :father_name, :mother_name, :father_education, :father_occupation, :mother_education, :ssc_marks, :hsc_marks, :pcb, :pcm, :signature ,:neet , :college_id , :budget_id ,course_ids: [], country_ids: [], medical_college_ids: [])
     end
 end

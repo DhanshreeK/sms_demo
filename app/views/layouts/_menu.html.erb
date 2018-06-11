@@ -60,6 +60,8 @@
 				    <li><a href="/subadmins"><span class="title">SubAdmin</span></a></li>
 					<li><a href="/course_types"><span class="title">Course Type</span></a></li>
 					<li><a href="/courses"><span class="title">Course</span></a></li>
+				    <li><a href="/status_updates"><span class="title">Status</span></a></li>
+
 			    <% end %>
 			    
 <!-- 	      <li><a href="/enquiries"><span class="title">Enquiries</span></a></li>
@@ -68,15 +70,6 @@
 					<%end%>
 					<li><a href="/receipts/receipt_creation"><span class="title">Generate Receipt</span></a></li>
 					<li><a href="/questions/new"><span class="title">Add Questions</span></a></li>
-					<li class="has-sub"><a href="/home/dashboard"><i class="icon-window"></i><span class="title">WHO.</span></a>
-					<ul class="nav">
-					<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
-					<li><a href="/budgets"><span class="title">Add Budget</span></a></li>
-					<li><a href="/colleges/new"><span class="title">Add College</span></a></li>
-					<li><a href="/colleges/new1"><span class="title">Find Colleges</span></a></li>
-					<% end %>
-					</ul>
-					</li>
 					<% elsif current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin'%>
 					<li><a href="/general_settings/new"><span class="title">General Setting</span></a></li>
 					<%end%>
@@ -84,7 +77,7 @@
 			</li>
 
 
-		
+	
 			<li class="has-sub"><a href="#"><i class="icon-layout"></i><span class="title">Admission</span></a>
 				<ul class="nav collapse">
 					<%if current_user.role == 'Student' || current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || current_user.role == 'Employee' %>
@@ -100,7 +93,7 @@
 					<%end%>
 				</ul>
 			</li>
-						<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
+			<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
 
 			<li class="has-sub"><a href="#"><i class="icon-doc-text"></i><span class="title">Sms/Email Settings</span></a>
 				<ul class="nav collapse">
@@ -111,13 +104,26 @@
 			</li>
 		<%end%>
 		<% if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || current_user.role == 'Employee' || current_user.role == 'Enquiry' || current_user.role == 'Center'%>
-<li class="has-sub"><a href="#"><i class="icon-doc-text"></i><span class="title">Student Inquiry</span></a>
+           <li class="has-sub"><a href="#"><i class="icon-doc-text"></i><span class="title">Student Inquiry</span></a>
 				<ul class="nav collapse">
 					<li><a href="/student_details/new"><span class="title">Inquiry</span></a></li>
 					<li><a href="/student_details"><span class="title">View All Inquiries</span></a></li>
 				</ul>
 			</li>
 			<%end%>	
+
+		    <li class="has-sub"><a href="#"><i class="icon-layout"></i><span class="title">WHO</span></a>
+				<ul class="nav collapse">
+					<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
+					<li><a href="/budgets"><span class="title">Add Budget</span></a></li>
+					<li><a href="/colleges/new"><span class="title">Add College</span></a></li>
+					<li><a href="/colleges/new1"><span class="title">Find Colleges</span></a></li>
+					<% end %>
+				</ul>
+			</li>
+
+
+		
 
 		<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
 			<li class="has-sub"><a href="#"><i class="icon-list"></i><span class="title">Reports</span></a>

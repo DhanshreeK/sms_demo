@@ -140,6 +140,14 @@
         </div>
    </div>
 
+     <div class="col-md-4"> 
+                  <div class="form-group"> 
+                    <label for="username" class="control-label">Upload Photo</label>
+
+                    <%= form.file_field :photo, placeholder: "Upload Photo", class: "form-control"%>
+                  </div> 
+                </div>
+
 <% if current_user.role == 'SuperAdmin'%>
   <div class="form-group">
         <div class="col-md-4">
