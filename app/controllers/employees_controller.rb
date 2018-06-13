@@ -46,8 +46,13 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       if @employee.save
             if current_user.role == 'Center'
-         @employee.update!(center_id: current_user.center.id)
+
+         @employee.update!(center_id: current_user.center_id)
          end
+         if current_user.role == "Employee"
+          
+          @employee.update(center_id: current_user.center_id)
+        end
         format.html { redirect_to employees_path, notice: 'Employee was successfully created.' }
         format.json { render :show, status: :created, location: @employee }
       else
@@ -70,6 +75,7 @@ class EmployeesController < ApplicationController
       end
     end
   end
+  
 
   # DELETE /employees/1
   # DELETE /employees/1.json

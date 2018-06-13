@@ -57,10 +57,16 @@ Rails.application.routes.draw do
   resources :course_types
   resources :unversity_attachments
   resources :universities
-  resources :employees
+  resources :employees 
+  
+
   resources :centers do
     collection do
       get :update_center
+      get :center_vise_empl
+      end
+    member do
+      get :empl
     end
   end
   devise_for :users, controllers: { registrations: 'registrations' }

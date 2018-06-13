@@ -2,10 +2,29 @@ class ReceiptsController < ApplicationController
 	before_action :set_general_setting , only: [:new, :generate_receipt, :show, :receipt_creation, :index]
 	def index
 		@receipts = Receipt.all
+		if current_user.role == "Employee"
+			@centerid = User.find(current_user.id)
+			
+          @receipts = Receipt.where(center_id: @centerid.employee.center_id)
+
+      elsif current_user.role == "Center"
+
+
+      	@centerid = User.find(current_user.id)
+      	@receipts = Receipt.where(center_id: @centerid.center_id )
+      end
+
+			
+
 	end
 
 	def new
 		@students = Student.all
+		if current_user.role == "Employee"
+			#@currentid = User.find(current_user.id)
+			@centerid = User.find(current_user.id)
+          @students = Student.where(center_id: @centerid.employee.center_id ,employee_id: @centerid.employee_id)
+      end
 	end
 
 	def receipt_creation
@@ -23,6 +42,14 @@ class ReceiptsController < ApplicationController
 		@receipt = Receipt.new(receipt_params)
 		@student = Student.load(params[:id])
 	    if @receipt.save
+	    	if (current_user.role == "Employee" || current_user.role == "Center")
+	    	
+	    @receipt.update(center_id: current_user.employee.center_id)
+	end
+	    #@receipt.update(employee_id: current_user.employee_id)
+	    	
+
+
 	    @pending = PendingPayment.create!(student_id: @receipt.student_id, receipt_id: @receipt.id, fees_pending: @receipt.pending_payment, discount: @receipt.discount, fees_paid: @receipt.payment)
 	    if @receipt.pending_payment == '0'
 	    	@pending.update(payment_status: 'true')
