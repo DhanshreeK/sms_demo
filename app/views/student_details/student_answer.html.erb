@@ -29,22 +29,7 @@
         <div class="table-responsive">
         	<h3><b><%= @student_detail.first_name %> <%= @student_detail.middle_name %> <%= @student_detail.last_name %></b></h3>
 
-        <div class="col-md-4">
-        <p class="text-info">
-
-          <strong>Course Applied For:</strong>
-         
-          <% @student_detail.courses.each do |c| %>
-
-          <% if c.course_name == @cor[@length-1][0] %> 
-          <%= c.course_name %><%= "." %>
-          <% else %>
-          <%= c.course_name %><%= "," %>
-          <% end %>
-          <% end %>
-          </p>
-        </div>
-
+      
         <div class="col-md-4">
         <p class="text-info">
           <strong>Age:</strong>
@@ -155,18 +140,74 @@
           <%= @student_detail.address %>  
         </p>
         </div>
-        <div class="col-md-4">
+
+               <div class="col-md-4">
+        <p class="text-info">
+          <strong>Status of Enquiry:</strong>
+          <%= @student_detail.status_update.add_status if @student_detail.status_update.present?%>  
+        </p>
+        </div>
+
+          <div class="col-md-4">
+        <p class="text-info">
+
+          <strong>Course Applied For:</strong>
+         
+          <% @student_detail.courses.each do |c| %>
+
+          <% if c.course_name == @cor[@length-1][0] %> 
+          <%= c.course_name %><%= "." %>
+          <% else %>
+          <%= c.course_name %><%= "," %>
+          <% end %>
+          <% end %>
+          </p>
+        </div>
+
+                 <div class="col-md-4">
+        <p class="text-info">
+
+          <strong>Selected Countries:</strong>
+         
+          <% @student_detail.countries.each do |c| %>
+
+          <% if c.country == @country[@length-1][0] %> 
+          <%= c.country %><%= "." %>
+          <% else %>
+          <%= c.country%><%= "," %>
+          <% end %>
+          <% end %>
+          </p>
+        </div>
+
+          <div class="col-md-4">
+        <p class="text-info">
+
+          <strong>Selected Medical Colleges:</strong>
+         
+          <% @student_detail.medical_colleges.each do |c| %>
+
+          <% if c.college_name == @med[@length-1][0] %> 
+          <%= c.college_name %><%= "." %>
+          <% else %>
+          <%= c.college_name%><%= "," %>
+          <% end %>
+          <% end %>
+          </p>
+        </div>
+
+      <!--   <div class="col-md-4">
         <p class="text-info">
            <strong>Country:</strong>
-            <%= @student_detail.country.country if @student_detail.country.present?%>
+            <%#= @student_detail.country.country if @student_detail.country.present?%>
         </p>
         </div>
         <div class="col-md-4">
         <p class="text-info">
            <strong>College:</strong>
-            <%= @student_detail.medical_college.college_name if @student_detail.medical_college.present?%>
+            <%#= @student_detail.medical_college.college_name if @student_detail.medical_college.present?%>
         </p>
-        </div>
+        </div> -->
 <!--         <div class="col-md-4">
         <p class="text-info">
            <strong>Budget:</strong>

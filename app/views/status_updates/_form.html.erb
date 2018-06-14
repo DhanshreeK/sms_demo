@@ -1,0 +1,72 @@
+  <link href="/assets/select2.css" rel="stylesheet">
+
+  <div class="row"> 
+                <div class="col-md-12">
+                 <br>
+                 <br>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading clearfix"> 
+                            <div class="panel-title">New Status Update</div> 
+                            <ul class="panel-tool-options"> 
+                               <!--  <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
+                                        <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
+                                        <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+                                    </ul>
+                                 </li> -->
+                                <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+                                <!-- <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li> -->
+                                <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+                            </ul> 
+                        </div> 
+                        <br>
+                       
+                        <div class="panel-body"> 
+<%#= form_with(model: enquiry, local: true) do |form| %>
+  <div class="panel-body collapse in" id="collapsepanel">
+              <ol class="breadcrumb breadcrumb-2"> 
+                <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
+                <li class="active">Status Enquiry</li> 
+              </ol> 
+  </div>
+
+<%= form_with(model: status_update, local: true) do |form| %>
+  <% if status_update.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(status_update.errors.count, "error") %> prohibited this status_update from being saved:</h2>
+
+      <ul>
+      <% status_update.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+          <div class="col-md-4">
+      <%= form.label :add_status %>
+      <%= form.text_field :add_status, id: :status_update_add_status , class: 'form-control'%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-4">
+        <%= form.label :remarks %>
+      <%= form.text_area :remarks, id: :status_update_remarks, class: 'form-control' %>
+    </div>
+  </div>
+<br><br><br><br><br><br>
+ <div class="form-group"> 
+   <div class="col-sm-offset-1 col-sm-10"> 
+   <div align="center"> 
+     <%= form.submit "Submit", class: 'btn btn-success' %>
+     <%= link_to 'Back', status_updates_path, class: 'btn btn-red' %>
+   </div>
+   </div>
+</div>
+<% end %>

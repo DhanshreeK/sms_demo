@@ -33,6 +33,13 @@
 
 <div class="col-md-4">
 <p class="text-info">
+  <strong>Photo:</strong>
+<img width="90" class="img-square avatar" alt="" <%= image_tag @employee.photo.url %>
+</p>
+</div>
+
+<div class="col-md-4">
+<p class="text-info">
   <strong>Name:</strong>
   <%= @employee.name %>
 </p>
