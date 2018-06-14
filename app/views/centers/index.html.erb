@@ -54,7 +54,13 @@
               <%end%>
 
               <td><%= link_to 'Show', center ,class: "btn btn-blue btn-sm"%></td>
-              <td><%= link_to 'Edit', edit_center_path(center),class: "btn btn-success btn-sm"%></td> 
+              <td><%= link_to 'Edit', edit_center_path(center),class: "btn btn-success btn-sm"%></td>
+              <% if current_user.role == "SuperAdmin" %>
+              
+              <% userid = @users.find_by(role: "Center" ,center_id: center.id) %>
+              
+               <td><%= link_to 'Reset Password', change_password_user_path(userid.id) ,class: "btn btn-link  btn-sm"%></td> 
+               <% end %>
 </i>
             </tr>
             <%end%>

@@ -1,12 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-
 <%= render 'layouts/messages'%> 
+<%#= render_activities(@activities) %>
+
 <div class="row">
   <div class="col-lg-12">
     <div class="panel panel-primary">
       <div class="panel-heading clearfix">
-        <h3 class="panel-title">Student Details</h3>
+        <h3 class="panel-title">Centers</h3>
         <ul class="panel-tool-options"> 
           <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
           <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
@@ -14,51 +13,50 @@
         </ul>
       </div>
       <div class="panel-body">
-          <div class="panel-body collapse in" id="collapsepanel">
+           <div class="panel-body collapse in" id="collapsepanel">
               <ol class="breadcrumb breadcrumb-2"> 
                 <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
-                <li class="active">Student Details</li> 
+                <li class="active">Center</li> 
               </ol> 
-         </div>
+            </div>
+ 
+           <%#= link_to 'New Center', new_center_path, class: 'btn btn-red btn-outline' %><p>&nbsp;</p>
 
-            <%if current_user.role != 'Student'%>
-            <%= link_to 'New Student', new_student_detail_path, class: 'btn btn-red btn-outline' %><p>&nbsp;</p>
-            <%end%>
         <div class="table-responsive">
+          
+             
           <table class="table table-striped table-bordered table-hover dataTables-example" >
             <thead>
               <tr>
-              <th>First name</th>
-      <th>Last name</th>
-      <th>Email</th>
-      <th>Address</th>
-      <th></th>
-            <th></th>
-
-      <th></th>
-
-              
+               <th>Sr No</th>
+               <th>Center name</th>
+               <th>Contact</th>
+               <th>Center Email</th>
+               <th>Center code</th>
+               <th>Status</th>
+                
              </tr>
            </thead>
            <tbody>
-        <% @student_details.each do |student_detail| %>
-      <tr>
-        <td><%= student_detail.first_name %></td>
-        <td><%= student_detail.last_name %></td>
-        <td><%= student_detail.email %></td>
-        <td><%= student_detail.address %></td>
-        <td><%= link_to 'Show',student_answer_student_detail_path(student_detail) , class: "btn btn-primary" %></td>
-        <td><%= link_to 'Edit', edit_student_detail_path(student_detail) , class: "btn btn-success" %></td>
-        <td><%= link_to 'Delete', student_detail, method: :delete, data: { confirm: 'Are you sure?'} , class: "btn btn-red" %></td>
-            
+            <% @centers.each_with_index do |center, i| %>
+            <tr class="gradeX">
+              <td><%= i + 1%></td>
+              <td><%= link_to center.center_name , empl_center_path(center.id) ,class: 'btn btn-link' %></td>
+              <td><%= center.contact %></td>
+              <td><%= center.email %></td>
+              <td><%= center.center_code %></td>
+        
+               <td><%= center.center_status %></td>
+
+               
+
+              
+
+            </tr>
+            <%end%>
           </tbody>
-         
-          <%end%>
         </table>
-        <br>
-
-<%#= link_to 'New Student Detail', new_student_detail_path %>
-
+        <%= link_to "Back" , employees_path , class: "btn btn-success" %>
       </div>
     </div>
   </div>
@@ -96,4 +94,3 @@
     });
   });
 </script>
-

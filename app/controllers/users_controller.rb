@@ -56,7 +56,10 @@ class UsersController < ApplicationController
   # pass it to update_password method
   # and perform authorization
   def change_password
+
     @user = User.shod(params[:id])
+    
+
   end
 
   # update_password method update a User Password,

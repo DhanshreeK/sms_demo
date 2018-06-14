@@ -5,6 +5,9 @@ class CentersController < ApplicationController
   # GET /centers.json
   def index
       @centers = Center.all
+
+      @users = User.all
+
       @general_setting = GeneralSetting.first
       @user = User.first
        if params[:param1].present? && params[:param1] == 'false'
