@@ -40,6 +40,8 @@ class Employee < ApplicationRecord
       u.employee_id = id 
       u.password = employee_no
       u.role = 'Employee'
+    
+      u.center_id = center_id
       u.general_setting_id = if User.current
                                User.current.general_setting_id
                              else

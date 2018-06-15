@@ -20,7 +20,10 @@ class CentersController < ApplicationController
   # GET /centers/1.json
   def show
   end
-
+  
+  def empl
+    @center = Center.find(params[:id])
+  end
   # GET /centers/new
   def new
     @center = Center.new
@@ -31,6 +34,9 @@ class CentersController < ApplicationController
 
   # GET /centers/1/edit
   def edit
+  end
+  def center_vise_empl
+    @centers = Center.all
   end
 
   def update_center

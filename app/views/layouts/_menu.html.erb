@@ -44,9 +44,17 @@
 				<ul class="nav">
 					<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Employee' && current_user.employee.employee_status == 'Active') || (current_user.role == 'Center' && current_user.center.center_status == 'Active')%>
 
-				<%if current_user.center.present?%>
-					<li><a href="/centers/update_center"><span class="title">Centers</span></a></li>
-					<%elsif current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
+					
+					<% if current_user.role == "Center" %>
+					<%if current_user.center.present?%>
+					<li><a href="/centers/<%= "#{current_user.center_id}" %>"><span class="title">Centers</span></a></li>
+					<% elsif current_user.role == "Employee" %>
+
+					<li><a href="/centers/<%= "#{current_user.employee.center_id}" %>"><span class="title">Centers</span></a></li>
+					<% end %>
+					<% end %>
+					
+				<% if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
 					<li><a href="/centers"><span class="title">Centers</span></a></li>
 				<%end%>
 

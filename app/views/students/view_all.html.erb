@@ -22,6 +22,7 @@
           <table class="table table-striped table-bordered table-hover dataTables-example" >
             <thead>
               <tr>
+                
                <th>SR No</th>
                 <th>First name</th>
                 <th>Last name</th>
@@ -36,13 +37,14 @@
            </thead>
            <tbody>
          <% @students.each_with_index do |student,i|%>
+
             <tr class="gradeX">
               <td><%= i+1 %></td>
               <td><%= student.first_name %></td>
               <td><%= student.last_name %></td>
-              <td><%= student.admission_year.strftime("%b%Y")  if student.admission_year.present?%></td>
-              <td><%= student.center.center_name%>
-              <td><%=current_user.employee.employee_name if current_user.employee.present?%></td>
+              <td><%= student.admission_year.strftime("%b%Y") %></td>
+              <td><%= student.center.center_name if student.center.present?%></td>
+              <td><%= student.employee.name if student.employee.present?%></td>
               <td><%= student.contact_no if current_user.role == 'SuperAdmin'%></td>
                <%if student.student_status == "Inactive" %>
                  <td><%=link_to 'Deactivate', view_all_students_path(:param1 => false, :id => student.id),style: 'color: red'%></td>
