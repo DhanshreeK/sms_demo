@@ -38,8 +38,7 @@ class Center < ApplicationRecord
 
 	private
 
-	def create_center_account
-		
+	def create_center_account		
 		user = User.create!(:email => self.email , :password => self.center_code , :password_confirmation => self.center_code , role: 'Center', center_id: self.id)
 	end
 end

@@ -61,7 +61,7 @@
 
 				<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
 					<li><a href="/employees"><span class="title">Employees</span></a></li>
-					<li><a href="/refarences"><span class="title">Add Referenced By</span></a></li>
+					
 					<li><a href="/caste_categories"><span class="title">Caste Categories</span></a></li>
 				<%end%>
 				<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
@@ -70,9 +70,20 @@
 					<li><a href="/course_types"><span class="title">Course Type</span></a></li>
 					<li><a href="/courses"><span class="title">Course</span></a></li>
 				    <li><a href="/status_updates"><span class="title">Status</span></a></li>
-
 			    <% end %>
-			    
+
+                <%if current_user.role == 'SubAdmin'%>
+			     <li class="has-sub"><a href="#"><i class="icon-layout"></i><span class="title">WHO</span></a>
+				<ul class="nav collapse">
+					<li><a href="/budgets"><span class="title">Add Budget</span></a></li>
+					<li><a href="/colleges/new"><span class="title">Add College</span></a></li>
+					<li><a href="/colleges/new1"><span class="title">Find Colleges</span></a></li>
+				</ul>
+			</li>
+			    <% end %>
+			<%if current_user.role == 'SubAdmin'%>
+			    <li><a href="/refarences"><span class="title">Add Referenced By</span></a></li>
+            <%end%>  
 <!-- 	      <li><a href="/enquiries"><span class="title">Enquiries</span></a></li>
  -->					<%if current_user.role != 'Employee'%>
 					<li><a href="/envelopes"><span class="title">Envelope Creation</span></a></li>
@@ -84,9 +95,8 @@
 					<%end%>
 				</ul>
 			</li>
+  
 
-
-	
 			<li class="has-sub"><a href="#"><i class="icon-layout"></i><span class="title">Admission</span></a>
 				<ul class="nav collapse">
 					<%if current_user.role == 'Student' || current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || current_user.role == 'Employee' %>
@@ -120,6 +130,7 @@
 				</ul>
 			</li>
 			<%end%>	
+		
 
 		    <li class="has-sub"><a href="#"><i class="icon-layout"></i><span class="title">WHO</span></a>
 				<ul class="nav collapse">
