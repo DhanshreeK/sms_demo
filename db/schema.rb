@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180611080118) do
+ActiveRecord::Schema.define(version: 20180615071006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -281,6 +281,7 @@ ActiveRecord::Schema.define(version: 20180611080118) do
     t.string "igst"
     t.string "total_rate"
     t.string "total_amt"
+    t.string "current_payment"
     t.index ["center_id"], name: "index_receipts_on_center_id"
     t.index ["student_id"], name: "index_receipts_on_student_id"
   end

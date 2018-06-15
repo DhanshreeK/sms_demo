@@ -78,7 +78,7 @@
   <div class="form-group">
     <div class="col-md-4">
       <label class="col-sm-8 control-label">Description of Services</label>
-      <%= form.text_field :gst_no, id: :description_of_services, placeholder: 'Description', class: 'form-control' %>
+      <%= form.text_field :description_of_services, id: :description_of_services, placeholder: 'Description', class: 'form-control' %>
     </div>
   </div> 
 
@@ -152,8 +152,8 @@
 
   <div class="form-group">
     <div class="col-md-4">
-      <label class="col-sm-8 control-label">Course Fees</label>
-      <%= form.text_field :amount,value: @student.course.fees.to_i,id: :amount, class: 'form-control' %>
+      <label class="col-sm-8 control-label">University Fees</label>
+      <%= form.text_field :amount,value: @student.university.fees.to_i,id: :amount, class: 'form-control' %>
     </div>
   </div>
 
@@ -178,22 +178,22 @@
 <%if @fees.present?%>
   <div class="form-group">
     <div class="col-md-4">
-      <label class="col-sm-8 control-label">Discounted Course Fees</label>
+      <label class="col-sm-15 control-label">Discounted Fees(Taxable Value)</label>
       <%= form.text_field :payment_paid,value: @fees,id: :payment_paid, class: 'form-control' %>
     </div>
   </div>
   <%else%>
   <div class="form-group">
     <div class="col-md-4">
-      <label class="col-sm-8 control-label">Discounted Course Fees</label>
-      <%= form.text_field :payment_paid,value: @student.course.fees,id: :payment_paid, class: 'form-control' %>
+      <label class="col-sm-15 control-label">Discounted Fees(Taxable Value)</label>
+      <%= form.text_field :payment_paid,value: @student.university.fees,id: :payment_paid, class: 'form-control' %>
     </div>
   </div>
 <%end%>
 
   <div class="form-group">
     <div class="col-md-4">
-      <label class="col-sm-8 control-label">Taxable Value</label>
+      <label class="col-sm-8 control-label">Total</label>
       <%= form.text_field :payment,id: :payment, class: 'form-control',readonly: false %>
     </div>
   </div>
@@ -209,7 +209,7 @@
   <div class="form-group">
     <div class="col-md-4">
       <label class="col-sm-8 control-label">Current Amount Paid </label>
-      <%= form.text_field :payment,id: :current_payment, class: 'form-control',readonly: false %>
+      <%= form.text_field :current_payment,id: :current_payment, class: 'form-control',readonly: false %>
     </div>
   </div>
 
@@ -271,18 +271,23 @@
 var t1;
 var t2;
 t1 = +$('#payment_paid').val();
+
 t2 = +$('#igst').val();
-if($('#amount').val() == $(payment_paid).val())
+if($('#amount').val() == $('#payment_paid').val())
 {
+
   $('#payment').val((t1*t2/100)+t1);
 
 }
   
 $(document).on("keyup", "#discount", function() {
 var value1 = $(this).val();
-var value2 = $('#pending_payment').val();
+var value2 = $('#amount').val();
+
+
 var discount = $('#discount').val();
 var div1 = (value2 * discount/100);
+
 var ans = (value2 - div1)
 $('#payment_paid').val(ans);
 var t1;
@@ -299,7 +304,7 @@ $(document).on("keyup","#current_payment", function() {
   
   var tes = +$("#current_payment").val();
   $("#pending_payment").val(test - tes);
-  $('#pending_payment').val($('#payment_paid').val() - $('#current_payment').val())
+/*  $('#pending_payment').val($('#payment_paid').val() - $('#current_payment').val())*/
 
 });
 

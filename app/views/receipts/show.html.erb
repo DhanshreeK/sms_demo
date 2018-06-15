@@ -120,7 +120,7 @@
 <div class="col-md-4">
 <p class="text-info">
   <strong>Payment:</strong>
-   <%= @receipt.payment%>
+   <%= @receipt.current_payment%>
 </p>
 </div>
 
@@ -163,7 +163,7 @@
 <div class="col-md-4">
 <p class="text-info">
   <strong>Taxable Value:</strong>
-   <%= @receipt.taxable_value%>
+   <%= @receipt.payment%>
 </p>
 </div>
 
@@ -171,16 +171,11 @@
 <div class="col-md-4">
 <p class="text-info">
   <strong>Total Rate:</strong>
-   <%= @receipt.total_rate%>
+   <%= @receipt.igst%>
 </p>
 </div>
 
-<div class="col-md-4">
-<p class="text-info">
-  <strong>Total Amount:</strong>
-   <%= @receipt.total_amt%>
-</p>
-</div>
+
 
 
 <%= link_to 'Back', new_receipt_path, class: 'btn btn-blue btn-outline' %>
