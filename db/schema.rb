@@ -532,7 +532,6 @@ ActiveRecord::Schema.define(version: 20180611080118) do
     t.index ["subadmin_id"], name: "index_users_on_subadmin_id"
   end
 
-  add_foreign_key "answers", "questions"
   add_foreign_key "centers", "email_settings"
   add_foreign_key "colleges", "budgets"
   add_foreign_key "comments", "student_details"
@@ -557,8 +556,6 @@ ActiveRecord::Schema.define(version: 20180611080118) do
   add_foreign_key "selected_courses", "courses"
   add_foreign_key "selected_courses", "medical_colleges"
   add_foreign_key "selected_courses", "student_details"
-  add_foreign_key "student_answers", "answers"
-  add_foreign_key "student_answers", "questions"
   add_foreign_key "student_answers", "student_details"
   add_foreign_key "student_details", "budgets"
   add_foreign_key "student_details", "colleges"

@@ -2,195 +2,250 @@
 <html>
 <head>
 <style>
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
+div.a{
+  
+  background-color: #FFFFCC;
+  background-size: 100% 100%;
+  height: auto;
+  padding: 30px;
+  border:2px solid Navy;
+}
+address{
+  display: block;
+  width: 700px;
+  margin: 5px;
+}
+div.img {
+  border: 0px solid #ddd;
+  float: left;
+  border-radius: 1px;
+  padding: 3px;
+  width: 50px;
+}
+.maindiv{
+    width:100%;
+}
+.leftdiv{
+  float:left;
+  width:50%;
+} 
+.rightdiv{
+  float:right;
+  width:50%;
+} 
+.centerdiv{
+  width:50%;
+  margin:0 auto;
+}
+table{
+    border: none;
+    width:100%;
+    margin-left: 5px;
+    margin-right: 5px;
+
+
+}
+table, th, td {
+     border: none;
+     border-collapse: collapse;
+   
+    
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+    
+}
+    
+}
+table #t01  {
+width:100%;
+    
+}
+table #t01, th, td  {
+border: 1px solid black;
+border-collapse: collapse;
+    
 }
 
-a {
-  color: #5D6975;
-  text-decoration: underline;
-}
-
-
-body {
-  position: relative;
-  width: 21cm;  
-  height: 29.7cm; 
-  margin: 0 auto; 
-  color: #001028;
-  background: #FFFFFF; 
-  font-family: Arial, sans-serif; 
-  font-size: 14px; 
-  font-family: Arial;
-}
-
-header {
-  padding: 10px 0;
-  margin-bottom: 30px;
-}
-
-#logo {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-#logo img {
-  width: 90px;
-}
-
-h1 {
-  border-top: 1px solid  #5D6975;
-  border-bottom: 1px solid  #5D6975;
-  color: #5D6975;
-  font-size: 2.4em;
-  line-height: 1.4em;
-  font-weight: normal;
-  text-align: center;
-  margin: 0 0 20px 0;
-  background: url(/assets/dimension.png);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin-bottom: 20px;
-}
-
-table tr:nth-child(2n-1) td {
-  background: #F5F5F5;
-}
-
-table th,
-table td {
-  text-align: center;
-}
-
-table th {
-  padding: 5px 20px;
-  color: #5D6975;
-  border-bottom: 1px solid #C1CED9;
-  white-space: nowrap;        
-  font-weight: normal;
-}
-
-footer {
-  color: #5D6975;
-  width: 100%;
-  height: 30px;
-  position: absolute;
-  bottom: 0;
-  border-top: 1px solid #C1CED9;
-  padding: 8px 0;
-  text-align: center;
-}
 </style>
-
 </head>
-  <body>
-<header class="clearfix">
-      <div id="logo">
-         <%= wicked_pdf_image_tag('logo1.png') %>
-      </div>
+<body>
+  <div class="a">
+<div align="center">
+<h2><font face = "Times New Roman" color="red"><u>APPLICATION FORM</u></font></h2>
+</div>
 
-      <div id="company" class="clearfix">
-        <div><%= GeneralSetting.first.registered_name%></div>
-        <div><%= GeneralSetting.first.phone_no%></div>
-        <div><%= GeneralSetting.first.address%></div>
-      </div>
-`     
-    <h1>Admission Receipt</h1>
-    <h3><b>Applied For (Course Name) :</b></th><th><%= @student.course.course_name %></h3>
-    <h3><b>Specialization:</b></th><th><%= @student.course_type.course_type_name %></h3>
-    <%= wicked_pdf_image_tag('@student.photo.url')%>
+<table border="0">
+  <tr>
+ 
+   
 
+    <th>Applied For:</th>
+    <td> <%= @student.course.course_name %></td>
+   <div class="img">
+    <td rowspan="3"><%= wicked_pdf_image_tag  @student.photo.url %></td>
+  </div>
+    
+   
+  </tr>
+  <tr>
+    <th>Specilization:</th>
+    <td><%= @student.course_type.course_type_name %></td>
+    
+    
+  </tr>
+  <tr>
+    <th>Name Of Candidate:</th>
+    <td><%= @student.first_name + " " + @student.middle_name + " " +  @student.last_name %></td>
+    
+    
+  </tr>
+  
+</table>
 <br>
 
-
-    <table>
-
-   <thead>
-   
-      <tr><th><b>Enrollment Number:-</b></th>  <th><%= @student.enrollment %></th> </tr>
-      <tr><th><b>Name of the Candidate:-</b></th> <th><%= @student.first_name + " " + @student.middle_name + " " +  @student.last_name %></th></tr>
-      <tr><th><b>Date of birth:</b></th><th><%=@student.date_of_birth%></th></tr>
-      <tr><th><b>Father name:-</b></th><th><%= @student.father_name  %></th></tr>
-      <tr><th><b>Mother name:-</b></th><th><%= @student.mother_name  %></th></tr>
-      <tr><th><b>Postal / Permanent Address:</b></th><th><%= @student.permanent_address%></th></tr>
-      <tr><th><b>Contact Number: Mob :</b></th><th><%= @student.contact_no%></th></tr>
-      <tr><th><b>Email Id:</b></th><th><%= @student.email%></th></tr>
-      <tr><th><b>Sex :</b></th><th><%= @student.gender%></th></tr>
-
-
+<table>
+  <tr>
+    <th>Date of birth:</th>
+    <td><%=@student.date_of_birth%></td> 
     
-
-      <table class="table table-condensed table-bordered" style="margin-top: -15px; margin-bottom: 15px;">
-        <thead>
-          <tr>
-            <th style="font-size: 16px; background-color: #ccc; width: 75px;" colspan="4"><center>
-            Education Details:
-      </center></th>
-            </tr>
-            
-            <th>10th</th>
-            <th>12th</th>
-            <th>Graduation</th>
-            <th>Master</th>
-          </tr>
-          <tr>
-            <td><%= @student.tenth%></td>
-            <td><%= @student.twelth%></td>
-            <td><%= @student.graduation%></td>
-            <td><%= @student.post_graduation %></td>
-          </tr>
-      </thead>
+  </tr>
+  <tr>
+    <th>Father's Name:</th>
+    <td><%= @student.father_name  %></td>
+    
+  </tr>
+  <tr>
+    <th>Mother's Name:</th>
+    <td><%= @student.mother_name  %></td>
+    
+  </tr>
+  <tr>
+    <th>Postal/Permanant Address:</th>
+    <td><%= @student.permanent_address%></td>
+    
+  </tr>
+  <tr>
+  <td colspan="2"></td>
+  </tr>
+  <tr>
+  <th>Contact No:(mob)</th>
+  <td><%= @student.contact_no%></td>
+  
+  </tr>
+  <tr>
+  <th>Email ID:</th>
+  <td><%= @student.email%></td>
+  </tr>
 </table>
+<h3>Education Details:</h3>
+<table id="t01" >
+<tr>
+<th>Course</th>
+<th>Year of Passing</th>
+<th>Board/Univ./State</th>
+<th colspan="2">Percentage/Marks</th>
 
-<br><br><br>
+</tr>
+<tr>
+<td>10th</td>
+<td>2016</td>
+<td>Maharashtra</td>
+<td colspan="2"><%= @student.tenth%></td>
+
+
+</tr>
+<tr>
+<td rowspan="2">12th</td>
+<td>2018</td>
+<td>pune</td>
+<td>PCB</td>
+<td>PCMB</td>
+</tr>
+
+<td></td>
+<td></td>
+<td><%= @student.pcm %></td>
+<td><%= @student.pcm %></td>
+
+<tr>
+<td>Graduation</td>
+<td></td>
+<td></td>
+<td colspan="2"></td>
+</tr>
+<tr>
+<td>Master</td>
+<td></td>
+<td></td>
+<td colspan="2"></td>
+</tr>
+
+</table>
+<br>
+Note/Subject: _________________________________________________
+
+
+<br><br>
+Date: &nbsp;  Left Thumb Impression: &nbsp;  Student/Parents Sign
+</body>
+</div>
+
+<div class="a">
 <table>
 
 <thead>
-<div class="center">
-Declaration
+<div align="center"><b><u>
+Declaration</u></b>
+</div>
+
+<font size="1" color="black">
 My Self <b><%= @student.first_name + " " + @student.middle_name + " " +  @student.last_name %></b>
  I, hereby, declare that, the entries made by me in the Application Form are complete and true to the best of my knowledge and based on records. I am aware that this is just and application and my/our admission is subject to approval by the concerned University/Institute/College according to approval by the concerned University/Institute/Academy/College according to their admission procedure and will have no objection for the same. Also I am agree with all below mentioned rules and regulations.
- <p>&nbsp;</p>
-    => I hereby declare that I came to Vishwa Vidya Consultancy (V.V.C.) for education guidance and advice at my own wish.<br>
-    => I hereby confirm that V.V.C. always suggest me and guide me with the different Admission procedure/Board/Course and universities.<br>
-    => I hereby declare that I will be responsible for the admission pursued by me at college/Board/University and for which V.V.C.  Ltd will not be involved.<br>
-    => I hereby declare that any changes, Mistakes or Correction, on the document given by the college/Board/University will be my and the respective college/Board/University responsibility hence V.V.C.   will not be involved in this.<br>
-    => I hereby declare that the fee submitted by me at V.V.C. is only for the admission guidance and it does not include any college/Board/University fees, donation, Hostel/Mess charges. Also I am aware that this all mentioned charges are not refundable.<br>
-    => Fees or any charges paid through V.V.C.  Ltd /education for college/Board/University will not be returned in any circumstance by V.V.C. Ltd and I will not force Vishwa Education consultant for doing the same.<br>
-    => I hereby declare that I will be responsible for exam conducted, appearance and marks obtained for the college/Board/University. Hence I am aware that I will be responsible for the extra travelling fair if applicable.<br>
-    => I hereby declare that I will not harm V.V.C. Ltd and their representatives or anybody for my personal issue. I will not misguide others regarding V.V.C. Ltd and if found guilty I am liable for punishment according to the regulations.<br>
-    => For the cancellation of admission, a candidate has to apply in the prescribed form duly signed by him/her and counter signed by his/her parent/guardian at respective Institute. The candidate has to enclose the original fee receipt along with the form
-    => On admission cancelation refund shall be made after deduction of the processing/cancellation charges as shown below:<br>
-    => For the cancellation of admission, a candidate has to apply in the prescribed form duly signed by him/her and counter signed by his/her parent/guardian at respective Institute<br>
-    => The candidate has to enclose the original fee receipt along with the form <br>
-    => Request Received before Admission: Entire fee will be refunded less Processing Fee <br>
-    => Request Received after Admission & before Air Ticket: Tuition fee will be refunded by university to direct student & Air ticket charges will be refunded by us <br>
-    => Request Received after Admission & Ticket Booking: Tuition fee will be refunded by university to direct student <br>
-    => No Refund will be done if Student is not able to pay Fees and admission cancel by university <br>
-    => If all documents submitted for refund are in order, then the time taken to process of refund money will be 45 working days. Kindly note that it is the sole responsibility of the candidate to submit all required documents for timely processing of refund.<br>
-	
+ <br><br>
+ <address>
+    i) I hereby declare that I came to Vishwa Vidya Consultancy (V.V.C.) for education guidance and advice at my own wish.<br>
+    ii) I hereby confirm that V.V.C. always suggest me and guide me with the different Admission procedure/Board/Course and universities.<br>
+    iii) I hereby declare that I will be responsible for the admission pursued by me at college/Board/University and for which V.V.C.  Ltd will not be involved.<br>
+   iv) I hereby declare that any changes, Mistakes or Correction, on the document given by the college/Board/University will be my and the respective college/Board/University responsibility hence V.V.C.   will not be involved in this.<br>
+    v) I hereby declare that the fee submitted by me at V.V.C. is only for the admission guidance and it does not include any college/Board/University fees, donation, Hostel/Mess charges. Also I am aware that this all mentioned charges are not refundable.<br>
+    vi)Fees or any charges paid through V.V.C.  Ltd /education for college/Board/University will not be returned in any circumstance by V.V.C. Ltd and I will not force Vishwa Education consultant for doing the same.<br>
+    vii)I hereby declare that I will be responsible for exam conducted, appearance and marks obtained for the college/Board/University. Hence I am aware that I will be responsible for the extra travelling fair if applicable.<br>
+    viii)I hereby declare that I will not harm V.V.C. Ltd and their representatives or anybody for my personal issue. I will not misguide others regarding V.V.C. Ltd and if found guilty I am liable for punishment according to the regulations.<br>
+    ix)For the cancellation of admission, a candidate has to apply in the prescribed form duly signed by him/her and counter signed by his/her parent/guardian at respective Institute. The candidate has to enclose the original fee receipt along with the form
+    x)On admission cancelation refund shall be made after deduction of the processing/cancellation charges as shown below:<br>
+    xi)For the cancellation of admission, a candidate has to apply in the prescribed form duly signed by him/her and counter signed by his/her parent/guardian at respective Institute<br>
+    xii)The candidate has to enclose the original fee receipt along with the form <br>
+    xiii)Request Received before Admission: Entire fee will be refunded less Processing Fee <br>
+    xiv)Request Received after Admission & before Air Ticket: Tuition fee will be refunded by university to direct student & Air ticket charges will be refunded by us <br>
+    xv)Request Received after Admission & Ticket Booking: Tuition fee will be refunded by university to direct student <br>
+   xvi)No Refund will be done if Student is not able to pay Fees and admission cancel by university <br>
+    xvii)If all documents submitted for refund are in order, then the time taken to process of refund money will be 45 working days. Kindly note that it is the sole responsibility of the candidate to submit all required documents for timely processing of refund.<br></font></address>
+  
     <p>&nbsp;</p><p>&nbsp;</p>
+  
 
 
 
-
-
-Date: <p>&nbsp;</p>  Left Thumb Impression: <p>&nbsp;</p>  Student/Parents Sign:<p>&nbsp;</p>
+<div class="maindiv">
+<div align="left">
+Date 
+</div>
+<div align="center"> Left Thumb Impression</div>
+<div align="right">
+ Student/Parents Sign
+</div>
+</div>
 
 </thead>
 </table>
 
-</div>
-<h3> Your Admission has been Confirmed </h3>
 
 
+</div
 
+</html>
 
 
 
