@@ -20,7 +20,7 @@
               </ol> 
             </div>
  
-           <%= link_to 'New Center', new_center_path, class: 'btn btn-red btn-outline' %><p>&nbsp;</p>
+           <%#= link_to 'New Center', new_center_path, class: 'btn btn-red btn-outline' %><p>&nbsp;</p>
 
         <div class="table-responsive">
           
@@ -33,39 +33,30 @@
                <th>Contact</th>
                <th>Center Email</th>
                <th>Center code</th>
-               <th></th>
-                <th></th>
-                <th></th>
+               <th>Status</th>
+                
              </tr>
            </thead>
            <tbody>
             <% @centers.each_with_index do |center, i| %>
             <tr class="gradeX">
               <td><%= i + 1%></td>
-              <td><%= center.center_name %></td>
+              <td><%= link_to center.center_name , empl_center_path(center.id) ,class: 'btn btn-link' %></td>
               <td><%= center.contact %></td>
               <td><%= center.email %></td>
               <td><%= center.center_code %></td>
         
-               <%if center.center_status == "Inactive" %>
-                 <td><%=link_to 'Deactivate', centers_path(:param1 => false, :id => center.id),style: 'color: red'%></td>
-                   <%elsif center.center_status == "Active" %>
-                  <td><%=link_to 'Activate', centers_path(:param1 => true, :id => center.id),style: 'color: green'%></td>
-              <%end%>
+               <td><%= center.center_status %></td>
 
-              <td><%= link_to 'Show', center ,class: "btn btn-blue btn-sm"%></td>
-              <td><%= link_to 'Edit', edit_center_path(center),class: "btn btn-success btn-sm"%></td>
-              <% if current_user.role == "SuperAdmin" %>
+               
+
               
-              <% userid = @users.find_by(role: "Center" ,center_id: center.id) %>
-              
-               <td><%= link_to 'Reset Password', change_password_user_path(userid.id) ,class: "btn btn-link  btn-sm"%></td> 
-               <% end %>
-</i>
+
             </tr>
             <%end%>
           </tbody>
         </table>
+        <%= link_to "Back" , employees_path , class: "btn btn-success" %>
       </div>
     </div>
   </div>

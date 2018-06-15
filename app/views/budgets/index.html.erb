@@ -31,7 +31,7 @@
         <td><%= budget.budget_to %></td>
         <td><%= link_to 'Show', budget , class: 'btn btn-primary btn-xls'%>
         <%= link_to 'Edit', edit_budget_path(budget), class: 'btn btn-warning btn-xls' %>
-        <%= link_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xls' %></td>
+        <%= link_to 'Delete', budget, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xls' %></td>
       </tr>
     <% end %>
   </tbody>

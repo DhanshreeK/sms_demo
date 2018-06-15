@@ -43,7 +43,7 @@
         <td><%= college.country %></td>
         <td><%= link_to 'Show', college, class: 'btn btn-primary btn-xls' %>
         <%= link_to 'Edit', edit_college_path(college), class: 'btn btn-warning btn-xls' %>
-        <%= link_to 'Destroy', college, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger btn-xls'%></td>
+        <%= link_to 'Delete', college, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger btn-xls'%></td>
       </tr>
     <% end %>
   </tbody>

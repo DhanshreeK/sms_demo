@@ -48,7 +48,7 @@
         <td><%= student_detail.status_update.add_status if student_detail.status_update.present?%></td>
         <td><%= link_to 'Show',student_answer_student_detail_path(student_detail) , class: "btn btn-primary" %></td>
         <td><%= link_to 'Edit', edit_student_detail_path(student_detail) , class: "btn btn-success" %></td>
-        <td><%= link_to 'Destroy', student_detail, method: :delete, data: { confirm: 'Are you sure?'} , class: "btn btn-red" %></td>
+        <td><%= link_to 'Delete', student_detail, method: :delete, data: { confirm: 'Are you sure?'} , class: "btn btn-red" %></td>
             
           </tbody>
          

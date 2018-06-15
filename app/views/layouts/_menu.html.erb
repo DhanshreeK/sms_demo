@@ -40,7 +40,8 @@
 		
 		<!-- Main navigation -->
 		<ul id="side-nav" class="main-menu navbar-collapse collapse">
-			<li class="has-sub"><a href="/home/dashboard"><i class="icon-gauge"></i><span class="title">Admin Panel</span></a>
+			<% if current_user.role != "Student" %>
+			<li class="has-sub"><a href="/home/dashboard"><i class="icon-gauge"></i><span class="title">Admin Panel</span></a><% end %>
 				<ul class="nav">
 					<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Employee' && current_user.employee.employee_status == 'Active') || (current_user.role == 'Center' && current_user.center.center_status == 'Active')%>
 
@@ -167,12 +168,12 @@
 		  
 			<!-- User info -->
 			<ul class="user-info pull-left">          
-			  <li class="profile-info dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"> <img width="44" class="img-circle avatar" alt=""  <% if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || current_user.role == 'Employee' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
+			  <li class="profile-info dropdown"><a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"> <img width="44" class="img-circle avatar" alt=""  <% if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || current_user.role == 'Employee' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') || current_user.role == "Student"%>
                 <%= image_tag current_user.photo %>
                <% elsif  current_user.role == 'Center' %>
                <%= image_tag('man-3.jpg')%> 
                 <% end %>
-                <%= current_user.role%> <span class="caret"></span></a>
+               <%= current_user.role%> <span class="caret"></span></a>
 			  
 				<!-- User action menu -->
 				<ul class="dropdown-menu">

@@ -4,6 +4,9 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
+    if current_user.role == "SuperAdmin"
+    @users = User.all
+  end
     if current_user.role == 'Center'
       @employees = current_user.center.employees
       @general_setting = GeneralSetting.first

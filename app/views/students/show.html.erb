@@ -77,20 +77,23 @@
 </div>
 
 
+<% if current_user.role == 'SuperAdmin' || current_user.role == 'Center'  %>
 <div class="col-md-4">
 <p class="text-info">
   <strong>Contact no:</strong>
-  <%= @student.contact_no if current_user.role == 'SuperAdmin' %>
+  <%= @student.contact_no  %>
 </p>
 </div>
+<% end %>
 
-
+<% if current_user.role == 'SuperAdmin' || current_user.role == 'Center'  %>
 <div class="col-md-4">
 <p class="text-info">
   <strong>Alternate contact no:</strong>
   <%= @student.alternate_contact_no if current_user.role == 'SuperAdmin'  %>
 </p>
 </div>
+<% end %>
 
 
 
@@ -124,19 +127,21 @@
   <%= @student.mother_name %>
 </p></div>
 
-
+<% if current_user.role == 'SuperAdmin' || current_user.role == 'Center'  %>
 <div class="col-md-4">
 <p class="text-info">
   <strong>Father contact no:</strong>
   <%= @student.father_contact_no if current_user.role == 'SuperAdmin' %>
 </p></div>
+<% end %>
 
-
+<% if current_user.role == 'SuperAdmin' || current_user.role == 'Center'  %>
 <div class="col-md-4">
 <p class="text-info">
   <strong>Mother contact no:</strong>
   <%= @student.mother_contact_no if current_user.role == 'SuperAdmin' %>
 </p></div>
+<% end %>
 
 
 <div class="col-md-4">

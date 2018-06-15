@@ -33,6 +33,9 @@
                 <th>Status</th>
                <th></th>
                <th></th>
+               <% if current_user.role == "SuperAdmin" %>
+               <th></th>
+               <% end %>
              </tr>
            </thead>
            <tbody>
@@ -49,7 +52,12 @@
               <%end%>
 
             <td><%= link_to 'Show', employee,class: "btn btn-blue btn-sm" %></td>
-            <td><%= link_to 'Edit', edit_employee_path(employee),class: "btn btn-success btn-sm" %></td></i>
+            <td><%= link_to 'Edit', edit_employee_path(employee),class: "btn btn-success btn-sm" %></td>
+            <% if current_user.role == "SuperAdmin" %>
+            <% userid = @users.find_by(role: "Employee" , employee_id: employee.id) %>
+            <td><%= link_to 'Reset Password', change_password_user_path(userid.id) ,class: "btn btn-link  btn-sm"%></td>
+            <% end %>
+          </i>
             </tr>
             <%end%>
           </tbody>

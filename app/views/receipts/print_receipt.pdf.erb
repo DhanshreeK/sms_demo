@@ -1,115 +1,138 @@
-<style type="text/css">
-  div {
-    background-color: white;
-    border: 2px solid black;
-    padding: 25px;
-    margin: 25px;
-}
-table {
-    font-family: arial, sans-serif;
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
     border-collapse: collapse;
-    width: 100%;
+  width: 400px
 }
-
-address{
-    display: block;
-    width: 550px;
-    margin:0px;
-    text-align: center;
-    
-   }
-
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+tr.noBorder td {
+  border: 0;
 }
-
-tr:nth-child(even) {
-    background-color: #dddddd;
 </style>
-
-<div>
-<h3 align="center", style= "font-family: Arial, Helvetica, sans-serif;"><%=@receipt.student.center.center_name%></h3>
-<p align="center">Career Guidance Center</p>
-<address><%=@receipt.student.center.address%></address>
-<p align="center">Mob:<%=@receipt.student.center.contact%></p>
-<p align="center">Mail ID:<%=@receipt.student.center.email%></p>
-<strong>GST Number:</strong>
-   <%= @receipt.gst_no %><br>
-
-<strong>Date of Invoice:</strong>
-   <%= @receipt.date %><br>
-
-<strong>Invoice Number:</strong>
-<%= @receipt.invoice_number if @receipt.invoice_number.present?%><br>
-
-<strong>Description of Services:</strong>
-<%= @receipt.description_of_services if @receipt.description_of_services.present?%><br>
+</head>
+<body>
 
 
-<strong>Place of Supply:</strong>
-<%= @receipt.place_of_supply  if @receipt.place_of_supply.present?%><br>
 
-<strong>Name of Customer:</strong>
-   <%= @receipt.received_from %><br>
+<table style="width:100%">
+<tr >
 
-<strong>Amount:</strong>
-   <%= @receipt.amount %><br>
+<th colspan="4">TAX INVOICE</th>
 
+</tr>
+<tr>
+<th colspan="4">VISHWA VIDYA CONSULTANCY PRIVATE LIMITED<br><br>CIN - U74999PN2014PTC150838</th>
 
-  <table class="table">
-   <thead>
-                <tr>
-                  <th style="font-size: 16px; width: 75px;" colspan="11"><center>Receipt Details</center></th>
-                </tr>
-           
-              <tr>
-                <th>Amount Paid</th>
-                <th>CGST</th>
-              <th>SGST</th>
-              
-             </tr>
-           </thead>
-           <tbody>
-          <% @receipt.student.pending_payments.each_with_index do |fees| %>
-              <tr>
-               <td><%= fees.fees_paid%></td>
-              <td><%= @receipt.cgst if @receipt.cgst.present?%></td>
-              <td><%= @receipt.sgst if @receipt.sgst.present?%></td>
+</tr>
+<tr align="center">
+<td colspan="4"> ABHIMANYU PURAM, ABOVE ANAND DIANING HALL<br>S. NO. 16/5, MANIK BAUG SINHGAD ROAD, PUNE 411041<br>e mail- vec5577@gmail.com       Contact No.- 9225105222</td>
+</tr>
+<tr>
+<th colspan="4">
+GSTIN No - 27AAECV7569E1ZX</th>
+</tr>
+<tr>
+<td rowspan="2">Bill To <br><br><b>SURESH KADAM</b></td>
+<td rowspan="2">Place of supply<br><br><b>PUNE</b></td>
+<th>INVOICE NO</th>
+<th>INVOICE DATE</th>
 
-                <%#= link_to 'Destroy', refarence, method: :delete, data: { confirm: 'Are you sure?' } %>
-              </tr>
-          <% end %>
-          </tbody>
-        </table>
-          <table class="table">
-    <thead>
-
-      <tr>
-        <th></th>
-      </tr>
-
-      <tr>
-        <th> 
+</tr>
+<tr>
+<td>4</td>
+<td>10Nov17</td>
+</tr>
+<tr height="50">
+<th>Description of Services</th><th>   HSN code</th><th>  Rate</th>
+<th>Amount</th>
+</tr>
 
 
-        <h6>Amount in Words:-   </h6> <h6><%= @receipt.amount.to_i.to_words.split.map(&:capitalize).join(' ')%> Only 
 
-          <h4 align="right">&nbsp;</h4>
 
-          <h6 align="right">FOR VISHWA VIDYA CONSULTANCY PRIVATE LIMITED<br>
-          Authorised Signatory
-          </h6> <br>
-          <h6 align="left">
-          Note-Please make cheques in favor of "Vishwa Vidya Consultancy Private Limited"
-         </h6>
-        </th>
-      </tr>
+<tr>
+<td>ADMISSION</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><b>Total</b></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Less Discount</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><b>Taxable Value</b></td>
+<td></td>
+<td>21987</td>
+<td>23456</td>
+</tr>
+<tr>
+<td><b>CGST</b></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><b>SGST</b></td>
+<td></td>
+<td></td>
+<td></td>
 
-    </thead>
-  </table>
-</div>
+</tr>
+<tr>
+<td><font size="2">Rounding off</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
 
-        
+
+
+<tr>
+<td><b>Total</b></td>
+<td></td>
+<td></td>
+<td><b>31999</b></td>
+</tr>
+<tr>
+<td><font size="2">Amount Chargeable (in words)<br><b>Rupees - Thirty one thousand nine hundred ninety nine only</b></font></td>
+<td rowspan="3"></td>
+<td rowspan="3" colspan="2"><font size="2"><b>FOR VISHWA VIDYA CONSULTANCY PRIVATE LIMITED</b><br>Authorised Signature</font></td>
+
+</tr>
+
+<tr>
+<td><font size="2"><b>Company's PAN:</b></font></td>
+
+</tr>
+<tr>
+<td><font size="2">Note-Please make cheques in favor of<b> "Vishwa Vidya Consultancy Private Limited"</b></font></td>
+</tr>
+<tr style="height: 20px;">
+<td colspan="4"></td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+ 
+</table>
+
+</body>
+</html>
