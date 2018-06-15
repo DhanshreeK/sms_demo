@@ -45,12 +45,10 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
     respond_to do |format|
       if @employee.save
-            if current_user.role == 'Center'
-
+        if current_user.role == 'Center'
          @employee.update!(center_id: current_user.center_id)
-         end
-         if current_user.role == "Employee"
-          
+        end
+        if current_user.role == "Employee"  
           @employee.update(center_id: current_user.center_id)
         end
         format.html { redirect_to employees_path, notice: 'Employee was successfully created.' }

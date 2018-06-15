@@ -14,48 +14,26 @@ class StudentsController < ApplicationController
   end
 
    
-      def view_all
-        @students = Student.all
-        if current_user.role == "Center"
-
-
-           @centerid = User.find(current_user.id)
-          
-          @students = Student.where(center_id: @centerid.center_id)
-
-        elsif current_user.role == "Employee"
-          @centerid = User.find(current_user.id)
-          @students = Student.where(center_id: @centerid.employee.center_id ,employee_id: @centerid.employee_id)
-        end
-
-
-        
-          
-        
-           @general_setting = GeneralSetting.first
-      @user = User.first
-       if params[:param1].present? && params[:param1] == 'false'
-        student = Student.load(params[:id])
-        student.update!(student_status: 'Active')
-        elsif params[:param1].present? && params[:param1] == 'true'
-           student = Student.load(params[:id])
-          student.update!(student_status: 'Inactive')  
+  def view_all
+      @students = Student.all
+      if current_user.role == "Center"
+         @centerid = User.find(current_user.id)
+         @students = Student.where(center_id: @centerid.center_id)
+      elsif current_user.role == "Employee"
+        @centerid = User.find(current_user.id)
+        @students = Student.where(center_id: @centerid.employee.center_id ,employee_id: @centerid.employee_id)
       end
-   end
-        
-
-
-      
+    @general_setting = GeneralSetting.first
+    @user = User.first
+     if params[:param1].present? && params[:param1] == 'false'
+      student = Student.load(params[:id])
+      student.update!(student_status: 'Active')
+      elsif params[:param1].present? && params[:param1] == 'true'
+         student = Student.load(params[:id])
+        student.update!(student_status: 'Inactive')  
+    end
+ end
     
-
-     
-      
-
-         
-
-     
-
-  
   def show
   end
 
@@ -112,15 +90,9 @@ class StudentsController < ApplicationController
         if current_user.role == 'Student'
           @user = current_user.update(student_id: @student.id)
         end
-
         #@employee = Employee.all
-        
         #@empl = @employee.where(center_id:  current_user.employee.center_id)
-        if current_user.role == 'Employee'
-
-
-         
-          
+        if current_user.role == 'Employee'  
          @student.update(employee_id: current_user.employee_id)
          @student.update(center_id: current_user.employee.center_id)
        elsif current_user.role == "Center"

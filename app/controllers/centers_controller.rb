@@ -20,9 +20,8 @@ class CentersController < ApplicationController
   # GET /centers/1.json
   def show
   end
-  def empl
   
-
+  def empl
     @center = Center.find(params[:id])
   end
   # GET /centers/new

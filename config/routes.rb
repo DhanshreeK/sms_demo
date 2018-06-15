@@ -126,7 +126,6 @@ end
   resources :questions do
   member do
     get :question
-  
   end
 end
 
