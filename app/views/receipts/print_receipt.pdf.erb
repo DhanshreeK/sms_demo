@@ -17,6 +17,7 @@ tr.noBorder td {
 
 
 <table style="width:100%">
+
 <tr >
 
 <th colspan="4">TAX INVOICE</th>
@@ -34,15 +35,17 @@ tr.noBorder td {
 GSTIN No - 27AAECV7569E1ZX</th>
 </tr>
 <tr>
-<td rowspan="2">Bill To <br><br><b>SURESH KADAM</b></td>
-<td rowspan="2">Place of supply<br><br><b>PUNE</b></td>
+<td rowspan="2" >Bill To <br><br><b><%= @receipt.received_from %></b><br>Address of customer<br>
+<b><%= @receipt.student.permanent_address %></b><br>GSTIN No OF CUSTOMER<br><b><%= @receipt.gst_no %></b></td>
+<td rowspan="2">Place of supply<br><br><b><%= @receipt.place_of_supply %></b></td>
 <th>INVOICE NO</th>
 <th>INVOICE DATE</th>
 
 </tr>
 <tr>
-<td>4</td>
-<td>10Nov17</td>
+<td><%= @receipt.invoice_number %></td>
+<td><%= @receipt.date %></td>
+
 </tr>
 <tr height="50">
 <th>Description of Services</th><th>   HSN code</th><th>  Rate</th>
@@ -55,38 +58,38 @@ GSTIN No - 27AAECV7569E1ZX</th>
 <tr>
 <td>ADMISSION</td>
 <td></td>
-<td></td>
-<td></td>
+<td><%= @receipt.student.university.fees%></td>
+<td><%= @receipt.student.university.fees%></td>
 </tr>
 <tr>
 <td><b>Total</b></td>
 <td></td>
-<td></td>
-<td></td>
+<td><b><%= @receipt.student.university.fees%></b></td>
+<td><b><%= @receipt.student.university.fees%></b></td>
 </tr>
 <tr>
 <td>Less Discount</td>
 <td></td>
-<td></td>
+<td><%= @receipt.discount %>%</td>
 <td></td>
 </tr>
 <tr>
 <td><b>Taxable Value</b></td>
 <td></td>
-<td>21987</td>
-<td>23456</td>
+<td><%= @receipt.payment_paid %></td>
+<td><b><%= @receipt.payment_paid %></b></td>
 </tr>
 <tr>
 <td><b>CGST</b></td>
 <td></td>
-<td></td>
-<td></td>
+<td><b><%= @receipt.cgst %> %</b></td>
+<td><%= @receipt.payment_paid.to_f * (@receipt.cgst.to_f/100) %></td>
 </tr>
 <tr>
 <td><b>SGST</b></td>
 <td></td>
-<td></td>
-<td></td>
+<td><b><%= @receipt.sgst %> %</b></td>
+<td><%= @receipt.payment_paid.to_f * (@receipt.sgst.to_f/100) %></td>
 
 </tr>
 <tr>
@@ -102,12 +105,13 @@ GSTIN No - 27AAECV7569E1ZX</th>
 <td><b>Total</b></td>
 <td></td>
 <td></td>
-<td><b>31999</b></td>
+<td><b><%= @receipt.payment %></b></td>
 </tr>
 <tr>
-<td><font size="2">Amount Chargeable (in words)<br><b>Rupees - Thirty one thousand nine hundred ninety nine only</b></font></td>
+<td><font size="2">Amount Chargeable (in words)<br><b>Rupees -<%= @receipt.payment.to_i.to_words.split.map(&:capitalize).join(' ')%> Only</b></font></td>
 <td rowspan="3"></td>
-<td rowspan="3" colspan="2"><font size="2"><b>FOR VISHWA VIDYA CONSULTANCY PRIVATE LIMITED</b><br>Authorised Signature</font></td>
+<td rowspan="3" colspan="2" align="center"><font size="2"><b>FOR VISHWA VIDYA CONSULTANCY PRIVATE LIMITED</b><br>
+Authorised Signature</font></td>
 
 </tr>
 

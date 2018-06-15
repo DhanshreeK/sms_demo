@@ -305,6 +305,8 @@
 
 <% if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' %>
 <%= link_to 'View aLL', view_all_students_path, class: 'btn btn-blue btn-outline' %>
+<%= link_to 'Generate Receipt',generate_receipt_receipt_path(@student), class: 'btn btn-success' %>
+<%#= link_to 'Generate Receipt', new_receipt_path, class: 'btn btn-success'%>
 <%end%>
 <% if current_user.role == 'Student'%>
 <%= link_to 'Back', students_path, class: 'btn btn-blue btn-outline' %>

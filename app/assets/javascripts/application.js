@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require Chart.bundle
+//= require chartkick
 //= require select2
 //= require select2-full
 //= require rails-ujs

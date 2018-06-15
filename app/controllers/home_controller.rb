@@ -7,6 +7,7 @@ class HomeController < ApplicationController
 
   def dashboard
     @employee = current_user.employee
+    @centers = Center.all
    # @acts ||= UserActivity.order(created_at: :asc) if current_user.id == 1
   end
 
