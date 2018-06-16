@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Recipt") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(Name Enrollment\ Number Center Fees Fees\ Paid Discount Fees\ Pending) 
+  Student.all.each do |a|
+  a.pending_payments.each do |b|
+  sheet.add_row ["#{a.first_name}","#{a.enrollment}","#{a.center.center_name}", "#{a.university.fees}", "#{b.fees_paid}", "#{b.discount}","#{b.fees_pending}"]
+end
+end
+end

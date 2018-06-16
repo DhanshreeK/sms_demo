@@ -59,10 +59,11 @@
 					<li><a href="/centers"><span class="title">Centers</span></a></li>
 				<%end%>
 
-				<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
+				<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || ( current_user.center.center_status == 'Active') %>
 					<li><a href="/employees"><span class="title">Employees</span></a></li>
-					
+				<%if current_user.role != 'Center'%>
 					<li><a href="/caste_categories"><span class="title">Caste Categories</span></a></li>
+				<%end%>
 				<%end%>
 				<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
 					<li><a href="/universities"><span class="title">University</span></a></li>
@@ -91,7 +92,9 @@
 					<li><a href="/envelopes"><span class="title">Envelope Creation</span></a></li>
 					<%end%>
 					<li><a href="/receipts/receipt_creation"><span class="title">Generate Receipt</span></a></li>
+					<%if current_user.role != 'Center'%>
 					<li><a href="/questions/new"><span class="title">Add Questions</span></a></li>
+					<%end%>
 					<% elsif current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin'%>
 					<li><a href="/general_settings/new"><span class="title">General Setting</span></a></li>
 					<%end%>

@@ -21,8 +21,13 @@ class ReceiptsController < ApplicationController
       end
 	end
 
+
+
+	def export_report
+	    @students = Student.all
+	end
+
 	def receipt_creation
-		
 	end
 
 	def generate_receipt

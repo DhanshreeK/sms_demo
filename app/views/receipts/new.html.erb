@@ -10,7 +10,9 @@
           <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
         </ul>
       </div>
+      
       <div class="panel-body">
+         <%=link_to "Export Excel",export_report_receipts_path(format: "xlsx"), class: 'btn btn-primary'  %> 
         <div class="table-responsive">
           <table class="table table-striped table-bordered table-hover dataTables-example" >
             <thead>

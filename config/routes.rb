@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   end
   collection do
     get :receipt_creation
+        get :export_report
+
   end
   end
   resources :enquiries do 

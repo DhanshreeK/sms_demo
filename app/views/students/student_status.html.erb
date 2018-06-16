@@ -54,8 +54,22 @@
                         </p>
                         <%end%>
                 </li> 
-                  <ul> 
-                    <li><% if @student.admission_letter_attachment.present?%>
+                   =><font color="blue">MCI</font>
+
+                  <ul>
+                   <li><% if @student.sent_for_mci == "true"%>
+                    <strong><font color="green">Document Sent For MCI</font></strong>&nbsp;&nbsp;<i class="fa fa-check"></i>
+                    <%else%>
+                       <strong><font color="red">Document Sent For MCI</font></strong>
+                    <%end%></li>
+
+                    <li>   <% if @student.mci_acknowledgement == "true"%>
+                           <strong><font color="green">MCI Acknowledgement</font></strong>&nbsp;&nbsp;<i class="fa fa-check"></i>
+                           <%else%>
+                           <strong><font color="red">MCI Acknowledgement</font></strong>
+
+                        <%end%></li> 
+                    <% if @student.admission_letter_attachment.present?%>
                    <strong><font color="green">Admission Letter</font></strong>&nbsp;&nbsp;<i class="fa fa-check"></i>
                     <td><%= link_to "Download", @student.admission_letter_attachment_url, class: 'btn btn-link' %></td>
                   <%end%></li>
@@ -65,28 +79,18 @@
                  <td><%= link_to "Download", @student.mci_eligibility_criteria_certificate_attachment_url, class: 'btn btn-link' %></td>
                 <%else%>
                    <strong><font color="red">MCI Eligibilty Certificate</font></strong>
-
-                <%end%></li> 
-                    <li><% if @student.sent_for_mci == "true"%>
-                    <strong><font color="green">Sent For MCI</font></strong>&nbsp;&nbsp;<i class="fa fa-check"></i>
-                    <%else%>
-                       <strong><font color="red">Sent For MCI</font></strong>
-                    <%end%></li> 
-                    <li>
-                      <% if @student.mci_acknowledgement == "true"%>
-                           <strong><font color="green">MCI Acknowledgement</font></strong>&nbsp;&nbsp;<i class="fa fa-check"></i>
-                           <%else%>
-                           <strong><font color="red">MCI Acknowledgement</font></strong>
-
-                        <%end%>
+                <%end%></li>   
                     </li> 
-                  </ul> 
+                  </ul>
+                        =><font color="blue">Visa</font>
+ 
                 </li> 
                 <li>
+
                   <% if @student.sent_for_visa == "true"%>
-                    <strong><font color="green">Sent For Visa</font></strong>&nbsp;&nbsp;<i class="fa fa-check"></i>
+                    <strong><font color="green">Document Sent For Visa</font></strong>&nbsp;&nbsp;<i class="fa fa-check"></i>
                     <%else%>
-                       <strong><font color="red">Sent For Visa</font></strong>
+                       <strong><font color="red">Document Sent For Visa</font></strong>
                     <%end%>
                 </li> 
                 <li>
@@ -101,14 +105,20 @@
                     <%else%>
                        <strong><font color="red">Visa Stamping</font></strong>
                     <%end%></li> 
-
                 <li>
+
+                   </li> 
+                   =><font color="blue">Airticket and fly</font>
+
+                  <ul>
                   <% if @student.airticket == "true"%>
                   <strong><font color="green">Airticket</font></strong>&nbsp;&nbsp;<i class="fa fa-check"></i>
                 <%else%>
                    <strong><font color="red">Airticket</font></strong>
                 <%end%>
                 </li>
+
+              <li>  <ul><font color= "red"><b>Original Document Return</b></font></ul></li>
 
                 <li>  
                   <% if @student.fly == "true"%>
