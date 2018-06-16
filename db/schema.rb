@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20180611080118) do
-
+ActiveRecord::Schema.define(version: 20180615071006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -552,14 +550,12 @@ ActiveRecord::Schema.define(version: 20180611080118) do
   add_foreign_key "medical_colleges", "countries"
   add_foreign_key "pending_payments", "receipts"
   add_foreign_key "pending_payments", "students"
-  add_foreign_key "questions", "student_details"
   add_foreign_key "receipts", "centers"
   add_foreign_key "receipts", "students"
   add_foreign_key "selected_courses", "countries"
   add_foreign_key "selected_courses", "courses"
   add_foreign_key "selected_courses", "medical_colleges"
   add_foreign_key "selected_courses", "student_details"
-  add_foreign_key "student_answers", "student_details"
   add_foreign_key "student_details", "budgets"
   add_foreign_key "student_details", "colleges"
   add_foreign_key "student_details", "countries"

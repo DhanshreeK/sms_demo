@@ -72,15 +72,7 @@
 				    <li><a href="/status_updates"><span class="title">Status</span></a></li>
 			    <% end %>
 
-                <%if current_user.role == 'SubAdmin'%>
-			     <li class="has-sub"><a href="#"><i class="icon-layout"></i><span class="title">WHO</span></a>
-				<ul class="nav collapse">
-					<li><a href="/budgets"><span class="title">Add Budget</span></a></li>
-					<li><a href="/colleges/new"><span class="title">Add College</span></a></li>
-					<li><a href="/colleges/new1"><span class="title">Find Colleges</span></a></li>
-				</ul>
-			</li>
-			    <% end %>
+              
 			<%if current_user.role == 'SubAdmin'%>
 			    <li><a href="/refarences"><span class="title">Add Referenced By</span></a></li>
             <%end%>  
@@ -93,6 +85,18 @@
 					<% elsif current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin'%>
 					<li><a href="/general_settings/new"><span class="title">General Setting</span></a></li>
 					<%end%>
+					
+		    <li class="has-sub"><a href="#"><i class="icon-layout"></i><span class="title">WHO</span></a>
+				<ul class="nav collapse">
+					<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
+					<li><a href="/budgets"><span class="title">Add Budget</span></a></li>
+					<li><a href="/colleges/new"><span class="title">Add College</span></a></li>
+					<li><a href="/colleges/new1"><span class="title">Find Colleges</span></a></li>
+					<% end %>
+				</ul>
+			</li>
+
+
 				</ul>
 			</li>
   
@@ -131,17 +135,6 @@
 			</li>
 			<%end%>	
 		
-
-		    <li class="has-sub"><a href="#"><i class="icon-layout"></i><span class="title">WHO</span></a>
-				<ul class="nav collapse">
-					<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
-					<li><a href="/budgets"><span class="title">Add Budget</span></a></li>
-					<li><a href="/colleges/new"><span class="title">Add College</span></a></li>
-					<li><a href="/colleges/new1"><span class="title">Find Colleges</span></a></li>
-					<% end %>
-				</ul>
-			</li>
-
 
 		
 

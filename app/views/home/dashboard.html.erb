@@ -101,19 +101,19 @@
 			</div>
 		</div>
 <% end -%>	
-<% if current_user.role == "SuperAdmin" %>
-<div class="col-xs-6">
-	<h3>Total Students</h3>
+<%# if current_user.role == "SuperAdmin" %>
+<!-- <div class="col-xs-6">
+	<h3>Total Students</h3> -->
 
 
-<%= column_chart @centers.all.map{|c|{center_name: c.center_name , data: c.students.group(:admission_year).count}} %>
-<%= column_chart StudentDetail.group(:country_id).count %>
+<%#= column_chart @centers.all.map{|c|{center_name: c.center_name , data: c.students.group(:admission_year).count}} %>
+<%#= column_chart StudentDetail.group(:country_id).count %>
 
 
 
-</div>
-
-<% end %>
+<!-- </div>
+ -->
+<%# end %>
 
 <%if (current_user.role == 'Center' && current_user.center.center_status == 'Inactive') || (current_user.role == 'Employee' && current_user.employee.employee_status == 'Inactive')%>
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>

@@ -66,22 +66,22 @@
   </div>
   </div>
   <%end%>
-
-   <%if current_user.role == 'Center'%>
+<!-- 
+   <%#if current_user.role == 'Center'%>
     <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">University<font color="red">*</font></label>
-    <%= form.select :university_id,current_user.center.universities.collect{|a| [a.university_name,a.id]},{prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
+    <%#= form.select :university_id,current_user.center.universities.collect{|a| [a.university_name,a.id]},{prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
   </div>
-  <%else%>
+  <%#else%>
   <div class="form-group">
         <div class="col-md-4">
           <label class="col-sm-6 control-label">University<font color="red">*</font></label>
-    <%= form.select :university_id,University.all.collect{|a| [a.university_name,a.id]},{prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
+    <%#= form.select :university_id,University.all.collect{|a| [a.university_name,a.id]},{prompt:true},id: 'employee_center_id',class: "form-control selectpicker", "data-live-search" => "true"  %>
   </div>
   </div>
-  <%end%>
+  <%#end%> -->
 <!-- 
   <div class="form-group">
         <div class="col-md-4">
