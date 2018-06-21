@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20180615071006) do
 
   # These are extensions that must be enabled in order to support this database
@@ -152,6 +153,20 @@ ActiveRecord::Schema.define(version: 20180615071006) do
     t.index ["student_id"], name: "index_email_settings_on_student_id"
   end
 
+  create_table "emails", force: :cascade do |t|
+    t.string "to"
+    t.string "sub"
+    t.text "body"
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "attachment"
+    t.string "cc"
+    t.string "bcc"
+    t.string "attachment2"
+    t.index ["student_id"], name: "index_emails_on_student_id"
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "name"
     t.string "designation"
@@ -222,6 +237,13 @@ ActiveRecord::Schema.define(version: 20180615071006) do
     t.datetime "logo_updated_at"
   end
 
+  create_table "important_documents", force: :cascade do |t|
+    t.string "title"
+    t.string "file_upload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "medical_colleges", force: :cascade do |t|
     t.string "college_name"
     t.bigint "country_id"
@@ -239,6 +261,8 @@ ActiveRecord::Schema.define(version: 20180615071006) do
     t.string "discount"
     t.string "fees_paid"
     t.boolean "payment_status"
+    t.bigint "center_id"
+    t.index ["center_id"], name: "index_pending_payments_on_center_id"
     t.index ["receipt_id"], name: "index_pending_payments_on_receipt_id"
     t.index ["student_id"], name: "index_pending_payments_on_student_id"
   end
@@ -540,6 +564,7 @@ ActiveRecord::Schema.define(version: 20180615071006) do
   add_foreign_key "courses", "universities"
   add_foreign_key "email_settings", "centers"
   add_foreign_key "email_settings", "students"
+  add_foreign_key "emails", "students"
   add_foreign_key "employees", "centers"
   add_foreign_key "employees", "email_settings"
   add_foreign_key "enquiries", "centers"
@@ -548,6 +573,7 @@ ActiveRecord::Schema.define(version: 20180615071006) do
   add_foreign_key "envelopes", "centers"
   add_foreign_key "envelopes", "students"
   add_foreign_key "medical_colleges", "countries"
+  add_foreign_key "pending_payments", "centers"
   add_foreign_key "pending_payments", "receipts"
   add_foreign_key "pending_payments", "students"
   add_foreign_key "receipts", "centers"

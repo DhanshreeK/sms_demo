@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+ 
+   get 'documents/new'
+  get 'documents/show'
+
+  post 'documents/create'
+
+ 
+
+  resources :emails do
+    collection do
+    delete 'destroy_multiple'
+  end
+    member do
+      get :new1
+    end
+  end
   resources :status_updates
   resources :subadmins
   resources :selected_courses
@@ -51,6 +67,7 @@ Rails.application.routes.draw do
   resources :students do 
     collection do 
       get :view_all
+    
     end
     member do
       get :show_student,:admission_receipt,:student_status

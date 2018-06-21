@@ -22,6 +22,9 @@ class ReportsController < ApplicationController
 
 	def create
 		@results = Student.all
+		if current_user.role == "Center"
+			@results = Student.where(center_id: current_user.center_id)
+		end
 		@general_setting = GeneralSetting.first
 		@start_date = params[:report][:start_date].to_date
 	    @end_date = params[:report][:end_date].to_date
@@ -33,22 +36,31 @@ class ReportsController < ApplicationController
 
 	def index
 		@pending_payments = PendingPayment.all
+		if current_user.role == "Center"
+
+			@pending_payments = PendingPayment.where(center_id: current_user.center_id)
+		end
 	end
 
 
   	def export
+
   			@pending_payments = PendingPayment.all
   			book = Spreadsheet::Workbook.new
     		sheet1 = book.create_worksheet :name => 'Sheet1'
     		 sheet1.row(0).push "ENROLLMENT NO","DATE(DD/MM/YY)","STUDENT NAME" , "FEES" ,"PENDING FEES","OFFICE CENTER","STATUS OF FEES" 
+    		
+
     		@pending_payments.each_with_index do |r,i|
      			@i = i += 1
      			sheet1.insert_row(sheet1.last_row_index + 1 ,["#{@i}" ,"#{r.student.enrollment}" , "#{r.student.created_at.to_date.strftime("%d/%m/%Y")}","#{r.student.first_name+" "+r.student.last_name}" ,"#{r.fees_pending}" ,"#{r.fees_paid}" , "#{r.student.center.center_name}" , "#{r.payment_status}"])
-     		 	spreadsheet = StringIO.new
-     		 	book.write spreadsheet
-     		 	file = "Excelsheet"
-      			send_data spreadsheet.string, :filename => "#{file}", :type =>  "application/vnd.ms-excel"
+     		 	
+     		 	
       		end
+      		 spreadsheet = StringIO.new
+     		 	book.write spreadsheet
+      		file = "Excelsheet"
+      			send_data spreadsheet.string, :filename => "#{file}", :type =>  "application/vnd.ms-excel"
     end
 
 	def reference_report
@@ -67,6 +79,10 @@ class ReportsController < ApplicationController
 	def select_university
 		@university = University.load(params[:university_id])
 		@university_students = @university.students
+		if current_user.role == "Center"
+			@university_students = @university.students.where(center_id: current_user.center_id)
+		end
+
 		@student_count = @university.students.count
 	end
 
@@ -77,6 +93,10 @@ class ReportsController < ApplicationController
 	def select_course
 		@course = Course.load(params[:course_id])
 		@course_students = @course.students
+		if current_user.role == "Center"
+			@course_students = @course.students.where(center_id: current_user.center_id)
+		end
+
 		@student_count = @course.students.count
 	end
 

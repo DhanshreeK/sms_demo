@@ -1,0 +1,96 @@
+<%= render 'layouts/messages'%>
+<div class="col-md-12"> 
+ <br>
+                 <br>
+          <div class="panel panel-info">
+            <div class="panel-heading clearfix"> 
+              <div class="panel-title"></div> 
+              <ul class="panel-tool-options"> 
+               <!--  <li class="dropdown">
+                  <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
+                    <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
+                    <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+                  </ul>
+                 </li> -->
+                <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+<!--                 <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+ -->                <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+              </ul>  
+            </div> 
+            <!-- panel body --> 
+            <div class="panel-body"> 
+<div class="panel-body collapse in" id="collapsepanel">
+              <ol class="breadcrumb breadcrumb-2"> 
+                <li><a href="/home/dashboard"><i class="icon-folder"></i>Emails</a></li> 
+                <li class="active">show</li> 
+              </ol> 
+            </div>
+
+
+<p id="notice"><%= notice %></p>
+<div class="col-md-12">
+<p class="text-info">
+
+  <strong>To:</strong>
+  <%= @email.to %>
+</p>
+</div>
+<% if @email.cc.present? %>
+<div class="col-md-12">
+<p class="text-info">
+
+  <strong>Cc:</strong>
+  <%= @email.cc %>
+</p>
+</div>
+<% end %>
+<% if @email.bcc.present? %>
+<div class="col-md-12">
+<p class="text-info">
+
+  <strong>Bcc:</strong>
+  <%= @email.bcc %>
+</p>
+</div>
+<% end %>
+
+
+<div class="col-md-12">
+<p class="text-info">
+
+  <strong>Sub:</strong>
+  <%= @email.sub %>
+</p>
+</div>
+
+<div class="col-md-12">
+<p class="text-info">
+  <strong>Message:</strong>
+  <%= @email.body %>
+</p>
+</div>
+
+
+
+<% if @email.attachment.present?  || @email.attachment2.present? %>
+<strong>Attachments:</strong>
+<div class="col-md-12">
+<p class="text-info">
+  
+  <%= link_to "Download:", @email.attachment_url %><%= @email.attachment.file.filename %><br>
+  <%= link_to "Download:",@email.attachment2_url %><%= @email.attachment2.file.filename %>
+</p>
+</div>
+<% end %>
+
+
+<%#= link_to 'Edit', edit_email_path(@email) %> 
+<div align="left">
+<%= link_to 'Back', emails_path , class: "btn btn-link" %>
+</div>
+
+
