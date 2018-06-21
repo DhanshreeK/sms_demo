@@ -18,7 +18,12 @@ class ReceiptsController < ApplicationController
 			#@currentid = User.find(current_user.id)
 			@centerid = User.find(current_user.id)
           @students = Student.where(center_id: @centerid.employee.center_id ,employee_id: @centerid.employee_id)
+      elsif current_user.role == "Center"
+      	@centerid = User.find(current_user.id)
+      	@students = Student.where(center_id: @centerid.center_id)
       end
+
+      	
 	end
 
 	def receipt_creation
@@ -37,11 +42,14 @@ class ReceiptsController < ApplicationController
 		
 		@student = Student.load(params[:id])
 	    if @receipt.save
-	    	if (current_user.role == "Employee" || current_user.role == "Center")
+	    	if current_user.role == "Employee" 
        	    @receipt.update(center_id: current_user.employee.center_id)
-	    end
+       	elsif current_user.role == "Center"
+       		@receipt.update(center_id: current_user.center_id)
+       	end
+       
 	    #@receipt.update(employee_id: current_user.employee_id)
-	    @pending = PendingPayment.create!(student_id: @receipt.student_id, receipt_id: @receipt.id, fees_pending: @receipt.pending_payment, discount: @receipt.discount, fees_paid: @receipt.payment)
+	    @pending = PendingPayment.create!(student_id: @receipt.student_id, receipt_id: @receipt.id, fees_pending: @receipt.pending_payment, discount: @receipt.discount, fees_paid: @receipt.payment , center_id: @receipt.student.center_id)
 	    if @receipt.pending_payment == '0'
 	    	@pending.update(payment_status: 'true')
 	    end

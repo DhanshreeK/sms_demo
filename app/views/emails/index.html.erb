@@ -1,0 +1,99 @@
+
+<%= render 'layouts/messages'%> 
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title"></h3>
+        <ul class="panel-tool-options"> 
+          <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+          <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+          <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+        </ul>
+      </div>
+      <div class="panel-body">
+        <div class="panel-body collapse in" id="collapsepanel">
+              <ol class="breadcrumb breadcrumb-2"> 
+                <li><a href="/home/dashboard"><i class="icon-folder"></i>Emails</a></li> 
+                <li class="active">index</li> 
+              </ol> 
+            </div>
+                  
+
+        <div class="table-responsive">
+
+
+
+
+<h1>Sentbox</h1>
+
+ <table class="table table-striped table-bordered table-hover dataTables-example" >
+  <thead>
+    <tr>
+      <th>To</th>
+      <!-- <th>Sub</th>
+      <th>Body</th> -->
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @emails.each do |email| %>
+      <tr>
+        <td><%= email.to %></td>
+       <!--  <td><%#= email.sub %></td>
+        <td><%= email.body %></td> -->
+        
+        <td><%= link_to 'Show', email %></td>
+<!--         <td><%#= link_to 'Edit', edit_email_path(email) %></td>
+ -->        <td><%= link_to 'Destroy', email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});
+</script>
+
+
+
+<%#= link_to 'New Email', new1_email_path(@student) %>
+<script>
+  $(document).ready(function () {
+    $('.dataTables-example').DataTable({
+      dom: '<"html5buttons" B>lTfgitp',
+      buttons: [
+      {
+        extend: 'copyHtml5',
+        exportOptions: {
+          columns: [ 0, ':visible' ]
+        }
+      },
+      {
+        extend: 'excelHtml5',
+        exportOptions: {
+          columns: ':visible'
+        }
+      },
+      {
+        extend: 'pdfHtml5',
+        exportOptions: {
+          columns: [ 0, 1, 2, 3, 4 ]
+        }
+      },
+      'colvis'
+      ]
+    });
+  });
+</script>
+
