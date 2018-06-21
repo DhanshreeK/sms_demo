@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20180611080118) do
-
+ActiveRecord::Schema.define(version: 20180620082016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +40,12 @@ ActiveRecord::Schema.define(version: 20180611080118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.string "filename"
+    t.string "content_type"
+    t.binary "data"
   end
 
   create_table "budgets", force: :cascade do |t|
@@ -143,6 +147,15 @@ ActiveRecord::Schema.define(version: 20180611080118) do
     t.index ["university_id"], name: "index_courses_on_university_id"
   end
 
+  create_table "documents", force: :cascade do |t|
+    t.string "file_name"
+    t.string "file_path"
+    t.bigint "email_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_id"], name: "index_documents_on_email_id"
+  end
+
   create_table "email_settings", force: :cascade do |t|
     t.string "body"
     t.bigint "center_id"
@@ -152,6 +165,20 @@ ActiveRecord::Schema.define(version: 20180611080118) do
     t.boolean "send_email"
     t.index ["center_id"], name: "index_email_settings_on_center_id"
     t.index ["student_id"], name: "index_email_settings_on_student_id"
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.string "to"
+    t.string "sub"
+    t.text "body"
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "attachment"
+    t.string "cc"
+    t.string "bcc"
+    t.string "attachment2"
+    t.index ["student_id"], name: "index_emails_on_student_id"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -241,6 +268,8 @@ ActiveRecord::Schema.define(version: 20180611080118) do
     t.string "discount"
     t.string "fees_paid"
     t.boolean "payment_status"
+    t.bigint "center_id"
+    t.index ["center_id"], name: "index_pending_payments_on_center_id"
     t.index ["receipt_id"], name: "index_pending_payments_on_receipt_id"
     t.index ["student_id"], name: "index_pending_payments_on_student_id"
   end
@@ -540,8 +569,10 @@ ActiveRecord::Schema.define(version: 20180611080118) do
   add_foreign_key "comments", "student_details"
   add_foreign_key "courses", "course_types"
   add_foreign_key "courses", "universities"
+  add_foreign_key "documents", "emails"
   add_foreign_key "email_settings", "centers"
   add_foreign_key "email_settings", "students"
+  add_foreign_key "emails", "students"
   add_foreign_key "employees", "centers"
   add_foreign_key "employees", "email_settings"
   add_foreign_key "enquiries", "centers"
@@ -550,6 +581,7 @@ ActiveRecord::Schema.define(version: 20180611080118) do
   add_foreign_key "envelopes", "centers"
   add_foreign_key "envelopes", "students"
   add_foreign_key "medical_colleges", "countries"
+  add_foreign_key "pending_payments", "centers"
   add_foreign_key "pending_payments", "receipts"
   add_foreign_key "pending_payments", "students"
   add_foreign_key "questions", "student_details"

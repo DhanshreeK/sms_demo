@@ -1,0 +1,134 @@
+<%#= form_with(model: email, local: true) do |form| %>
+<br><br><br><br>
+<% modal ||= false %>
+<% remote = modal ? true : false %>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title">Create Email</h3>
+        <ul class="panel-tool-options"> 
+          <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+          <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
+          <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+        </ul>
+      </div>
+      <div class="panel-body">
+          <div class="panel-body collapse in" id="collapsepanel">
+              <ol class="breadcrumb breadcrumb-2"> 
+                <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
+                <li class="active">Email</li> 
+              </ol> 
+         </div>
+         
+
+        
+
+
+          <div class="tab-content">
+            <div class="tab-pane  active" id="tab2-1">
+              <div class="row"> 
+<%= form_for @email, url:{action: 'create'} do |form| %>  
+
+  <% if @email.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@email.errors.count, "error") %> prohibited this email from being saved:</h2>
+
+      <ul>
+      <% @email.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+     <div class="col-md-12"> 
+                  <div class="form-group"> 
+                   
+    <%#= form.label :to %>
+    <%= form.text_field :to, id: :email_to , class: "form-control"  , placeholder: "To"%>
+    
+  </div>
+</div>
+</div>
+<div class="field">
+     <div class="col-md-6"> 
+                  <div class="form-group"> 
+                   
+    <%#= form.label :to %>
+    <%= form.text_field :cc, id: :email_cc , class: "form-control" , placeholder: "Cc"%>
+    
+  </div>
+</div>
+</div>
+<div class="field">
+     <div class="col-md-6"> 
+                  <div class="form-group"> 
+                    
+    <%#= form.label :to %>
+    <%= form.text_field :bcc, id: :email_bcc , class: "form-control" , placeholder: "Bcc" %>
+    
+  </div>
+</div>
+</div>
+
+  <div class="field">
+    <div class="field">
+     <div class="col-md-12"> 
+                  <div class="form-group"> 
+                    <!-- <label for="sub" class="control-label">Sub:</label> -->
+    <%#= form.label :sub %>
+    <%= form.text_field :sub, id: :email_sub , class: "form-control"  , placeholder: "Subject"%>
+  </div>
+</div>
+  </div>
+
+  <div class="field">
+    <div class="field">
+     <div class="col-md-12"> 
+                  <div class="form-group"> 
+                    
+    <%#= form.label :body %>
+    <%= form.text_area :body, id: :email_body , class: "form-control", placeholder: "Message Body" %>
+  </div>
+</div>
+</div>
+ <div class="col-md-12"> 
+               <div class="form-group"> 
+               <label for="cardholdername" class="control-label">Add attachment</label>
+               <%= form.file_field :attachment, id: :student_attachment, class: 'form-control' %>                       
+             </div>
+           </div> 
+           <div class="col-md-12"> 
+               <div class="form-group"> 
+               <label for="cardholdername" class="control-label">Add attachment</label>
+               <%= form.file_field :attachment2, id: :student_attachment2, class: 'form-control' %>                       
+             </div>
+           </div> 
+         <%# form_for @document 'create', :multipart => true do %>
+ <%#= form_for :document, url: {action: 'create', controller: 'documents'},  html: { multiple: true } do |form| %>
+ <%##= form.submit "Add Attachment" %>
+<%# end %>
+
+
+
+ 
+
+  <div class="actions">
+    <div class="form-group"> 
+      <div class="col-sm-offset-1 col-sm-10"> 
+    <%= form.submit "Send" , class: 'btn btn-red'%>
+    <%#= link_to 'Back', emails_path , class: 'btn btn-success' %>
+  </div>
+</div>
+</div>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+

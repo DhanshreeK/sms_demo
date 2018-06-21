@@ -58,7 +58,7 @@
 				<% if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
 					<li><a href="/centers"><span class="title">Centers</span></a></li>
 				<%end%>
-
+			
 				<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
 					<li><a href="/employees"><span class="title">Employees</span></a></li>
 					

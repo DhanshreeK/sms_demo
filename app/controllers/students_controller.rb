@@ -33,6 +33,7 @@ class StudentsController < ApplicationController
         student.update!(student_status: 'Inactive')  
     end
  end
+ 
     
   def show
   end
@@ -83,6 +84,7 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
+  
 
     respond_to do |format|
       if @student.save

@@ -1,4 +1,5 @@
 <%= render 'layouts/messages'%>
+<%= render 'layouts/mail'%>
 <div class="col-md-12"> 
  <br>
                  <br>
@@ -306,8 +307,29 @@
 <% if current_user.role == 'SuperAdmin' || current_user.role == 'Employee' %>
 <%= link_to 'View aLL', view_all_students_path, class: 'btn btn-blue btn-outline' %>
 <%= link_to 'Generate Receipt',generate_receipt_receipt_path(@student), class: 'btn btn-success' %>
+<%#= link_to 'Send Email' ,new1_email_path(@student) ,class: 'btn btn-primary' %>
 <%#= link_to 'Generate Receipt', new_receipt_path, class: 'btn btn-success'%>
 <%end%>
 <% if current_user.role == 'Student'%>
 <%= link_to 'Back', students_path, class: 'btn btn-blue btn-outline' %>
 <%end%>
+
+
+  <!-- <center><p>
+          <button  type="button" data-toggle="modal" data-target="#formModal" style="width: 181px; height: 24px;background: red;color: white;">
+          Send Mail
+          </button>
+        </p>
+          </center>  -->
+<%= link_to 'Send Mail', new1_email_path(@student), {:remote => true, :class => "btn btn-primary", 'data-target' => "#exampleModalCenter", 'data-toggle' => "modal"} %>
+<center>
+ 
+<div align="center">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+ 
+                <%#= render '/emails/form', modal: true %>
+          </div>      
+
+      </div>
+   
+    </center>
