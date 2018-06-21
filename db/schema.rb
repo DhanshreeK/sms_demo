@@ -42,12 +42,6 @@ ActiveRecord::Schema.define(version: 20180620082016) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
-  create_table "attachments", force: :cascade do |t|
-    t.string "filename"
-    t.string "content_type"
-    t.binary "data"
-  end
-
   create_table "budgets", force: :cascade do |t|
     t.string "budget"
     t.datetime "created_at", null: false
@@ -147,15 +141,6 @@ ActiveRecord::Schema.define(version: 20180620082016) do
     t.index ["university_id"], name: "index_courses_on_university_id"
   end
 
-  create_table "documents", force: :cascade do |t|
-    t.string "file_name"
-    t.string "file_path"
-    t.bigint "email_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email_id"], name: "index_documents_on_email_id"
-  end
-
   create_table "email_settings", force: :cascade do |t|
     t.string "body"
     t.bigint "center_id"
@@ -249,6 +234,13 @@ ActiveRecord::Schema.define(version: 20180620082016) do
     t.string "logo_content_type"
     t.integer "logo_file_size"
     t.datetime "logo_updated_at"
+  end
+
+  create_table "important_documents", force: :cascade do |t|
+    t.string "title"
+    t.string "file_upload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "medical_colleges", force: :cascade do |t|
@@ -569,7 +561,6 @@ ActiveRecord::Schema.define(version: 20180620082016) do
   add_foreign_key "comments", "student_details"
   add_foreign_key "courses", "course_types"
   add_foreign_key "courses", "universities"
-  add_foreign_key "documents", "emails"
   add_foreign_key "email_settings", "centers"
   add_foreign_key "email_settings", "students"
   add_foreign_key "emails", "students"
@@ -584,14 +575,12 @@ ActiveRecord::Schema.define(version: 20180620082016) do
   add_foreign_key "pending_payments", "centers"
   add_foreign_key "pending_payments", "receipts"
   add_foreign_key "pending_payments", "students"
-  add_foreign_key "questions", "student_details"
   add_foreign_key "receipts", "centers"
   add_foreign_key "receipts", "students"
   add_foreign_key "selected_courses", "countries"
   add_foreign_key "selected_courses", "courses"
   add_foreign_key "selected_courses", "medical_colleges"
   add_foreign_key "selected_courses", "student_details"
-  add_foreign_key "student_answers", "student_details"
   add_foreign_key "student_details", "budgets"
   add_foreign_key "student_details", "colleges"
   add_foreign_key "student_details", "countries"
