@@ -13,7 +13,6 @@ class BulkSmsSetting < ApplicationRecord
 		require "json"
 		uname = "pawarakash235@gmail.com"
 		hash = "4a9bfc715e5a833379d6c647fec325808c3a1d218cacb91f9c4fa5339e597043"
-		byebug
 		message = self.body
 		numbers = self.student.contact_no
 		sender = "TXTLCL" 
