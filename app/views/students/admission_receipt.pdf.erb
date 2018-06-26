@@ -84,7 +84,9 @@ border-collapse: collapse;
     <th>Applied For:</th>
     <td> <%= @student.course.course_name %></td>
    <div class="img">
-    <td rowspan="3"><%= wicked_pdf_image_tag  @student.photo.url %></td>
+    <td rowspan="3"><img width="90" class="img-square avatar" alt="" <%= wicked_pdf_image_tag  @student.photo.url %></td>
+    
+</p>
   </div>
     
    
