@@ -79,6 +79,10 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+   echo "export SENDGRID_API_KEY='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'" > sendgrid.env
+echo "sendgrid.env" >> .gitignore
+source ./sendgrid.env
+
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')

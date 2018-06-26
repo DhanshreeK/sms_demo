@@ -28,8 +28,9 @@ gem 'figaro'
 gem "nested_form"
 gem "select2-rails"
 gem "jquery-rails"
-gem "mail"
-gem 'mail_form'
+#gem "mail"
+
+gem 'sendgrid-ruby'
 
 
 gem 'chartkick'
