@@ -402,7 +402,7 @@
  <div class="col-md-4"> 
       <div class="form-group"> 
         <label for="cvc" class="control-label">Select Admission Year<font color="red">*</font></label>
-     <%= form.select :admission_year, (Date.today.year-1)..(Date.today.year+1), :selected => Date.today.year ,class: "form-control"%>
+     <%= form.select :admission_year, (Date.today.year-10)..(Date.today.year+10), :selected => Date.today.year ,class: "form-control"%>
       </div>
     </div>
 
