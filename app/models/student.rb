@@ -6,10 +6,10 @@ class Student < ApplicationRecord
   belongs_to :employee, optional:true
   belongs_to :refarence
   belongs_to :course_type
-  has_many :receipts
-  has_many :pending_payments
+  has_many :receipts, dependent: :destroy
+  has_many :pending_payments, dependent: :destroy
   has_attached_file :photo
-  has_many :envelopes
+  has_many :envelopes, dependent: :destroy
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png',"image/gif","image/jpg"]
   mount_uploader :attachment, AttachmentUploader
   mount_uploader :twelth_attachment, AttachmentUploader
