@@ -67,10 +67,9 @@ Rails.application.routes.draw do
   resources :students do 
     collection do 
       get :view_all
-    
     end
     member do
-      get :show_student,:admission_receipt,:student_status
+      get :show_student,:edit_student,:admission_receipt,:student_status
     end
   end
   resources :courses

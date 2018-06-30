@@ -33,6 +33,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
              </tr>
            </thead>
            <tbody>
@@ -53,7 +54,8 @@
               <%end%>
                <td><%= link_to 'Show', show_student_student_path(student.id),class: "btn btn-blue btn-sm" %></td>
               <td> <%= link_to 'Update Status',url_for(action: :edit,id: student.id),method: :get,class: "btn btn-red btn-sm" if current_user.role == 'SuperAdmin'%></td>
-              <td></td>
+             
+              <td><%=link_to "Edit", edit_student_student_path(student),class: 'btn btn-primary'%></td>
             </tr>
             <%end%>
           </tbody>

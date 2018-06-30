@@ -13,6 +13,12 @@ class StudentsController < ApplicationController
     end
   end
 
+  def edit_student
+     @student = Student.find(params[:id])
+      @general_setting = GeneralSetting.first
+      @user = User.first
+  end
+
    
   def view_all
       @students = Student.all
