@@ -276,7 +276,7 @@ t2 = +$('#igst').val();
 if($('#amount').val() == $('#payment_paid').val())
 {
 
-  $('#payment').val((t1*t2/100)+t1);
+  $('#payment').val(t1);
 
 }
   
@@ -295,7 +295,7 @@ var t2;
 t1 = +$('#payment_paid').val();
 t2 = +$('#igst').val();
 var t3 = (t1*t2/100)+t1;
-$('#payment').val(t3);
+$('#payment').val(t1);
 
 
 });
@@ -303,7 +303,13 @@ $(document).on("keyup","#current_payment", function() {
   var test = +$("#payment").val();
   
   var tes = +$("#current_payment").val();
-  $("#pending_payment").val(test - tes);
+var pen = test - tes;
+  $("#pending_payment").val(pen);
+ var gst = (tes*9/100); 
+     var cg = $("#cgst").val(gst);
+   var sg = $("#sgst").val(gst);
+ var total_igst = (tes+ (+$("#cgst").val())+ (+$("#sgst").val()));
+ $("#igst").val(total_igst);
 /*  $('#pending_payment').val($('#payment_paid').val() - $('#current_payment').val())*/
 
 });

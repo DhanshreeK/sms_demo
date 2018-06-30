@@ -76,20 +76,20 @@ GSTIN No - 27AAECV7569E1ZX</th>
 <tr>
 <td><b>Taxable Value</b></td>
 <td></td>
-<td><%= @receipt.payment_paid %></td>
-<td><b><%= @receipt.payment_paid %></b></td>
+<td><%= @receipt.current_payment%></td>
+<td><b><%= @receipt.current_payment%></b></td>
 </tr>
 <tr>
 <td><b>CGST</b></td>
 <td></td>
-<td><b><%= @receipt.cgst %> %</b></td>
-<td><%= @receipt.payment_paid.to_f * (@receipt.cgst.to_f/100) %></td>
+<td><b>9 %</b></td>
+<td><%= @receipt.cgst %></td>
 </tr>
 <tr>
 <td><b>SGST</b></td>
 <td></td>
-<td><b><%= @receipt.sgst %> %</b></td>
-<td><%= @receipt.payment_paid.to_f * (@receipt.sgst.to_f/100) %></td>
+<td><b>9 %</b></td>
+<td><%= @receipt.sgst %> </td>
 
 </tr>
 <tr>
@@ -105,10 +105,10 @@ GSTIN No - 27AAECV7569E1ZX</th>
 <td><b>Total</b></td>
 <td></td>
 <td></td>
-<td><b><%= @receipt.payment %></b></td>
+<td><b><%= @receipt.igst %></b></td>
 </tr>
 <tr>
-<td><font size="2">Amount Chargeable (in words)<br><b>Rupees -<%= @receipt.payment.to_i.to_words.split.map(&:capitalize).join(' ')%> Only</b></font></td>
+<td><font size="2">Amount Chargeable (in words)<br><b>Rupees -<%= @receipt.igst.to_i.to_words.split.map(&:capitalize).join(' ')%> Only</b></font></td>
 <td rowspan="3"></td>
 <td rowspan="3" colspan="2" align="center"><font size="2"><b>FOR VISHWA VIDYA CONSULTANCY PRIVATE LIMITED</b><br>
 Authorised Signature</font></td>
