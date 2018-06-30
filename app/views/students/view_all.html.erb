@@ -29,7 +29,7 @@
                 <th>Admission Year</th>
                 <th>Center Name</th>
                 <th>Admission Done By</th>
-                <th><%if current_user.role == 'SuperAdmin'%>Contact no</th><%end%>
+               <%if current_user.role == 'SuperAdmin'%><th>Contact no</th><%end%>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -46,7 +46,7 @@
               <td><%= student.admission_year if student.admission_year.present?%></td>
               <td><%= student.center.center_name if student.center.present?%></td>
               <td><%= student.employee.name if student.employee.present?%></td>
-              <td><%= student.contact_no if current_user.role == 'SuperAdmin'%></td>
+              <%if current_user.role == 'SuperAdmin'%><td><%= student.contact_no %></td><%end%>
                <%if student.student_status == "Inactive" %>
                  <td><%=link_to 'Deactivate', view_all_students_path(:param1 => false, :id => student.id),style: 'color: red'%></td>
                    <%elsif student.student_status == "Active" %>
