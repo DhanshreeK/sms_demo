@@ -42,7 +42,7 @@
               <td><%= university.no_of_seats %></td>               
               <td><%= link_to 'Show', university,class: "btn btn-blue btn-sm" %></td>
               <td><%= link_to 'Edit', edit_university_path(university),class: "btn btn-success btn-sm" %></td>
-              <td><%= link_to 'Destroy', university, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-red btn-sm" %></td> 
+              <td><%= link_to 'Delete', university, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-red btn-sm" %></td> 
             </tr>
             <%end%>
           </tbody>

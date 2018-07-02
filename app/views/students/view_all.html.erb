@@ -34,6 +34,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
              </tr>
            </thead>
            <tbody>
@@ -58,6 +59,7 @@
               <td> <%= link_to 'Update Status',url_for(action: :edit,id: student.id),method: :get,class: "btn btn-red btn-sm" if current_user.role == 'SuperAdmin'%></td>
              
               <td><%=link_to "Edit", edit_student_student_path(student),class: 'btn btn-primary'%></td>
+              <td><%= link_to "Delete", student, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-red btn-sm" %></td>
             </tr>
             <%end%>
           </tbody>
