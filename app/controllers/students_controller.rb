@@ -18,7 +18,6 @@ class StudentsController < ApplicationController
       @general_setting = GeneralSetting.first
       @user = User.first
   end
-
    
   def view_all
       @students = Student.all
@@ -90,8 +89,6 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
-  
-
     respond_to do |format|
       if @student.save
       # StudentMailer.welcome_email(@student).deliver_now 

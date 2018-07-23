@@ -1,8 +1,8 @@
 class Course < ApplicationRecord
   include Activity
   validates :course_name, presence: true
-  belongs_to :course_type
-  belongs_to :university
+  belongs_to :course_type, optional:true
+  belongs_to :university, optional:true
   belongs_to :center, optional:true
   has_many :students, dependent: :destroy
   has_many :selected_courses
