@@ -5,7 +5,7 @@ class StudentDetailsController < ApplicationController
   # GET /student_details
   # GET /student_details.json
   def index
-    @student_details = StudentDetail.all
+    @student_details = StudentDetail.search(params[:search])
     @general_setting = GeneralSetting.first
   end
 

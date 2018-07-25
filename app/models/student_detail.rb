@@ -23,6 +23,8 @@ class StudentDetail < ApplicationRecord
     validates :birthdate, presence: :true
 
 	def self.search(search)
-		where("contact_no LIKE ?" , "%#{search}%")
+	 StudentDetail.where("concat_ws(' ',first_name,last_name)like '#{search}%' \
+	        OR concat_ws(' ',last_name,first_name)like '#{search}%' \
+	        OR email like '#{search}%' ")
 	end
 end
