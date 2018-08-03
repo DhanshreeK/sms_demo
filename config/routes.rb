@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
  
-   get 'documents/new'
+  resources :messages
+  resources :contacts do
+    collection { post :import }
+  end
+  get 'documents/new'
   get 'documents/show'
-
   post 'documents/create'
-
- 
 
   resources :emails do
     collection do
