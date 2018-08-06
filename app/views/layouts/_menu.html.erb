@@ -1,4 +1,4 @@
-﻿<!-- Entypo font stylesheet -->
+﻿﻿<!-- Entypo font stylesheet -->
 <link href="/assets/entypo.css" rel="stylesheet">
 <!-- /entypo font stylesheet -->
 
@@ -31,7 +31,7 @@
 		     <%#else%>
 		     <%#= GeneralSetting.first.logo.url%>
 		  <%# end %> -->
-		  <%= image_tag '/assets/logo1.png'%>
+		  <%#= image_tag '/assets/logo1.png'%>
 		</div>
 		  <div class="sidebar-collapse hidden-xs"><a class="sidebar-collapse-icon" href="/home/dashboard"><i class="icon-menu"></i></a></div>
 		  <div class="sidebar-mobile-menu visible-xs"><a data-target="#side-nav" data-toggle="collapse" class="mobile-menu-icon" href="#"><i class="icon-menu"></i></a></div>
@@ -40,127 +40,20 @@
 		
 		<!-- Main navigation -->
 		<ul id="side-nav" class="main-menu navbar-collapse collapse">
-			<% if current_user.role != "Student" %>
-			<li class="has-sub"><a href="/home/dashboard"><i class="icon-gauge"></i><span class="title">Admin Panel</span></a><% end %>
-				<ul class="nav">
-					<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Employee' && current_user.employee.employee_status == 'Active') || (current_user.role == 'Center' && current_user.center.center_status == 'Active')%>
 
-					
-					<% if current_user.role == "Center" %>
-					<%if current_user.center.present?%>
-					<li><a href="/centers/<%= "#{current_user.center_id}" %>"><span class="title">Centers</span></a></li>
-					<% elsif current_user.role == "Employee" %>
-
-					<li><a href="/centers/<%= "#{current_user.employee.center_id}" %>"><span class="title">Centers</span></a></li>
-					<% end %>
-					<% end %>
-					
-				<% if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
-					<li><a href="/centers"><span class="title">Centers</span></a></li>
-				<%end%>
-	
-				<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
-					<li><a href="/employees"><span class="title">Employees</span></a></li>
-				<%if current_user.role != 'Center'%>
-					<li><a href="/caste_categories"><span class="title">Caste Categories</span></a></li>
-				<%end%>
-				<%end%>
-				<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
-					<li><a href="/universities"><span class="title">University</span></a></li>
-				    <li><a href="/subadmins"><span class="title">SubAdmin</span></a></li>
-					<li><a href="/course_types"><span class="title">Course Type</span></a></li>
-					<li><a href="/courses"><span class="title">Course</span></a></li>
-				    <li><a href="/status_updates"><span class="title">Status</span></a></li>
-				    <li class="has-sub"><a href="#"><i class="icon-layout"></i><span class="title">WHO</span></a>
-				<ul class="nav collapse">
-					<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
-					<li><a href="/budgets"><span class="title">Add Budget</span></a></li>
-					<li><a href="/colleges/new"><span class="title">Add College</span></a></li>
-					<li><a href="/colleges/new1"><span class="title">Find Colleges</span></a></li>
-					<% end %>
-				</ul>
-			</li>
-
-			    <% end %>
-
-              
-			<%if current_user.role == 'SubAdmin'%>
-			    <li><a href="/refarences"><span class="title">Add Referenced By</span></a></li>
-            <%end%>  
-<!-- 	      <li><a href="/enquiries"><span class="title">Enquiries</span></a></li>
- -->					<%if current_user.role != 'Employee'%>
-					<li><a href="/envelopes"><span class="title">Envelope Creation</span></a></li>
-					<%end%>
-					<li><a href="/receipts/receipt_creation"><span class="title">Generate Receipt</span></a></li>
-					<%if current_user.role != 'Center'%>
-					<li><a href="/questions/new"><span class="title">Add Questions</span></a></li>
-					<%end%>
-					<% elsif current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin'%>
-					<li><a href="/general_settings/new"><span class="title">General Setting</span></a></li>
-					<%end%>
-					
-		    
-
-				</ul>
-			</li>
-  
-
-			<li class="has-sub"><a href="#"><i class="icon-layout"></i><span class="title">Admission</span></a>
-				<ul class="nav collapse">
-					<%if current_user.role == 'Student' || current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || current_user.role == 'Employee' %>
-					<%if current_user.student.nil?%>
-					<li><a href="/students/new"><span class="title">Student Admission</span></a></li>
-					<%end%>
-					<%unless current_user.student.blank?%>
-					<li><a href="/students"><span class="title">Student Detail</span></a></li>
-					<%end%>
-					<%end%>
-					<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Employee' && current_user.employee.employee_status == 'Active') || (current_user.role == 'Center' && current_user.center.center_status == 'Active')%>
-					<li><a href="/students/view_all"><span class="title">Students</span></a></li>
-					<%end%>
-				</ul>
-			</li>
-			<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
+			<%if current_user.role == 'SuperAdmin' %>
 
 			<li class="has-sub"><a href="#"><i class="icon-doc-text"></i><span class="title">Sms/Email Settings</span></a>
 				<ul class="nav collapse">
-					<li><a href="/sms_settings/new"><span class="title">Sms Settings</span></a></li>
-					<li><a href="/email_settings/new"><span class="title">Email Settings</span></a></li>
-					<li><a href="/bulk_sms_settings/new"><span class="title">Bulk Sms Settings</span></a></li>
+					<li><a href="/contacts"><span class="title">Add Contacts</span></a></li>
+					<li><a href="/messages"><span class="title">Sms</span></a></li>
+					<li><a href="/emails/new"><span class="title">Email</span></a></li>
+
 				</ul>
 			</li>
 		<%end%>
-		<% if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || current_user.role == 'Employee' || current_user.role == 'Enquiry' || current_user.role == 'Center'%>
-           <li class="has-sub"><a href="#"><i class="icon-doc-text"></i><span class="title">Student Inquiry</span></a>
-				<ul class="nav collapse">
-					<li><a href="/student_details/new"><span class="title">Inquiry</span></a></li>
-					<li><a href="/student_details"><span class="title">View All Inquiries</span></a></li>
-				</ul>
-			</li>
-			<%end%>	
 		
-
-		
-
-		<%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' || (current_user.role == 'Center' && current_user.center.center_status == 'Active') %>
-			<li class="has-sub"><a href="#"><i class="icon-list"></i><span class="title">Reports</span></a>
-				<ul class="nav collapse">
-
-					<li><a href="/reports/general_report"><span class="title">Center Report</span></a></li>
-					<li><a href="/reports/new"><span class="title">Daily Report/Monthly Report</span></a></li>
-					<li><a href="/reports"><span class="title">Payment Status</span></a></li>
-					<!-- <li><a href="/reports/reference_report"><span class="title">Reference Report</span></a></li> -->
-					<li><a href="/reports/university_report"><span class="title">University Report</span></a></li>
-					<li><a href="/reports/course_report"><span class="title">Course Report</span></a></li>
-				</ul>
-			</li>
-		<%end%>	
-
-
-		  <% if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin' %>
-		  <li class="has-sub"><a href="/home/dash"><i class="icon-list"></i><span class="title">Activity Log</span></a>
 		  </li>
-		  <% end %>
 	
   </div>
 
