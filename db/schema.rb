@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180803163040) do
+ActiveRecord::Schema.define(version: 20180806105750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,6 +147,12 @@ ActiveRecord::Schema.define(version: 20180803163040) do
     t.index ["university_id"], name: "index_courses_on_university_id"
   end
 
+  create_table "customer_emails", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "email_settings", force: :cascade do |t|
     t.string "body"
     t.bigint "center_id"
@@ -169,6 +175,8 @@ ActiveRecord::Schema.define(version: 20180803163040) do
     t.string "cc"
     t.string "bcc"
     t.string "attachment2"
+    t.bigint "customer_email_id"
+    t.index ["customer_email_id"], name: "index_emails_on_customer_email_id"
     t.index ["student_id"], name: "index_emails_on_student_id"
   end
 
@@ -567,6 +575,7 @@ ActiveRecord::Schema.define(version: 20180803163040) do
   add_foreign_key "courses", "universities"
   add_foreign_key "email_settings", "centers"
   add_foreign_key "email_settings", "students"
+  add_foreign_key "emails", "customer_emails"
   add_foreign_key "emails", "students"
   add_foreign_key "employees", "centers"
   add_foreign_key "employees", "email_settings"

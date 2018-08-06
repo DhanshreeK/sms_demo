@@ -47,6 +47,8 @@
 				<ul class="nav collapse">
 					<li><a href="/contacts"><span class="title">Add Contacts</span></a></li>
 					<li><a href="/messages"><span class="title">Sms</span></a></li>
+					<li><a href="/customer_emails/new"><span class="title">Add Email</span></a></li>
+
 					<li><a href="/emails/new"><span class="title">Email</span></a></li>
 
 				</ul>
@@ -83,8 +85,8 @@
 				  <%if current_user.role == 'SuperAdmin' || current_user.role == 'SubAdmin'%>
 				  <li><a href="/general_settings/new"><i class="icon-cog"></i>Account settings</a></li>
 				  <%end%>
-				  <li><a href="#/"><i class="icon-mail"></i>Messages</a></li>
-				  <li><a href="#"><i class="icon-clipboard"></i>Tasks</a></li>
+			<!-- 	  <li><a href="#/"><i class="icon-mail"></i>Messages</a></li>
+				  <li><a href="#"><i class="icon-clipboard"></i>Tasks</a></li> -->
 				  <li class="divider"></li>
 				  
 				  <li><a data-method="delete" href="/users/sign_out"><i class="icon-logout"></i>Logout</a>

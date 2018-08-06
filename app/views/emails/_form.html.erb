@@ -1,33 +1,35 @@
-<%#= form_with(model: email, local: true) do |form| %>
-<br><br><br><br>
-<% modal ||= false %>
-<% remote = modal ? true : false %>
-<div class="row">
-  <div class="col-lg-6">
-    <div class="panel panel-primary">
-      <div class="panel-heading clearfix">
-        <h3 class="panel-title">Create Email</h3>
-        <ul class="panel-tool-options"> 
-          <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
-          <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li>
-          <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
-        </ul>
-      </div>
-      <div class="panel-body">
-          <div class="panel-body collapse in" id="collapsepanel">
-              <ol class="breadcrumb breadcrumb-2"> 
-                <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
-                <li class="active">Email</li> 
-              </ol> 
-         </div>
-         
-
-        
-
-
-          <div class="tab-content">
-            <div class="tab-pane  active" id="tab2-1">
-              <div class="row"> 
+<div class="row"> 
+                <div class="col-md-12">
+                 <br>
+                 <br>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading clearfix"> 
+                            <div class="panel-title">Email</div> 
+                            <ul class="panel-tool-options"> 
+                               <!--  <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
+                                        <li><a href="#"><i class="icon-list"></i> Detailed log</a></li>
+                                        <li><a href="#"><i class="icon-chart-pie"></i> Statistics</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#"><i class="icon-cancel"></i> Clear list</a></li>
+                                    </ul>
+                                 </li> -->
+                                <li><a data-rel="collapse" href="#"><i class="icon-down-open"></i></a></li>
+                                <!-- <li><a data-rel="reload" href="#"><i class="icon-arrows-ccw"></i></a></li> -->
+                                <li><a data-rel="close" href="#"><i class="icon-cancel"></i></a></li>
+                            </ul> 
+                        </div> 
+                        <br>
+                       
+                        <div class="panel-body">
+                         <div class="panel-body collapse in" id="collapsepanel">
+                                  <ol class="breadcrumb breadcrumb-2"> 
+                                    <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
+                                    <li class="active">Email</li> 
+                                  </ol> 
+                                </div> 
 <%= form_for @email, url:{action: 'create'} do |form| %>  
 
   <% if @email.errors.any? %>
@@ -45,19 +47,19 @@
   <div class="field">
      <div class="col-md-12"> 
                   <div class="form-group"> 
-                   
-    <%#= form.label :to %>
-    <%= form.text_field :to, id: :email_to , class: "form-control"  , placeholder: "To"%>
-    
+      <%= form.select :customer_email_id,CustomerEmail.all.collect{|a| [a.email, a.id]}, class: "select", "multiple" => "multiple"  %>    
   </div>
 </div>
 </div>
-<div class="field">
+
+
+
+<!-- <div class="field">
      <div class="col-md-6"> 
                   <div class="form-group"> 
                    
     <%#= form.label :to %>
-    <%= form.text_field :cc, id: :email_cc , class: "form-control" , placeholder: "Cc"%>
+    <%#= form.text_field :cc, id: :email_cc , class: "form-control" , placeholder: "Cc"%>
     
   </div>
 </div>
@@ -67,12 +69,12 @@
                   <div class="form-group"> 
                     
     <%#= form.label :to %>
-    <%= form.text_field :bcc, id: :email_bcc , class: "form-control" , placeholder: "Bcc" %>
+    <%#= form.text_field :bcc, id: :email_bcc , class: "form-control" , placeholder: "Bcc" %>
     
   </div>
 </div>
 </div>
-
+ -->
   <div class="field">
     <div class="field">
      <div class="col-md-12"> 
@@ -131,4 +133,14 @@
 </div>
 </div>
 </div>
+
+    <link href="/assets/multiple-select.css" rel="stylesheet"/>
+
+    
+    <script src="/assets/multiple-select.js"></script>
+    <script>
+        $("select").multipleSelect({
+            placeholder: "Here is the placeholder"
+        });
+    </script>
 

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
  
+  resources :customer_emails do
+    collection { post :import }
+  end
   resources :messages
   resources :contacts do
     collection { post :import }
