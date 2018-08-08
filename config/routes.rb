@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
  
+  resources :customer_emails do
+    collection { post :import }
+  end
   resources :messages
   resources :contacts do
     collection { post :import }
@@ -16,6 +19,9 @@ Rails.application.routes.draw do
       get :new1
     end
   end
+
+  resources :images, only: [:create]
+
   resources :status_updates
   resources :subadmins
   resources :selected_courses

@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
+gem 'shrine'
 gem 'rubyzip', '>= 1.2.1'
 gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: '776037c0fc799bb09da8c9ea47980bd3bf296874'
 gem 'axlsx_rails'
@@ -30,9 +30,11 @@ gem 'figaro'
 gem "nested_form"
 gem "select2-rails"
 gem "jquery-rails"
+gem 'sendgrid-ruby'
 #gem "mail"
 
 gem 'sendgrid-ruby'
+gem 'trix'
 
 
 gem 'chartkick'

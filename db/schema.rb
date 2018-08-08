@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180803163040) do
+ActiveRecord::Schema.define(version: 20180807125705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,6 +147,12 @@ ActiveRecord::Schema.define(version: 20180803163040) do
     t.index ["university_id"], name: "index_courses_on_university_id"
   end
 
+  create_table "customer_emails", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "email_settings", force: :cascade do |t|
     t.string "body"
     t.bigint "center_id"
@@ -240,6 +246,12 @@ ActiveRecord::Schema.define(version: 20180803163040) do
     t.string "logo_content_type"
     t.integer "logo_file_size"
     t.datetime "logo_updated_at"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.text "image_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "medical_colleges", force: :cascade do |t|
@@ -340,6 +352,15 @@ ActiveRecord::Schema.define(version: 20180803163040) do
     t.index ["course_id"], name: "index_selected_courses_on_course_id"
     t.index ["medical_college_id"], name: "index_selected_courses_on_medical_college_id"
     t.index ["student_detail_id"], name: "index_selected_courses_on_student_detail_id"
+  end
+
+  create_table "selected_emails", force: :cascade do |t|
+    t.bigint "email_id"
+    t.bigint "customer_email_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_email_id"], name: "index_selected_emails_on_customer_email_id"
+    t.index ["email_id"], name: "index_selected_emails_on_email_id"
   end
 
   create_table "sms_settings", force: :cascade do |t|
@@ -587,6 +608,8 @@ ActiveRecord::Schema.define(version: 20180803163040) do
   add_foreign_key "selected_courses", "courses"
   add_foreign_key "selected_courses", "medical_colleges"
   add_foreign_key "selected_courses", "student_details"
+  add_foreign_key "selected_emails", "customer_emails"
+  add_foreign_key "selected_emails", "emails"
   add_foreign_key "student_answers", "answers"
   add_foreign_key "student_answers", "questions"
   add_foreign_key "student_answers", "student_details"

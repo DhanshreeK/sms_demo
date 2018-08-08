@@ -29,17 +29,13 @@ class EmailsController < ApplicationController
   # POST /emails
   # POST /emails.json
   def create
-    
-
     @email = Email.new(email_params)
-
-   
-
     respond_to do |format|
       if @email.save
-        
-        UserMailer.welcome_email(@email).deliver_now
-
+        params[:customer_email_ids].each do |id|
+        SelectedEmail.create(customer_email_id: id.to_i, email_id: @email.id)
+       end
+        UserMailer.welcome_email(@email).deliver
         format.html { redirect_to emails_path, notice: 'Email was successfully sent.' }
         format.json { render :show, status: :created, location: @email }
       else
@@ -88,6 +84,6 @@ class EmailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def email_params
-      params.require(:email).permit(:to, :sub, :body, :student_id , :attachment , :cc ,:bcc ,:attachment2)
+      params.require(:email).permit(:to, :sub, :body, :student_id , :attachment , :cc ,:bcc ,:attachment2, customer_email_ids: [])
     end
 end

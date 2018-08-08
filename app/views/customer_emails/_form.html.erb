@@ -4,9 +4,9 @@
                  <br>
                     <div class="panel panel-primary">
                         <div class="panel-heading clearfix"> 
-                            <div class="panel-title">Messages</div> 
+                            <div class="panel-title">Email</div> 
                             <ul class="panel-tool-options"> 
-                                <!-- <li class="dropdown">
+                               <!--  <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false"><i class="icon-cog"></i></a>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li><a href="#"><i class="icon-arrows-ccw"></i> Update data</a></li>
@@ -22,44 +22,49 @@
                             </ul> 
                         </div> 
                         <br>
-                        <!-- panel body --> 
-      <div class="panel-body"> 
-             <div class="panel-body collapse in" id="collapsepanel">
-              <ol class="breadcrumb breadcrumb-2"> 
-                <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
-                <li class="active">Message</li> 
-              </ol> 
-            </div>
- 
-<%= form_with(model: message, local: true) do |form| %>
-  <% if message.errors.any? %>
+                       
+                        <div class="panel-body">
+                         <div class="panel-body collapse in" id="collapsepanel">
+                                  <ol class="breadcrumb breadcrumb-2"> 
+                                    <li><a href="/home/dashboard"><i class="icon-folder"></i>Home</a></li> 
+                                    <li class="active">Email</li> 
+                                  </ol> 
+                                </div> 
+<%= form_with(model: customer_email, local: true) do |form| %>
+  <% if customer_email.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+      <h2><%= pluralize(customer_email.errors.count, "error") %> prohibited this customer_email from being saved:</h2>
 
       <ul>
-      <% message.errors.full_messages.each do |message| %>
+      <% customer_email.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-   <form class="form-horizontal">
-
-     <div class="form-group">
+  <div class="form-group">
         <div class="col-md-4">
-          <label class="col-sm-6 control-label">Body<font color="red">*</font></label>
-    <%= form.text_area :body, id: :message_body , class: 'form-control', maxlength: "150"%>
+          <label class="col-sm-6 control-label">Email</label>
+    <%= form.text_field :email, id: :customer_email_email, class: 'form-control' %>
   </div>
 </div>
 
-  <%= render 'view_contacts'%>
 
-  <div class="form-group"> 
-        <div class="col-sm-offset-1 col-sm-10">  
-    <%= form.submit "Submit", class: 'btn btn-success' %>
-    <%= link_to 'Back', messages_path, class: 'btn btn-red' %>
+ <br><br><br><br>
+            <div class="form-group"> 
+                                <div class="col-sm-offset-1 col-sm-10">  
+      <%= form.submit "Submit", class: 'btn btn-success' %>
+    <%= link_to 'Back', customer_emails_path , class: 'btn btn-red '%>
      
   </div>
   </div>
+ 
+</div>
 <% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
