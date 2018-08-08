@@ -1,5 +1,7 @@
 class CustomerEmail < ApplicationRecord
 	validates :email, presence:true
+	has_many :selected_emails
+	has_many :emails , through: :selected_emails , dependent: :destroy
   
 	def self.to_csv(options = {})
 	   CSV.generate(options) do |csv|

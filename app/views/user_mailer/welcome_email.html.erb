@@ -5,7 +5,8 @@
   </head>
   <body>
     <p>
-      <%= @email.body %>
+    	
+          <%=@email.body.html_safe %>
     </p>
   </body>
 </html>

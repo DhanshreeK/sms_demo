@@ -47,7 +47,8 @@
   <div class="field">
      <div class="col-md-12"> 
                   <div class="form-group"> 
-      <%= form.select :customer_email_id,CustomerEmail.all.collect{|a| [a.email, a.id]}, class: "select", "multiple" => "multiple"  %>    
+     <!--  <%#= form.select :customer_email_ids,CustomerEmail.all.collect{|a| [a.email, a.id]}, :multiple => true, class: "select", "multiple" => "multiple"  %> -->
+           <%=select_tag("customer_email_ids[]",options_for_select(CustomerEmail.all.collect { |ff| [ff.email, ff.id] }),{class: "select", "multiple" => "multiple"})%>    
   </div>
 </div>
 </div>
@@ -92,7 +93,12 @@
                   <div class="form-group"> 
                     
     <%#= form.label :body %>
-    <%= form.text_area :body, id: :email_body , class: "form-control", placeholder: "Message Body" %>
+    <%#= form.trix_editor :body, id: :email_body , placeholder: "Message Body", style: "height: 200px" %>
+  <div class="field-unitlabel">
+  <%= form.label :body %>
+</div>
+<div class="field-unit_field">
+<%= form.trix_editor :body %>
   </div>
 </div>
 </div>
@@ -144,3 +150,13 @@
         });
     </script>
 
+  <!-- <link href="/assets/bootstrap-wysihtml5.css" rel="stylesheet">
+  <script src="/assets/wysihtml5-0.3.0.min.js"></script>
+  <script src="/assets/bootstrap-wysihtml5.js"></script>
+
+  <script>
+     $(document).ready(function(){
+      $('.wysihtml5').wysihtml5();
+    });
+  </script>
+ -->

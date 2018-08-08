@@ -106,6 +106,7 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    down (4.5.0)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
@@ -243,6 +244,8 @@ GEM
     sendgrid-ruby (5.2.0)
       ruby_http_client (~> 3.2)
       sinatra (>= 1.4.7, < 3)
+    shrine (2.11.0)
+      down (~> 4.1)
     sinatra (2.0.3)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -271,6 +274,8 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.8)
     to_words (1.1.1)
+    trix (0.11.1)
+      rails (> 4.1, < 5.2)
     turbolinks (5.1.1)
       turbolinks-source (~> 5.1)
     turbolinks-source (5.1.0)
@@ -336,9 +341,11 @@ DEPENDENCIES
   select2-rails
   selenium-webdriver
   sendgrid-ruby
+  shrine
   spring
   spring-watcher-listen (~> 2.0.0)
   to_words
+  trix
   turbolinks (~> 5)
   twitter_bootstrap_wizard_rails
   tzinfo-data
@@ -349,4 +356,4 @@ DEPENDENCIES
   wkhtmltopdf-binary
 
 BUNDLED WITH
-   1.16.1
+   1.16.2

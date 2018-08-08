@@ -19,6 +19,9 @@ Rails.application.routes.draw do
       get :new1
     end
   end
+
+  resources :images, only: [:create]
+
   resources :status_updates
   resources :subadmins
   resources :selected_courses

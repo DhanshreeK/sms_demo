@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180806105750) do
+ActiveRecord::Schema.define(version: 20180807125705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -175,8 +175,6 @@ ActiveRecord::Schema.define(version: 20180806105750) do
     t.string "cc"
     t.string "bcc"
     t.string "attachment2"
-    t.bigint "customer_email_id"
-    t.index ["customer_email_id"], name: "index_emails_on_customer_email_id"
     t.index ["student_id"], name: "index_emails_on_student_id"
   end
 
@@ -248,6 +246,12 @@ ActiveRecord::Schema.define(version: 20180806105750) do
     t.string "logo_content_type"
     t.integer "logo_file_size"
     t.datetime "logo_updated_at"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.text "image_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "medical_colleges", force: :cascade do |t|
@@ -348,6 +352,15 @@ ActiveRecord::Schema.define(version: 20180806105750) do
     t.index ["course_id"], name: "index_selected_courses_on_course_id"
     t.index ["medical_college_id"], name: "index_selected_courses_on_medical_college_id"
     t.index ["student_detail_id"], name: "index_selected_courses_on_student_detail_id"
+  end
+
+  create_table "selected_emails", force: :cascade do |t|
+    t.bigint "email_id"
+    t.bigint "customer_email_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_email_id"], name: "index_selected_emails_on_customer_email_id"
+    t.index ["email_id"], name: "index_selected_emails_on_email_id"
   end
 
   create_table "sms_settings", force: :cascade do |t|
@@ -575,7 +588,6 @@ ActiveRecord::Schema.define(version: 20180806105750) do
   add_foreign_key "courses", "universities"
   add_foreign_key "email_settings", "centers"
   add_foreign_key "email_settings", "students"
-  add_foreign_key "emails", "customer_emails"
   add_foreign_key "emails", "students"
   add_foreign_key "employees", "centers"
   add_foreign_key "employees", "email_settings"
@@ -596,6 +608,8 @@ ActiveRecord::Schema.define(version: 20180806105750) do
   add_foreign_key "selected_courses", "courses"
   add_foreign_key "selected_courses", "medical_colleges"
   add_foreign_key "selected_courses", "student_details"
+  add_foreign_key "selected_emails", "customer_emails"
+  add_foreign_key "selected_emails", "emails"
   add_foreign_key "student_answers", "answers"
   add_foreign_key "student_answers", "questions"
   add_foreign_key "student_answers", "student_details"

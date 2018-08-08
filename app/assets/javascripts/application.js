@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require trix
+//= require trix_attachments
 //= require jquery_ujs
 //= require select2
 //= require select2-full

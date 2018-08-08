@@ -40,8 +40,9 @@
 
   <tbody>
     <% @emails.each do |email| %>
+    <%email.selected_emails.each do |c|%>
       <tr>
-        <td><%= email.to %></td>
+        <td><%= c.customer_email.email %></td>
        <!--  <td><%#= email.sub %></td>
         <td><%= email.body %></td> -->
         
@@ -49,6 +50,7 @@
 <!--         <td><%#= link_to 'Edit', edit_email_path(email) %></td>
  -->        <td><%= link_to 'Destroy', email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+         <% end %>
     <% end %>
   </tbody>
 </table>
