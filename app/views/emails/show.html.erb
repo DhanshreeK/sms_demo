@@ -34,10 +34,12 @@
 <p id="notice"><%= notice %></p>
 <div class="col-md-12">
 <p class="text-info">
-
+<%@email.customer_emails.each do |email|%>
   <strong>To:</strong>
-  <%= @email.to %>
+  <%= email.email %>
 </p>
+
+<%end%>
 </div>
 <% if @email.cc.present? %>
 <div class="col-md-12">
