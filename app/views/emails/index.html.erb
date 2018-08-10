@@ -35,6 +35,7 @@
       <th>Body</th> -->
       <th></th>
       <th></th>
+          <th></th>
     </tr>
   </thead>
 
@@ -47,8 +48,8 @@
         <td><%= email.body %></td> -->
         
         <td><%= link_to 'Show', email %></td>
-<!--         <td><%#= link_to 'Edit', edit_email_path(email) %></td>
- -->        <td><%= link_to 'Destroy', email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <td><%= link_to 'Edit', edit_email_path(email) %></td>
+         <td><%= link_to 'Destroy', email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
          <% end %>
     <% end %>
