@@ -11,6 +11,10 @@ class UserMailer < ApplicationMailer
     @recipients = []
     @email.selected_emails.each do |e|
     @recipients << e.customer_email.email
+    # send_file( "uploads/store/#{params[:filename]}.png",
+    # :disposition => 'inline',
+    # :type => 'image/png',
+    # :x_sendfile => true )
 
 	  # @recipients << @email.cc if @email.cc.present?
 	  # @recipients << @email.bcc if @email.bcc.present?

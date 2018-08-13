@@ -12,6 +12,14 @@ gem 'axlsx_rails'
 gem 'rails', '~> 5.1.4'
 gem 'cancan'
 gem 'jquery-datatables'
+gem "aws-sdk-s3", "~> 1.2"
+gem 'aws-sdk', '~> 3'
+gem 'roda'
+gem 'jquery-fileupload-rails'
+gem 'fastimage'
+
+gem "image_processing"
+gem "mini_magick", ">= 4.3.5"
 gem "paperclip", "~> 5.0.0"
 gem 'country_select', require: 'country_select_without_sort_alphabetical'
 gem 'city-state'
@@ -32,11 +40,7 @@ gem "select2-rails"
 gem "jquery-rails"
 gem 'sendgrid-ruby'
 #gem "mail"
-
-gem 'sendgrid-ruby'
 gem 'trix'
-
-
 gem 'chartkick'
 gem 'groupdate'
 # this will convert total amount to words
@@ -59,9 +63,6 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
-
-
-
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -76,6 +77,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'dotenv-rails'
 end
 
 group :development do
