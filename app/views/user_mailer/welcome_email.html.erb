@@ -6,7 +6,7 @@
   <body>
     <p>
     	
-      <%=@email.body.html_safe %>
+      <%=sanitize @email.body%>
     </p>
   </body>
 </html>

@@ -13,6 +13,7 @@
 
   <div class="field">
     <%= form.label :image %>
+
   <%= form.hidden_field :image, value: @image.cached_image_data%>
   <%=form.file_field :image%>
   </div>

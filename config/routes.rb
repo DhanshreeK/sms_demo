@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+
   resources :customer_emails do
     collection { post :import }
   end
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :images, only: [:create]
+  resources :images
 
   resources :status_updates
   resources :subadmins
