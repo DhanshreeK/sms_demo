@@ -15,17 +15,17 @@ elsif Rails.env.test?
 else
   require "shrine/storage/s3"
   Shrine::Storage::S3.new(
-    access_key_id:     Rails.application.secrets.s3_access_key_id,
-    secret_access_key: Rails.application.secrets.s3_secret_access_key,
-    region:            Rails.application.secrets.s3_region,
-    bucket:            Rails.application.secrets.s3_bucket_name
+    access_key_id:     Rails.application.secrets.AWS_ACCESS_KEY_ID,
+    secret_access_key: Rails.application.secrets.AWS_SECRET_ACCESS_KEY,
+    region:            Rails.application.secrets.AWS_REGION,
+    bucket:            Rails.application.secrets.AWS_BUCKET_NAME
   )
   Shrine::Storage::S3.new(prefix: "cache", **s3_options)
   Shrine::Storage::S3.new(prefix: "store", **s3_options)
   Shrine::Storage::S3.new(host: "https://qsetsmsdemo.herokuapp.com/", **s3_options)
 
 end
-Shrine.plugin :sequel # or :activerecord
+Shrine.plugin :activerecord # or :activerecord
 Shrine.plugin :cached_attachment_data # for retaining the cached file across form redisplays
 Shrine.plugin :restore_cached_data # re-extract metadata when attaching a cached file
 Shrine.plugin :rack_file # for non-Rails apps
