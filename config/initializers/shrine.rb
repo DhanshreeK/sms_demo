@@ -14,16 +14,17 @@ elsif Rails.env.test?
   }
 else
   require "shrine/storage/s3"
-  s3_options = {
+  Shrine::Storage::S3.new(
     access_key_id:     Rails.application.secrets.s3_access_key_id,
     secret_access_key: Rails.application.secrets.s3_secret_access_key,
     region:            Rails.application.secrets.s3_region,
     bucket:            Rails.application.secrets.s3_bucket_name
-  }
-  Shrine.storages = {
-    cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
-    store: Shrine::Storage::S3.new(prefix: "store", **s3_options)
-  }
+  )
+  Shrine::Storage::S3.new(prefix: "cache", **s3_options)
+  Shrine::Storage::S3.new(prefix: "store", **s3_options)
+  Shrine::Storage::S3.new(endpoint: "https://s3-accelerate.amazonaws.com")
+  Shrine::Storage::S3.new(host: "https://qsetsmsdemo.herokuapp.com/", **s3_options)
+
 end
 Shrine.plugin :activerecord
 Shrine.plugin :determine_mime_type, analyzer: :mimemagic # uses the MimeMagic gem
