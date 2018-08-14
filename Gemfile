@@ -41,6 +41,7 @@ gem "jquery-rails"
 gem 'sendgrid-ruby'
 #gem "mail"
 gem 'trix'
+gem 'fog'
 gem 'chartkick'
 gem 'groupdate'
 # this will convert total amount to words
