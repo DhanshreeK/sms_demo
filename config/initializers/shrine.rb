@@ -19,6 +19,7 @@ else
     secret_access_key: Rails.application.secrets.AWS_SECRET_ACCESS_KEY,
     region:            Rails.application.secrets.AWS_REGION,
     bucket:            Rails.application.secrets.AWS_BUCKET_NAME
+    
   )
   Shrine::Storage::S3.new(prefix: "cache", **s3_options)
   Shrine::Storage::S3.new(prefix: "store", **s3_options)

@@ -9,7 +9,7 @@ function uploadAttachment(attachment) {
   var xhr = new XMLHttpRequest;
   xhr.open("POST", "/images.json", true);
   xhr.setRequestHeader("X-CSRF-Token", Rails.csrfToken());
-
+  xhr.getJSON("/presign", options, function(result) {}
 // Report file uploads back to Trix
   xhr.upload.onprogress = function(event) {
     var progress = event.loaded / event.total * 100;
