@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Shrine.presign_endpoint(:cache) => "/presign"
 
   resources :customer_emails do
     collection { post :import }
