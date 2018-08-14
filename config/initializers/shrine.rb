@@ -22,9 +22,10 @@ else
   )
   Shrine::Storage::S3.new(prefix: "cache", **s3_options)
   Shrine::Storage::S3.new(prefix: "store", **s3_options)
-  Shrine::Storage::S3.new(endpoint: "https://s3-accelerate.amazonaws.com")
   Shrine::Storage::S3.new(host: "https://qsetsmsdemo.herokuapp.com/", **s3_options)
 
 end
-Shrine.plugin :activerecord
-Shrine.plugin :determine_mime_type, analyzer: :mimemagic # uses the MimeMagic gem
+Shrine.plugin :sequel # or :activerecord
+Shrine.plugin :cached_attachment_data # for retaining the cached file across form redisplays
+Shrine.plugin :restore_cached_data # re-extract metadata when attaching a cached file
+Shrine.plugin :rack_file # for non-Rails apps
