@@ -8,13 +8,12 @@ class UserMailer < ApplicationMailer
     if @email.attachment2.present?
       attachments[@email.attachment2.filename] = File.read(@email.attachment2.file.file)
     end
+    
+    # attachments.inline['camper-bowtie.png'] = File.read('/uploads/attachment/picture/15/camper-bowtie.png')
+
     @recipients = []
     @email.selected_emails.each do |e|
     @recipients << e.customer_email.email
-
-	  # @recipients << @email.cc if @email.cc.present?
-	  # @recipients << @email.bcc if @email.bcc.present?
-    
   end
   mail(to: @recipients, subject: @email.sub) 
   end 

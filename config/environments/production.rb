@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+ require 'uglifier'
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -95,5 +96,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.assets.raise_runtime_errors = true
   config.action_mailer.delivery_method = :smtp
-
+  config.action_mailer.smtp_settings = {
+    :address => 'smtp.mandrillapp.com',
+    :port => '587',
+    :authentication => :plain,
+    :user_name => 'dhanshree@qset.in',
+    :password => 'TKUmHh5N9F0o2aAkUwHqhA',
+    :domain => 'localhost',
+    :enable_starttls_auto => true
+}
+  
 end
