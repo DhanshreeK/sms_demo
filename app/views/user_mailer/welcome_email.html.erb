@@ -8,5 +8,8 @@
  <%= simple_format(@email.body, {}, sanitize: false)%>
  
      </p>
+    	
+      <%#=@email.body.html_safe %>
+    </p>
   </body>
 </html>

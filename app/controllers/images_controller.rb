@@ -1,8 +1,5 @@
 class ImagesController < ApplicationController
-
-  def new
-    @image = Image.new
-  end
+  respond_to :json
 
   def create
     image_params[:image].open if image_params[:image].tempfile.closed?

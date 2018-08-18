@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   resources :attachments 
-  # mount Shrine.presign_endpoint(:cache) => "/presign"
-
   resources :customer_emails do
     collection { post :import }
   end
@@ -24,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :images
+  resources :images, only: [:create]
 
   resources :status_updates
   resources :subadmins

@@ -9,7 +9,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          has_attached_file :photo,
-  :url => "/assets/users/:basename.:extension",
+  :url => "/assets/students/:basename.:extension",
   :path => ":rails_root/public/assets/students/:basename.:extension"
   scope :role_wise_users, ->(role) { where(role: role) }
   

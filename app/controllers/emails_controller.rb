@@ -19,7 +19,6 @@ include AmazonSignature
     @email = Email.new
     @hash = AmazonSignature::data_hash
   end
-  
   def new1
     @student = Student.find(params[:id])
     @email = Email.new
@@ -49,7 +48,6 @@ include AmazonSignature
         params[:customer_email_ids].each do |id|
         SelectedEmail.create(customer_email_id: id.to_i, email_id: @email.id)
        end
-       
         UserMailer.welcome_email(@email).deliver
         format.html { redirect_to emails_path, notice: 'Email was successfully sent.' }
         format.json { render :show, status: :created, location: @email }
