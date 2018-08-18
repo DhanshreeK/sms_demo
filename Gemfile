@@ -12,21 +12,7 @@ gem 'axlsx_rails'
 gem 'rails', '~> 5.1.4'
 gem 'cancan'
 gem 'jquery-datatables'
-<<<<<<< HEAD
-gem "aws-sdk-s3", "~> 1.2"
-gem 'aws-sdk', '~> 3'
-gem 'roda'
-gem 'jquery-fileupload-rails'
-gem 'fastimage'
-gem 'fog-aws'
-gem "image_processing"
-gem "mini_magick", ">= 4.3.5"
-=======
->>>>>>> 0cb7781c9579c8ce7565007c61b39c79a48fa7f5
 gem "paperclip", "~> 5.0.0"
-# gem "figaro"
-gem "wysiwyg-rails"
-
 gem 'country_select', require: 'country_select_without_sort_alphabetical'
 gem 'city-state'
 gem 'imagemagick-binaries'
@@ -49,12 +35,8 @@ gem 'sendgrid-ruby'
 
 gem 'sendgrid-ruby'
 gem 'trix'
-<<<<<<< HEAD
-gem 'fog'
-=======
 
 
->>>>>>> 0cb7781c9579c8ce7565007c61b39c79a48fa7f5
 gem 'chartkick'
 gem 'groupdate'
 # this will convert total amount to words

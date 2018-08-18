@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :attachments 
+ 
   resources :customer_emails do
     collection { post :import }
   end
@@ -12,10 +12,8 @@ Rails.application.routes.draw do
   post 'documents/create'
 
   resources :emails do
-    post 'emails/upload' => 'emails#upload'
     collection do
     delete 'destroy_multiple'
-    post 'upload'
   end
     member do
       get :new1

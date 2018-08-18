@@ -1,5 +1,4 @@
 class EmailsController < ApplicationController
-include AmazonSignature
   before_action :set_email, only: [:show, :edit, :update, :destroy]
 
   # GET /emails
@@ -17,21 +16,10 @@ include AmazonSignature
   def new
     #@student = Student.find(params[:id])
     @email = Email.new
-    @hash = AmazonSignature::data_hash
   end
   def new1
     @student = Student.find(params[:id])
     @email = Email.new
-  end
-
-  def upload
-     @attachment = Attachment.new
-        @attachment.picture = params[:file]
-        @attachment.save
-
-        respond_to do |format|
-            format.json { render :json => { status: 'OK', link: @attachment.picture.url}}
-        end
   end
 
   # GET /emails/1/edit
@@ -41,7 +29,6 @@ include AmazonSignature
   # POST /emails
   # POST /emails.json
   def create
-    @hash = AmazonSignature::data_hash
     @email = Email.new(email_params)
     respond_to do |format|
       if @email.save
