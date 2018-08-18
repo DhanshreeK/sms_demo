@@ -51,6 +51,7 @@ include AmazonSignature
         UserMailer.welcome_email(@email).deliver
         format.html { redirect_to emails_path, notice: 'Email was successfully sent.' }
         format.json { render :show, status: :created, location: @email }
+        # render :json => FroalaEditorSDK::File.upload(email_params)
       else
         format.html { render :new }
         format.json { render json: @email.errors, status: :unprocessable_entity }

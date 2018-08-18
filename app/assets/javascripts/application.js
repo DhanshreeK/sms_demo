@@ -11,13 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require trix
-//= require trix_attachments
 //= require jquery_ujs
 //= require select2
 //= require select2-full
 //= require rails-ujs
-//= require dataTables/jquery.dataTables
 
 
 
@@ -45,7 +42,6 @@
 //= require plugins/quick_insert.min.js
 //= require plugins/quote.min.js
 //= require plugins/save.min.js
-//= require plugins/table.min.js
 //= require plugins/special_characters.min.js
 //= require plugins/url.min.js
 //= require plugins/video.min.js
