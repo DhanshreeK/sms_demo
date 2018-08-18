@@ -1,4 +1,6 @@
 require 'shrine'
+Shrine.plugin :presign_endpoint, presign_options: { method: :put }
+
 if Rails.env.development?
   require "shrine/storage/file_system"
   Shrine.storages = {
