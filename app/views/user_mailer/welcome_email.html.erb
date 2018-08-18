@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta content='multipart/mixed; charset=UTF-8' http-equiv='Content-Type' />
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
     <p>
- <%= simple_format(@email.body, {}, sanitize: false)%>
-     </p>
     	
-      <%#=@email.body.html_safe %>
+          <%=@email.body.html_safe %>
     </p>
   </body>
 </html>

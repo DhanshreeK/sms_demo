@@ -12,18 +12,7 @@ gem 'axlsx_rails'
 gem 'rails', '~> 5.1.4'
 gem 'cancan'
 gem 'jquery-datatables'
-gem "aws-sdk-s3", "~> 1.2"
-gem 'aws-sdk', '~> 3'
-gem 'roda'
-gem 'jquery-fileupload-rails'
-gem 'fastimage'
-gem 'fog-aws'
-gem "image_processing"
-gem "mini_magick", ">= 4.3.5"
 gem "paperclip", "~> 5.0.0"
-# gem "figaro"
-gem "wysiwyg-rails"
-gem 'rails-html-sanitizer'
 gem 'country_select', require: 'country_select_without_sort_alphabetical'
 gem 'city-state'
 gem 'imagemagick-binaries'
@@ -41,13 +30,13 @@ gem 'figaro'
 gem "nested_form"
 gem "select2-rails"
 gem "jquery-rails"
-gem "mail"
-gem 'mandrill-rails'
-gem 'mandrill-api'
+gem 'sendgrid-ruby'
+#gem "mail"
 
 gem 'sendgrid-ruby'
 gem 'trix'
-# gem 'fog'
+
+
 gem 'chartkick'
 gem 'groupdate'
 # this will convert total amount to words
@@ -69,7 +58,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-gem "gibbon"
+
+
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -85,7 +76,6 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'dotenv-rails'
 end
 
 group :development do
