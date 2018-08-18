@@ -87,6 +87,7 @@
 </div>
   </div>
 
+
   <div class="field">
     <div class="field">
      <div class="col-md-12"> 
@@ -98,10 +99,54 @@
   <%= form.label :body %>
 </div>
 <div class="field-unit_field">
-<%= form.trix_editor :body %>
+<%= form.text_area :body %>
   </div>
 </div>
 </div>
+
+<script type="text/javascript">
+
+    $(function() {
+      $('#email_body').froalaEditor({
+          inlineMode: false,
+         theme: 'royal',
+          height: 250,
+        // Set the image upload URL.
+        imageUploadURL: '/emails/upload',
+ 
+        imageUploadParams: {
+          id: 'my_editor'
+        }
+      })
+    });
+
+    
+</script>
+
+<script type="text/javascript">
+   $('#email_body').editable({
+      inlineMode: false,
+      buttons: ['bold', 'italic','underline', 'formatBlock','align', 'insertUnorderedList','insertUnorderedList', 'outdent','indent','createLink','html', 'insertImage'],
+     
+     imageUploadToS3: {
+      bucket: '<%= @hash[:bucket] %>',
+      region: 's3', // Change the region if it is different
+      keyStart: '<%= @hash[:key_start] %>',
+      callback: function (url, key) {
+        console.log (url);
+        console.log (key);
+      },
+      params: {
+        acl: '<%= @hash[:acl] %>', 
+        AWSAccessKeyId: '<%= @hash[:access_key] %>', 
+        policy: '<%= @hash[:policy] %>', 
+        signature: '<%= @hash[:signature] %>',
+      }
+     }});
+
+</script>
+
+
  <div class="col-md-12"> 
                <div class="form-group"> 
                <label for="cardholdername" class="control-label">Add attachment</label>
@@ -119,9 +164,6 @@
  <%##= form.submit "Add Attachment" %>
 <%# end %>
 
-
-
- 
 
   <div class="actions">
     <div class="form-group"> 
@@ -160,3 +202,20 @@
     });
   </script>
  -->
+
+
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+ 
+  <!-- Include Editor style. -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+ 
+  <!-- Include Editor JS files. -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
+ 

@@ -5,8 +5,8 @@
   </head>
   <body>
     <p>
-    	
-      <%=sanitize @email.body%>
-    </p>
+ <%= simple_format(@email.body, {}, sanitize: false)%>
+ 
+     </p>
   </body>
 </html>

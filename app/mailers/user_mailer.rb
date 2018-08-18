@@ -8,9 +8,13 @@ class UserMailer < ApplicationMailer
     if @email.attachment2.present?
       attachments[@email.attachment2.filename] = File.read(@email.attachment2.file.file)
     end
+    
+    # attachments.inline['camper-bowtie.png'] = File.read('/uploads/attachment/picture/15/camper-bowtie.png')
+
     @recipients = []
     @email.selected_emails.each do |e|
     @recipients << e.customer_email.email
+
     # send_file( "uploads/store/#{params[:filename]}.png",
     # :disposition => 'inline',
     # :type => 'image/png',

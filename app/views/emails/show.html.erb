@@ -69,11 +69,15 @@
 </p>
 </div>
 
-<div class="col-md-12">
+<!-- <div class="col-md-12">
 <p class="text-info">
   <strong>Message:</strong>
-  <%= @email.body.html_safe %>
+  <%#= @email.body.html_safe %>
 </p>
+</div> -->
+
+<div class="froala-view">
+    <%= simple_format(@email.body, {}, sanitize: false)%>
 </div>
 
 
