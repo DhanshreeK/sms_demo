@@ -17,10 +17,13 @@ gem 'aws-sdk', '~> 3'
 gem 'roda'
 gem 'jquery-fileupload-rails'
 gem 'fastimage'
-
+gem 'fog-aws'
 gem "image_processing"
 gem "mini_magick", ">= 4.3.5"
 gem "paperclip", "~> 5.0.0"
+# gem "figaro"
+gem "wysiwyg-rails"
+
 gem 'country_select', require: 'country_select_without_sort_alphabetical'
 gem 'city-state'
 gem 'imagemagick-binaries'
