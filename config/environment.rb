@@ -8,12 +8,10 @@ Rails.application.initialize!
 
 ActionMailer::Base.smtp_settings = {
   :user_name => 'apikey',
-  :password => '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',
+  :password => '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',
   :domain => 'localhost:3000',
   :address => 'smtp.sendgrid.net',
   :port => 587,
   :authentication => :plain,
   :enable_starttls_auto => true
 }
-
-

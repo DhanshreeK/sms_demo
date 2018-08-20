@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180817111709) do
+ActiveRecord::Schema.define(version: 20180807125705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,12 +40,6 @@ ActiveRecord::Schema.define(version: 20180817111709) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
-  end
-
-  create_table "attachments", force: :cascade do |t|
-    t.string "picture"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "budgets", force: :cascade do |t|
@@ -98,18 +92,6 @@ ActiveRecord::Schema.define(version: 20180817111709) do
     t.datetime "photo_updated_at"
     t.string "photo"
     t.index ["email_setting_id"], name: "index_centers_on_email_setting_id"
-  end
-
-  create_table "ckeditor_assets", force: :cascade do |t|
-    t.string "data_file_name", null: false
-    t.string "data_content_type"
-    t.integer "data_file_size"
-    t.string "type", limit: 30
-    t.integer "width"
-    t.integer "height"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "colleges", force: :cascade do |t|
@@ -193,7 +175,6 @@ ActiveRecord::Schema.define(version: 20180817111709) do
     t.string "cc"
     t.string "bcc"
     t.string "attachment2"
-    t.string "picture"
     t.index ["student_id"], name: "index_emails_on_student_id"
   end
 
