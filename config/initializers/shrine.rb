@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+# <<<<<<< HEAD
 # # config/initializers/shrine.rb
 # require 'shrine'
 # Shrine.plugin :presign_endpoint, presign_options: { method: :put }
@@ -35,18 +35,18 @@
 # # Shrine.plugin :restore_cached_data # re-extract metadata when attaching a cached file
 # # Shrine.plugin :rack_file # for non-Rails apps
 # # Shrine.plugin :endpoint_provider
-=======
-require 'shrine'
-require 'shrine/storage/file_system'
+# =======
+# require 'shrine'
+# require 'shrine/storage/file_system'
 
-Shrine.storages = {
-  # temporary storage
-  cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/cache'),
+# Shrine.storages = {
+#   # temporary storage
+#   cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/cache'),
 
-  # permanent storage
-  store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/store'),
-}
+#   # permanent storage
+#   store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/store'),
+# }
 
-Shrine.plugin :activerecord
-Shrine.plugin :cached_attachment_data # for forms
->>>>>>> 7a353be726dd8825db103b54348b5c47635788cd
+# Shrine.plugin :activerecord
+# Shrine.plugin :cached_attachment_data # for forms
+# >>>>>>> 7a353be726dd8825db103b54348b5c47635788cd
